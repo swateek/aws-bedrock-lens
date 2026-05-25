@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="data-base" content="../data/">
+  <title>AWS Bedrock Lens — Model Comparator</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div id="staleness-banner" class="banner banner--warning" hidden>
+    ⚠ Pricing data may be outdated — last updated <span id="staleness-date"></span>
+  </div>
+
+  <div id="coverage-banner" class="banner banner--info" hidden>
+    <span id="coverage-text"></span>
+  </div>
+
+  <header class="header">
+    <div class="header__brand">
+      <h1 class="header__title">AWS BEDROCK LENS</h1>
+      <p class="header__tagline">Compare AWS Bedrock foundation models · on-demand list prices</p>
+    </div>
+    <div class="header__meta" id="last-updated">Loading…</div>
+  </header>
+
+  <main class="main">
+    <section id="browser-view" class="view">
+      <div class="toolbar">
+        <label class="toolbar__field">
+          <span class="toolbar__label">Search</span>
+          <input type="search" id="search" class="toolbar__input" placeholder="Model name or provider…" autocomplete="off">
+        </label>
+        <label class="toolbar__field">
+          <span class="toolbar__label">Provider</span>
+          <select id="filter-provider" class="toolbar__select">
+            <option value="">All</option>
+          </select>
+        </label>
+        <label class="toolbar__field">
+          <span class="toolbar__label">Type</span>
+          <select id="filter-type" class="toolbar__select">
+            <option value="">All</option>
+            <option value="token">Token</option>
+            <option value="image">Image</option>
+            <option value="embedding">Embedding</option>
+          </select>
+        </label>
+      </div>
+
+      <ul id="model-list" class="model-list" aria-label="Models"></ul>
+    </section>
+
+    <section id="compare-view" class="view view--hidden" hidden>
+      <div class="compare-header">
+        <button type="button" id="back-btn" class="btn btn--ghost">← Back to browser</button>
+        <h2 class="compare-header__title">Comparison</h2>
+      </div>
+      <div class="compare-table-wrap">
+        <table id="compare-table" class="compare-table">
+          <thead id="compare-thead"></thead>
+          <tbody id="compare-tbody"></tbody>
+        </table>
+      </div>
+      <p class="compare-footnote">Prices are indicative on-demand values; region and tier may vary. See <a href="https://aws.amazon.com/bedrock/pricing/" rel="noopener noreferrer">AWS Bedrock pricing</a>.</p>
+    </section>
+  </main>
+
+  <footer class="compare-bar" id="compare-bar" hidden>
+    <button type="button" id="compare-btn" class="btn btn--primary">
+      Compare <span id="compare-count">0</span> models →
+    </button>
+  </footer>
+
+  <script src="js/constants.js"></script>
+  <script src="js/util.js"></script>
+  <script src="js/catalog.js"></script>
+  <script src="js/url-state.js"></script>
+  <script src="js/compare.js"></script>
+  <script src="js/browser.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

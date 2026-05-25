@@ -1,0 +1,56 @@
+name: Update pricing data
+
+on:
+  schedule:
+    - cron: "0 8 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+    # Scheduled runs use the repo default branch; manual runs must target main.
+    if: github.ref == 'refs/heads/main'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - run: pip install -r scraper/requirements.txt
+
+      - name: Run scraper
+        id: scrape
+        run: python scraper/scrape.py
+
+      - name: Validate and ensure embed sync
+        run: python scraper/validate.py --check-embed
+
+      - name: Get date for PR title
+        id: date
+        run: echo "value=$(date -u +'%Y-%m-%d')" >> $GITHUB_OUTPUT
+
+      - name: Open PR if pricing meaningfully changed
+        if: steps.scrape.outputs.pricing_changed == 'true'
+        uses: peter-evans/create-pull-request@v6
+        with:
+          commit-message: "data: update pricing from AWS pricing page"
+          title: "Pricing update — ${{ steps.date.outputs.value }}"
+          body: |
+            Automated pricing update from the AWS Bedrock pricing page.
+
+            This PR includes changes to on-demand prices, pricing sources, or scrape
+            coverage — not metadata-only churn (`last_scraped_at` alone).
+
+            Please review the diff before merging.
+          branch: pricing-update
+          base: main
+          add-paths: |
+            data/pricing.json
+            data/pricing.embed.js
