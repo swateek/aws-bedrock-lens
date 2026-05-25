@@ -15,13 +15,32 @@
         "pricing_updated_at",
         "parser_version"
       ],
-      "additionalProperties": false,
+      "additionalProperties": true,
       "properties": {
-        "schema_version": { "type": "string", "const": "2" },
+        "schema_version": { "type": "string", "enum": ["2", "2.1"] },
         "source": { "type": "string", "format": "uri" },
         "last_scraped_at": { "type": ["string", "null"], "format": "date" },
         "pricing_updated_at": { "type": ["string", "null"], "format": "date" },
-        "parser_version": { "type": "string" }
+        "parser_version": { "type": "string" },
+        "last_inventory_sync_at": { "type": ["string", "null"], "format": "date" },
+        "models_known_to_aws": { "type": ["integer", "null"], "minimum": 0 },
+        "last_price_list_at": { "type": ["string", "null"], "format": "date" },
+        "price_list_region": { "type": "string" },
+        "products": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["id", "name", "provider", "notes"],
+            "additionalProperties": true,
+            "properties": {
+              "id": { "type": "string" },
+              "name": { "type": "string" },
+              "provider": { "type": "string" },
+              "notes": { "type": "string" },
+              "url": { "type": "string", "format": "uri" }
+            }
+          }
+        }
       }
     },
     "scrape": {
@@ -29,14 +48,22 @@
       "required": [
         "models_matched",
         "models_in_catalog",
+        "models_with_prices",
+        "models_known_to_aws",
         "coverage_pct",
+        "price_coverage_pct",
+        "inventory_coverage_pct",
         "warnings"
       ],
       "additionalProperties": false,
       "properties": {
         "models_matched": { "type": "integer", "minimum": 0 },
         "models_in_catalog": { "type": "integer", "minimum": 0 },
+        "models_with_prices": { "type": "integer", "minimum": 0 },
+        "models_known_to_aws": { "type": "integer", "minimum": 0 },
         "coverage_pct": { "type": "integer", "minimum": 0, "maximum": 100 },
+        "price_coverage_pct": { "type": "integer", "minimum": 0, "maximum": 100 },
+        "inventory_coverage_pct": { "type": "integer", "minimum": 0, "maximum": 100 },
         "warnings": { "type": "array", "items": { "type": "string" } }
       }
     },
@@ -87,7 +114,15 @@
             "enum": ["text", "image", "embedding"]
           }
         },
-        "notes": { "type": ["string", "null"] }
+        "notes": { "type": ["string", "null"] },
+        "availability": {
+          "type": "string",
+          "enum": ["ga", "preview", "legacy"]
+        },
+        "alternate_ids": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1 }
+        }
       },
       "allOf": [
         {

@@ -36,16 +36,22 @@ def test_normalize_on_demand_token_shape():
 def test_schema_accepts_minimal_v2_catalog():
     data = {
         "meta": {
-            "schema_version": "2",
+            "schema_version": "2.1",
             "source": "https://aws.amazon.com/bedrock/pricing/",
             "last_scraped_at": "2026-01-01",
             "pricing_updated_at": "2026-01-01",
             "parser_version": "2",
+            "last_inventory_sync_at": "2026-01-01",
+            "models_known_to_aws": 1,
         },
         "scrape": {
             "models_matched": 0,
             "models_in_catalog": 1,
+            "models_with_prices": 1,
+            "models_known_to_aws": 1,
             "coverage_pct": 0,
+            "price_coverage_pct": 100,
+            "inventory_coverage_pct": 100,
             "warnings": [],
         },
         "models": [
@@ -65,11 +71,31 @@ def test_schema_accepts_minimal_v2_catalog():
                 "context_window": 8192,
                 "modalities": ["text"],
                 "notes": None,
+                "availability": "ga",
+                "alternate_ids": [],
             }
         ],
     }
     normalize_catalog(data)
     validate_catalog(data)
+
+
+def test_model_has_price_and_coverage_stats():
+    from catalog_io import compute_coverage_stats, model_has_price
+
+    model = {
+        "pricing_type": "token",
+        "on_demand": {"input_per_1k": 0.001, "output_per_1k": None},
+    }
+    assert model_has_price(model)
+    stats = compute_coverage_stats(
+        {
+            "meta": {"models_known_to_aws": 10},
+            "models": [model, {"pricing_type": "token", "on_demand": {}}],
+        }
+    )
+    assert stats["models_with_prices"] == 1
+    assert stats["price_coverage_pct"] == 50
 
 
 def test_meaningful_diff_ignores_last_scraped_only():

@@ -1,22 +1,43 @@
-.PHONY: validate test scrape preview probe lint
+.PHONY: validate test scrape scrape-all sync-models price-list preview probe lint
+
+VENV := .venv
+PYTHON := $(VENV)/bin/python
+PIP := $(VENV)/bin/pip
+
+$(VENV)/bin/activate:
+	python3 -m venv $(VENV)
+	$(PIP) install -r scraper/requirements.txt
 
 lint:
 	pre-commit run --all-files
 
-validate:
-	python scraper/validate.py --check-embed
+validate: $(VENV)/bin/activate
+	$(PYTHON) scraper/validate.py --check-embed
 
-test:
-	pytest
+test: $(VENV)/bin/activate
+	$(PYTHON) -m pytest
 
-scrape:
-	python scraper/scrape.py
+scrape: $(VENV)/bin/activate
+	$(PYTHON) scraper/scrape.py
+
+scrape-all: $(VENV)/bin/activate
+	$(MAKE) sync-models
+	$(PYTHON) scraper/scrape.py
+
+sync-models: $(VENV)/bin/activate
+	$(PYTHON) scraper/sync_models.py
+
+sync-models-api: $(VENV)/bin/activate
+	$(PYTHON) scraper/sync_models.py --from-api --write-snapshot
+
+price-list: $(VENV)/bin/activate
+	$(PYTHON) scraper/price_list.py
 
 preview:
 	bash scripts/preview-site.sh
 
-probe:
-	python scraper/aws_pricing_probe.py
+probe: $(VENV)/bin/activate
+	$(PYTHON) scraper/aws_pricing_probe.py
 
-sync-embed:
-	python scraper/validate.py --sync-embed
+sync-embed: $(VENV)/bin/activate
+	$(PYTHON) scraper/validate.py --sync-embed

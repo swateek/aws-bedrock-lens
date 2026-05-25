@@ -15,6 +15,7 @@
     search: $("search"),
     filterProvider: $("filter-provider"),
     filterType: $("filter-type"),
+    filterHasPricing: $("filter-has-pricing"),
     modelList: $("model-list"),
     browserView: $("browser-view"),
     compareView: $("compare-view"),
@@ -34,6 +35,7 @@
       search: els.search.value,
       provider: els.filterProvider.value,
       type: els.filterType.value,
+      hasPricing: els.filterHasPricing?.value || "",
     };
   }
 
@@ -80,6 +82,9 @@
     els.search.addEventListener("input", refreshList);
     els.filterProvider.addEventListener("change", refreshList);
     els.filterType.addEventListener("change", refreshList);
+    if (els.filterHasPricing) {
+      els.filterHasPricing.addEventListener("change", refreshList);
+    }
     els.compareBtn.addEventListener("click", showCompare);
     els.backBtn.addEventListener("click", showBrowser);
   }

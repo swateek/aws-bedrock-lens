@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
-"""Scrape AWS Bedrock pricing and merge into data/pricing.json."""
+"""Sync inventory, merge Price List + HTML scrape into data/pricing.json."""
 
 from __future__ import annotations
 
+import argparse
 import json
 import os
 import sys
@@ -19,11 +20,26 @@ from catalog_io import (
     load_catalog,
     normalize_catalog,
     pricing_fingerprint,
+    update_scrape_manifest,
     write_catalog,
 )
+from inventory import SNAPSHOT_PATH_NAME, merge_inventory_into_catalog
 from parser import extract_rows
+from price_list import merge_price_list_into_catalog
 
-USER_AGENT = "aws-bedrock-lens-scraper/2.0 (+https://github.com/swateek/aws-bedrock-lens)"
+USER_AGENT = (
+    "aws-bedrock-lens-scraper/2.0 (+https://github.com/swateek/aws-bedrock-lens)"
+)
+
+REPO_ROOT = Path(__file__).resolve().parent.parent
+SNAPSHOT_PATH = REPO_ROOT / "data" / SNAPSHOT_PATH_NAME
+
+
+def load_snapshot(path: Path = SNAPSHOT_PATH) -> list[dict]:
+    if not path.exists():
+        return []
+    data = json.loads(path.read_text(encoding="utf-8"))
+    return data.get("models", [])
 
 
 def merge_scraped_prices(catalog: dict, scraped_rows: list[dict]) -> tuple[int, int, list[str]]:
@@ -66,7 +82,8 @@ def merge_scraped_prices(catalog: dict, scraped_rows: list[dict]) -> tuple[int, 
     return updated, unchanged, warnings
 
 
-def main() -> int:
+def run_html_scrape(catalog: dict) -> tuple[list[dict], list[str], list[str]]:
+    warnings: list[str] = []
     print(f"Fetching {PRICING_URL} ...")
     try:
         response = httpx.get(
@@ -77,32 +94,84 @@ def main() -> int:
         )
         response.raise_for_status()
     except httpx.HTTPError as exc:
-        print(f"ERROR: Failed to fetch pricing page: {exc}", file=sys.stderr)
-        return 1
+        warnings.append(f"HTML scrape skipped: {exc}")
+        return [], warnings, []
 
     soup = BeautifulSoup(response.text, "html.parser")
-    scraped_rows = extract_rows(soup)
-
+    scraped_rows, unmapped = extract_rows(soup, catalog)
+    for name in unmapped:
+        warnings.append(f"Unmapped pricing page row: {name}")
     if not scraped_rows:
-        print(
-            "ERROR: No pricing rows parsed — page structure may have changed.",
-            file=sys.stderr,
-        )
-        return 1
+        warnings.append("No pricing rows parsed from HTML (JS placeholders or layout change).")
+    else:
+        print(f"Parsed {len(scraped_rows)} model(s) with literal prices from page.")
+    return scraped_rows, warnings, unmapped
 
-    print(f"Parsed {len(scraped_rows)} model(s) with literal prices from page.")
+
+def main() -> int:
+    parser = argparse.ArgumentParser(description="Update Bedrock pricing catalog")
+    parser.add_argument(
+        "--skip-inventory",
+        action="store_true",
+        help="Do not merge model-inventory.snapshot.json",
+    )
+    parser.add_argument(
+        "--skip-price-list",
+        action="store_true",
+        help="Do not merge AWS Price List API data",
+    )
+    parser.add_argument(
+        "--skip-html",
+        action="store_true",
+        help="Do not scrape AWS marketing pricing page",
+    )
+    parser.add_argument(
+        "--snapshot",
+        type=Path,
+        default=SNAPSHOT_PATH,
+        help="Inventory snapshot path",
+    )
+    args = parser.parse_args()
 
     catalog = normalize_catalog(load_catalog())
     before_snapshot = json.loads(json.dumps(catalog))
     old_hash = pricing_fingerprint(catalog["models"])
     today = date.today().isoformat()
+    warnings: list[str] = []
 
-    updated, unchanged, warnings = merge_scraped_prices(catalog, scraped_rows)
+    if not args.skip_inventory:
+        inventory = load_snapshot(args.snapshot)
+        if inventory:
+            added, _updated, inv_warnings = merge_inventory_into_catalog(catalog, inventory)
+            catalog["meta"]["last_inventory_sync_at"] = today
+            catalog["meta"]["models_known_to_aws"] = len(inventory)
+            warnings.extend(inv_warnings)
+            print(f"Inventory: {len(inventory)} AWS models, {added} new catalog entries")
+        else:
+            warnings.append(f"No inventory snapshot at {args.snapshot}; run sync-models first.")
+
+    if not args.skip_price_list:
+        try:
+            pl_updated, pl_matched, pl_warnings = merge_price_list_into_catalog(catalog)
+            catalog["meta"]["last_price_list_at"] = today
+            warnings.extend(pl_warnings)
+            print(f"Price list: {pl_matched} mapped, {pl_updated} rows updated")
+        except httpx.HTTPError as exc:
+            warnings.append(f"Price list merge skipped: {exc}")
+
+    html_updated = 0
+    if not args.skip_html:
+        scraped_rows, html_warnings, _unmapped = run_html_scrape(catalog)
+        warnings.extend(html_warnings)
+        if scraped_rows:
+            html_updated, _unchanged, merge_warnings = merge_scraped_prices(catalog, scraped_rows)
+            warnings.extend(merge_warnings)
+            catalog["meta"]["last_scraped_at"] = today
+
     new_hash = pricing_fingerprint(catalog["models"])
-
-    catalog["meta"]["last_scraped_at"] = today
     catalog["meta"]["parser_version"] = PARSER_VERSION
     catalog["meta"]["source"] = PRICING_URL
+    catalog["meta"]["schema_version"] = "2.1"
 
     if new_hash != old_hash:
         catalog["meta"]["pricing_updated_at"] = today
@@ -110,31 +179,10 @@ def main() -> int:
     else:
         print("No pricing value changes — pricing_updated_at unchanged.")
 
-    by_id = {m["model_id"]: m for m in catalog["models"]}
-    matched_ids = {r["model_id"] for r in scraped_rows if r["model_id"] in by_id}
-    auto_count = sum(1 for m in catalog["models"] if m.get("pricing_source") == "auto")
-    total = len(catalog["models"])
-    if len(matched_ids) < len(scraped_rows):
-        warnings.append(
-            f"Parsed {len(scraped_rows)} rows; {len(matched_ids)} matched catalog entries."
-        )
-
-    catalog["scrape"] = {
-        "models_matched": auto_count,
-        "models_in_catalog": total,
-        "coverage_pct": round(100 * auto_count / total) if total else 0,
-        "warnings": warnings,
-    }
-
-    if catalog["scrape"]["coverage_pct"] < 50:
-        warnings.append(
-            "Low automated coverage: most AWS prices use JS placeholders; "
-            "curate data/pricing.json manually or add a Price List API source."
-        )
-        catalog["scrape"]["warnings"] = warnings
-
+    update_scrape_manifest(catalog, warnings=warnings)
     write_catalog(catalog)
 
+    stats = catalog["scrape"]
     meaningful = catalogs_meaningfully_differ(before_snapshot, catalog)
     github_output = os.environ.get("GITHUB_OUTPUT")
     if github_output:
@@ -142,9 +190,10 @@ def main() -> int:
             fh.write(f"pricing_changed={'true' if meaningful else 'false'}\n")
 
     print(
-        f"Summary: {updated} price rows updated, {unchanged} unchanged, "
-        f"{auto_count}/{catalog['scrape']['models_in_catalog']} auto-sourced "
-        f"({catalog['scrape']['coverage_pct']}% coverage)"
+        f"Summary: HTML {html_updated} updated; "
+        f"{stats['models_with_prices']}/{stats['models_in_catalog']} models have list prices "
+        f"({stats['price_coverage_pct']}%); "
+        f"inventory {stats['inventory_coverage_pct']}% of AWS ({stats['models_known_to_aws']} known)"
     )
     print(f"PR-worthy changes: {'yes' if meaningful else 'no (metadata/scrape only)'}")
     return 0

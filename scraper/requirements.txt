@@ -2,3 +2,4 @@ httpx==0.28.1
 beautifulsoup4==4.13.4
 jsonschema==4.23.0
 pytest==8.3.5
+boto3>=1.35.0

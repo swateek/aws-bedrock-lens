@@ -6,21 +6,8 @@ import re
 
 from bs4 import BeautifulSoup
 
-NAME_TO_ID: dict[str, str] = {
-    "Claude 3.5 Sonnet v2": "anthropic.claude-3-5-sonnet-20241022-v2:0",
-    "Claude 3.5 Sonnet": "anthropic.claude-3-5-sonnet-20240620-v1:0",
-    "Claude 3.5 Haiku": "anthropic.claude-3-haiku-20240307-v1:0",
-    "Claude 3 Opus": "anthropic.claude-3-opus-20240229-v1:0",
-    "Llama 3 70B Instruct": "meta.llama3-70b-instruct-v1:0",
-    "Llama 3.1 70B Instruct": "meta.llama3-1-70b-instruct-v1:0",
-    "Llama 3.1 8B Instruct": "meta.llama3-1-8b-instruct-v1:0",
-    "Mistral Large 3": "mistral.mistral-large-2407-v1:0",
-    "Mistral 7B Instruct": "mistral.mistral-7b-instruct-v0:2",
-    "Cohere Command R": "cohere.command-r-v1:0",
-    "Cohere Embed English v3": "cohere.embed-english-v3",
-    "Titan Text Embeddings v2": "amazon.titan-embed-text-v2:0",
-    "Titan Image Generator v2": "amazon.titan-image-generator-v2:0",
-    "Titan Image Generator v1": "amazon.titan-image-generator-v1",
+# Legacy aliases for AWS marketing page names (supplement catalog lookup).
+_NAME_ALIASES: dict[str, str] = {
     "Llama 3.1 70B": "meta.llama3-1-70b-instruct-v1:0",
     "Llama 3.1 8B": "meta.llama3-1-8b-instruct-v1:0",
 }
@@ -38,6 +25,28 @@ _EXTENDED_RE = re.compile(
 def normalize_name(name: str) -> str:
     name = _SUFFIX_RE.sub("", name)
     return re.sub(r"\s+", " ", name).strip()
+
+
+def _normalize_key(text: str) -> str:
+    return re.sub(r"[^a-z0-9]+", "", text.lower())
+
+
+def build_display_name_lookup(catalog: dict | None) -> dict[str, str]:
+    """Map normalized display names to model_id from catalog + aliases."""
+    lookup: dict[str, str] = {}
+    if catalog:
+        for model in catalog.get("models", []):
+            display = model.get("display_name")
+            model_id = model.get("model_id")
+            if display and model_id:
+                lookup[_normalize_key(display)] = model_id
+    for alias_name, model_id in _NAME_ALIASES.items():
+        lookup[_normalize_key(alias_name)] = model_id
+    return lookup
+
+
+def resolve_name_to_model_id(name: str, lookup: dict[str, str]) -> str | None:
+    return lookup.get(_normalize_key(normalize_name(name)))
 
 
 def parse_price(text: str) -> float | None:
@@ -68,9 +77,27 @@ def detect_unit(table_text: str) -> str:
     return "token"
 
 
-def extract_rows(soup: BeautifulSoup) -> list[dict]:
+def extract_rows(
+    soup: BeautifulSoup,
+    catalog: dict | None = None,
+) -> tuple[list[dict], list[str]]:
     """Extract model pricing from tables with literal dollar amounts."""
+    lookup = build_display_name_lookup(catalog)
     scraped: dict[str, dict] = {}
+    unmapped: list[str] = []
+
+    provider_headers = (
+        "Anthropic",
+        "Meta",
+        "Amazon",
+        "Cohere",
+        "Mistral",
+        "OpenAI",
+        "DeepSeek",
+        "Google",
+        "AI21 Labs",
+        "Stability AI",
+    )
 
     for table in soup.find_all("table"):
         table_text = table.get_text(" ", strip=True)
@@ -103,13 +130,7 @@ def extract_rows(soup: BeautifulSoup) -> list[dict]:
                 input_raw = prices[0]
                 output_raw = prices[1] if len(prices) > 1 else None
             else:
-                if len(cells) >= 3 and cells[0] in (
-                    "Anthropic",
-                    "Meta",
-                    "Amazon",
-                    "Cohere",
-                    "Mistral",
-                ):
+                if len(cells) >= 3 and cells[0] in provider_headers:
                     name = cells[1]
                     price_cells = cells[3:]
                 else:
@@ -125,9 +146,10 @@ def extract_rows(soup: BeautifulSoup) -> list[dict]:
             if not name or _EXTENDED_RE.search(name):
                 continue
 
-            name = normalize_name(name)
-            model_id = NAME_TO_ID.get(name)
+            normalized = normalize_name(name)
+            model_id = resolve_name_to_model_id(normalized, lookup)
             if not model_id:
+                unmapped.append(normalized)
                 continue
 
             input_val = parse_price(input_raw or "")
@@ -145,9 +167,9 @@ def extract_rows(soup: BeautifulSoup) -> list[dict]:
                 }
 
             if model_id not in scraped:
-                scraped[model_id] = {"name": name, "pricing": entry, "unit": unit}
+                scraped[model_id] = {"name": normalized, "pricing": entry, "unit": unit}
 
-    return [
+    rows_out = [
         {
             "model_id": mid,
             "name": data["name"],
@@ -156,3 +178,4 @@ def extract_rows(soup: BeautifulSoup) -> list[dict]:
         }
         for mid, data in scraped.items()
     ]
+    return rows_out, unmapped

@@ -4,10 +4,19 @@
 (function (global) {
   "use strict";
 
-  const { escapeHtml, formatPrice, formatContext, minFinite, isCheapest } =
-    global.BedrockLens.util;
+  const {
+    escapeHtml,
+    formatPrice,
+    formatContext,
+    minFinite,
+    isCheapest,
+    modelHasPrice,
+  } = global.BedrockLens.util;
+
+  const UNKNOWN = "Price unknown";
 
   function formatListPrice(model) {
+    if (!modelHasPrice(model)) return UNKNOWN;
     const od = model.on_demand || {};
     if (model.pricing_type === "image") {
       const parts = [];
@@ -51,7 +60,7 @@
       const minIn = minFinite(models.map((m) => m.on_demand?.input_per_1k));
       rows.push({
         label: "Input / 1K",
-        render: (m) => formatPrice(m.on_demand?.input_per_1k),
+        render: (m) => formatPrice(m.on_demand?.input_per_1k, UNKNOWN),
         best: (m) => isCheapest(m.on_demand?.input_per_1k, minIn),
       });
 
@@ -69,7 +78,7 @@
           render: (m) =>
             m.pricing_type === "embedding"
               ? "—"
-              : formatPrice(m.on_demand?.output_per_1k),
+              : formatPrice(m.on_demand?.output_per_1k, UNKNOWN),
           best: (m) =>
             m.pricing_type === "token" &&
             isCheapest(m.on_demand?.output_per_1k, minOut),
@@ -81,7 +90,7 @@
       );
       rows.push({
         label: "Standard / image",
-        render: (m) => formatPrice(m.on_demand?.standard_per_image),
+        render: (m) => formatPrice(m.on_demand?.standard_per_image, UNKNOWN),
         best: (m) => isCheapest(m.on_demand?.standard_per_image, minStd),
       });
       if (models.some((m) => m.on_demand?.premium_per_image != null)) {
@@ -90,7 +99,7 @@
         );
         rows.push({
           label: "Premium / image",
-          render: (m) => formatPrice(m.on_demand?.premium_per_image),
+          render: (m) => formatPrice(m.on_demand?.premium_per_image, UNKNOWN),
           best: (m) => isCheapest(m.on_demand?.premium_per_image, minPrem),
         });
       }

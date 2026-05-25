@@ -4,7 +4,7 @@
 (function (global) {
   "use strict";
 
-  const { escapeHtml, escapeAttr, formatRelativeDate, daysSince } =
+  const { escapeHtml, escapeAttr, formatRelativeDate, daysSince, modelHasPrice } =
     global.BedrockLens.util;
   const { formatListPrice } = global.BedrockLens.compare;
   const { STALE_DAYS } = global.BedrockLens.CONSTANTS;
@@ -31,14 +31,21 @@
 
     const { scrape } = catalog;
     if (scrape && els.coverageBanner) {
-      const low = scrape.coverage_pct < 50;
-      els.coverageBanner.hidden = !low && scrape.warnings.length === 0;
+      const lowPrice = (scrape.price_coverage_pct ?? 0) < 50;
+      const show =
+        lowPrice ||
+        scrape.warnings.some((w) => !w.startsWith("Unmapped pricing page row"));
+      els.coverageBanner.hidden = !show;
       if (!els.coverageBanner.hidden) {
-        const warn =
-          scrape.warnings.length > 0
-            ? scrape.warnings[0]
-            : "Most prices are manually curated.";
-        els.coverageText.textContent = `Automated scrape covers ${scrape.models_matched}/${scrape.models_in_catalog} models (${scrape.coverage_pct}%). ${warn}`;
+        const priced = scrape.models_with_prices ?? 0;
+        const total = scrape.models_in_catalog ?? catalog.models.length;
+        const known = scrape.models_known_to_aws ?? total;
+        const detail = `${priced}/${total} models have on-demand list prices (${scrape.price_coverage_pct ?? 0}%). ${known} foundation models known to AWS.`;
+        const productNote =
+          (catalog.meta.products || []).length > 0
+            ? " Codex on Bedrock is a product (see README), not a separate model_id."
+            : "";
+        els.coverageText.textContent = detail + productNote;
       }
     }
   }
@@ -58,11 +65,13 @@
 
   function getFilteredModels(catalog, filters) {
     const q = filters.search.trim().toLowerCase();
-    const { provider, type } = filters;
+    const { provider, type, hasPricing } = filters;
 
     return catalog.models.filter((m) => {
       if (provider && m.provider !== provider) return false;
       if (type && m.pricing_type !== type) return false;
+      if (hasPricing === "yes" && !modelHasPrice(m)) return false;
+      if (hasPricing === "no" && modelHasPrice(m)) return false;
       if (q) {
         const hay =
           `${m.display_name} ${m.provider} ${m.model_id}`.toLowerCase();
@@ -97,6 +106,11 @@
         model.pricing_source === "auto"
           ? '<span class="badge badge--auto">auto</span>'
           : '<span class="badge badge--manual">manual</span>';
+      const previewBadge =
+        model.availability === "preview"
+          ? '<span class="badge badge--preview">preview</span>'
+          : "";
+      const priceClass = modelHasPrice(model) ? "" : " model-card__meta--unknown";
 
       li.innerHTML = `
         <input type="checkbox" class="model-card__check" ${checked ? "checked" : ""} aria-label="Select ${escapeAttr(model.display_name)}">
@@ -104,9 +118,9 @@
           <div class="model-card__row">
             <span class="model-card__name">${escapeHtml(model.display_name)}</span>
             <span class="model-card__provider" data-provider="${escapeAttr(model.provider)}">${escapeHtml(model.provider)}</span>
-            ${sourceBadge}
+            ${sourceBadge}${previewBadge}
           </div>
-          <div class="model-card__meta">${escapeHtml(formatListPrice(model))}</div>
+          <div class="model-card__meta${priceClass}">${escapeHtml(formatListPrice(model))}</div>
           <span class="model-card__id">${escapeHtml(model.model_id)}</span>
         </div>
       `;

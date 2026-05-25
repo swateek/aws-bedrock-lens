@@ -93,24 +93,92 @@ def normalize_on_demand(model: dict) -> dict:
     return base
 
 
+def model_has_price(model: dict) -> bool:
+    """True if any on_demand field has a numeric price."""
+    od = model.get("on_demand") or {}
+    for key in ("input_per_1k", "output_per_1k", "standard_per_image", "premium_per_image"):
+        val = od.get(key)
+        if val is not None and isinstance(val, (int, float)):
+            return True
+    return False
+
+
+def compute_coverage_stats(catalog: dict) -> dict[str, Any]:
+    models = catalog.get("models", [])
+    total = len(models)
+    with_prices = sum(1 for m in models if model_has_price(m))
+    auto_count = sum(1 for m in models if m.get("pricing_source") == "auto")
+    models_known = catalog.get("meta", {}).get("models_known_to_aws") or total
+    return {
+        "models_matched": auto_count,
+        "models_in_catalog": total,
+        "models_with_prices": with_prices,
+        "models_known_to_aws": models_known,
+        "coverage_pct": round(100 * auto_count / total) if total else 0,
+        "price_coverage_pct": round(100 * with_prices / total) if total else 0,
+        "inventory_coverage_pct": (
+            min(100, round(100 * total / models_known)) if models_known else 100
+        ),
+        "warnings": list(catalog.get("scrape", {}).get("warnings", [])),
+    }
+
+
 def normalize_catalog(data: dict) -> dict:
     """Ensure v2 shape and consistent on_demand keys."""
     meta = data.setdefault("meta", {})
-    meta.setdefault("schema_version", "2")
+    meta.setdefault("schema_version", "2.1")
     meta.setdefault("source", PRICING_URL)
     meta.setdefault("parser_version", PARSER_VERSION)
     meta.setdefault("last_scraped_at", None)
     meta.setdefault("pricing_updated_at", None)
+    meta.setdefault("last_inventory_sync_at", None)
+    meta.setdefault("models_known_to_aws", None)
+    meta.setdefault("last_price_list_at", None)
+    meta.setdefault("price_list_region", "us-east-1")
+    products = meta.get("products")
+    if products is None:
+        meta["products"] = [
+            {
+                "id": "codex-on-bedrock",
+                "name": "Codex on Amazon Bedrock",
+                "provider": "OpenAI",
+                "notes": (
+                    "Codex is a coding agent product that routes inference through Bedrock; "
+                    "it is not a separate foundation model_id. Bill via underlying OpenAI "
+                    "models or your AWS agreement."
+                ),
+                "url": "https://aws.amazon.com/about-aws/whats-new/2026/04/bedrock-openai-models-codex-managed-agents/",
+            }
+        ]
 
     scrape = data.setdefault("scrape", {})
     scrape.setdefault("models_matched", 0)
     scrape.setdefault("models_in_catalog", len(data.get("models", [])))
+    scrape.setdefault("models_with_prices", 0)
+    scrape.setdefault("models_known_to_aws", meta.get("models_known_to_aws") or 0)
     scrape.setdefault("coverage_pct", 0)
+    scrape.setdefault("price_coverage_pct", 0)
+    scrape.setdefault("inventory_coverage_pct", 100)
     scrape.setdefault("warnings", [])
 
     for model in data.get("models", []):
         model.setdefault("pricing_source", "manual")
+        model.setdefault("availability", "ga")
+        model.setdefault("alternate_ids", [])
         model["on_demand"] = normalize_on_demand(model)
+
+    stats = compute_coverage_stats(data)
+    data["scrape"].update(
+        {
+            "models_matched": stats["models_matched"],
+            "models_in_catalog": stats["models_in_catalog"],
+            "models_with_prices": stats["models_with_prices"],
+            "models_known_to_aws": stats["models_known_to_aws"],
+            "coverage_pct": stats["coverage_pct"],
+            "price_coverage_pct": stats["price_coverage_pct"],
+            "inventory_coverage_pct": stats["inventory_coverage_pct"],
+        }
+    )
     return data
 
 
@@ -142,14 +210,20 @@ def write_catalog(data: dict, path: Path = DATA_PATH) -> None:
 def update_scrape_manifest(
     data: dict,
     *,
-    models_matched: int,
-    warnings: list[str],
+    warnings: list[str] | None = None,
 ) -> None:
-    total = len(data.get("models", []))
-    pct = round(100 * models_matched / total) if total else 0
-    data["scrape"] = {
-        "models_matched": models_matched,
-        "models_in_catalog": total,
-        "coverage_pct": pct,
-        "warnings": warnings,
-    }
+    if warnings is not None:
+        existing = list(data.get("scrape", {}).get("warnings", []))
+        for w in warnings:
+            if w not in existing:
+                existing.append(w)
+        data.setdefault("scrape", {})["warnings"] = existing
+    stats = compute_coverage_stats(data)
+    data["scrape"] = {**stats, "warnings": data.get("scrape", {}).get("warnings", [])}
+    if stats["price_coverage_pct"] < 50:
+        msg = (
+            f"{stats['models_with_prices']}/{stats['models_in_catalog']} models have "
+            "on-demand list prices; preview and marketplace models may lack public pricing."
+        )
+        if msg not in data["scrape"]["warnings"]:
+            data["scrape"]["warnings"].append(msg)

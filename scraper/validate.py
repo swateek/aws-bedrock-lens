@@ -5,6 +5,8 @@ from __future__ import annotations
 
 import argparse
 import sys
+from datetime import date
+from pathlib import Path
 
 from catalog_io import (
     DATA_PATH,
@@ -14,6 +16,36 @@ from catalog_io import (
     validate_catalog,
     write_catalog,
 )
+
+INVENTORY_STALE_DAYS = 90
+
+
+def _check_duplicate_model_ids(models: list[dict]) -> list[str]:
+    seen: set[str] = set()
+    errors: list[str] = []
+    for model in models:
+        mid = model.get("model_id", "")
+        if mid in seen:
+            errors.append(f"Duplicate model_id: {mid}")
+        seen.add(mid)
+    return errors
+
+
+def _warn_stale_inventory(meta: dict) -> str | None:
+    synced = meta.get("last_inventory_sync_at")
+    if not synced:
+        return "meta.last_inventory_sync_at is missing; run make sync-models"
+    try:
+        synced_date = date.fromisoformat(synced)
+    except ValueError:
+        return f"Invalid last_inventory_sync_at: {synced}"
+    age = (date.today() - synced_date).days
+    if age > INVENTORY_STALE_DAYS:
+        return (
+            f"Inventory sync is {age} days old (>{INVENTORY_STALE_DAYS}); "
+            "refresh with make sync-models --from-api"
+        )
+    return None
 
 
 def main() -> int:
@@ -36,8 +68,6 @@ def main() -> int:
     )
     args = parser.parse_args()
 
-    from pathlib import Path
-
     path = Path(args.path)
     data = normalize_catalog(load_catalog(path))
 
@@ -47,7 +77,21 @@ def main() -> int:
         print(f"Schema validation failed: {exc}", file=sys.stderr)
         return 1
 
+    dup_errors = _check_duplicate_model_ids(data.get("models", []))
+    if dup_errors:
+        for err in dup_errors:
+            print(f"ERROR: {err}", file=sys.stderr)
+        return 1
+
+    stale = _warn_stale_inventory(data.get("meta", {}))
+    if stale:
+        print(f"WARN: {stale}", file=sys.stderr)
+
     print(f"OK: {path} matches schema v{data['meta']['schema_version']}")
+    print(
+        f"    {data['scrape']['models_with_prices']}/{data['scrape']['models_in_catalog']} "
+        f"models with list prices"
+    )
 
     if args.sync_embed:
         write_catalog(data, path)

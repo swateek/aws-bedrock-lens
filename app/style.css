@@ -257,6 +257,38 @@ body {
 .model-card__provider[data-provider="Cohere"] {
   color: #a78bfa;
 }
+.model-card__provider[data-provider="OpenAI"] {
+  color: #10a37f;
+}
+.model-card__provider[data-provider="DeepSeek"] {
+  color: #38bdf8;
+}
+.model-card__provider[data-provider="Google"] {
+  color: #ea4335;
+}
+.model-card__provider[data-provider="AI21 Labs"] {
+  color: #f472b6;
+}
+.model-card__provider[data-provider="Stability AI"] {
+  color: #a855f7;
+}
+.model-card__provider[data-provider="Qwen"] {
+  color: #14b8a6;
+}
+.model-card__provider[data-provider="NVIDIA"] {
+  color: #76b900;
+}
+
+.model-card__meta--unknown {
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+.badge--preview {
+  background: rgba(234, 179, 8, 0.15);
+  color: #eab308;
+  border: 1px solid rgba(234, 179, 8, 0.35);
+}
 
 .model-card__meta {
   margin-top: 0.25rem;

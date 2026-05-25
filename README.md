@@ -9,7 +9,10 @@ A static tool for comparing AWS Bedrock foundation models by pricing, capabiliti
 - Highlights cheapest input/output (or standard image) prices, including ties
 - Shareable comparison URLs (`?models=id1,id2`)
 - Staleness warning when pricing data is older than 30 days
-- Scrape coverage banner — auto vs manually curated prices
+- Full foundation-model inventory synced from AWS (`ListFoundationModels`)
+- Price coverage banner — models with on-demand list prices vs catalog size
+- Filter by provider, type, and whether list pricing is known
+- OpenAI foundation models (`openai.gpt-oss-*`); Codex documented as a Bedrock product (not a separate `model_id`)
 
 ## Project structure
 
@@ -25,6 +28,7 @@ aws-bedrock-lens/
 │   └── js/                    # constants, catalog, compare, browser, …
 ├── data/
 │   ├── pricing.json
+│   ├── model-inventory.snapshot.json  # Bedrock FM list (API or manual refresh)
 │   └── pricing.embed.js       # generated; must match JSON
 ├── docs/
 │   └── PRICING_SOURCES.md     # HTML vs Price List API vs manual
@@ -61,10 +65,14 @@ python3 -m http.server 8080
 ## Data & validation
 
 ```bash
-pip install -r scraper/requirements.txt
+python3 -m venv .venv && .venv/bin/pip install -r scraper/requirements.txt
 make validate   # schema + embed in sync
 make test
-make scrape     # fetch AWS HTML tables
+make sync-models          # merge inventory snapshot into pricing.json
+make sync-models-api      # refresh snapshot from AWS (needs credentials)
+make scrape               # inventory + Price List + HTML scrape
+make scrape-all           # sync-models then scrape
+make price-list           # Price List API only
 ```
 
 - `meta.last_scraped_at` — updated every successful scrape
@@ -79,13 +87,18 @@ make scrape     # fetch AWS HTML tables
 
 Live URL: `https://<user>.github.io/<repo>/` (no `/app/` path).
 
-## Pricing automation gap
+## Model inventory and Codex
 
-Most AWS marketing-page prices are JS placeholders; HTML scrape covers a small fraction. See [docs/PRICING_SOURCES.md](docs/PRICING_SOURCES.md) for:
+- **Foundation models** come from `data/model-inventory.snapshot.json`, refreshed with `make sync-models-api` (requires AWS credentials) or committed snapshot + `make sync-models`.
+- **OpenAI on Bedrock** includes `openai.gpt-oss-*` foundation models in the catalog. **Codex** is a coding-agent product that uses Bedrock for inference; it does not appear as its own `model_id` (see `meta.products` in `pricing.json`).
+- **Coverage:** `scrape.price_coverage_pct` is the share of catalog models with any on-demand list price; inventory can be complete while many preview models lack public pricing.
 
-- **Now:** HTML scrape + manual curation
-- **Next:** AWS Price List API (`AmazonBedrock`) mapper
+## Pricing automation
+
+Pipeline order: inventory sync → AWS Price List API (`AmazonBedrockFoundationModels`) → HTML scrape. See [docs/PRICING_SOURCES.md](docs/PRICING_SOURCES.md).
+
 - **Probe:** `make probe` or `python scraper/aws_pricing_probe.py`
+- **CI:** Weekly `update-pricing.yml` uses committed snapshot without AWS secrets; optional `AWS_ACCESS_KEY_ID` / `AWS_SECRET_ACCESS_KEY` refresh the snapshot
 
 ## Contributing
 

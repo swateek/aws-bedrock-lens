@@ -4,7 +4,7 @@
 (function (global) {
   "use strict";
 
-  const { getDataBase, pricingJsonUrl } = global.BedrockLens.CONSTANTS;
+  const { pricingJsonUrl } = global.BedrockLens.CONSTANTS;
 
   function normalizeOnDemand(model) {
     const type = model.pricing_type;
@@ -22,31 +22,59 @@
     return base;
   }
 
+  function modelHasPrice(model) {
+    const od = model.on_demand || {};
+    return ["input_per_1k", "output_per_1k", "standard_per_image", "premium_per_image"].some(
+      (k) => od[k] != null && Number.isFinite(od[k]),
+    );
+  }
+
   function normalizeCatalog(raw) {
+    const models = (raw.models || []).map((m) => ({
+      ...m,
+      pricing_source: m.pricing_source || "manual",
+      availability: m.availability || "ga",
+      alternate_ids: m.alternate_ids || [],
+      on_demand: normalizeOnDemand(m),
+    }));
+
+    const withPrices = models.filter(modelHasPrice).length;
+    const inCatalog = models.length;
+    const knownToAws = raw.meta?.models_known_to_aws ?? inCatalog;
+
     const catalog = {
       meta: {
-        schema_version: String(raw.meta?.schema_version || "2"),
+        schema_version: String(raw.meta?.schema_version || "2.1"),
         source: raw.meta?.source || "",
         last_scraped_at:
           raw.meta?.last_scraped_at ?? raw.meta?.last_updated ?? null,
         pricing_updated_at:
           raw.meta?.pricing_updated_at ?? raw.meta?.last_updated ?? null,
         parser_version: raw.meta?.parser_version || "—",
+        last_inventory_sync_at: raw.meta?.last_inventory_sync_at ?? null,
+        models_known_to_aws: knownToAws,
+        last_price_list_at: raw.meta?.last_price_list_at ?? null,
+        price_list_region: raw.meta?.price_list_region || "us-east-1",
+        products: raw.meta?.products || [],
       },
       scrape: {
         models_matched: raw.scrape?.models_matched ?? 0,
-        models_in_catalog:
-          raw.scrape?.models_in_catalog ?? (raw.models?.length || 0),
+        models_in_catalog: inCatalog,
+        models_with_prices: raw.scrape?.models_with_prices ?? withPrices,
+        models_known_to_aws: raw.scrape?.models_known_to_aws ?? knownToAws,
         coverage_pct: raw.scrape?.coverage_pct ?? 0,
+        price_coverage_pct:
+          raw.scrape?.price_coverage_pct ??
+          (inCatalog ? Math.round((100 * withPrices) / inCatalog) : 0),
+        inventory_coverage_pct:
+          raw.scrape?.inventory_coverage_pct ??
+          (knownToAws
+            ? Math.min(100, Math.round((100 * inCatalog) / knownToAws))
+            : 100),
         warnings: raw.scrape?.warnings || [],
       },
-      models: (raw.models || []).map((m) => ({
-        ...m,
-        pricing_source: m.pricing_source || "manual",
-        on_demand: normalizeOnDemand(m),
-      })),
+      models,
     };
-    catalog.scrape.models_in_catalog = catalog.models.length;
     return catalog;
   }
 
@@ -87,5 +115,6 @@
   global.BedrockLens.catalog = {
     loadCatalog,
     normalizeCatalog,
+    modelHasPrice,
   };
 })(window);
