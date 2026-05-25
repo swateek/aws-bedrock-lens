@@ -3,8 +3,6 @@
 
 from __future__ import annotations
 
-from datetime import date
-
 from catalog_io import load_catalog, normalize_catalog, write_catalog
 
 OLD_UPDATED = "2026-05-26"

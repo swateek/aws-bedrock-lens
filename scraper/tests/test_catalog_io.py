@@ -1,7 +1,5 @@
 import json
 
-import pytest
-
 from catalog_io import (
     catalogs_meaningfully_differ,
     normalize_catalog,

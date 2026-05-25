@@ -43,7 +43,7 @@
       selected,
       filters(),
       els.modelList,
-      onToggle
+      onToggle,
     );
   }
 
@@ -71,7 +71,7 @@
     global.BedrockLens.compare.renderCompareTable(
       models,
       els.compareThead,
-      els.compareTbody
+      els.compareTbody,
     );
     els.backBtn.focus();
   }
@@ -93,12 +93,15 @@
     }
 
     global.BedrockLens.browser.updateMetaUI(catalog, els);
-    global.BedrockLens.browser.populateProviderFilter(catalog, els.filterProvider);
+    global.BedrockLens.browser.populateProviderFilter(
+      catalog,
+      els.filterProvider,
+    );
 
     const validIds = new Set(catalog.models.map((m) => m.model_id));
     const fromUrl = global.BedrockLens.urlState.parseSelection(
       global.location.search,
-      validIds
+      validIds,
     );
     for (const id of fromUrl) selected.add(id);
 

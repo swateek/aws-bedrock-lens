@@ -195,7 +195,9 @@ body {
   border: 1px solid transparent;
   border-radius: var(--radius);
   cursor: pointer;
-  transition: background 0.12s, border-color 0.12s;
+  transition:
+    background 0.12s,
+    border-color 0.12s;
 }
 
 .model-card:hover {
@@ -240,11 +242,21 @@ body {
   border: 1px solid var(--border);
 }
 
-.model-card__provider[data-provider="Anthropic"] { color: #d4a574; }
-.model-card__provider[data-provider="Amazon"] { color: #ff9900; }
-.model-card__provider[data-provider="Meta"] { color: #6b9fff; }
-.model-card__provider[data-provider="Mistral"] { color: #f97316; }
-.model-card__provider[data-provider="Cohere"] { color: #a78bfa; }
+.model-card__provider[data-provider="Anthropic"] {
+  color: #d4a574;
+}
+.model-card__provider[data-provider="Amazon"] {
+  color: #ff9900;
+}
+.model-card__provider[data-provider="Meta"] {
+  color: #6b9fff;
+}
+.model-card__provider[data-provider="Mistral"] {
+  color: #f97316;
+}
+.model-card__provider[data-provider="Cohere"] {
+  color: #a78bfa;
+}
 
 .model-card__meta {
   margin-top: 0.25rem;

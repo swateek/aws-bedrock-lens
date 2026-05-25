@@ -23,9 +23,7 @@ from catalog_io import (
 )
 from parser import extract_rows
 
-USER_AGENT = (
-    "aws-bedrock-lens-scraper/2.0 (+https://github.com/swateek/aws-bedrock-lens)"
-)
+USER_AGENT = "aws-bedrock-lens-scraper/2.0 (+https://github.com/swateek/aws-bedrock-lens)"
 
 
 def merge_scraped_prices(catalog: dict, scraped_rows: list[dict]) -> tuple[int, int, list[str]]:

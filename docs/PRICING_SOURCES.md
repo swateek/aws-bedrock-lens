@@ -36,7 +36,7 @@ Public endpoint: `https://api.pricing.us-east-1.amazonaws.com` (also `eu-central
 | Mapping | **Hard** — SKUs/descriptions must map to `model_id` (fuzzy string match + `NAME_TO_ID` extension). |
 | Verdict | **Best next automation step.** Prototype in `scraper/aws_pricing_probe.py`. |
 
-**Pros:** Batch-friendly, region-aware, no headless browser.  
+**Pros:** Batch-friendly, region-aware, no headless browser.
 **Cons:** Complex product JSON, not identical to Bedrock console labels, embedding/image units differ.
 
 ## Option C: Bedrock `ListFoundationModelAgreementOffers`

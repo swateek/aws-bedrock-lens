@@ -27,14 +27,16 @@
       meta: {
         schema_version: String(raw.meta?.schema_version || "2"),
         source: raw.meta?.source || "",
-        last_scraped_at: raw.meta?.last_scraped_at ?? raw.meta?.last_updated ?? null,
+        last_scraped_at:
+          raw.meta?.last_scraped_at ?? raw.meta?.last_updated ?? null,
         pricing_updated_at:
           raw.meta?.pricing_updated_at ?? raw.meta?.last_updated ?? null,
         parser_version: raw.meta?.parser_version || "—",
       },
       scrape: {
         models_matched: raw.scrape?.models_matched ?? 0,
-        models_in_catalog: raw.scrape?.models_in_catalog ?? (raw.models?.length || 0),
+        models_in_catalog:
+          raw.scrape?.models_in_catalog ?? (raw.models?.length || 0),
         coverage_pct: raw.scrape?.coverage_pct ?? 0,
         warnings: raw.scrape?.warnings || [],
       },
@@ -57,7 +59,8 @@
       const script = document.createElement("script");
       script.src = global.BedrockLens.CONSTANTS.pricingEmbedUrl();
       script.onload = () => resolve();
-      script.onerror = () => reject(new Error("Failed to load pricing.embed.js"));
+      script.onerror = () =>
+        reject(new Error("Failed to load pricing.embed.js"));
       document.head.appendChild(script);
     });
   }

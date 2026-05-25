@@ -44,7 +44,9 @@
   }
 
   function populateProviderFilter(catalog, select) {
-    const providers = [...new Set(catalog.models.map((m) => m.provider))].sort();
+    const providers = [
+      ...new Set(catalog.models.map((m) => m.provider)),
+    ].sort();
     while (select.options.length > 1) select.remove(1);
     for (const p of providers) {
       const opt = document.createElement("option");
@@ -62,7 +64,8 @@
       if (provider && m.provider !== provider) return false;
       if (type && m.pricing_type !== type) return false;
       if (q) {
-        const hay = `${m.display_name} ${m.provider} ${m.model_id}`.toLowerCase();
+        const hay =
+          `${m.display_name} ${m.provider} ${m.model_id}`.toLowerCase();
         if (!hay.includes(q)) return false;
       }
       return true;

@@ -16,7 +16,7 @@ A static tool for comparing AWS Bedrock foundation models by pricing, capabiliti
 ```
 aws-bedrock-lens/
 ├── .github/workflows/
-│   ├── ci.yml                 # schema + embed sync + tests
+│   ├── ci.yml                 # pre-commit + schema/embed + tests
 │   ├── deploy-pages.yml       # site root = app + data/
 │   └── update-pricing.yml     # weekly scrape → PR (meaningful changes only)
 ├── app/
@@ -34,7 +34,9 @@ aws-bedrock-lens/
 │   ├── validate.py
 │   ├── aws_pricing_probe.py
 │   └── tests/
-├── scripts/preview-site.sh    # local production-like preview
+├── scripts/
+│   ├── preview-site.sh        # local production-like preview
+│   └── pre-commit-validate.sh # pricing validation hook helper
 └── Makefile
 ```
 
@@ -84,6 +86,28 @@ Most AWS marketing-page prices are JS placeholders; HTML scrape covers a small f
 - **Now:** HTML scrape + manual curation
 - **Next:** AWS Price List API (`AmazonBedrock`) mapper
 - **Probe:** `make probe` or `python scraper/aws_pricing_probe.py`
+
+## Contributing
+
+Install runtime and dev dependencies, then enable git hooks:
+
+```bash
+pip install -r scraper/requirements.txt -r requirements-dev.txt
+pre-commit install
+pre-commit run --all-files   # optional before opening a PR
+```
+
+Run the same checks as CI locally with `make lint`.
+
+### Merge requirements
+
+Pull requests to `main` must pass both CI jobs: **`pre-commit`** (formatting, hygiene, pricing validation) and **`validate`** (schema/embed check and pytest).
+
+To block merges when checks fail, configure branch protection on `main`:
+
+1. **Settings → Branches → Branch protection rules** (or rulesets).
+2. Enable **Require status checks to pass before merging**.
+3. Select **`pre-commit`** and **`validate`**.
 
 ## License
 

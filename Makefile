@@ -1,4 +1,7 @@
-.PHONY: validate test scrape preview probe
+.PHONY: validate test scrape preview probe lint
+
+lint:
+	pre-commit run --all-files
 
 validate:
 	python scraper/validate.py --check-embed

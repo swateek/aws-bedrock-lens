@@ -35,8 +35,7 @@ def validate_catalog(data: dict) -> None:
 def pricing_fingerprint(models: list[dict]) -> str:
     """Stable hash of all on_demand pricing fields."""
     payload = {
-        m["model_id"]: m.get("on_demand", {})
-        for m in sorted(models, key=lambda x: x["model_id"])
+        m["model_id"]: m.get("on_demand", {}) for m in sorted(models, key=lambda x: x["model_id"])
     }
     raw = json.dumps(payload, sort_keys=True, separators=(",", ":"))
     return hashlib.sha256(raw.encode()).hexdigest()

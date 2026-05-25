@@ -56,13 +56,13 @@
       });
 
       const hasOutput = models.some(
-        (m) => m.pricing_type === "token" && m.on_demand?.output_per_1k != null
+        (m) => m.pricing_type === "token" && m.on_demand?.output_per_1k != null,
       );
       if (hasOutput) {
         const minOut = minFinite(
           models
             .filter((m) => m.pricing_type === "token")
-            .map((m) => m.on_demand?.output_per_1k)
+            .map((m) => m.on_demand?.output_per_1k),
         );
         rows.push({
           label: "Output / 1K",
@@ -76,7 +76,9 @@
         });
       }
     } else if (kind === "image") {
-      const minStd = minFinite(models.map((m) => m.on_demand?.standard_per_image));
+      const minStd = minFinite(
+        models.map((m) => m.on_demand?.standard_per_image),
+      );
       rows.push({
         label: "Standard / image",
         render: (m) => formatPrice(m.on_demand?.standard_per_image),
@@ -84,7 +86,7 @@
       });
       if (models.some((m) => m.on_demand?.premium_per_image != null)) {
         const minPrem = minFinite(
-          models.map((m) => m.on_demand?.premium_per_image)
+          models.map((m) => m.on_demand?.premium_per_image),
         );
         rows.push({
           label: "Premium / image",
@@ -116,7 +118,7 @@
           const n = (m.regions || []).length;
           return n === 1 ? "1 region" : `${n} regions`;
         },
-      }
+      },
     );
 
     if (models.length >= 2) {
@@ -125,8 +127,7 @@
         .reduce((acc, set) => new Set([...acc].filter((r) => set.has(r))));
       rows.push({
         label: "Shared regions",
-        render: () =>
-          escapeHtml([...shared].sort().join(", ") || "—"),
+        render: () => escapeHtml([...shared].sort().join(", ") || "—"),
         html: true,
         fullWidth: true,
       });
