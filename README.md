@@ -115,15 +115,14 @@ make price-list           # Price List public index only
 
 ## GitHub Pages
 
-1. Settings → Pages → **GitHub Actions** (not “deploy from branch”).
+1. On first deploy, `deploy-pages.yml` enables Pages with **GitHub Actions** as the build source (`configure-pages` `enablement: true`). If that step returns 403, open Settings → Pages → **GitHub Actions** once, then re-run the workflow.
 2. Pushes to `main` — `deploy-pages.yml` publishes `app/` + `data/` to the site root (other branches are not deployed).
 
-Live URL: `https://<user>.github.io/<repo>/` (no `/app/` path).
+Live URL: `https://swateek.github.io/aws-bedrock-lens/` (no `/app/` path).
 
 ## Model inventory and Codex
 
 - **Foundation models** come from `data/model-inventory.snapshot.json`, merged into the catalog with `make sync-models` (no AWS credentials).
-- **OpenAI on Bedrock** includes `openai.gpt-oss-*` foundation models in the catalog. **Codex** is a coding-agent product that uses Bedrock for inference; it does not appear as its own `model_id` (see `meta.products` in `pricing.json`).
 - **Coverage:** `scrape.price_coverage_pct` is the share of catalog models with any on-demand list price; inventory can be complete while many preview models lack public pricing.
 
 ## Pricing automation
