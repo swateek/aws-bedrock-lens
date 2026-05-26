@@ -73,29 +73,6 @@
     );
   }
 
-  /** Directory containing index.html (handles /app vs /app/ and GH Pages subpaths). */
-  function assetDirFromPath(pathname) {
-    if (pathname.endsWith("/")) return pathname;
-    if (/\.html$/i.test(pathname)) {
-      const slash = pathname.lastIndexOf("/");
-      return slash >= 0 ? pathname.slice(0, slash + 1) : "/";
-    }
-    return `${pathname}/`;
-  }
-
-  function resolveAssetUrl(filename) {
-    const dir = assetDirFromPath(global.location.pathname);
-    return new URL(filename, `${global.location.origin}${dir}`).href;
-  }
-
-  /** Keep favicon href absolute so Chrome does not 404 it after replaceState / view changes. */
-  function pinFavicon() {
-    const link = document.querySelector('link[rel="icon"]');
-    if (!link) return;
-    const url = resolveAssetUrl("favicon.ico");
-    if (link.href !== url) link.href = url;
-  }
-
   global.BedrockLens.util = {
     escapeHtml,
     escapeAttr,
@@ -107,7 +84,5 @@
     minFinite,
     isCheapest,
     modelHasPrice,
-    resolveAssetUrl,
-    pinFavicon,
   };
 })(window);

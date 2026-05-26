@@ -27,7 +27,6 @@
       ? `${global.location.pathname}?${qs}`
       : global.location.pathname;
     global.history.replaceState(null, "", url);
-    global.BedrockLens.util.pinFavicon();
   }
 
   global.BedrockLens.urlState = {

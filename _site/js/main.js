@@ -65,7 +65,6 @@
     els.compareView.hidden = true;
     els.compareView.classList.add("view--hidden");
     refreshList();
-    global.BedrockLens.util.pinFavicon();
     els.search.focus();
   }
 
@@ -80,7 +79,6 @@
       els.compareThead,
       els.compareTbody,
     );
-    global.BedrockLens.util.pinFavicon();
     els.backBtn.focus();
   }
 
@@ -96,8 +94,6 @@
   }
 
   async function init() {
-    global.BedrockLens.util.pinFavicon();
-
     try {
       catalog = await global.BedrockLens.catalog.loadCatalog();
     } catch (err) {
