@@ -21,7 +21,7 @@ aws-bedrock-lens/
 ├── .github/workflows/
 │   ├── ci.yml                 # pre-commit + schema/embed + tests
 │   ├── deploy-pages.yml       # site root = app + data/
-│   └── update-pricing.yml     # weekly scrape → PR (meaningful changes only)
+│   └── update-pricing.yml     # weekly scrape → commit to main (meaningful changes only)
 ├── app/
 │   ├── index.html
 │   ├── style.css
@@ -110,7 +110,7 @@ make price-list           # Price List public index only
 
 - `meta.last_scraped_at` — updated every successful scrape
 - `meta.pricing_updated_at` — only when `on_demand` prices change
-- PRs open only when prices, sources, or scrape manifest change (not scrape-only dates)
+- Automation commits to `main` only when prices, sources, or scrape manifest change (not scrape-only dates)
 - Weekly scraping (`update-pricing.yml`) runs only against `main` (scheduled + manual dispatch on `main`)
 
 ## GitHub Pages

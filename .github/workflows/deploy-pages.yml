@@ -35,11 +35,6 @@ jobs:
           # Production paths: data/ at repo root (not ../data/)
           sed -i 's|name="data-base" content="../data/"|name="data-base" content="data/"|g' _site/index.html
 
-      - uses: actions/configure-pages@v6
-        with:
-          # Auto-create Pages site (workflow build) on first deploy when not yet enabled in Settings.
-          enablement: true
-
       - uses: actions/upload-pages-artifact@v5
         with:
           path: _site
