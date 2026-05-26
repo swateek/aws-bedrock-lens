@@ -113,14 +113,7 @@ make price-list           # Price List public index only
 - Automation commits to `main` only when prices, sources, or scrape manifest change (not scrape-only dates)
 - Weekly scraping (`update-pricing.yml`) runs only against `main` (scheduled + manual dispatch on `main`)
 
-## GitHub Pages
-
-1. On first deploy, `deploy-pages.yml` enables Pages with **GitHub Actions** as the build source (`configure-pages` `enablement: true`). If that step returns 403, open Settings → Pages → **GitHub Actions** once, then re-run the workflow.
-2. Pushes to `main` — `deploy-pages.yml` publishes `app/` + `data/` to the site root (other branches are not deployed).
-
-Live URL: `https://swateek.github.io/aws-bedrock-lens/` (no `/app/` path).
-
-## Model inventory and Codex
+## Model Inventory
 
 - **Foundation models** come from `data/model-inventory.snapshot.json`, merged into the catalog with `make sync-models` (no AWS credentials).
 - **Coverage:** `scrape.price_coverage_pct` is the share of catalog models with any on-demand list price; inventory can be complete while many preview models lack public pricing.
@@ -160,3 +153,7 @@ flowchart LR
 ## License
 
 See [LICENSE](LICENSE).
+
+## Live URL
+
+[https://swateek.github.io/aws-bedrock-lens/](https://swateek.github.io/aws-bedrock-lens/)
