@@ -95,8 +95,8 @@ flowchart LR
   PL[Price List public index] --> Catalog
 ```
 
-1. **Now:** Snapshot merge (`sync_models.py`) + Price List public index + HTML scrape + coverage UI (`price_coverage_pct`, `inventory_coverage_pct`). Entire pipeline is credential-free.
-2. **Next:** Expand SKU mapping (embeddings, images, query-priced rerank); regional price dimensions beyond us-east-1.
+1. **Now:** Snapshot merge (`sync_models.py`) + **two** public Price List offers (`AmazonBedrockFoundationModels` + `AmazonBedrock` in `bedrock_offer.py`) + HTML scrape + variant propagation + small `price_seeds.py` for batch-only / video SKUs + coverage UI (`price_coverage_pct`, `inventory_coverage_pct`). Entire pipeline is credential-free.
+2. **Next:** Regional price dimensions beyond us-east-1; optional headless browser for `{priceOf}` placeholders if AWS stops publishing SKUs.
 3. **Later:** Optional agreement-offer spot-checks if you have account access (not in CI).
 4. **Never:** Imply 100% priced catalog without reporting `scrape.price_coverage_pct`.
 

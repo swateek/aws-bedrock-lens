@@ -10,6 +10,23 @@ from bs4 import BeautifulSoup
 _NAME_ALIASES: dict[str, str] = {
     "Llama 3.1 70B": "meta.llama3-1-70b-instruct-v1:0",
     "Llama 3.1 8B": "meta.llama3-1-8b-instruct-v1:0",
+    "Embed 3 English": "cohere.embed-english-v3",
+    "Embed 3 Multilingual": "cohere.embed-multilingual-v3",
+    "Cohere Command": "cohere.command-text-v14",
+    "Cohere Command - Light": "cohere.command-light-text-v14",
+    "Llama 2 Chat (13B)": "meta.llama2-13b-chat-v1",
+    "Llama 2 Chat (70B)": "meta.llama2-70b-chat-v1",
+    "Gemma 3 12B": "google.gemma-3-12b-it",
+    "Gemma 3 27B": "google.gemma-3-27b-it",
+    "Gemma 3 4B": "google.gemma-3-4b-it",
+    "Qwen3 32B": "qwen.qwen3-32b-v1:0",
+    "Qwen3 Coder 30B A3B": "qwen.qwen3-coder-30b-a3b-v1:0",
+    "Ministral 3B 3.0": "mistral.ministral-3-3b-instruct",
+    "Ministral 8B 3.0": "mistral.ministral-3-8b-instruct",
+    "Magistral Small 1.2": "mistral.magistral-small-2509",
+    "NVIDIA Nemotron Nano 2": "nvidia.nemotron-nano-9b-v2",
+    "NVIDIA Nemotron Nano 2 VL": "nvidia.nemotron-nano-12b-v2",
+    "NVIDIA Nemotron 3 Nano 30B A3B": "nvidia.nemotron-nano-3-30b",
 }
 
 _SUFFIX_RE = re.compile(

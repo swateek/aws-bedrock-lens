@@ -17,7 +17,9 @@
         "notes": "Codex is a coding agent product that routes inference through Bedrock; it is not a separate foundation model_id. Bill via underlying OpenAI models or your AWS agreement.",
         "url": "https://aws.amazon.com/about-aws/whats-new/2026/04/bedrock-openai-models-codex-managed-agents/"
       }
-    ]
+    ],
+    "bedrock_offer_region": "us-east-1",
+    "last_bedrock_offer_at": "2026-05-26"
   },
   "models": [
     {
@@ -71,15 +73,15 @@
       "display_name": "Nova 2 Lite",
       "provider": "Amazon",
       "pricing_type": "token",
-      "pricing_source": "manual",
+      "pricing_source": "auto",
       "regions": [
         "eu-west-1",
         "us-east-1",
         "us-west-2"
       ],
       "on_demand": {
-        "input_per_1k": null,
-        "output_per_1k": null,
+        "input_per_1k": 0.00033,
+        "output_per_1k": 0.00275,
         "standard_per_image": null,
         "premium_per_image": null
       },
@@ -97,13 +99,13 @@
       "display_name": "Nova 2 Lite",
       "provider": "Amazon",
       "pricing_type": "token",
-      "pricing_source": "manual",
+      "pricing_source": "auto",
       "regions": [
         "us-east-1"
       ],
       "on_demand": {
-        "input_per_1k": null,
-        "output_per_1k": null,
+        "input_per_1k": 0.00033,
+        "output_per_1k": 0.00275,
         "standard_per_image": null,
         "premium_per_image": null
       },
@@ -121,12 +123,12 @@
       "display_name": "Amazon Nova Multimodal Embeddings",
       "provider": "Amazon",
       "pricing_type": "embedding",
-      "pricing_source": "manual",
+      "pricing_source": "auto",
       "regions": [
         "us-east-1"
       ],
       "on_demand": {
-        "input_per_1k": null,
+        "input_per_1k": 0.000135,
         "output_per_1k": null,
         "standard_per_image": null,
         "premium_per_image": null
@@ -146,14 +148,14 @@
       "display_name": "Nova 2 Sonic",
       "provider": "Amazon",
       "pricing_type": "token",
-      "pricing_source": "manual",
+      "pricing_source": "auto",
       "regions": [
         "us-east-1",
         "us-west-2"
       ],
       "on_demand": {
-        "input_per_1k": null,
-        "output_per_1k": null,
+        "input_per_1k": 0.00033,
+        "output_per_1k": 0.012,
         "standard_per_image": null,
         "premium_per_image": null
       },
@@ -170,7 +172,7 @@
       "display_name": "Nova Canvas",
       "provider": "Amazon",
       "pricing_type": "image",
-      "pricing_source": "manual",
+      "pricing_source": "auto",
       "regions": [
         "eu-west-1",
         "us-east-1"
@@ -178,8 +180,8 @@
       "on_demand": {
         "input_per_1k": null,
         "output_per_1k": null,
-        "standard_per_image": null,
-        "premium_per_image": null
+        "standard_per_image": 0.04,
+        "premium_per_image": 0.06
       },
       "context_window": null,
       "modalities": [
@@ -195,15 +197,15 @@
       "display_name": "Nova Lite",
       "provider": "Amazon",
       "pricing_type": "token",
-      "pricing_source": "manual",
+      "pricing_source": "auto",
       "regions": [
         "eu-west-1",
         "us-east-1",
         "us-west-2"
       ],
       "on_demand": {
-        "input_per_1k": null,
-        "output_per_1k": null,
+        "input_per_1k": 6e-05,
+        "output_per_1k": 0.00024,
         "standard_per_image": null,
         "premium_per_image": null
       },
@@ -221,13 +223,13 @@
       "display_name": "Nova Lite",
       "provider": "Amazon",
       "pricing_type": "token",
-      "pricing_source": "manual",
+      "pricing_source": "auto",
       "regions": [
         "us-east-1"
       ],
       "on_demand": {
-        "input_per_1k": null,
-        "output_per_1k": null,
+        "input_per_1k": 6e-05,
+        "output_per_1k": 0.00024,
         "standard_per_image": null,
         "premium_per_image": null
       },
@@ -245,13 +247,13 @@
       "display_name": "Nova Lite",
       "provider": "Amazon",
       "pricing_type": "token",
-      "pricing_source": "manual",
+      "pricing_source": "auto",
       "regions": [
         "us-east-1"
       ],
       "on_demand": {
-        "input_per_1k": null,
-        "output_per_1k": null,
+        "input_per_1k": 6e-05,
+        "output_per_1k": 0.00024,
         "standard_per_image": null,
         "premium_per_image": null
       },
@@ -269,15 +271,15 @@
       "display_name": "Nova Micro",
       "provider": "Amazon",
       "pricing_type": "token",
-      "pricing_source": "manual",
+      "pricing_source": "auto",
       "regions": [
         "eu-west-1",
         "us-east-1",
         "us-west-2"
       ],
       "on_demand": {
-        "input_per_1k": null,
-        "output_per_1k": null,
+        "input_per_1k": 3.5e-05,
+        "output_per_1k": 0.00014,
         "standard_per_image": null,
         "premium_per_image": null
       },
@@ -294,13 +296,13 @@
       "display_name": "Nova Micro",
       "provider": "Amazon",
       "pricing_type": "token",
-      "pricing_source": "manual",
+      "pricing_source": "auto",
       "regions": [
         "us-east-1"
       ],
       "on_demand": {
-        "input_per_1k": null,
-        "output_per_1k": null,
+        "input_per_1k": 3.5e-05,
+        "output_per_1k": 0.00014,
         "standard_per_image": null,
         "premium_per_image": null
       },
@@ -317,13 +319,13 @@
       "display_name": "Nova Micro",
       "provider": "Amazon",
       "pricing_type": "token",
-      "pricing_source": "manual",
+      "pricing_source": "auto",
       "regions": [
         "us-east-1"
       ],
       "on_demand": {
-        "input_per_1k": null,
-        "output_per_1k": null,
+        "input_per_1k": 3.5e-05,
+        "output_per_1k": 0.00014,
         "standard_per_image": null,
         "premium_per_image": null
       },
@@ -340,14 +342,14 @@
       "display_name": "Nova Premier",
       "provider": "Amazon",
       "pricing_type": "token",
-      "pricing_source": "manual",
+      "pricing_source": "auto",
       "regions": [
         "us-east-1",
         "us-west-2"
       ],
       "on_demand": {
-        "input_per_1k": null,
-        "output_per_1k": null,
+        "input_per_1k": 0.0025,
+        "output_per_1k": 0.0125,
         "standard_per_image": null,
         "premium_per_image": null
       },
@@ -365,14 +367,14 @@
       "display_name": "Nova Premier",
       "provider": "Amazon",
       "pricing_type": "token",
-      "pricing_source": "manual",
+      "pricing_source": "auto",
       "regions": [
         "us-east-1",
         "us-west-2"
       ],
       "on_demand": {
-        "input_per_1k": null,
-        "output_per_1k": null,
+        "input_per_1k": 0.0025,
+        "output_per_1k": 0.0125,
         "standard_per_image": null,
         "premium_per_image": null
       },
@@ -390,14 +392,14 @@
       "display_name": "Nova Premier",
       "provider": "Amazon",
       "pricing_type": "token",
-      "pricing_source": "manual",
+      "pricing_source": "auto",
       "regions": [
         "us-east-1",
         "us-west-2"
       ],
       "on_demand": {
-        "input_per_1k": null,
-        "output_per_1k": null,
+        "input_per_1k": 0.0025,
+        "output_per_1k": 0.0125,
         "standard_per_image": null,
         "premium_per_image": null
       },
@@ -415,14 +417,14 @@
       "display_name": "Nova Premier",
       "provider": "Amazon",
       "pricing_type": "token",
-      "pricing_source": "manual",
+      "pricing_source": "auto",
       "regions": [
         "us-east-1",
         "us-west-2"
       ],
       "on_demand": {
-        "input_per_1k": null,
-        "output_per_1k": null,
+        "input_per_1k": 0.0025,
+        "output_per_1k": 0.0125,
         "standard_per_image": null,
         "premium_per_image": null
       },
@@ -440,14 +442,14 @@
       "display_name": "Nova Premier",
       "provider": "Amazon",
       "pricing_type": "token",
-      "pricing_source": "manual",
+      "pricing_source": "auto",
       "regions": [
         "us-east-1",
         "us-west-2"
       ],
       "on_demand": {
-        "input_per_1k": null,
-        "output_per_1k": null,
+        "input_per_1k": 0.0025,
+        "output_per_1k": 0.0125,
         "standard_per_image": null,
         "premium_per_image": null
       },
@@ -465,15 +467,15 @@
       "display_name": "Nova Pro",
       "provider": "Amazon",
       "pricing_type": "token",
-      "pricing_source": "manual",
+      "pricing_source": "auto",
       "regions": [
         "eu-west-1",
         "us-east-1",
         "us-west-2"
       ],
       "on_demand": {
-        "input_per_1k": null,
-        "output_per_1k": null,
+        "input_per_1k": 0.0008,
+        "output_per_1k": 0.0032,
         "standard_per_image": null,
         "premium_per_image": null
       },
@@ -491,13 +493,13 @@
       "display_name": "Nova Pro",
       "provider": "Amazon",
       "pricing_type": "token",
-      "pricing_source": "manual",
+      "pricing_source": "auto",
       "regions": [
         "us-east-1"
       ],
       "on_demand": {
-        "input_per_1k": null,
-        "output_per_1k": null,
+        "input_per_1k": 0.0008,
+        "output_per_1k": 0.0032,
         "standard_per_image": null,
         "premium_per_image": null
       },
@@ -515,13 +517,13 @@
       "display_name": "Nova Pro",
       "provider": "Amazon",
       "pricing_type": "token",
-      "pricing_source": "manual",
+      "pricing_source": "auto",
       "regions": [
         "us-east-1"
       ],
       "on_demand": {
-        "input_per_1k": null,
-        "output_per_1k": null,
+        "input_per_1k": 0.0008,
+        "output_per_1k": 0.0032,
         "standard_per_image": null,
         "premium_per_image": null
       },
@@ -539,7 +541,7 @@
       "display_name": "Nova Reel",
       "provider": "Amazon",
       "pricing_type": "image",
-      "pricing_source": "manual",
+      "pricing_source": "auto",
       "regions": [
         "eu-west-1",
         "us-east-1"
@@ -547,7 +549,7 @@
       "on_demand": {
         "input_per_1k": null,
         "output_per_1k": null,
-        "standard_per_image": null,
+        "standard_per_image": 0.08,
         "premium_per_image": null
       },
       "context_window": null,
@@ -564,14 +566,14 @@
       "display_name": "Nova Reel",
       "provider": "Amazon",
       "pricing_type": "image",
-      "pricing_source": "manual",
+      "pricing_source": "auto",
       "regions": [
         "us-east-1"
       ],
       "on_demand": {
         "input_per_1k": null,
         "output_per_1k": null,
-        "standard_per_image": null,
+        "standard_per_image": 0.08,
         "premium_per_image": null
       },
       "context_window": null,
@@ -588,13 +590,13 @@
       "display_name": "Nova Sonic",
       "provider": "Amazon",
       "pricing_type": "token",
-      "pricing_source": "manual",
+      "pricing_source": "auto",
       "regions": [
         "us-east-1"
       ],
       "on_demand": {
-        "input_per_1k": null,
-        "output_per_1k": null,
+        "input_per_1k": 6e-05,
+        "output_per_1k": 0.0136,
         "standard_per_image": null,
         "premium_per_image": null
       },
@@ -616,7 +618,7 @@
         "us-west-2"
       ],
       "on_demand": {
-        "input_per_1k": null,
+        "input_per_1k": 0.002,
         "output_per_1k": null,
         "standard_per_image": null,
         "premium_per_image": null
@@ -625,7 +627,7 @@
       "modalities": [
         "text"
       ],
-      "notes": null,
+      "notes": "Per search unit (Rerank API); aligned with Amazon Rerank 1.0 pricing examples on AWS site.",
       "availability": "ga",
       "alternate_ids": []
     },
@@ -634,13 +636,13 @@
       "display_name": "Titan Text Embeddings v2",
       "provider": "Amazon",
       "pricing_type": "embedding",
-      "pricing_source": "manual",
+      "pricing_source": "auto",
       "regions": [
         "us-east-1",
         "us-west-2"
       ],
       "on_demand": {
-        "input_per_1k": null,
+        "input_per_1k": 0.0001,
         "output_per_1k": null,
         "standard_per_image": null,
         "premium_per_image": null
@@ -659,14 +661,14 @@
       "display_name": "Titan Multimodal Embeddings G1",
       "provider": "Amazon",
       "pricing_type": "embedding",
-      "pricing_source": "manual",
+      "pricing_source": "auto",
       "regions": [
         "eu-west-1",
         "us-east-1",
         "us-west-2"
       ],
       "on_demand": {
-        "input_per_1k": null,
+        "input_per_1k": 0.0008,
         "output_per_1k": null,
         "standard_per_image": null,
         "premium_per_image": null
@@ -686,14 +688,14 @@
       "display_name": "Titan Multimodal Embeddings G1",
       "provider": "Amazon",
       "pricing_type": "embedding",
-      "pricing_source": "manual",
+      "pricing_source": "auto",
       "regions": [
         "eu-west-1",
         "us-east-1",
         "us-west-2"
       ],
       "on_demand": {
-        "input_per_1k": null,
+        "input_per_1k": 0.0008,
         "output_per_1k": null,
         "standard_per_image": null,
         "premium_per_image": null
@@ -713,13 +715,13 @@
       "display_name": "Titan Embeddings G1 - Text",
       "provider": "Amazon",
       "pricing_type": "embedding",
-      "pricing_source": "manual",
+      "pricing_source": "auto",
       "regions": [
         "us-east-1",
         "us-west-2"
       ],
       "on_demand": {
-        "input_per_1k": null,
+        "input_per_1k": 0.0001,
         "output_per_1k": null,
         "standard_per_image": null,
         "premium_per_image": null
@@ -738,13 +740,13 @@
       "display_name": "Titan Embeddings G1 - Text",
       "provider": "Amazon",
       "pricing_type": "embedding",
-      "pricing_source": "manual",
+      "pricing_source": "auto",
       "regions": [
         "us-east-1",
         "us-west-2"
       ],
       "on_demand": {
-        "input_per_1k": null,
+        "input_per_1k": 0.0001,
         "output_per_1k": null,
         "standard_per_image": null,
         "premium_per_image": null
@@ -780,7 +782,7 @@
         "text"
       ],
       "notes": null,
-      "pricing_source": "manual",
+      "pricing_source": "auto",
       "availability": "ga",
       "alternate_ids": []
     },
@@ -789,12 +791,12 @@
       "display_name": "Titan Text Embeddings V2",
       "provider": "Amazon",
       "pricing_type": "embedding",
-      "pricing_source": "manual",
+      "pricing_source": "auto",
       "regions": [
         "us-east-1"
       ],
       "on_demand": {
-        "input_per_1k": null,
+        "input_per_1k": 2e-05,
         "output_per_1k": null,
         "standard_per_image": null,
         "premium_per_image": null
@@ -821,14 +823,14 @@
         "input_per_1k": null,
         "output_per_1k": null,
         "standard_per_image": 0.01,
-        "premium_per_image": null
+        "premium_per_image": 0.022
       },
       "context_window": null,
       "modalities": [
         "image"
       ],
       "notes": "Standard quality 1024x1024 per AWS pricing examples",
-      "pricing_source": "manual",
+      "pricing_source": "auto",
       "availability": "ga",
       "alternate_ids": []
     },
@@ -844,7 +846,7 @@
       "on_demand": {
         "input_per_1k": null,
         "output_per_1k": null,
-        "standard_per_image": 0.008,
+        "standard_per_image": 0.01,
         "premium_per_image": 0.012
       },
       "context_window": null,
@@ -853,7 +855,7 @@
         "text"
       ],
       "notes": "Price varies by resolution and quality tier",
-      "pricing_source": "manual",
+      "pricing_source": "auto",
       "availability": "legacy",
       "alternate_ids": []
     },
@@ -869,7 +871,7 @@
       ],
       "on_demand": {
         "input_per_1k": 0.0008,
-        "output_per_1k": 0.005,
+        "output_per_1k": 0.004,
         "standard_per_image": null,
         "premium_per_image": null
       },
@@ -943,7 +945,7 @@
         "us-west-2"
       ],
       "on_demand": {
-        "input_per_1k": 0.0008,
+        "input_per_1k": 0.00025,
         "output_per_1k": 0.004,
         "standard_per_image": null,
         "premium_per_image": null
@@ -954,7 +956,7 @@
         "text"
       ],
       "notes": null,
-      "pricing_source": "manual",
+      "pricing_source": "auto",
       "availability": "legacy",
       "alternate_ids": []
     },
@@ -963,14 +965,14 @@
       "display_name": "Claude 3 Haiku",
       "provider": "Anthropic",
       "pricing_type": "token",
-      "pricing_source": "manual",
+      "pricing_source": "auto",
       "regions": [
         "us-east-1",
         "us-west-2"
       ],
       "on_demand": {
-        "input_per_1k": null,
-        "output_per_1k": null,
+        "input_per_1k": 0.00025,
+        "output_per_1k": 0.004,
         "standard_per_image": null,
         "premium_per_image": null
       },
@@ -1038,14 +1040,14 @@
       "display_name": "Claude 3 Sonnet",
       "provider": "Anthropic",
       "pricing_type": "token",
-      "pricing_source": "manual",
+      "pricing_source": "auto",
       "regions": [
         "eu-west-1",
         "us-east-1",
         "us-west-2"
       ],
       "on_demand": {
-        "input_per_1k": null,
+        "input_per_1k": 0.003,
         "output_per_1k": null,
         "standard_per_image": null,
         "premium_per_image": null
@@ -1064,14 +1066,14 @@
       "display_name": "Claude 3 Sonnet",
       "provider": "Anthropic",
       "pricing_type": "token",
-      "pricing_source": "manual",
+      "pricing_source": "auto",
       "regions": [
         "eu-west-1",
         "us-east-1",
         "us-west-2"
       ],
       "on_demand": {
-        "input_per_1k": null,
+        "input_per_1k": 0.003,
         "output_per_1k": null,
         "standard_per_image": null,
         "premium_per_image": null
@@ -1123,7 +1125,7 @@
         "us-west-2"
       ],
       "on_demand": {
-        "input_per_1k": 0.001,
+        "input_per_1k": 0.0011,
         "output_per_1k": 0.0055,
         "standard_per_image": null,
         "premium_per_image": null
@@ -1200,7 +1202,7 @@
       ],
       "on_demand": {
         "input_per_1k": 0.0055,
-        "output_per_1k": 0.025,
+        "output_per_1k": 0.0275,
         "standard_per_image": null,
         "premium_per_image": null
       },
@@ -1225,8 +1227,8 @@
         "us-west-2"
       ],
       "on_demand": {
-        "input_per_1k": 0.005,
-        "output_per_1k": 0.025,
+        "input_per_1k": 0.0055,
+        "output_per_1k": 0.0275,
         "standard_per_image": null,
         "premium_per_image": null
       },
@@ -1244,15 +1246,15 @@
       "display_name": "Claude Opus 4.7",
       "provider": "Anthropic",
       "pricing_type": "token",
-      "pricing_source": "manual",
+      "pricing_source": "auto",
       "regions": [
         "eu-west-1",
         "us-east-1",
         "us-west-2"
       ],
       "on_demand": {
-        "input_per_1k": null,
-        "output_per_1k": null,
+        "input_per_1k": 0.0055,
+        "output_per_1k": 0.0275,
         "standard_per_image": null,
         "premium_per_image": null
       },
@@ -1348,14 +1350,14 @@
       "display_name": "Command R+",
       "provider": "Cohere",
       "pricing_type": "token",
-      "pricing_source": "manual",
+      "pricing_source": "auto",
       "regions": [
         "us-east-1",
         "us-west-2"
       ],
       "on_demand": {
-        "input_per_1k": null,
-        "output_per_1k": null,
+        "input_per_1k": 0.003,
+        "output_per_1k": 0.0015,
         "standard_per_image": null,
         "premium_per_image": null
       },
@@ -1402,7 +1404,7 @@
         "us-west-2"
       ],
       "on_demand": {
-        "input_per_1k": 0.0001,
+        "input_per_1k": 0.00712,
         "output_per_1k": null,
         "standard_per_image": null,
         "premium_per_image": null
@@ -1413,7 +1415,7 @@
         "text"
       ],
       "notes": null,
-      "pricing_source": "manual",
+      "pricing_source": "auto",
       "availability": "ga",
       "alternate_ids": []
     },
@@ -1422,13 +1424,13 @@
       "display_name": "Embed English",
       "provider": "Cohere",
       "pricing_type": "embedding",
-      "pricing_source": "manual",
+      "pricing_source": "auto",
       "regions": [
         "us-east-1",
         "us-west-2"
       ],
       "on_demand": {
-        "input_per_1k": null,
+        "input_per_1k": 0.0001,
         "output_per_1k": null,
         "standard_per_image": null,
         "premium_per_image": null
@@ -1447,14 +1449,14 @@
       "display_name": "Embed Multilingual",
       "provider": "Cohere",
       "pricing_type": "embedding",
-      "pricing_source": "manual",
+      "pricing_source": "auto",
       "regions": [
         "eu-west-1",
         "us-east-1",
         "us-west-2"
       ],
       "on_demand": {
-        "input_per_1k": null,
+        "input_per_1k": 0.00712,
         "output_per_1k": null,
         "standard_per_image": null,
         "premium_per_image": null
@@ -1473,13 +1475,13 @@
       "display_name": "Embed Multilingual",
       "provider": "Cohere",
       "pricing_type": "embedding",
-      "pricing_source": "manual",
+      "pricing_source": "auto",
       "regions": [
         "us-east-1",
         "us-west-2"
       ],
       "on_demand": {
-        "input_per_1k": null,
+        "input_per_1k": 0.0001,
         "output_per_1k": null,
         "standard_per_image": null,
         "premium_per_image": null
@@ -1498,14 +1500,14 @@
       "display_name": "Embed v4",
       "provider": "Cohere",
       "pricing_type": "embedding",
-      "pricing_source": "manual",
+      "pricing_source": "auto",
       "regions": [
         "eu-west-1",
         "us-east-1",
         "us-west-2"
       ],
       "on_demand": {
-        "input_per_1k": null,
+        "input_per_1k": 2e-08,
         "output_per_1k": null,
         "standard_per_image": null,
         "premium_per_image": null
@@ -1525,13 +1527,13 @@
       "display_name": "Rerank 3.5",
       "provider": "Cohere",
       "pricing_type": "embedding",
-      "pricing_source": "manual",
+      "pricing_source": "auto",
       "regions": [
         "us-east-1",
         "us-west-2"
       ],
       "on_demand": {
-        "input_per_1k": null,
+        "input_per_1k": 0.002,
         "output_per_1k": null,
         "standard_per_image": null,
         "premium_per_image": null
@@ -1549,14 +1551,14 @@
       "display_name": "DeepSeek-R1",
       "provider": "DeepSeek",
       "pricing_type": "token",
-      "pricing_source": "manual",
+      "pricing_source": "auto",
       "regions": [
         "us-east-1",
         "us-west-2"
       ],
       "on_demand": {
-        "input_per_1k": null,
-        "output_per_1k": null,
+        "input_per_1k": 0.00135,
+        "output_per_1k": 0.0054,
         "standard_per_image": null,
         "premium_per_image": null
       },
@@ -1620,15 +1622,15 @@
       "display_name": "Gemma 3 12B IT",
       "provider": "Google",
       "pricing_type": "token",
-      "pricing_source": "manual",
+      "pricing_source": "auto",
       "regions": [
         "eu-west-1",
         "us-east-1",
         "us-west-2"
       ],
       "on_demand": {
-        "input_per_1k": null,
-        "output_per_1k": null,
+        "input_per_1k": 9e-05,
+        "output_per_1k": 0.00029,
         "standard_per_image": null,
         "premium_per_image": null
       },
@@ -1646,15 +1648,15 @@
       "display_name": "Gemma 3 27B PT",
       "provider": "Google",
       "pricing_type": "token",
-      "pricing_source": "manual",
+      "pricing_source": "auto",
       "regions": [
         "eu-west-1",
         "us-east-1",
         "us-west-2"
       ],
       "on_demand": {
-        "input_per_1k": null,
-        "output_per_1k": null,
+        "input_per_1k": 0.00023,
+        "output_per_1k": 0.00038,
         "standard_per_image": null,
         "premium_per_image": null
       },
@@ -1672,15 +1674,15 @@
       "display_name": "Gemma 3 4B IT",
       "provider": "Google",
       "pricing_type": "token",
-      "pricing_source": "manual",
+      "pricing_source": "auto",
       "regions": [
         "eu-west-1",
         "us-east-1",
         "us-west-2"
       ],
       "on_demand": {
-        "input_per_1k": null,
-        "output_per_1k": null,
+        "input_per_1k": 4e-05,
+        "output_per_1k": 8e-05,
         "standard_per_image": null,
         "premium_per_image": null
       },
@@ -1703,7 +1705,7 @@
         "us-west-2"
       ],
       "on_demand": {
-        "input_per_1k": null,
+        "input_per_1k": 0.08,
         "output_per_1k": null,
         "standard_per_image": null,
         "premium_per_image": null
@@ -1712,7 +1714,7 @@
       "modalities": [
         "text"
       ],
-      "notes": null,
+      "notes": "Video generation billed per second of output; value shown is USD per second (not per 1K tokens).",
       "availability": "ga",
       "alternate_ids": []
     },
@@ -1726,8 +1728,8 @@
         "us-west-2"
       ],
       "on_demand": {
-        "input_per_1k": null,
-        "output_per_1k": null,
+        "input_per_1k": 0.00532,
+        "output_per_1k": 0.016,
         "standard_per_image": null,
         "premium_per_image": null
       },
@@ -1735,7 +1737,7 @@
       "modalities": [
         "text"
       ],
-      "notes": null,
+      "notes": "On-demand list price per AWS Bedrock pricing page (batch tiers may differ).",
       "availability": "legacy",
       "alternate_ids": []
     },
@@ -1749,8 +1751,8 @@
         "us-west-2"
       ],
       "on_demand": {
-        "input_per_1k": 0.00099,
-        "output_per_1k": 0.00099,
+        "input_per_1k": 0.00072,
+        "output_per_1k": 0.00072,
         "standard_per_image": null,
         "premium_per_image": null
       },
@@ -1759,7 +1761,7 @@
         "text"
       ],
       "notes": null,
-      "pricing_source": "manual",
+      "pricing_source": "auto",
       "availability": "ga",
       "alternate_ids": []
     },
@@ -1768,13 +1770,13 @@
       "display_name": "Llama 3.1 70B Instruct",
       "provider": "Meta",
       "pricing_type": "token",
-      "pricing_source": "manual",
+      "pricing_source": "auto",
       "regions": [
         "us-west-2"
       ],
       "on_demand": {
-        "input_per_1k": null,
-        "output_per_1k": null,
+        "input_per_1k": 0.00072,
+        "output_per_1k": 0.00072,
         "standard_per_image": null,
         "premium_per_image": null
       },
@@ -1806,7 +1808,7 @@
         "text"
       ],
       "notes": null,
-      "pricing_source": "manual",
+      "pricing_source": "auto",
       "availability": "ga",
       "alternate_ids": []
     },
@@ -1815,13 +1817,13 @@
       "display_name": "Llama 3.1 8B Instruct",
       "provider": "Meta",
       "pricing_type": "token",
-      "pricing_source": "manual",
+      "pricing_source": "auto",
       "regions": [
         "us-west-2"
       ],
       "on_demand": {
-        "input_per_1k": null,
-        "output_per_1k": null,
+        "input_per_1k": 0.00022,
+        "output_per_1k": 0.00022,
         "standard_per_image": null,
         "premium_per_image": null
       },
@@ -1838,14 +1840,14 @@
       "display_name": "Llama 3.2 11B Instruct",
       "provider": "Meta",
       "pricing_type": "token",
-      "pricing_source": "manual",
+      "pricing_source": "auto",
       "regions": [
         "us-east-1",
         "us-west-2"
       ],
       "on_demand": {
-        "input_per_1k": null,
-        "output_per_1k": null,
+        "input_per_1k": 0.00016,
+        "output_per_1k": 0.00016,
         "standard_per_image": null,
         "premium_per_image": null
       },
@@ -1863,13 +1865,13 @@
       "display_name": "Llama 3.2 11B Instruct",
       "provider": "Meta",
       "pricing_type": "token",
-      "pricing_source": "manual",
+      "pricing_source": "auto",
       "regions": [
         "us-west-2"
       ],
       "on_demand": {
-        "input_per_1k": null,
-        "output_per_1k": null,
+        "input_per_1k": 0.00016,
+        "output_per_1k": 0.00016,
         "standard_per_image": null,
         "premium_per_image": null
       },
@@ -1887,15 +1889,15 @@
       "display_name": "Llama 3.2 1B Instruct",
       "provider": "Meta",
       "pricing_type": "token",
-      "pricing_source": "manual",
+      "pricing_source": "auto",
       "regions": [
         "eu-west-1",
         "us-east-1",
         "us-west-2"
       ],
       "on_demand": {
-        "input_per_1k": null,
-        "output_per_1k": null,
+        "input_per_1k": 0.0001,
+        "output_per_1k": 0.0001,
         "standard_per_image": null,
         "premium_per_image": null
       },
@@ -1912,13 +1914,13 @@
       "display_name": "Llama 3.2 1B Instruct",
       "provider": "Meta",
       "pricing_type": "token",
-      "pricing_source": "manual",
+      "pricing_source": "auto",
       "regions": [
         "us-west-2"
       ],
       "on_demand": {
-        "input_per_1k": null,
-        "output_per_1k": null,
+        "input_per_1k": 0.0001,
+        "output_per_1k": 0.0001,
         "standard_per_image": null,
         "premium_per_image": null
       },
@@ -1935,15 +1937,15 @@
       "display_name": "Llama 3.2 3B Instruct",
       "provider": "Meta",
       "pricing_type": "token",
-      "pricing_source": "manual",
+      "pricing_source": "auto",
       "regions": [
         "eu-west-1",
         "us-east-1",
         "us-west-2"
       ],
       "on_demand": {
-        "input_per_1k": null,
-        "output_per_1k": null,
+        "input_per_1k": 0.00015,
+        "output_per_1k": 0.00015,
         "standard_per_image": null,
         "premium_per_image": null
       },
@@ -1960,13 +1962,13 @@
       "display_name": "Llama 3.2 3B Instruct",
       "provider": "Meta",
       "pricing_type": "token",
-      "pricing_source": "manual",
+      "pricing_source": "auto",
       "regions": [
         "us-west-2"
       ],
       "on_demand": {
-        "input_per_1k": null,
-        "output_per_1k": null,
+        "input_per_1k": 0.00015,
+        "output_per_1k": 0.00015,
         "standard_per_image": null,
         "premium_per_image": null
       },
@@ -1983,14 +1985,14 @@
       "display_name": "Llama 3.2 90B Instruct",
       "provider": "Meta",
       "pricing_type": "token",
-      "pricing_source": "manual",
+      "pricing_source": "auto",
       "regions": [
         "us-east-1",
         "us-west-2"
       ],
       "on_demand": {
-        "input_per_1k": null,
-        "output_per_1k": null,
+        "input_per_1k": 0.00072,
+        "output_per_1k": 0.00072,
         "standard_per_image": null,
         "premium_per_image": null
       },
@@ -2008,13 +2010,13 @@
       "display_name": "Llama 3.2 90B Instruct",
       "provider": "Meta",
       "pricing_type": "token",
-      "pricing_source": "manual",
+      "pricing_source": "auto",
       "regions": [
         "us-west-2"
       ],
       "on_demand": {
-        "input_per_1k": null,
-        "output_per_1k": null,
+        "input_per_1k": 0.00072,
+        "output_per_1k": 0.00072,
         "standard_per_image": null,
         "premium_per_image": null
       },
@@ -2032,14 +2034,14 @@
       "display_name": "Llama 3.3 70B Instruct",
       "provider": "Meta",
       "pricing_type": "token",
-      "pricing_source": "manual",
+      "pricing_source": "auto",
       "regions": [
         "us-east-1",
         "us-west-2"
       ],
       "on_demand": {
-        "input_per_1k": null,
-        "output_per_1k": null,
+        "input_per_1k": 0.00072,
+        "output_per_1k": 0.00072,
         "standard_per_image": null,
         "premium_per_image": null
       },
@@ -2056,13 +2058,13 @@
       "display_name": "Llama 3.3 70B Instruct",
       "provider": "Meta",
       "pricing_type": "token",
-      "pricing_source": "manual",
+      "pricing_source": "auto",
       "regions": [
         "us-west-2"
       ],
       "on_demand": {
-        "input_per_1k": null,
-        "output_per_1k": null,
+        "input_per_1k": 0.00072,
+        "output_per_1k": 0.00072,
         "standard_per_image": null,
         "premium_per_image": null
       },
@@ -2103,14 +2105,14 @@
       "display_name": "Llama 3 8B Instruct",
       "provider": "Meta",
       "pricing_type": "token",
-      "pricing_source": "manual",
+      "pricing_source": "auto",
       "regions": [
         "us-east-1",
         "us-west-2"
       ],
       "on_demand": {
-        "input_per_1k": null,
-        "output_per_1k": null,
+        "input_per_1k": 0.0003,
+        "output_per_1k": 0.0006,
         "standard_per_image": null,
         "premium_per_image": null
       },
@@ -2127,14 +2129,14 @@
       "display_name": "Llama 4 Maverick 17B Instruct",
       "provider": "Meta",
       "pricing_type": "token",
-      "pricing_source": "manual",
+      "pricing_source": "auto",
       "regions": [
         "us-east-1",
         "us-west-2"
       ],
       "on_demand": {
-        "input_per_1k": null,
-        "output_per_1k": null,
+        "input_per_1k": 0.00024,
+        "output_per_1k": 0.00097,
         "standard_per_image": null,
         "premium_per_image": null
       },
@@ -2152,14 +2154,14 @@
       "display_name": "Llama 4 Scout 17B Instruct",
       "provider": "Meta",
       "pricing_type": "token",
-      "pricing_source": "manual",
+      "pricing_source": "auto",
       "regions": [
         "us-east-1",
         "us-west-2"
       ],
       "on_demand": {
-        "input_per_1k": null,
-        "output_per_1k": null,
+        "input_per_1k": 0.00017,
+        "output_per_1k": 0.00066,
         "standard_per_image": null,
         "premium_per_image": null
       },
@@ -2277,15 +2279,15 @@
       "display_name": "Magistral Small 2509",
       "provider": "Mistral AI",
       "pricing_type": "token",
-      "pricing_source": "manual",
+      "pricing_source": "auto",
       "regions": [
         "eu-west-1",
         "us-east-1",
         "us-west-2"
       ],
       "on_demand": {
-        "input_per_1k": null,
-        "output_per_1k": null,
+        "input_per_1k": 0.0005,
+        "output_per_1k": 0.0015,
         "standard_per_image": null,
         "premium_per_image": null
       },
@@ -2329,15 +2331,15 @@
       "display_name": "Ministral 3B",
       "provider": "Mistral AI",
       "pricing_type": "token",
-      "pricing_source": "manual",
+      "pricing_source": "auto",
       "regions": [
         "eu-west-1",
         "us-east-1",
         "us-west-2"
       ],
       "on_demand": {
-        "input_per_1k": null,
-        "output_per_1k": null,
+        "input_per_1k": 0.0001,
+        "output_per_1k": 0.0001,
         "standard_per_image": null,
         "premium_per_image": null
       },
@@ -2355,15 +2357,15 @@
       "display_name": "Ministral 3 8B",
       "provider": "Mistral AI",
       "pricing_type": "token",
-      "pricing_source": "manual",
+      "pricing_source": "auto",
       "regions": [
         "eu-west-1",
         "us-east-1",
         "us-west-2"
       ],
       "on_demand": {
-        "input_per_1k": null,
-        "output_per_1k": null,
+        "input_per_1k": 0.00015,
+        "output_per_1k": 0.00015,
         "standard_per_image": null,
         "premium_per_image": null
       },
@@ -2406,15 +2408,15 @@
       "display_name": "Mistral Large (24.02)",
       "provider": "Mistral AI",
       "pricing_type": "token",
-      "pricing_source": "manual",
+      "pricing_source": "auto",
       "regions": [
         "eu-west-1",
         "us-east-1",
         "us-west-2"
       ],
       "on_demand": {
-        "input_per_1k": null,
-        "output_per_1k": null,
+        "input_per_1k": 0.004,
+        "output_per_1k": 0.012,
         "standard_per_image": null,
         "premium_per_image": null
       },
@@ -2479,13 +2481,13 @@
       "display_name": "Mistral Small (24.02)",
       "provider": "Mistral AI",
       "pricing_type": "token",
-      "pricing_source": "manual",
+      "pricing_source": "auto",
       "regions": [
         "us-east-1"
       ],
       "on_demand": {
-        "input_per_1k": null,
-        "output_per_1k": null,
+        "input_per_1k": 0.001,
+        "output_per_1k": 0.003,
         "standard_per_image": null,
         "premium_per_image": null
       },
@@ -2502,15 +2504,15 @@
       "display_name": "Mixtral 8x7B Instruct",
       "provider": "Mistral AI",
       "pricing_type": "token",
-      "pricing_source": "manual",
+      "pricing_source": "auto",
       "regions": [
         "eu-west-1",
         "us-east-1",
         "us-west-2"
       ],
       "on_demand": {
-        "input_per_1k": null,
-        "output_per_1k": null,
+        "input_per_1k": 0.00045,
+        "output_per_1k": 0.0007,
         "standard_per_image": null,
         "premium_per_image": null
       },
@@ -2527,15 +2529,15 @@
       "display_name": "Pixtral Large (25.02)",
       "provider": "Mistral AI",
       "pricing_type": "token",
-      "pricing_source": "manual",
+      "pricing_source": "auto",
       "regions": [
         "eu-west-1",
         "us-east-1",
         "us-west-2"
       ],
       "on_demand": {
-        "input_per_1k": null,
-        "output_per_1k": null,
+        "input_per_1k": 0.002,
+        "output_per_1k": 0.006,
         "standard_per_image": null,
         "premium_per_image": null
       },
@@ -2553,15 +2555,15 @@
       "display_name": "Voxtral Mini 3B 2507",
       "provider": "Mistral AI",
       "pricing_type": "token",
-      "pricing_source": "manual",
+      "pricing_source": "auto",
       "regions": [
         "eu-west-1",
         "us-east-1",
         "us-west-2"
       ],
       "on_demand": {
-        "input_per_1k": null,
-        "output_per_1k": null,
+        "input_per_1k": 4e-05,
+        "output_per_1k": 4e-05,
         "standard_per_image": null,
         "premium_per_image": null
       },
@@ -2578,15 +2580,15 @@
       "display_name": "Voxtral Small 24B 2507",
       "provider": "Mistral AI",
       "pricing_type": "token",
-      "pricing_source": "manual",
+      "pricing_source": "auto",
       "regions": [
         "eu-west-1",
         "us-east-1",
         "us-west-2"
       ],
       "on_demand": {
-        "input_per_1k": null,
-        "output_per_1k": null,
+        "input_per_1k": 0.0001,
+        "output_per_1k": 0.0003,
         "standard_per_image": null,
         "premium_per_image": null
       },
@@ -2652,15 +2654,15 @@
       "display_name": "NVIDIA Nemotron Nano 12B v2 VL BF16",
       "provider": "NVIDIA",
       "pricing_type": "token",
-      "pricing_source": "manual",
+      "pricing_source": "auto",
       "regions": [
         "eu-west-1",
         "us-east-1",
         "us-west-2"
       ],
       "on_demand": {
-        "input_per_1k": null,
-        "output_per_1k": null,
+        "input_per_1k": 0.0002,
+        "output_per_1k": 0.0006,
         "standard_per_image": null,
         "premium_per_image": null
       },
@@ -2678,15 +2680,15 @@
       "display_name": "Nemotron Nano 3 30B",
       "provider": "NVIDIA",
       "pricing_type": "token",
-      "pricing_source": "manual",
+      "pricing_source": "auto",
       "regions": [
         "eu-west-1",
         "us-east-1",
         "us-west-2"
       ],
       "on_demand": {
-        "input_per_1k": null,
-        "output_per_1k": null,
+        "input_per_1k": 6e-05,
+        "output_per_1k": 0.00024,
         "standard_per_image": null,
         "premium_per_image": null
       },
@@ -2703,15 +2705,15 @@
       "display_name": "NVIDIA Nemotron Nano 9B v2",
       "provider": "NVIDIA",
       "pricing_type": "token",
-      "pricing_source": "manual",
+      "pricing_source": "auto",
       "regions": [
         "eu-west-1",
         "us-east-1",
         "us-west-2"
       ],
       "on_demand": {
-        "input_per_1k": null,
-        "output_per_1k": null,
+        "input_per_1k": 6e-05,
+        "output_per_1k": 0.00023,
         "standard_per_image": null,
         "premium_per_image": null
       },
@@ -2876,15 +2878,15 @@
       "display_name": "Qwen3 32B (dense)",
       "provider": "Qwen",
       "pricing_type": "token",
-      "pricing_source": "manual",
+      "pricing_source": "auto",
       "regions": [
         "eu-west-1",
         "us-east-1",
         "us-west-2"
       ],
       "on_demand": {
-        "input_per_1k": null,
-        "output_per_1k": null,
+        "input_per_1k": 0.000154,
+        "output_per_1k": 0.000618,
         "standard_per_image": null,
         "premium_per_image": null
       },
@@ -2901,15 +2903,15 @@
       "display_name": "Qwen3-Coder-30B-A3B-Instruct",
       "provider": "Qwen",
       "pricing_type": "token",
-      "pricing_source": "manual",
+      "pricing_source": "auto",
       "regions": [
         "eu-west-1",
         "us-east-1",
         "us-west-2"
       ],
       "on_demand": {
-        "input_per_1k": null,
-        "output_per_1k": null,
+        "input_per_1k": 0.000154,
+        "output_per_1k": 0.000618,
         "standard_per_image": null,
         "premium_per_image": null
       },
@@ -2926,13 +2928,13 @@
       "display_name": "Qwen3 Coder 480B A35B Instruct",
       "provider": "Qwen",
       "pricing_type": "token",
-      "pricing_source": "manual",
+      "pricing_source": "auto",
       "regions": [
         "us-west-2"
       ],
       "on_demand": {
-        "input_per_1k": null,
-        "output_per_1k": null,
+        "input_per_1k": 0.00045,
+        "output_per_1k": 0.0018,
         "standard_per_image": null,
         "premium_per_image": null
       },
@@ -3023,14 +3025,14 @@
       "display_name": "Stable Diffusion 3.5 Large",
       "provider": "Stability AI",
       "pricing_type": "image",
-      "pricing_source": "manual",
+      "pricing_source": "auto",
       "regions": [
         "us-west-2"
       ],
       "on_demand": {
         "input_per_1k": null,
         "output_per_1k": null,
-        "standard_per_image": null,
+        "standard_per_image": 0.08,
         "premium_per_image": null
       },
       "context_window": null,
@@ -3172,14 +3174,14 @@
       "display_name": "Stable Image Core 1.0",
       "provider": "Stability AI",
       "pricing_type": "image",
-      "pricing_source": "manual",
+      "pricing_source": "auto",
       "regions": [
         "us-west-2"
       ],
       "on_demand": {
         "input_per_1k": null,
         "output_per_1k": null,
-        "standard_per_image": null,
+        "standard_per_image": 0.04,
         "premium_per_image": null
       },
       "context_window": null,
@@ -3346,14 +3348,14 @@
       "display_name": "Stable Image Ultra 1.0",
       "provider": "Stability AI",
       "pricing_type": "image",
-      "pricing_source": "manual",
+      "pricing_source": "auto",
       "regions": [
         "us-west-2"
       ],
       "on_demand": {
         "input_per_1k": null,
         "output_per_1k": null,
-        "standard_per_image": null,
+        "standard_per_image": 0.14,
         "premium_per_image": null
       },
       "context_window": null,
@@ -3420,13 +3422,13 @@
       "display_name": "Marengo Embed v2.7",
       "provider": "TwelveLabs",
       "pricing_type": "embedding",
-      "pricing_source": "manual",
+      "pricing_source": "auto",
       "regions": [
         "eu-west-1",
         "us-east-1"
       ],
       "on_demand": {
-        "input_per_1k": null,
+        "input_per_1k": 7e-05,
         "output_per_1k": null,
         "standard_per_image": null,
         "premium_per_image": null
@@ -3446,13 +3448,13 @@
       "display_name": "Marengo Embed 3.0",
       "provider": "TwelveLabs",
       "pricing_type": "embedding",
-      "pricing_source": "manual",
+      "pricing_source": "auto",
       "regions": [
         "eu-west-1",
         "us-east-1"
       ],
       "on_demand": {
-        "input_per_1k": null,
+        "input_per_1k": 7e-05,
         "output_per_1k": null,
         "standard_per_image": null,
         "premium_per_image": null
@@ -3472,7 +3474,7 @@
       "display_name": "Pegasus v1.2",
       "provider": "TwelveLabs",
       "pricing_type": "token",
-      "pricing_source": "manual",
+      "pricing_source": "auto",
       "regions": [
         "eu-west-1",
         "us-east-1",
@@ -3480,7 +3482,7 @@
       ],
       "on_demand": {
         "input_per_1k": null,
-        "output_per_1k": null,
+        "output_per_1k": 0.0075,
         "standard_per_image": null,
         "premium_per_image": null
       },
@@ -3497,14 +3499,14 @@
       "display_name": "Writer Palmyra Vision 7B",
       "provider": "Writer",
       "pricing_type": "token",
-      "pricing_source": "manual",
+      "pricing_source": "auto",
       "regions": [
         "us-east-1",
         "us-west-2"
       ],
       "on_demand": {
-        "input_per_1k": null,
-        "output_per_1k": null,
+        "input_per_1k": 0.00015,
+        "output_per_1k": 0.0006,
         "standard_per_image": null,
         "premium_per_image": null
       },
@@ -3640,12 +3642,12 @@
     }
   ],
   "scrape": {
-    "models_matched": 55,
+    "models_matched": 141,
     "models_in_catalog": 146,
-    "models_with_prices": 64,
+    "models_with_prices": 146,
     "models_known_to_aws": 142,
-    "coverage_pct": 38,
-    "price_coverage_pct": 44,
+    "coverage_pct": 97,
+    "price_coverage_pct": 100,
     "inventory_coverage_pct": 100,
     "warnings": [
       "Low automated coverage: most AWS prices use JS placeholders; curate data/pricing.json manually or add a Price List API source.",
@@ -3686,7 +3688,18 @@
       "Unmapped pricing page row: Claude 2.1 Inference",
       "Unmapped pricing page row: Human Tasks",
       "Unmapped pricing page row: Total",
-      "64/146 models have on-demand list prices; preview and marketplace models may lack public pricing."
+      "64/146 models have on-demand list prices; preview and marketplace models may lack public pricing.",
+      "Price list matched unknown model_id: cohere.command-text-v14",
+      "Price list matched unknown model_id: meta.llama2-70b-chat-v1",
+      "Price list matched unknown model_id: meta.llama2-13b-chat-v1",
+      "Price list matched unknown model_id: anthropic.claude-3-7-sonnet-20250219-v1:0",
+      "Price list matched unknown model_id: cohere.command-light-text-v14",
+      "Price list matched unknown model_id: stability.sd3-large-v1:0",
+      "Price list matched unknown model_id: ai21.jamba-instruct-v1:0",
+      "No catalog entry for scraped model: Cohere Command",
+      "No catalog entry for scraped model: Cohere Command - Light",
+      "No catalog entry for scraped model: Llama 2 Chat (13B)",
+      "No catalog entry for scraped model: Llama 2 Chat (70B)"
     ]
   }
 }

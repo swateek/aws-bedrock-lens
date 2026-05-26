@@ -9,7 +9,7 @@ from typing import Any
 
 import httpx
 
-from catalog_io import REPO_ROOT
+from catalog_io import REPO_ROOT, empty_on_demand
 from parser import per_1m_to_per_1k
 
 PRICE_LIST_BASE = "https://pricing.us-east-1.amazonaws.com"
@@ -19,6 +19,11 @@ FOUNDATION_MODELS_INDEX = (
 OVERRIDES_PATH = Path(__file__).resolve().parent / "sku_overrides.json"
 
 _SERVICE_SUFFIX_RE = re.compile(r"\s*\(Amazon Bedrock Edition\)\s*$", re.IGNORECASE)
+_EXCLUDED_UT = re.compile(
+    r"batch|flex|priority|latency|provisioned|reserved|cache|global|"
+    r"customization|custom model",
+    re.IGNORECASE,
+)
 
 
 def _load_overrides() -> dict[str, str]:
@@ -59,11 +64,42 @@ def resolve_service_to_model_id(service_name: str, lookup: dict[str, str]) -> st
 
 
 def is_on_demand_token_usagetype(usagetype: str) -> bool:
-    if "InputTokenCount" not in usagetype and "OutputTokenCount" not in usagetype:
+    if _EXCLUDED_UT.search(usagetype):
         return False
-    if any(x in usagetype for x in ("Cache", "Reserved", "Provisioned", "Batch")):
+    lower = usagetype.lower()
+    if "inputtokencount" in lower or "outputtokencount" in lower:
+        return True
+    if re.search(r"input[_-]tokens(?:_standard)?-units$", lower):
+        return "global" not in lower and "cache" not in lower
+    if re.search(r"output[_-]tokens(?:_standard)?-units$", lower):
+        return "global" not in lower and "cache" not in lower
+    return False
+
+
+def is_on_demand_embedding_usagetype(usagetype: str) -> bool:
+    if _EXCLUDED_UT.search(usagetype):
         return False
-    return True
+    lower = usagetype.lower()
+    if "cohere_embed" in lower:
+        return True
+    if "inputtokencount" in lower and "embed" in lower:
+        return True
+    if "inputtokencount-units" in lower:
+        return True
+    if "inputtextrequestcount" in lower:
+        return True
+    return False
+
+
+def is_on_demand_image_usagetype(usagetype: str) -> bool:
+    if _EXCLUDED_UT.search(usagetype):
+        return False
+    lower = usagetype.lower()
+    return "created_image" in lower or "created-image" in lower
+
+
+def is_on_demand_rerank_usagetype(usagetype: str) -> bool:
+    return "search_units" in usagetype.lower()
 
 
 def fetch_price_list_index(url: str = FOUNDATION_MODELS_INDEX) -> dict[str, Any]:
@@ -72,11 +108,29 @@ def fetch_price_list_index(url: str = FOUNDATION_MODELS_INDEX) -> dict[str, Any]
     return response.json()
 
 
-def extract_token_prices_from_index(
+def _price_from_on_demand(on_demand: dict, product_id: str) -> float | None:
+    for dimension in on_demand.get(product_id, {}).values():
+        for price_dim in dimension.get("priceDimensions", {}).values():
+            raw = price_dim.get("pricePerUnit", {}).get("USD")
+            if raw is not None:
+                return float(raw)
+    return None
+
+
+def _token_field(usagetype: str) -> str | None:
+    lower = usagetype.lower()
+    if "inputtokencount" in lower or re.search(r"input[_-]tokens", lower):
+        return "input_per_1k"
+    if "outputtokencount" in lower or re.search(r"output[_-]tokens", lower):
+        return "output_per_1k"
+    return None
+
+
+def extract_prices_from_index(
     index: dict[str, Any],
     catalog: dict,
 ) -> dict[str, dict[str, float | None]]:
-    """Return model_id -> {input_per_1k, output_per_1k} from OnDemand token SKUs."""
+    """Return model_id -> on_demand fields from Foundation Models OnDemand SKUs."""
     lookup = build_name_lookup(catalog)
     products = index.get("products", {})
     on_demand = index.get("terms", {}).get("OnDemand", {})
@@ -88,34 +142,56 @@ def extract_token_prices_from_index(
             continue
         attrs = product.get("attributes", {})
         usagetype = attrs.get("usagetype", "")
-        if not is_on_demand_token_usagetype(usagetype):
-            continue
-
         service_name = attrs.get("servicename", "")
         model_id = resolve_service_to_model_id(service_name, lookup)
         if not model_id:
             continue
 
-        price_usd: float | None = None
-        for dimension in on_demand[product_id].values():
-            for price_dim in dimension.get("priceDimensions", {}).values():
-                raw = price_dim.get("pricePerUnit", {}).get("USD")
-                if raw is not None:
-                    price_usd = float(raw)
-                    break
-            if price_usd is not None:
-                break
+        price_usd = _price_from_on_demand(on_demand, product_id)
         if price_usd is None:
             continue
 
-        per_1k = per_1m_to_per_1k(price_usd)
-        entry = by_model.setdefault(model_id, {"input_per_1k": None, "output_per_1k": None})
-        if "InputTokenCount" in usagetype:
-            entry["input_per_1k"] = per_1k
-        elif "OutputTokenCount" in usagetype:
-            entry["output_per_1k"] = per_1k
+        entry = by_model.setdefault(
+            model_id,
+            {
+                "input_per_1k": None,
+                "output_per_1k": None,
+                "standard_per_image": None,
+                "premium_per_image": None,
+            },
+        )
+
+        model = next((m for m in catalog.get("models", []) if m["model_id"] == model_id), None)
+        ptype = model.get("pricing_type", "token") if model else "token"
+
+        if ptype == "token" and is_on_demand_token_usagetype(usagetype):
+            field = _token_field(usagetype)
+            if field:
+                entry[field] = per_1m_to_per_1k(price_usd)
+        elif ptype == "embedding":
+            if is_on_demand_rerank_usagetype(usagetype):
+                entry["input_per_1k"] = price_usd
+            elif is_on_demand_embedding_usagetype(usagetype) or is_on_demand_token_usagetype(usagetype):
+                per_1k = per_1m_to_per_1k(price_usd) if "tokencount" in usagetype.lower() else price_usd
+                if entry["input_per_1k"] is None:
+                    entry["input_per_1k"] = per_1k
+        elif ptype == "image" and is_on_demand_image_usagetype(usagetype):
+            if entry["standard_per_image"] is None:
+                entry["standard_per_image"] = price_usd
 
     return by_model
+
+
+def extract_token_prices_from_index(
+    index: dict[str, Any],
+    catalog: dict,
+) -> dict[str, dict[str, float | None]]:
+    """Backward-compatible token-only view."""
+    all_prices = extract_prices_from_index(index, catalog)
+    return {
+        mid: {"input_per_1k": p["input_per_1k"], "output_per_1k": p["output_per_1k"]}
+        for mid, p in all_prices.items()
+    }
 
 
 def merge_price_list_into_catalog(
@@ -124,12 +200,12 @@ def merge_price_list_into_catalog(
     index: dict[str, Any] | None = None,
     region: str = "us-east-1",
 ) -> tuple[int, int, list[str]]:
-    """Apply Price List token prices; set pricing_source to auto when updated."""
+    """Apply Price List prices; set pricing_source to auto when matched."""
     warnings: list[str] = []
     if index is None:
         index = fetch_price_list_index()
 
-    prices_by_model = extract_token_prices_from_index(index, catalog)
+    prices_by_model = extract_prices_from_index(index, catalog)
     by_id = {m["model_id"]: m for m in catalog["models"]}
     updated = 0
     skipped = 0
@@ -139,18 +215,36 @@ def merge_price_list_into_catalog(
             warnings.append(f"Price list matched unknown model_id: {model_id}")
             continue
         model = by_id[model_id]
-        if model["pricing_type"] != "token":
-            skipped += 1
+        pricing_type = model["pricing_type"]
+        if not any(v is not None for v in prices.values()):
             continue
-        if prices.get("input_per_1k") is None and prices.get("output_per_1k") is None:
+
+        if pricing_type == "token":
+            if prices.get("input_per_1k") is None and prices.get("output_per_1k") is None:
+                continue
+        elif pricing_type == "embedding":
+            if prices.get("input_per_1k") is None:
+                skipped += 1
+                continue
+        elif pricing_type == "image":
+            if prices.get("standard_per_image") is None and prices.get("premium_per_image") is None:
+                skipped += 1
+                continue
+        else:
+            skipped += 1
             continue
 
         old = dict(model.get("on_demand", {}))
-        new_slice = {**old}
-        if prices.get("input_per_1k") is not None:
+        new_slice = {**empty_on_demand(pricing_type), **old}
+        if pricing_type == "token":
+            if prices.get("input_per_1k") is not None:
+                new_slice["input_per_1k"] = prices["input_per_1k"]
+            if prices.get("output_per_1k") is not None:
+                new_slice["output_per_1k"] = prices["output_per_1k"]
+        elif pricing_type == "embedding":
             new_slice["input_per_1k"] = prices["input_per_1k"]
-        if prices.get("output_per_1k") is not None:
-            new_slice["output_per_1k"] = prices["output_per_1k"]
+        elif pricing_type == "image" and prices.get("standard_per_image") is not None:
+            new_slice["standard_per_image"] = prices["standard_per_image"]
 
         model["pricing_source"] = "auto"
         if old == new_slice:

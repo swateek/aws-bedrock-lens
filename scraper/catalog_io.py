@@ -90,6 +90,17 @@ def normalize_on_demand(model: dict) -> dict:
     for key in base:
         if key in incoming:
             base[key] = incoming[key]
+    pricing_type = model["pricing_type"]
+    if pricing_type == "token":
+        base["standard_per_image"] = None
+        base["premium_per_image"] = None
+    elif pricing_type == "embedding":
+        base["output_per_1k"] = None
+        base["standard_per_image"] = None
+        base["premium_per_image"] = None
+    elif pricing_type == "image":
+        base["input_per_1k"] = None
+        base["output_per_1k"] = None
     return base
 
 

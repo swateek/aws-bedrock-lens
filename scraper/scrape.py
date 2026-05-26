@@ -25,7 +25,9 @@ from catalog_io import (
 )
 from inventory import SNAPSHOT_PATH_NAME, merge_inventory_into_catalog
 from parser import extract_rows
+from bedrock_offer import merge_bedrock_offer_into_catalog, propagate_variant_prices
 from price_list import merge_price_list_into_catalog
+from price_seeds import merge_price_seeds_into_catalog
 
 USER_AGENT = (
     "aws-bedrock-lens-scraper/2.0 (+https://github.com/swateek/aws-bedrock-lens)"
@@ -158,6 +160,22 @@ def main() -> int:
             print(f"Price list: {pl_matched} mapped, {pl_updated} rows updated")
         except httpx.HTTPError as exc:
             warnings.append(f"Price list merge skipped: {exc}")
+
+        try:
+            bo_updated, bo_matched, bo_warnings = merge_bedrock_offer_into_catalog(catalog)
+            catalog["meta"]["last_bedrock_offer_at"] = today
+            warnings.extend(bo_warnings)
+            print(f"Bedrock offer: {bo_matched} mapped, {bo_updated} rows updated")
+        except httpx.HTTPError as exc:
+            warnings.append(f"Bedrock offer merge skipped: {exc}")
+
+    variant_updated = propagate_variant_prices(catalog)
+    if variant_updated:
+        print(f"Variant propagation: {variant_updated} rows inherited base model prices")
+
+    seed_updated = merge_price_seeds_into_catalog(catalog)
+    if seed_updated:
+        print(f"Price seeds: {seed_updated} rows filled from curated list prices")
 
     html_updated = 0
     if not args.skip_html:

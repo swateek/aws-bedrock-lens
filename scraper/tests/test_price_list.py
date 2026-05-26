@@ -86,6 +86,57 @@ def test_extract_token_prices_fixture():
     assert catalog["models"][0]["pricing_source"] == "auto"
 
 
+def test_extract_new_style_token_usagetypes():
+    index = {
+        "products": {
+            "prod-in": {
+                "attributes": {
+                    "servicename": "Claude Opus 4.7 (Amazon Bedrock Edition)",
+                    "usagetype": "USE1-MP:USE1_input_tokens_standard-Units",
+                }
+            },
+            "prod-out": {
+                "attributes": {
+                    "servicename": "Claude Opus 4.7 (Amazon Bedrock Edition)",
+                    "usagetype": "USE1-MP:USE1_output_tokens_standard-Units",
+                }
+            },
+        },
+        "terms": {
+            "OnDemand": {
+                "prod-in": {
+                    "term1": {
+                        "priceDimensions": {
+                            "dim1": {"pricePerUnit": {"USD": "5.5"}}
+                        }
+                    }
+                },
+                "prod-out": {
+                    "term1": {
+                        "priceDimensions": {
+                            "dim1": {"pricePerUnit": {"USD": "27.5"}}
+                        }
+                    }
+                },
+            }
+        },
+    }
+    catalog = {
+        "models": [
+            {
+                "model_id": "anthropic.claude-opus-4-7",
+                "display_name": "Claude Opus 4.7",
+                "pricing_type": "token",
+                "pricing_source": "manual",
+                "on_demand": {"input_per_1k": None, "output_per_1k": None},
+            }
+        ]
+    }
+    prices = extract_token_prices_from_index(index, catalog)
+    assert prices["anthropic.claude-opus-4-7"]["input_per_1k"] == 0.0055
+    assert prices["anthropic.claude-opus-4-7"]["output_per_1k"] == 0.0275
+
+
 def test_merge_promotes_manual_when_prices_unchanged():
     index = {
         "products": {
@@ -128,7 +179,12 @@ def test_merge_promotes_manual_when_prices_unchanged():
                 "display_name": "Claude 3 Opus",
                 "pricing_type": "token",
                 "pricing_source": "manual",
-                "on_demand": {"input_per_1k": 0.015, "output_per_1k": 0.075},
+                "on_demand": {
+                    "input_per_1k": 0.015,
+                    "output_per_1k": 0.075,
+                    "standard_per_image": None,
+                    "premium_per_image": None,
+                },
             }
         ]
     }
