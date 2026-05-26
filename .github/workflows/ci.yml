@@ -1,0 +1,38 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  pre-commit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - run: pip install -r scraper/requirements.txt -r requirements-dev.txt
+
+      - uses: pre-commit/action@v3.0.1
+
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - run: pip install -r scraper/requirements.txt
+
+      - name: Validate pricing.json schema
+        run: python scraper/validate.py --check-embed
+
+      - name: Run scraper unit tests
+        run: pytest

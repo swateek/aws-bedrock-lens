@@ -1,0 +1,41 @@
+default_language_version:
+  python: python3
+
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v5.0.0
+    hooks:
+      - id: trailing-whitespace
+      - id: end-of-file-fixer
+      - id: check-yaml
+      - id: check-merge-conflict
+      - id: detect-private-key
+      - id: mixed-line-ending
+      - id: check-added-large-files
+        args: [--maxkb=500]
+      - id: check-json
+        files: ^(data/pricing\.json|schemas/pricing\.schema\.json)$
+
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.11.13
+    hooks:
+      - id: ruff
+        args: [--fix]
+        files: ^scraper/.*\.py$
+      - id: ruff-format
+        files: ^scraper/.*\.py$
+
+  - repo: https://github.com/pre-commit/mirrors-prettier
+    rev: v4.0.0-alpha.8
+    hooks:
+      - id: prettier
+        files: ^app/.*\.(js|css|html)$
+
+  - repo: local
+    hooks:
+      - id: validate-pricing
+        name: validate pricing catalog
+        entry: bash scripts/pre-commit-validate.sh
+        language: system
+        pass_filenames: false
+        files: ^(data/pricing\.(json|embed\.js)|schemas/pricing\.schema\.json)$

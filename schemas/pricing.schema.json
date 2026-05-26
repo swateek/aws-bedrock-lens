@@ -1,0 +1,197 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/swateek/aws-bedrock-lens/schemas/pricing.schema.json",
+  "title": "AWS Bedrock Lens pricing catalog",
+  "type": "object",
+  "required": ["meta", "scrape", "models"],
+  "additionalProperties": false,
+  "properties": {
+    "meta": {
+      "type": "object",
+      "required": [
+        "schema_version",
+        "source",
+        "last_scraped_at",
+        "pricing_updated_at",
+        "parser_version"
+      ],
+      "additionalProperties": true,
+      "properties": {
+        "schema_version": { "type": "string", "enum": ["2", "2.1", "2.2"] },
+        "source": { "type": "string", "format": "uri" },
+        "last_scraped_at": { "type": ["string", "null"], "format": "date" },
+        "pricing_updated_at": { "type": ["string", "null"], "format": "date" },
+        "parser_version": { "type": "string" },
+        "last_inventory_sync_at": { "type": ["string", "null"], "format": "date" },
+        "models_known_to_aws": { "type": ["integer", "null"], "minimum": 0 },
+        "last_price_list_at": { "type": ["string", "null"], "format": "date" },
+        "price_list_region": { "type": "string" },
+        "products": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["id", "name", "provider", "notes"],
+            "additionalProperties": true,
+            "properties": {
+              "id": { "type": "string" },
+              "name": { "type": "string" },
+              "provider": { "type": "string" },
+              "notes": { "type": "string" },
+              "url": { "type": "string", "format": "uri" }
+            }
+          }
+        }
+      }
+    },
+    "scrape": {
+      "type": "object",
+      "required": [
+        "models_matched",
+        "models_in_catalog",
+        "models_with_prices",
+        "models_known_to_aws",
+        "coverage_pct",
+        "price_coverage_pct",
+        "inventory_coverage_pct",
+        "warnings"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "models_matched": { "type": "integer", "minimum": 0 },
+        "models_in_catalog": { "type": "integer", "minimum": 0 },
+        "models_with_prices": { "type": "integer", "minimum": 0 },
+        "models_known_to_aws": { "type": "integer", "minimum": 0 },
+        "coverage_pct": { "type": "integer", "minimum": 0, "maximum": 100 },
+        "price_coverage_pct": { "type": "integer", "minimum": 0, "maximum": 100 },
+        "inventory_coverage_pct": { "type": "integer", "minimum": 0, "maximum": 100 },
+        "warnings": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "models": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/model" }
+    }
+  },
+  "$defs": {
+    "model": {
+      "type": "object",
+      "required": [
+        "model_id",
+        "display_name",
+        "provider",
+        "pricing_type",
+        "pricing_source",
+        "regions",
+        "on_demand",
+        "context_window",
+        "modalities",
+        "notes"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "model_id": { "type": "string", "minLength": 1 },
+        "display_name": { "type": "string", "minLength": 1 },
+        "provider": { "type": "string", "minLength": 1 },
+        "pricing_type": {
+          "type": "string",
+          "enum": ["token", "image", "embedding"]
+        },
+        "pricing_source": {
+          "type": "string",
+          "enum": ["manual", "auto"]
+        },
+        "regions": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "on_demand": { "$ref": "#/$defs/on_demand" },
+        "context_window": { "type": ["integer", "null"], "minimum": 0 },
+        "modalities": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": ["text", "image", "embedding"]
+          }
+        },
+        "notes": { "type": ["string", "null"] },
+        "availability": {
+          "type": "string",
+          "enum": ["ga", "preview", "legacy"]
+        },
+        "alternate_ids": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1 }
+        }
+      },
+      "allOf": [
+        {
+          "if": { "properties": { "pricing_type": { "const": "token" } } },
+          "then": {
+            "properties": {
+              "on_demand": {
+                "type": "object",
+                "required": ["input_per_1m", "output_per_1m"],
+                "properties": {
+                  "input_per_1m": { "type": ["number", "null"], "exclusiveMinimum": 0 },
+                  "output_per_1m": { "type": ["number", "null"], "exclusiveMinimum": 0 },
+                  "standard_per_image": { "type": "null" },
+                  "premium_per_image": { "type": "null" }
+                },
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        {
+          "if": { "properties": { "pricing_type": { "const": "embedding" } } },
+          "then": {
+            "properties": {
+              "on_demand": {
+                "type": "object",
+                "required": ["input_per_1m", "output_per_1m"],
+                "properties": {
+                  "input_per_1m": { "type": ["number", "null"], "exclusiveMinimum": 0 },
+                  "output_per_1m": { "type": "null" },
+                  "standard_per_image": { "type": "null" },
+                  "premium_per_image": { "type": "null" }
+                },
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        {
+          "if": { "properties": { "pricing_type": { "const": "image" } } },
+          "then": {
+            "properties": {
+              "on_demand": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "input_per_1m": { "type": "null" },
+                  "output_per_1m": { "type": "null" },
+                  "standard_per_image": { "type": ["number", "null"], "exclusiveMinimum": 0 },
+                  "premium_per_image": { "type": ["number", "null"], "exclusiveMinimum": 0 }
+                },
+                "anyOf": [
+                  { "required": ["standard_per_image"] },
+                  { "required": ["premium_per_image"] }
+                ]
+              }
+            }
+          }
+        }
+      ]
+    },
+    "on_demand": {
+      "type": "object",
+      "properties": {
+        "input_per_1m": { "type": ["number", "null"] },
+        "output_per_1m": { "type": ["number", "null"] },
+        "standard_per_image": { "type": ["number", "null"] },
+        "premium_per_image": { "type": ["number", "null"] }
+      }
+    }
+  }
+}
