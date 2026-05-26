@@ -3,6 +3,7 @@
 !.gitignore
 !.pre-commit-config.yaml
 !.prettierignore
+!.nojekyll
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
