@@ -25,19 +25,6 @@ jobs:
 
       - run: pip install -r scraper/requirements.txt
 
-      - name: Refresh model inventory snapshot (optional)
-        continue-on-error: true
-        env:
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          AWS_REGION: us-east-1
-        run: |
-          if [ -n "$AWS_ACCESS_KEY_ID" ]; then
-            python scraper/sync_models.py --from-api --write-snapshot
-          else
-            echo "No AWS credentials; using committed model-inventory.snapshot.json"
-          fi
-
       - name: Run full pricing pipeline
         id: scrape
         run: python scraper/scrape.py
@@ -56,7 +43,7 @@ jobs:
           commit-message: "data: update Bedrock catalog and pricing"
           title: "Pricing update — ${{ steps.date.outputs.value }}"
           body: |
-            Automated update: model inventory sync, AWS Price List merge, and HTML scrape.
+            Automated update: inventory snapshot merge, AWS Price List merge, and HTML scrape.
 
             This PR includes changes to on-demand prices, pricing sources, model inventory,
             or scrape coverage — not metadata-only churn (`last_scraped_at` alone).

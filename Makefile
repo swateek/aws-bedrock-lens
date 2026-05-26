@@ -27,9 +27,6 @@ scrape-all: $(VENV)/bin/activate
 sync-models: $(VENV)/bin/activate
 	$(PYTHON) scraper/sync_models.py
 
-sync-models-api: $(VENV)/bin/activate
-	$(PYTHON) scraper/sync_models.py --from-api --write-snapshot
-
 price-list: $(VENV)/bin/activate
 	$(PYTHON) scraper/price_list.py
 

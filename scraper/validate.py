@@ -43,7 +43,7 @@ def _warn_stale_inventory(meta: dict) -> str | None:
     if age > INVENTORY_STALE_DAYS:
         return (
             f"Inventory sync is {age} days old (>{INVENTORY_STALE_DAYS}); "
-            "refresh with make sync-models --from-api"
+            "update data/model-inventory.snapshot.json and run make sync-models"
         )
     return None
 

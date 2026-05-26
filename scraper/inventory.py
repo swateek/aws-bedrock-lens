@@ -125,20 +125,3 @@ def merge_inventory_into_catalog(
 
     catalog["models"] = sorted(by_id.values(), key=lambda m: m["model_id"])
     return added, updated, warnings
-
-
-def fetch_inventory_from_api(regions: list[str]) -> list[dict[str, Any]]:
-    import boto3
-
-    merged: dict[str, dict[str, Any]] = {}
-    for region in regions:
-        client = boto3.client("bedrock", region_name=region)
-        for summary in client.list_foundation_models().get("modelSummaries", []):
-            model_id = summary["modelId"]
-            entry = {k: v for k, v in summary.items() if k != "modelArn"}
-            if model_id not in merged:
-                merged[model_id] = entry
-                merged[model_id]["regions"] = [region]
-            elif region not in merged[model_id]["regions"]:
-                merged[model_id]["regions"].append(region)
-    return list(merged.values())

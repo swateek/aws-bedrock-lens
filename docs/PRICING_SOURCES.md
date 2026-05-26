@@ -25,29 +25,47 @@ AWS Bedrock Lens needs **on-demand list prices** mapped to **Bedrock `model_id`*
 
 | Item | In catalog? |
 |------|-------------|
-| `openai.gpt-oss-120b-1:0`, `openai.gpt-oss-20b-1:0`, safeguard variants | Yes — from `ListFoundationModels` inventory sync |
+| `openai.gpt-oss-120b-1:0`, `openai.gpt-oss-20b-1:0`, safeguard variants | Yes — from committed inventory snapshot (`data/model-inventory.snapshot.json`) |
 | **Codex on Amazon Bedrock** | No separate `model_id`; documented under `meta.products` |
 | Frontier GPT models (limited preview) | Often listed with `availability: preview` and null prices until AWS publishes SKUs |
 
 **Process:** PR review for `data/pricing.json`, use scrape PRs only to update `pricing_source: "auto"` rows.
 
-## Option B: AWS Price List API (`pricing` service, `AmazonBedrock`)
-
-Public endpoint: `https://api.pricing.us-east-1.amazonaws.com` (also `eu-central-1`, `ap-south-1`).
+## Model inventory: committed snapshot (`data/model-inventory.snapshot.json`)
 
 | Aspect | Assessment |
 |--------|------------|
-| Coverage | **Medium–high** for SKUs AWS publishes to the price list. Filter `ServiceCode=AmazonBedrock`, region, on-demand inference attributes. |
+| Coverage | **High** for foundation models listed in the snapshot file. |
+| Accuracy | Depends on snapshot freshness; update via PR when AWS publishes new models on public docs/pages. |
+| Maintenance | Manual snapshot updates when the catalog needs new `model_id` rows before pricing appears. |
+| Auth | **None** — no `ListFoundationModels` calls in CI or default Makefile targets. |
+| Verdict | **Baseline** — `make sync-models` merges the snapshot into `data/pricing.json`. |
+
+## Option B: AWS Price List public index (`AmazonBedrockFoundationModels`)
+
+Public index URL (no credentials): `https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AmazonBedrockFoundationModels/current/us-east-1/index.json`
+
+| Aspect | Assessment |
+|--------|------------|
+| Coverage | **Medium–high** for SKUs AWS publishes to the price list. On-demand token rows in the index JSON. |
 | Accuracy | Official AWS catalog; [docs note](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/price-changes.html) marketing page wins if they disagree. |
-| Maintenance | Stable API; attribute names can shift. |
-| Auth | AWS credentials (IAM) for `pricing:GetProducts`; no special Bedrock invoke permission. |
-| Mapping | **Hard** — SKUs/descriptions must map to `model_id` (fuzzy string match + `NAME_TO_ID` extension). |
+| Maintenance | Stable index format; attribute names can shift. |
+| Auth | **None** in this repo — `scraper/price_list.py` downloads the public index via HTTP (`httpx`). |
+| Mapping | **Hard** — SKUs/descriptions must map to `model_id` (fuzzy string match + `sku_overrides.json`). |
 | Verdict | **Implemented** in `scraper/price_list.py` (us-east-1, token on-demand). Extend `scraper/sku_overrides.json` for ambiguous names. |
 
 **Pros:** Batch-friendly, region-aware, no headless browser.
 **Cons:** Complex product JSON, not identical to Bedrock console labels, embedding/image units differ.
 
-## Option C: Bedrock `ListFoundationModelAgreementOffers`
+## Option C: Bedrock `ListFoundationModels` (API inventory)
+
+| Aspect | Assessment |
+|--------|------------|
+| Coverage | Full per-region foundation model list when called live. |
+| Auth | AWS credentials (Bedrock API). |
+| Verdict | **Not used** in this project — inventory comes from the committed snapshot instead. |
+
+## Option D: Bedrock `ListFoundationModelAgreementOffers`
 
 | Aspect | Assessment |
 |--------|------------|
@@ -57,7 +75,7 @@ Public endpoint: `https://api.pricing.us-east-1.amazonaws.com` (also `eu-central
 | Mapping | `modelId` aligns with catalog — **best ID match**. |
 | Verdict | **Supplement** for models already enabled in your account; poor fit for unattended CI without broad model access. |
 
-## Option D: Headless browser scrape
+## Option E: Headless browser scrape
 
 | Aspect | Assessment |
 |--------|------------|
@@ -71,38 +89,24 @@ Public endpoint: `https://api.pricing.us-east-1.amazonaws.com` (also `eu-central
 
 ```mermaid
 flowchart LR
-  subgraph today [Today]
-    HTML[HTML scrape]
-    Manual[Manual seed]
-  end
-  subgraph next [Next sprint]
-    PL[Price List API mapper]
-  end
-  subgraph later [Later]
-    Offers[Agreement offers per model]
-  end
-  HTML --> Catalog[data/pricing.json]
-  Manual --> Catalog
-  PL --> Catalog
-  Offers --> Catalog
+  Snapshot[Inventory snapshot] --> Catalog[data/pricing.json]
+  HTML[HTML scrape] --> Catalog
+  Manual[Manual seed] --> Catalog
+  PL[Price List public index] --> Catalog
 ```
 
-1. **Now:** Inventory sync (`sync_models.py`) + Price List merge + HTML scrape + coverage UI (`price_coverage_pct`, `inventory_coverage_pct`).
+1. **Now:** Snapshot merge (`sync_models.py`) + Price List public index + HTML scrape + coverage UI (`price_coverage_pct`, `inventory_coverage_pct`). Entire pipeline is credential-free.
 2. **Next:** Expand SKU mapping (embeddings, images, query-priced rerank); regional price dimensions beyond us-east-1.
-3. **Later:** Optional `ListFoundationModelAgreementOffers` for validation spot-checks.
+3. **Later:** Optional agreement-offer spot-checks if you have account access (not in CI).
 4. **Never:** Imply 100% priced catalog without reporting `scrape.price_coverage_pct`.
 
 ## Probe script
 
-Run without AWS credentials (public index only):
+Public index only (default):
 
 ```bash
-python scraper/aws_pricing_probe.py
+make probe
+# or: python scraper/aws_pricing_probe.py
 ```
 
-With credentials (optional, for GetProducts sample):
-
-```bash
-pip install boto3
-AWS_PROFILE=your-profile python scraper/aws_pricing_probe.py --sample
-```
+The optional `--sample` flag calls `pricing:GetProducts` with boto3 and AWS credentials; it is for local debugging only and is not part of CI or the scrape pipeline.
