@@ -10,6 +10,7 @@ import httpx
 from catalog_io import empty_on_demand, model_has_price
 from offer_key_map import build_model_to_offer_keys, variant_base_candidates
 
+
 def _token_unit_price(price_usd: float) -> float:
     """AmazonBedrock offer token SKUs are per 1K tokens; catalog stores per 1M."""
     return round(price_usd * 1000, 6)

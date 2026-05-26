@@ -39,7 +39,9 @@ def variant_base_candidates(model_id: str) -> list[str]:
     return candidates
 
 
-def offer_keys_for_model(model_id: str, *, pricing_type: str, display_name: str | None = None) -> list[str]:
+def offer_keys_for_model(
+    model_id: str, *, pricing_type: str, display_name: str | None = None
+) -> list[str]:
     """Return AmazonBedrock offer keys (USE1-{key}-...) that apply to this model."""
     keys: list[str] = []
 
@@ -65,7 +67,9 @@ def offer_keys_for_model(model_id: str, *, pricing_type: str, display_name: str 
         keys.append("NovaMultiModalEmbeddings")
     elif model_id.startswith("amazon.titan-embed-text-v2"):
         keys.append("TitanEmbeddingV2-Text")
-    elif model_id.startswith("amazon.titan-embed-g1-text") or model_id.startswith("amazon.titan-embed-text-v1"):
+    elif model_id.startswith("amazon.titan-embed-g1-text") or model_id.startswith(
+        "amazon.titan-embed-text-v1"
+    ):
         keys.append("TitanEmbeddingsG1-Text")
     elif model_id.startswith("amazon.titan-embed-image"):
         keys.append("TitanEmbeddingsG1-Image")
@@ -104,7 +108,7 @@ def offer_keys_for_model(model_id: str, *, pricing_type: str, display_name: str 
     elif model_id.startswith("deepseek.r1"):
         keys.append("DeepSeek-R1")
     elif model_id.startswith("cohere.command-r-plus"):
-        keys.append("Cohere Command R+")  # noqa: not in AmazonBedrock; FM only
+        keys.append("Cohere Command R+")  # not in AmazonBedrock; FM only
     elif model_id.startswith("mistral.magistral-small"):
         keys.append("Magistral-Small-2509")
     elif model_id.startswith("mistral.ministral-3-3b"):
@@ -141,7 +145,11 @@ def offer_keys_for_model(model_id: str, *, pricing_type: str, display_name: str 
         keys.append("writer.palmyra-vision-7b")
     elif model_id.startswith("anthropic.claude-3-haiku-20240307-v1:0") and ":200k" not in model_id:
         keys.append("Claude3Haiku")
-    elif model_id.startswith("anthropic.claude-3-sonnet-20240229-v1:0") and ":200k" not in model_id and ":28k" not in model_id:
+    elif (
+        model_id.startswith("anthropic.claude-3-sonnet-20240229-v1:0")
+        and ":200k" not in model_id
+        and ":28k" not in model_id
+    ):
         keys.append("Claude3Sonnet")
 
     # Models whose offer key equals the Bedrock model slug (no provider prefix).

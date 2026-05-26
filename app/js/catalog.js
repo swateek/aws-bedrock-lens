@@ -24,9 +24,12 @@
 
   function modelHasPrice(model) {
     const od = model.on_demand || {};
-    return ["input_per_1m", "output_per_1m", "standard_per_image", "premium_per_image"].some(
-      (k) => od[k] != null && Number.isFinite(od[k]),
-    );
+    return [
+      "input_per_1m",
+      "output_per_1m",
+      "standard_per_image",
+      "premium_per_image",
+    ].some((k) => od[k] != null && Number.isFinite(od[k]));
   }
 
   function normalizeCatalog(raw) {

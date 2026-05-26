@@ -1,4 +1,4 @@
-"""Curated list prices for models missing from AWS Price List SKUs (preview / video / batch-only)."""
+"""Curated list prices for models missing from AWS Price List SKUs."""
 
 from __future__ import annotations
 
@@ -14,11 +14,17 @@ PRICE_SEEDS: dict[str, dict] = {
     },
     "amazon.rerank-v1:0": {
         "input_per_1m": 0.002,
-        "notes": "Per search unit (Rerank API); aligned with Amazon Rerank 1.0 pricing examples on AWS site.",
+        "notes": (
+            "Per search unit (Rerank API); aligned with Amazon Rerank 1.0 "
+            "pricing examples on AWS site."
+        ),
     },
     "luma.ray-v2:0": {
         "input_per_1m": 0.08,
-        "notes": "Video generation billed per second of output; value shown is USD per second (not per 1M tokens).",
+        "notes": (
+            "Video generation billed per second of output; "
+            "value shown is USD per second (not per 1M tokens)."
+        ),
     },
 }
 

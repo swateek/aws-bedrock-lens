@@ -44,18 +44,10 @@ def test_extract_token_prices_fixture():
         "terms": {
             "OnDemand": {
                 "prod-in": {
-                    "term1": {
-                        "priceDimensions": {
-                            "dim1": {"pricePerUnit": {"USD": "3.0"}}
-                        }
-                    }
+                    "term1": {"priceDimensions": {"dim1": {"pricePerUnit": {"USD": "3.0"}}}}
                 },
                 "prod-out": {
-                    "term1": {
-                        "priceDimensions": {
-                            "dim1": {"pricePerUnit": {"USD": "15.0"}}
-                        }
-                    }
+                    "term1": {"priceDimensions": {"dim1": {"pricePerUnit": {"USD": "15.0"}}}}
                 },
             }
         },
@@ -105,18 +97,10 @@ def test_extract_new_style_token_usagetypes():
         "terms": {
             "OnDemand": {
                 "prod-in": {
-                    "term1": {
-                        "priceDimensions": {
-                            "dim1": {"pricePerUnit": {"USD": "5.5"}}
-                        }
-                    }
+                    "term1": {"priceDimensions": {"dim1": {"pricePerUnit": {"USD": "5.5"}}}}
                 },
                 "prod-out": {
-                    "term1": {
-                        "priceDimensions": {
-                            "dim1": {"pricePerUnit": {"USD": "27.5"}}
-                        }
-                    }
+                    "term1": {"priceDimensions": {"dim1": {"pricePerUnit": {"USD": "27.5"}}}}
                 },
             }
         },
@@ -156,18 +140,10 @@ def test_merge_promotes_manual_when_prices_unchanged():
         "terms": {
             "OnDemand": {
                 "prod-in": {
-                    "term1": {
-                        "priceDimensions": {
-                            "dim1": {"pricePerUnit": {"USD": "15.0"}}
-                        }
-                    }
+                    "term1": {"priceDimensions": {"dim1": {"pricePerUnit": {"USD": "15.0"}}}}
                 },
                 "prod-out": {
-                    "term1": {
-                        "priceDimensions": {
-                            "dim1": {"pricePerUnit": {"USD": "75.0"}}
-                        }
-                    }
+                    "term1": {"priceDimensions": {"dim1": {"pricePerUnit": {"USD": "75.0"}}}}
                 },
             }
         },

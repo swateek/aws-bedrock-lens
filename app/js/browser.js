@@ -4,8 +4,13 @@
 (function (global) {
   "use strict";
 
-  const { escapeHtml, escapeAttr, formatRelativeDate, daysSince, modelHasPrice } =
-    global.BedrockLens.util;
+  const {
+    escapeHtml,
+    escapeAttr,
+    formatRelativeDate,
+    daysSince,
+    modelHasPrice,
+  } = global.BedrockLens.util;
   const { formatListPrice } = global.BedrockLens.compare;
   const { STALE_DAYS } = global.BedrockLens.CONSTANTS;
 
@@ -110,7 +115,9 @@
         model.availability === "preview"
           ? '<span class="badge badge--preview">preview</span>'
           : "";
-      const priceClass = modelHasPrice(model) ? "" : " model-card__meta--unknown";
+      const priceClass = modelHasPrice(model)
+        ? ""
+        : " model-card__meta--unknown";
 
       li.innerHTML = `
         <input type="checkbox" class="model-card__check" ${checked ? "checked" : ""} aria-label="Select ${escapeAttr(model.display_name)}">

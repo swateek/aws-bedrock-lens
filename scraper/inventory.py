@@ -115,9 +115,11 @@ def merge_inventory_into_catalog(
                     existing[key] = fresh[key]
                     updated += 1
             if fresh["pricing_type"] != existing.get("pricing_type"):
+                kept = existing.get("pricing_type")
+                suggested = fresh["pricing_type"]
                 warnings.append(
                     f"Pricing type mismatch for {model_id}: "
-                    f"kept {existing.get('pricing_type')}, inventory suggests {fresh['pricing_type']}"
+                    f"kept {kept}, inventory suggests {suggested}"
                 )
         else:
             by_id[model_id] = fresh

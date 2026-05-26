@@ -109,7 +109,7 @@ def model_has_price(model: dict) -> bool:
     od = model.get("on_demand") or {}
     for key in ("input_per_1m", "output_per_1m", "standard_per_image", "premium_per_image"):
         val = od.get(key)
-        if val is not None and isinstance(val, (int, float)):
+        if val is not None and isinstance(val, int | float):
             return True
     return False
 

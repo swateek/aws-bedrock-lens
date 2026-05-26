@@ -13,6 +13,7 @@ from pathlib import Path
 import httpx
 from bs4 import BeautifulSoup
 
+from bedrock_offer import merge_bedrock_offer_into_catalog, propagate_variant_prices
 from catalog_io import (
     PARSER_VERSION,
     PRICING_URL,
@@ -25,13 +26,10 @@ from catalog_io import (
 )
 from inventory import SNAPSHOT_PATH_NAME, merge_inventory_into_catalog
 from parser import extract_rows
-from bedrock_offer import merge_bedrock_offer_into_catalog, propagate_variant_prices
 from price_list import merge_price_list_into_catalog
 from price_seeds import merge_price_seeds_into_catalog
 
-USER_AGENT = (
-    "aws-bedrock-lens-scraper/2.0 (+https://github.com/swateek/aws-bedrock-lens)"
-)
+USER_AGENT = "aws-bedrock-lens-scraper/2.0 (+https://github.com/swateek/aws-bedrock-lens)"
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
 SNAPSHOT_PATH = REPO_ROOT / "data" / SNAPSHOT_PATH_NAME
@@ -211,7 +209,8 @@ def main() -> int:
         f"Summary: HTML {html_updated} updated; "
         f"{stats['models_with_prices']}/{stats['models_in_catalog']} models have list prices "
         f"({stats['price_coverage_pct']}%); "
-        f"inventory {stats['inventory_coverage_pct']}% of AWS ({stats['models_known_to_aws']} known)"
+        f"inventory {stats['inventory_coverage_pct']}% of AWS "
+        f"({stats['models_known_to_aws']} known)"
     )
     print(f"PR-worthy changes: {'yes' if meaningful else 'no (metadata/scrape only)'}")
     return 0

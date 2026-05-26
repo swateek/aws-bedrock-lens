@@ -9,7 +9,7 @@ from typing import Any
 
 import httpx
 
-from catalog_io import REPO_ROOT, empty_on_demand
+from catalog_io import empty_on_demand
 
 PRICE_LIST_BASE = "https://pricing.us-east-1.amazonaws.com"
 FOUNDATION_MODELS_INDEX = (
@@ -170,7 +170,9 @@ def extract_prices_from_index(
         elif ptype == "embedding":
             if is_on_demand_rerank_usagetype(usagetype):
                 entry["input_per_1m"] = price_usd
-            elif is_on_demand_embedding_usagetype(usagetype) or is_on_demand_token_usagetype(usagetype):
+            elif is_on_demand_embedding_usagetype(usagetype) or is_on_demand_token_usagetype(
+                usagetype
+            ):
                 per_1m = round(price_usd, 6) if "tokencount" in usagetype.lower() else price_usd
                 if entry["input_per_1m"] is None:
                     entry["input_per_1m"] = per_1m
@@ -258,7 +260,6 @@ def merge_price_list_into_catalog(
 
 def main() -> int:
     import argparse
-    import sys
     from datetime import date
 
     from catalog_io import DATA_PATH, load_catalog, write_catalog

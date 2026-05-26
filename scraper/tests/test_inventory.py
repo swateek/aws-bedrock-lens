@@ -1,4 +1,8 @@
-from inventory import infer_pricing_type, inventory_record_to_catalog_entry, merge_inventory_into_catalog
+from inventory import (
+    infer_pricing_type,
+    inventory_record_to_catalog_entry,
+    merge_inventory_into_catalog,
+)
 
 
 def test_infer_pricing_type_embedding():

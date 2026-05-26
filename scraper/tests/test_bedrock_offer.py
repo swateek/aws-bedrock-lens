@@ -1,4 +1,8 @@
-from bedrock_offer import _parse_token_usagetype, extract_offer_prices, merge_bedrock_offer_into_catalog
+from bedrock_offer import (
+    _parse_token_usagetype,
+    extract_offer_prices,
+    merge_bedrock_offer_into_catalog,
+)
 from offer_key_map import offer_keys_for_model, variant_base_candidates
 
 
@@ -40,20 +44,8 @@ def test_merge_bedrock_offer_fixture():
         },
         "terms": {
             "OnDemand": {
-                "p1": {
-                    "t1": {
-                        "priceDimensions": {
-                            "d1": {"pricePerUnit": {"USD": "0.00006"}}
-                        }
-                    }
-                },
-                "p2": {
-                    "t1": {
-                        "priceDimensions": {
-                            "d1": {"pricePerUnit": {"USD": "0.00024"}}
-                        }
-                    }
-                },
+                "p1": {"t1": {"priceDimensions": {"d1": {"pricePerUnit": {"USD": "0.00006"}}}}},
+                "p2": {"t1": {"priceDimensions": {"d1": {"pricePerUnit": {"USD": "0.00024"}}}}},
             }
         },
     }
