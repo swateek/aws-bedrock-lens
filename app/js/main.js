@@ -50,14 +50,21 @@
   }
 
   function onToggle(modelId) {
-    if (selected.has(modelId)) selected.delete(modelId);
+    const wasSelected = selected.has(modelId);
+    if (wasSelected) selected.delete(modelId);
     else selected.add(modelId);
+    global.BedrockLens.util.trackEvent("model_toggle", {
+      model_id: modelId,
+      selected: !wasSelected,
+      count: selected.size,
+    });
     global.BedrockLens.urlState.syncToUrl(selected);
     global.BedrockLens.browser.updateCompareBar(selected, els);
     refreshList();
   }
 
   function showBrowser() {
+    global.BedrockLens.util.trackEvent("back_to_browser", {});
     selected.clear();
     global.BedrockLens.urlState.syncToUrl(selected);
     global.BedrockLens.browser.updateCompareBar(selected, els);
@@ -71,6 +78,9 @@
 
   function showCompare() {
     if (selected.size < 1) return;
+    global.BedrockLens.util.trackEvent("compare_open", {
+      model_count: selected.size,
+    });
     const models = catalog.models.filter((m) => selected.has(m.model_id));
     els.browserView.hidden = true;
     els.compareView.hidden = false;
@@ -86,10 +96,25 @@
 
   function bindEvents() {
     els.search.addEventListener("input", refreshList);
-    els.filterProvider.addEventListener("change", refreshList);
-    els.filterType.addEventListener("change", refreshList);
+    els.filterProvider.addEventListener("change", () => {
+      global.BedrockLens.util.trackEvent("filter_provider_change", {
+        provider: els.filterProvider.value,
+      });
+      refreshList();
+    });
+    els.filterType.addEventListener("change", () => {
+      global.BedrockLens.util.trackEvent("filter_type_change", {
+        type: els.filterType.value,
+      });
+      refreshList();
+    });
     if (els.filterHasPricing) {
-      els.filterHasPricing.addEventListener("change", refreshList);
+      els.filterHasPricing.addEventListener("change", () => {
+        global.BedrockLens.util.trackEvent("filter_has_pricing_change", {
+          value: els.filterHasPricing.value,
+        });
+        refreshList();
+      });
     }
     els.compareBtn.addEventListener("click", showCompare);
     els.backBtn.addEventListener("click", showBrowser);

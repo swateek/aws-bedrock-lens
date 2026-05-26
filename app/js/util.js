@@ -91,6 +91,12 @@
     return new URL(filename, `${global.location.origin}${dir}`).href;
   }
 
+  function trackEvent(name, params) {
+    if (typeof gtag === "function" && global.GA_MEASUREMENT_ID) {
+      gtag("event", name, params);
+    }
+  }
+
   /** Keep favicon href absolute so Chrome does not 404 it after replaceState / view changes. */
   function pinFavicon() {
     const link = document.querySelector('link[rel="icon"]');
@@ -112,5 +118,6 @@
     modelHasPrice,
     resolveAssetUrl,
     pinFavicon,
+    trackEvent,
   };
 })(window);

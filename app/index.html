@@ -6,6 +6,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="data-base" content="../data/" />
     <title>AWS Bedrock Lens — Model Comparator</title>
+    <script src="config.js"></script>
+    <script>
+      if (window.GA_MEASUREMENT_ID) {
+        var s = document.createElement("script");
+        s.async = true;
+        s.src =
+          "https://www.googletagmanager.com/gtag/js?id=" +
+          window.GA_MEASUREMENT_ID;
+        document.head.appendChild(s);
+        window.dataLayer = window.dataLayer || [];
+        function gtag() {
+          dataLayer.push(arguments);
+        }
+        gtag("js", new Date());
+        gtag("config", window.GA_MEASUREMENT_ID);
+      }
+    </script>
     <script src="js/constants.js"></script>
     <script src="js/util.js"></script>
     <script>
