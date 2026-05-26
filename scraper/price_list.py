@@ -10,7 +10,6 @@ from typing import Any
 import httpx
 
 from catalog_io import REPO_ROOT, empty_on_demand
-from parser import per_1m_to_per_1k
 
 PRICE_LIST_BASE = "https://pricing.us-east-1.amazonaws.com"
 FOUNDATION_MODELS_INDEX = (
@@ -120,9 +119,9 @@ def _price_from_on_demand(on_demand: dict, product_id: str) -> float | None:
 def _token_field(usagetype: str) -> str | None:
     lower = usagetype.lower()
     if "inputtokencount" in lower or re.search(r"input[_-]tokens", lower):
-        return "input_per_1k"
+        return "input_per_1m"
     if "outputtokencount" in lower or re.search(r"output[_-]tokens", lower):
-        return "output_per_1k"
+        return "output_per_1m"
     return None
 
 
@@ -154,8 +153,8 @@ def extract_prices_from_index(
         entry = by_model.setdefault(
             model_id,
             {
-                "input_per_1k": None,
-                "output_per_1k": None,
+                "input_per_1m": None,
+                "output_per_1m": None,
                 "standard_per_image": None,
                 "premium_per_image": None,
             },
@@ -167,14 +166,14 @@ def extract_prices_from_index(
         if ptype == "token" and is_on_demand_token_usagetype(usagetype):
             field = _token_field(usagetype)
             if field:
-                entry[field] = per_1m_to_per_1k(price_usd)
+                entry[field] = round(price_usd, 6)
         elif ptype == "embedding":
             if is_on_demand_rerank_usagetype(usagetype):
-                entry["input_per_1k"] = price_usd
+                entry["input_per_1m"] = price_usd
             elif is_on_demand_embedding_usagetype(usagetype) or is_on_demand_token_usagetype(usagetype):
-                per_1k = per_1m_to_per_1k(price_usd) if "tokencount" in usagetype.lower() else price_usd
-                if entry["input_per_1k"] is None:
-                    entry["input_per_1k"] = per_1k
+                per_1m = round(price_usd, 6) if "tokencount" in usagetype.lower() else price_usd
+                if entry["input_per_1m"] is None:
+                    entry["input_per_1m"] = per_1m
         elif ptype == "image" and is_on_demand_image_usagetype(usagetype):
             if entry["standard_per_image"] is None:
                 entry["standard_per_image"] = price_usd
@@ -189,7 +188,7 @@ def extract_token_prices_from_index(
     """Backward-compatible token-only view."""
     all_prices = extract_prices_from_index(index, catalog)
     return {
-        mid: {"input_per_1k": p["input_per_1k"], "output_per_1k": p["output_per_1k"]}
+        mid: {"input_per_1m": p["input_per_1m"], "output_per_1m": p["output_per_1m"]}
         for mid, p in all_prices.items()
     }
 
@@ -220,10 +219,10 @@ def merge_price_list_into_catalog(
             continue
 
         if pricing_type == "token":
-            if prices.get("input_per_1k") is None and prices.get("output_per_1k") is None:
+            if prices.get("input_per_1m") is None and prices.get("output_per_1m") is None:
                 continue
         elif pricing_type == "embedding":
-            if prices.get("input_per_1k") is None:
+            if prices.get("input_per_1m") is None:
                 skipped += 1
                 continue
         elif pricing_type == "image":
@@ -237,12 +236,12 @@ def merge_price_list_into_catalog(
         old = dict(model.get("on_demand", {}))
         new_slice = {**empty_on_demand(pricing_type), **old}
         if pricing_type == "token":
-            if prices.get("input_per_1k") is not None:
-                new_slice["input_per_1k"] = prices["input_per_1k"]
-            if prices.get("output_per_1k") is not None:
-                new_slice["output_per_1k"] = prices["output_per_1k"]
+            if prices.get("input_per_1m") is not None:
+                new_slice["input_per_1m"] = prices["input_per_1m"]
+            if prices.get("output_per_1m") is not None:
+                new_slice["output_per_1m"] = prices["output_per_1m"]
         elif pricing_type == "embedding":
-            new_slice["input_per_1k"] = prices["input_per_1k"]
+            new_slice["input_per_1m"] = prices["input_per_1m"]
         elif pricing_type == "image" and prices.get("standard_per_image") is not None:
             new_slice["standard_per_image"] = prices["standard_per_image"]
 

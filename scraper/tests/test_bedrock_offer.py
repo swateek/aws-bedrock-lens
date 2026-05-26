@@ -65,8 +65,8 @@ def test_merge_bedrock_offer_fixture():
                 "pricing_type": "token",
                 "pricing_source": "manual",
                 "on_demand": {
-                    "input_per_1k": None,
-                    "output_per_1k": None,
+                    "input_per_1m": None,
+                    "output_per_1m": None,
                     "standard_per_image": None,
                     "premium_per_image": None,
                 },
@@ -74,8 +74,8 @@ def test_merge_bedrock_offer_fixture():
         ]
     }
     prices = extract_offer_prices(index)
-    assert prices["NovaLite"]["input_per_1k"] == 0.00006
-    assert prices["NovaLite"]["output_per_1k"] == 0.00024
+    assert prices["NovaLite"]["input_per_1m"] == 0.06
+    assert prices["NovaLite"]["output_per_1m"] == 0.24
     updated, matched, _ = merge_bedrock_offer_into_catalog(catalog, index=index)
     assert matched == 1
     assert updated == 1

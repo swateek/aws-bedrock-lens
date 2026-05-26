@@ -9,8 +9,8 @@
   function normalizeOnDemand(model) {
     const type = model.pricing_type;
     const base = {
-      input_per_1k: null,
-      output_per_1k: null,
+      input_per_1m: null,
+      output_per_1m: null,
       standard_per_image: null,
       premium_per_image: null,
     };
@@ -18,13 +18,13 @@
     for (const key of Object.keys(base)) {
       if (key in incoming) base[key] = incoming[key];
     }
-    if (type === "embedding") base.output_per_1k = null;
+    if (type === "embedding") base.output_per_1m = null;
     return base;
   }
 
   function modelHasPrice(model) {
     const od = model.on_demand || {};
-    return ["input_per_1k", "output_per_1k", "standard_per_image", "premium_per_image"].some(
+    return ["input_per_1m", "output_per_1m", "standard_per_image", "premium_per_image"].some(
       (k) => od[k] != null && Number.isFinite(od[k]),
     );
   }

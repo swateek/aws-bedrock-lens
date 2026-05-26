@@ -11,8 +11,8 @@ from catalog_io import empty_on_demand, model_has_price
 from offer_key_map import build_model_to_offer_keys, variant_base_candidates
 
 def _token_unit_price(price_usd: float) -> float:
-    """AmazonBedrock offer token SKUs are already per 1K tokens (not per 1M)."""
-    return round(price_usd, 6)
+    """AmazonBedrock offer token SKUs are per 1K tokens; catalog stores per 1M."""
+    return round(price_usd * 1000, 6)
 
 
 PRICE_LIST_BASE = "https://pricing.us-east-1.amazonaws.com"
@@ -77,8 +77,8 @@ def extract_offer_prices(index: dict[str, Any]) -> dict[str, dict[str, float | N
         return by_key.setdefault(
             key,
             {
-                "input_per_1k": None,
-                "output_per_1k": None,
+                "input_per_1m": None,
+                "output_per_1m": None,
                 "standard_per_image": None,
                 "premium_per_image": None,
             },
@@ -113,16 +113,16 @@ def extract_offer_prices(index: dict[str, Any]) -> dict[str, dict[str, float | N
                 entry["standard_per_image"] = price_usd
             continue
         if "NovaMultiModalEmbeddings-input-tokens" in ut:
-            slot("NovaMultiModalEmbeddings")["input_per_1k"] = _token_unit_price(price_usd)
+            slot("NovaMultiModalEmbeddings")["input_per_1m"] = _token_unit_price(price_usd)
             continue
         if "TitanEmbeddingsG1-Text-input-tokens" in ut:
-            slot("TitanEmbeddingsG1-Text")["input_per_1k"] = _token_unit_price(price_usd)
+            slot("TitanEmbeddingsG1-Text")["input_per_1m"] = _token_unit_price(price_usd)
             continue
         if "TitanEmbeddingV2-Text-input-tokens" in ut:
-            slot("TitanEmbeddingV2-Text")["input_per_1k"] = _token_unit_price(price_usd)
+            slot("TitanEmbeddingV2-Text")["input_per_1m"] = _token_unit_price(price_usd)
             continue
         if "TitanEmbeddingsG1-Image-input-tokens" in ut:
-            slot("TitanEmbeddingsG1-Image")["input_per_1k"] = _token_unit_price(price_usd)
+            slot("TitanEmbeddingsG1-Image")["input_per_1m"] = _token_unit_price(price_usd)
             continue
 
         parsed = _parse_token_usagetype(ut)
@@ -130,13 +130,13 @@ def extract_offer_prices(index: dict[str, Any]) -> dict[str, dict[str, float | N
             continue
         key, kind = parsed
         entry = slot(key)
-        per_1k = _token_unit_price(price_usd)
+        per_1m = _token_unit_price(price_usd)
         if "input" in kind:
-            if entry["input_per_1k"] is None:
-                entry["input_per_1k"] = per_1k
+            if entry["input_per_1m"] is None:
+                entry["input_per_1m"] = per_1m
         elif "output" in kind:
-            if entry["output_per_1k"] is None:
-                entry["output_per_1k"] = per_1k
+            if entry["output_per_1m"] is None:
+                entry["output_per_1m"] = per_1m
 
     return by_key
 
@@ -148,14 +148,14 @@ def _apply_prices(model: dict, prices: dict[str, float | None]) -> tuple[bool, b
     new_slice = {**empty_on_demand(pricing_type), **old}
 
     if pricing_type == "token":
-        for field in ("input_per_1k", "output_per_1k"):
+        for field in ("input_per_1m", "output_per_1m"):
             val = prices.get(field)
             if val is not None:
                 new_slice[field] = val
     elif pricing_type == "embedding":
-        val = prices.get("input_per_1k")
+        val = prices.get("input_per_1m")
         if val is not None:
-            new_slice["input_per_1k"] = val
+            new_slice["input_per_1m"] = val
     elif pricing_type == "image":
         for field in ("standard_per_image", "premium_per_image"):
             val = prices.get(field)
@@ -194,8 +194,8 @@ def merge_bedrock_offer_into_catalog(
         if model_id not in by_id:
             continue
         merged: dict[str, float | None] = {
-            "input_per_1k": None,
-            "output_per_1k": None,
+            "input_per_1m": None,
+            "output_per_1m": None,
             "standard_per_image": None,
             "premium_per_image": None,
         }
@@ -205,7 +205,7 @@ def merge_bedrock_offer_into_catalog(
                 continue
             for field, val in chunk.items():
                 if val is not None:
-                    if field.endswith("_per_1k") and merged.get(field) is None:
+                    if field.endswith("_per_1m") and merged.get(field) is None:
                         merged[field] = val
                     elif field.endswith("_per_image") and merged.get(field) is None:
                         merged[field] = val

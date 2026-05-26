@@ -7,17 +7,15 @@ from parser import (
     extract_rows,
     normalize_name,
     parse_price,
-    per_1m_to_per_1k,
     resolve_name_to_model_id,
 )
 
 FIXTURES = Path(__file__).parent / "fixtures"
 
 
-def test_parse_price_and_conversion():
+def test_parse_price():
     assert parse_price("$ 0.50") == 0.5
     assert parse_price("N/A") is None
-    assert per_1m_to_per_1k(0.5) == 0.0005
 
 
 def test_normalize_name_strips_extended_access():
@@ -54,7 +52,7 @@ def test_extract_mistral_table():
     rows, unmapped = extract_rows(BeautifulSoup(html, "html.parser"), catalog)
     by_id = {r["model_id"]: r for r in rows}
     assert "mistral.mistral-large-2407-v1:0" in by_id
-    assert by_id["mistral.mistral-large-2407-v1:0"]["pricing"]["input_per_1k"] == 0.0005
+    assert by_id["mistral.mistral-large-2407-v1:0"]["pricing"]["input_per_1m"] == 0.5
     assert "Mistral Large 3" not in unmapped
 
 

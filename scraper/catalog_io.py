@@ -64,21 +64,21 @@ def catalogs_meaningfully_differ(before: dict, after: dict) -> bool:
 def empty_on_demand(pricing_type: str) -> dict:
     if pricing_type == "image":
         return {
-            "input_per_1k": None,
-            "output_per_1k": None,
+            "input_per_1m": None,
+            "output_per_1m": None,
             "standard_per_image": None,
             "premium_per_image": None,
         }
     if pricing_type == "embedding":
         return {
-            "input_per_1k": None,
-            "output_per_1k": None,
+            "input_per_1m": None,
+            "output_per_1m": None,
             "standard_per_image": None,
             "premium_per_image": None,
         }
     return {
-        "input_per_1k": None,
-        "output_per_1k": None,
+        "input_per_1m": None,
+        "output_per_1m": None,
         "standard_per_image": None,
         "premium_per_image": None,
     }
@@ -95,19 +95,19 @@ def normalize_on_demand(model: dict) -> dict:
         base["standard_per_image"] = None
         base["premium_per_image"] = None
     elif pricing_type == "embedding":
-        base["output_per_1k"] = None
+        base["output_per_1m"] = None
         base["standard_per_image"] = None
         base["premium_per_image"] = None
     elif pricing_type == "image":
-        base["input_per_1k"] = None
-        base["output_per_1k"] = None
+        base["input_per_1m"] = None
+        base["output_per_1m"] = None
     return base
 
 
 def model_has_price(model: dict) -> bool:
     """True if any on_demand field has a numeric price."""
     od = model.get("on_demand") or {}
-    for key in ("input_per_1k", "output_per_1k", "standard_per_image", "premium_per_image"):
+    for key in ("input_per_1m", "output_per_1m", "standard_per_image", "premium_per_image"):
         val = od.get(key)
         if val is not None and isinstance(val, (int, float)):
             return True

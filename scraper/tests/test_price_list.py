@@ -68,15 +68,15 @@ def test_extract_token_prices_fixture():
                 "pricing_type": "token",
                 "pricing_source": "manual",
                 "on_demand": {
-                    "input_per_1k": None,
-                    "output_per_1k": None,
+                    "input_per_1m": None,
+                    "output_per_1m": None,
                 },
             }
         ]
     }
     prices = extract_token_prices_from_index(index, catalog)
-    assert prices["anthropic.claude-3-5-sonnet-20240620-v1:0"]["input_per_1k"] == 0.003
-    assert prices["anthropic.claude-3-5-sonnet-20240620-v1:0"]["output_per_1k"] == 0.015
+    assert prices["anthropic.claude-3-5-sonnet-20240620-v1:0"]["input_per_1m"] == 3.0
+    assert prices["anthropic.claude-3-5-sonnet-20240620-v1:0"]["output_per_1m"] == 15.0
 
     updated, matched, _warnings = merge_price_list_into_catalog(
         catalog, index=index, region="us-east-1"
@@ -128,13 +128,13 @@ def test_extract_new_style_token_usagetypes():
                 "display_name": "Claude Opus 4.7",
                 "pricing_type": "token",
                 "pricing_source": "manual",
-                "on_demand": {"input_per_1k": None, "output_per_1k": None},
+                "on_demand": {"input_per_1m": None, "output_per_1m": None},
             }
         ]
     }
     prices = extract_token_prices_from_index(index, catalog)
-    assert prices["anthropic.claude-opus-4-7"]["input_per_1k"] == 0.0055
-    assert prices["anthropic.claude-opus-4-7"]["output_per_1k"] == 0.0275
+    assert prices["anthropic.claude-opus-4-7"]["input_per_1m"] == 5.5
+    assert prices["anthropic.claude-opus-4-7"]["output_per_1m"] == 27.5
 
 
 def test_merge_promotes_manual_when_prices_unchanged():
@@ -180,8 +180,8 @@ def test_merge_promotes_manual_when_prices_unchanged():
                 "pricing_type": "token",
                 "pricing_source": "manual",
                 "on_demand": {
-                    "input_per_1k": 0.015,
-                    "output_per_1k": 0.075,
+                    "input_per_1m": 15.0,
+                    "output_per_1m": 75.0,
                     "standard_per_image": None,
                     "premium_per_image": None,
                 },

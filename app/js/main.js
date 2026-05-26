@@ -58,10 +58,14 @@
   }
 
   function showBrowser() {
+    selected.clear();
+    global.BedrockLens.urlState.syncToUrl(selected);
+    global.BedrockLens.browser.updateCompareBar(selected, els);
     els.browserView.hidden = false;
     els.compareView.hidden = true;
     els.compareView.classList.add("view--hidden");
-    els.compareBtn.focus();
+    refreshList();
+    els.search.focus();
   }
 
   function showCompare() {

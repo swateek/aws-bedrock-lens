@@ -21,7 +21,7 @@ def test_merge_preserves_existing_prices():
                 "pricing_type": "token",
                 "pricing_source": "manual",
                 "regions": ["us-east-1"],
-                "on_demand": {"input_per_1k": 0.003, "output_per_1k": 0.015},
+                "on_demand": {"input_per_1m": 3.0, "output_per_1m": 15.0},
                 "context_window": 200000,
                 "modalities": ["text"],
                 "notes": None,
@@ -49,9 +49,9 @@ def test_merge_preserves_existing_prices():
     added, _updated, _warnings = merge_inventory_into_catalog(catalog, inventory)
     by_id = {m["model_id"]: m for m in catalog["models"]}
     assert added == 1
-    assert by_id["anthropic.claude-3-5-sonnet-20241022-v2:0"]["on_demand"]["input_per_1k"] == 0.003
+    assert by_id["anthropic.claude-3-5-sonnet-20241022-v2:0"]["on_demand"]["input_per_1m"] == 3.0
     assert by_id["openai.gpt-oss-120b-1:0"]["provider"] == "OpenAI"
-    assert by_id["openai.gpt-oss-120b-1:0"]["on_demand"]["input_per_1k"] is None
+    assert by_id["openai.gpt-oss-120b-1:0"]["on_demand"]["input_per_1m"] is None
 
 
 def test_inventory_record_to_catalog_entry():

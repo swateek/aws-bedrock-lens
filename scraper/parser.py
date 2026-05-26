@@ -77,12 +77,6 @@ def parse_price(text: str) -> float | None:
     return float(match.group(1))
 
 
-def per_1m_to_per_1k(value: float | None) -> float | None:
-    if value is None:
-        return None
-    return round(value / 1000, 6)
-
-
 def detect_unit(table_text: str) -> str:
     lower = table_text.lower()
     if "per image" in lower or "per generation" in lower:
@@ -179,8 +173,8 @@ def extract_rows(
                 }
             else:
                 entry = {
-                    "input_per_1k": per_1m_to_per_1k(input_val),
-                    "output_per_1k": per_1m_to_per_1k(output_val),
+                    "input_per_1m": round(input_val, 6) if input_val is not None else None,
+                    "output_per_1m": round(output_val, 6) if output_val is not None else None,
                 }
 
             if model_id not in scraped:

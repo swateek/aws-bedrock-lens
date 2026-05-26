@@ -17,7 +17,7 @@
       ],
       "additionalProperties": true,
       "properties": {
-        "schema_version": { "type": "string", "enum": ["2", "2.1"] },
+        "schema_version": { "type": "string", "enum": ["2", "2.1", "2.2"] },
         "source": { "type": "string", "format": "uri" },
         "last_scraped_at": { "type": ["string", "null"], "format": "date" },
         "pricing_updated_at": { "type": ["string", "null"], "format": "date" },
@@ -131,10 +131,10 @@
             "properties": {
               "on_demand": {
                 "type": "object",
-                "required": ["input_per_1k", "output_per_1k"],
+                "required": ["input_per_1m", "output_per_1m"],
                 "properties": {
-                  "input_per_1k": { "type": ["number", "null"], "exclusiveMinimum": 0 },
-                  "output_per_1k": { "type": ["number", "null"], "exclusiveMinimum": 0 },
+                  "input_per_1m": { "type": ["number", "null"], "exclusiveMinimum": 0 },
+                  "output_per_1m": { "type": ["number", "null"], "exclusiveMinimum": 0 },
                   "standard_per_image": { "type": "null" },
                   "premium_per_image": { "type": "null" }
                 },
@@ -149,10 +149,10 @@
             "properties": {
               "on_demand": {
                 "type": "object",
-                "required": ["input_per_1k", "output_per_1k"],
+                "required": ["input_per_1m", "output_per_1m"],
                 "properties": {
-                  "input_per_1k": { "type": ["number", "null"], "exclusiveMinimum": 0 },
-                  "output_per_1k": { "type": "null" },
+                  "input_per_1m": { "type": ["number", "null"], "exclusiveMinimum": 0 },
+                  "output_per_1m": { "type": "null" },
                   "standard_per_image": { "type": "null" },
                   "premium_per_image": { "type": "null" }
                 },
@@ -169,8 +169,8 @@
                 "type": "object",
                 "additionalProperties": false,
                 "properties": {
-                  "input_per_1k": { "type": "null" },
-                  "output_per_1k": { "type": "null" },
+                  "input_per_1m": { "type": "null" },
+                  "output_per_1m": { "type": "null" },
                   "standard_per_image": { "type": ["number", "null"], "exclusiveMinimum": 0 },
                   "premium_per_image": { "type": ["number", "null"], "exclusiveMinimum": 0 }
                 },
@@ -187,8 +187,8 @@
     "on_demand": {
       "type": "object",
       "properties": {
-        "input_per_1k": { "type": ["number", "null"] },
-        "output_per_1k": { "type": ["number", "null"] },
+        "input_per_1m": { "type": ["number", "null"] },
+        "output_per_1m": { "type": ["number", "null"] },
         "standard_per_image": { "type": ["number", "null"] },
         "premium_per_image": { "type": ["number", "null"] }
       }

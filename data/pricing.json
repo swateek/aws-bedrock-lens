@@ -1,6 +1,6 @@
 {
   "meta": {
-    "schema_version": "2.1",
+    "schema_version": "2.2",
     "source": "https://aws.amazon.com/bedrock/pricing/",
     "last_scraped_at": "2026-05-26",
     "pricing_updated_at": "2026-05-26",
@@ -32,8 +32,8 @@
         "us-east-1"
       ],
       "on_demand": {
-        "input_per_1k": 0.002,
-        "output_per_1k": 0.008,
+        "input_per_1m": 2.0,
+        "output_per_1m": 8.0,
         "standard_per_image": null,
         "premium_per_image": null
       },
@@ -55,8 +55,8 @@
         "us-east-1"
       ],
       "on_demand": {
-        "input_per_1k": 0.0002,
-        "output_per_1k": 0.0004,
+        "input_per_1m": 0.2,
+        "output_per_1m": 0.4,
         "standard_per_image": null,
         "premium_per_image": null
       },
@@ -80,8 +80,8 @@
         "us-west-2"
       ],
       "on_demand": {
-        "input_per_1k": 0.00033,
-        "output_per_1k": 0.00275,
+        "input_per_1m": 0.33,
+        "output_per_1m": 2.75,
         "standard_per_image": null,
         "premium_per_image": null
       },
@@ -104,8 +104,8 @@
         "us-east-1"
       ],
       "on_demand": {
-        "input_per_1k": 0.00033,
-        "output_per_1k": 0.00275,
+        "input_per_1m": 0.33,
+        "output_per_1m": 2.75,
         "standard_per_image": null,
         "premium_per_image": null
       },
@@ -128,8 +128,8 @@
         "us-east-1"
       ],
       "on_demand": {
-        "input_per_1k": 0.000135,
-        "output_per_1k": null,
+        "input_per_1m": 0.135,
+        "output_per_1m": null,
         "standard_per_image": null,
         "premium_per_image": null
       },
@@ -154,8 +154,8 @@
         "us-west-2"
       ],
       "on_demand": {
-        "input_per_1k": 0.00033,
-        "output_per_1k": 0.012,
+        "input_per_1m": 0.33,
+        "output_per_1m": 12.0,
         "standard_per_image": null,
         "premium_per_image": null
       },
@@ -178,8 +178,8 @@
         "us-east-1"
       ],
       "on_demand": {
-        "input_per_1k": null,
-        "output_per_1k": null,
+        "input_per_1m": null,
+        "output_per_1m": null,
         "standard_per_image": 0.04,
         "premium_per_image": 0.06
       },
@@ -204,8 +204,8 @@
         "us-west-2"
       ],
       "on_demand": {
-        "input_per_1k": 6e-05,
-        "output_per_1k": 0.00024,
+        "input_per_1m": 0.06,
+        "output_per_1m": 0.24,
         "standard_per_image": null,
         "premium_per_image": null
       },
@@ -228,8 +228,8 @@
         "us-east-1"
       ],
       "on_demand": {
-        "input_per_1k": 6e-05,
-        "output_per_1k": 0.00024,
+        "input_per_1m": 0.06,
+        "output_per_1m": 0.24,
         "standard_per_image": null,
         "premium_per_image": null
       },
@@ -252,8 +252,8 @@
         "us-east-1"
       ],
       "on_demand": {
-        "input_per_1k": 6e-05,
-        "output_per_1k": 0.00024,
+        "input_per_1m": 0.06,
+        "output_per_1m": 0.24,
         "standard_per_image": null,
         "premium_per_image": null
       },
@@ -278,8 +278,8 @@
         "us-west-2"
       ],
       "on_demand": {
-        "input_per_1k": 3.5e-05,
-        "output_per_1k": 0.00014,
+        "input_per_1m": 0.035,
+        "output_per_1m": 0.14,
         "standard_per_image": null,
         "premium_per_image": null
       },
@@ -301,8 +301,8 @@
         "us-east-1"
       ],
       "on_demand": {
-        "input_per_1k": 3.5e-05,
-        "output_per_1k": 0.00014,
+        "input_per_1m": 0.035,
+        "output_per_1m": 0.14,
         "standard_per_image": null,
         "premium_per_image": null
       },
@@ -324,8 +324,8 @@
         "us-east-1"
       ],
       "on_demand": {
-        "input_per_1k": 3.5e-05,
-        "output_per_1k": 0.00014,
+        "input_per_1m": 0.035,
+        "output_per_1m": 0.14,
         "standard_per_image": null,
         "premium_per_image": null
       },
@@ -348,8 +348,8 @@
         "us-west-2"
       ],
       "on_demand": {
-        "input_per_1k": 0.0025,
-        "output_per_1k": 0.0125,
+        "input_per_1m": 2.5,
+        "output_per_1m": 12.5,
         "standard_per_image": null,
         "premium_per_image": null
       },
@@ -373,8 +373,8 @@
         "us-west-2"
       ],
       "on_demand": {
-        "input_per_1k": 0.0025,
-        "output_per_1k": 0.0125,
+        "input_per_1m": 2.5,
+        "output_per_1m": 12.5,
         "standard_per_image": null,
         "premium_per_image": null
       },
@@ -398,8 +398,8 @@
         "us-west-2"
       ],
       "on_demand": {
-        "input_per_1k": 0.0025,
-        "output_per_1k": 0.0125,
+        "input_per_1m": 2.5,
+        "output_per_1m": 12.5,
         "standard_per_image": null,
         "premium_per_image": null
       },
@@ -423,8 +423,8 @@
         "us-west-2"
       ],
       "on_demand": {
-        "input_per_1k": 0.0025,
-        "output_per_1k": 0.0125,
+        "input_per_1m": 2.5,
+        "output_per_1m": 12.5,
         "standard_per_image": null,
         "premium_per_image": null
       },
@@ -448,8 +448,8 @@
         "us-west-2"
       ],
       "on_demand": {
-        "input_per_1k": 0.0025,
-        "output_per_1k": 0.0125,
+        "input_per_1m": 2.5,
+        "output_per_1m": 12.5,
         "standard_per_image": null,
         "premium_per_image": null
       },
@@ -474,8 +474,8 @@
         "us-west-2"
       ],
       "on_demand": {
-        "input_per_1k": 0.0008,
-        "output_per_1k": 0.0032,
+        "input_per_1m": 0.8,
+        "output_per_1m": 3.2,
         "standard_per_image": null,
         "premium_per_image": null
       },
@@ -498,8 +498,8 @@
         "us-east-1"
       ],
       "on_demand": {
-        "input_per_1k": 0.0008,
-        "output_per_1k": 0.0032,
+        "input_per_1m": 0.8,
+        "output_per_1m": 3.2,
         "standard_per_image": null,
         "premium_per_image": null
       },
@@ -522,8 +522,8 @@
         "us-east-1"
       ],
       "on_demand": {
-        "input_per_1k": 0.0008,
-        "output_per_1k": 0.0032,
+        "input_per_1m": 0.8,
+        "output_per_1m": 3.2,
         "standard_per_image": null,
         "premium_per_image": null
       },
@@ -547,8 +547,8 @@
         "us-east-1"
       ],
       "on_demand": {
-        "input_per_1k": null,
-        "output_per_1k": null,
+        "input_per_1m": null,
+        "output_per_1m": null,
         "standard_per_image": 0.08,
         "premium_per_image": null
       },
@@ -571,8 +571,8 @@
         "us-east-1"
       ],
       "on_demand": {
-        "input_per_1k": null,
-        "output_per_1k": null,
+        "input_per_1m": null,
+        "output_per_1m": null,
         "standard_per_image": 0.08,
         "premium_per_image": null
       },
@@ -595,8 +595,8 @@
         "us-east-1"
       ],
       "on_demand": {
-        "input_per_1k": 6e-05,
-        "output_per_1k": 0.0136,
+        "input_per_1m": 0.06,
+        "output_per_1m": 13.6,
         "standard_per_image": null,
         "premium_per_image": null
       },
@@ -618,8 +618,8 @@
         "us-west-2"
       ],
       "on_demand": {
-        "input_per_1k": 0.002,
-        "output_per_1k": null,
+        "input_per_1m": 0.002,
+        "output_per_1m": null,
         "standard_per_image": null,
         "premium_per_image": null
       },
@@ -642,8 +642,8 @@
         "us-west-2"
       ],
       "on_demand": {
-        "input_per_1k": 0.0001,
-        "output_per_1k": null,
+        "input_per_1m": 0.1,
+        "output_per_1m": null,
         "standard_per_image": null,
         "premium_per_image": null
       },
@@ -668,8 +668,8 @@
         "us-west-2"
       ],
       "on_demand": {
-        "input_per_1k": 0.0008,
-        "output_per_1k": null,
+        "input_per_1m": 0.8,
+        "output_per_1m": null,
         "standard_per_image": null,
         "premium_per_image": null
       },
@@ -695,8 +695,8 @@
         "us-west-2"
       ],
       "on_demand": {
-        "input_per_1k": 0.0008,
-        "output_per_1k": null,
+        "input_per_1m": 0.8,
+        "output_per_1m": null,
         "standard_per_image": null,
         "premium_per_image": null
       },
@@ -721,8 +721,8 @@
         "us-west-2"
       ],
       "on_demand": {
-        "input_per_1k": 0.0001,
-        "output_per_1k": null,
+        "input_per_1m": 0.1,
+        "output_per_1m": null,
         "standard_per_image": null,
         "premium_per_image": null
       },
@@ -746,8 +746,8 @@
         "us-west-2"
       ],
       "on_demand": {
-        "input_per_1k": 0.0001,
-        "output_per_1k": null,
+        "input_per_1m": 0.1,
+        "output_per_1m": null,
         "standard_per_image": null,
         "premium_per_image": null
       },
@@ -771,8 +771,8 @@
         "us-west-2"
       ],
       "on_demand": {
-        "input_per_1k": 2e-05,
-        "output_per_1k": null,
+        "input_per_1m": 0.02,
+        "output_per_1m": null,
         "standard_per_image": null,
         "premium_per_image": null
       },
@@ -796,8 +796,8 @@
         "us-east-1"
       ],
       "on_demand": {
-        "input_per_1k": 2e-05,
-        "output_per_1k": null,
+        "input_per_1m": 0.02,
+        "output_per_1m": null,
         "standard_per_image": null,
         "premium_per_image": null
       },
@@ -820,8 +820,8 @@
         "us-west-2"
       ],
       "on_demand": {
-        "input_per_1k": null,
-        "output_per_1k": null,
+        "input_per_1m": null,
+        "output_per_1m": null,
         "standard_per_image": 0.01,
         "premium_per_image": 0.022
       },
@@ -844,8 +844,8 @@
         "us-west-2"
       ],
       "on_demand": {
-        "input_per_1k": null,
-        "output_per_1k": null,
+        "input_per_1m": null,
+        "output_per_1m": null,
         "standard_per_image": 0.01,
         "premium_per_image": 0.012
       },
@@ -870,8 +870,8 @@
         "us-west-2"
       ],
       "on_demand": {
-        "input_per_1k": 0.0008,
-        "output_per_1k": 0.004,
+        "input_per_1m": 0.8,
+        "output_per_1m": 4.0,
         "standard_per_image": null,
         "premium_per_image": null
       },
@@ -895,8 +895,8 @@
         "eu-central-1"
       ],
       "on_demand": {
-        "input_per_1k": 0.003,
-        "output_per_1k": 0.015,
+        "input_per_1m": 3.0,
+        "output_per_1m": 15.0,
         "standard_per_image": null,
         "premium_per_image": null
       },
@@ -920,8 +920,8 @@
         "eu-west-1"
       ],
       "on_demand": {
-        "input_per_1k": 0.003,
-        "output_per_1k": 0.015,
+        "input_per_1m": 3.0,
+        "output_per_1m": 15.0,
         "standard_per_image": null,
         "premium_per_image": null
       },
@@ -945,8 +945,8 @@
         "us-west-2"
       ],
       "on_demand": {
-        "input_per_1k": 0.00025,
-        "output_per_1k": 0.004,
+        "input_per_1m": 0.25,
+        "output_per_1m": 4.0,
         "standard_per_image": null,
         "premium_per_image": null
       },
@@ -971,8 +971,8 @@
         "us-west-2"
       ],
       "on_demand": {
-        "input_per_1k": 0.00025,
-        "output_per_1k": 0.004,
+        "input_per_1m": 0.25,
+        "output_per_1m": 4.0,
         "standard_per_image": null,
         "premium_per_image": null
       },
@@ -997,8 +997,8 @@
         "us-west-2"
       ],
       "on_demand": {
-        "input_per_1k": 0.00025,
-        "output_per_1k": 0.00125,
+        "input_per_1m": 0.25,
+        "output_per_1m": 1.25,
         "standard_per_image": null,
         "premium_per_image": null
       },
@@ -1021,8 +1021,8 @@
         "us-west-2"
       ],
       "on_demand": {
-        "input_per_1k": 0.015,
-        "output_per_1k": 0.075,
+        "input_per_1m": 15.0,
+        "output_per_1m": 75.0,
         "standard_per_image": null,
         "premium_per_image": null
       },
@@ -1047,8 +1047,8 @@
         "us-west-2"
       ],
       "on_demand": {
-        "input_per_1k": 0.003,
-        "output_per_1k": null,
+        "input_per_1m": 3.0,
+        "output_per_1m": null,
         "standard_per_image": null,
         "premium_per_image": null
       },
@@ -1073,8 +1073,8 @@
         "us-west-2"
       ],
       "on_demand": {
-        "input_per_1k": 0.003,
-        "output_per_1k": null,
+        "input_per_1m": 3.0,
+        "output_per_1m": null,
         "standard_per_image": null,
         "premium_per_image": null
       },
@@ -1099,8 +1099,8 @@
         "us-west-2"
       ],
       "on_demand": {
-        "input_per_1k": 0.003,
-        "output_per_1k": 0.015,
+        "input_per_1m": 3.0,
+        "output_per_1m": 15.0,
         "standard_per_image": null,
         "premium_per_image": null
       },
@@ -1125,8 +1125,8 @@
         "us-west-2"
       ],
       "on_demand": {
-        "input_per_1k": 0.0011,
-        "output_per_1k": 0.0055,
+        "input_per_1m": 1.1,
+        "output_per_1m": 5.5,
         "standard_per_image": null,
         "premium_per_image": null
       },
@@ -1150,8 +1150,8 @@
         "us-west-2"
       ],
       "on_demand": {
-        "input_per_1k": 0.015,
-        "output_per_1k": 0.075,
+        "input_per_1m": 15.0,
+        "output_per_1m": 75.0,
         "standard_per_image": null,
         "premium_per_image": null
       },
@@ -1175,8 +1175,8 @@
         "us-west-2"
       ],
       "on_demand": {
-        "input_per_1k": 0.015,
-        "output_per_1k": 0.075,
+        "input_per_1m": 15.0,
+        "output_per_1m": 75.0,
         "standard_per_image": null,
         "premium_per_image": null
       },
@@ -1201,8 +1201,8 @@
         "us-west-2"
       ],
       "on_demand": {
-        "input_per_1k": 0.0055,
-        "output_per_1k": 0.0275,
+        "input_per_1m": 5.5,
+        "output_per_1m": 27.5,
         "standard_per_image": null,
         "premium_per_image": null
       },
@@ -1227,8 +1227,8 @@
         "us-west-2"
       ],
       "on_demand": {
-        "input_per_1k": 0.0055,
-        "output_per_1k": 0.0275,
+        "input_per_1m": 5.5,
+        "output_per_1m": 27.5,
         "standard_per_image": null,
         "premium_per_image": null
       },
@@ -1253,8 +1253,8 @@
         "us-west-2"
       ],
       "on_demand": {
-        "input_per_1k": 0.0055,
-        "output_per_1k": 0.0275,
+        "input_per_1m": 5.5,
+        "output_per_1m": 27.5,
         "standard_per_image": null,
         "premium_per_image": null
       },
@@ -1279,8 +1279,8 @@
         "us-west-2"
       ],
       "on_demand": {
-        "input_per_1k": 0.003,
-        "output_per_1k": 0.015,
+        "input_per_1m": 3.0,
+        "output_per_1m": 15.0,
         "standard_per_image": null,
         "premium_per_image": null
       },
@@ -1305,8 +1305,8 @@
         "us-west-2"
       ],
       "on_demand": {
-        "input_per_1k": 0.0033,
-        "output_per_1k": 0.0165,
+        "input_per_1m": 3.3,
+        "output_per_1m": 16.5,
         "standard_per_image": null,
         "premium_per_image": null
       },
@@ -1331,8 +1331,8 @@
         "us-west-2"
       ],
       "on_demand": {
-        "input_per_1k": 0.0033,
-        "output_per_1k": 0.0165,
+        "input_per_1m": 3.3,
+        "output_per_1m": 16.5,
         "standard_per_image": null,
         "premium_per_image": null
       },
@@ -1356,8 +1356,8 @@
         "us-west-2"
       ],
       "on_demand": {
-        "input_per_1k": 0.003,
-        "output_per_1k": 0.0015,
+        "input_per_1m": 3.0,
+        "output_per_1m": 1.5,
         "standard_per_image": null,
         "premium_per_image": null
       },
@@ -1379,8 +1379,8 @@
         "us-west-2"
       ],
       "on_demand": {
-        "input_per_1k": 0.003,
-        "output_per_1k": 0.0015,
+        "input_per_1m": 3.0,
+        "output_per_1m": 1.5,
         "standard_per_image": null,
         "premium_per_image": null
       },
@@ -1404,8 +1404,8 @@
         "us-west-2"
       ],
       "on_demand": {
-        "input_per_1k": 0.00712,
-        "output_per_1k": null,
+        "input_per_1m": 7.12,
+        "output_per_1m": null,
         "standard_per_image": null,
         "premium_per_image": null
       },
@@ -1430,8 +1430,8 @@
         "us-west-2"
       ],
       "on_demand": {
-        "input_per_1k": 0.0001,
-        "output_per_1k": null,
+        "input_per_1m": 0.1,
+        "output_per_1m": null,
         "standard_per_image": null,
         "premium_per_image": null
       },
@@ -1456,8 +1456,8 @@
         "us-west-2"
       ],
       "on_demand": {
-        "input_per_1k": 0.00712,
-        "output_per_1k": null,
+        "input_per_1m": 7.12,
+        "output_per_1m": null,
         "standard_per_image": null,
         "premium_per_image": null
       },
@@ -1481,8 +1481,8 @@
         "us-west-2"
       ],
       "on_demand": {
-        "input_per_1k": 0.0001,
-        "output_per_1k": null,
+        "input_per_1m": 0.1,
+        "output_per_1m": null,
         "standard_per_image": null,
         "premium_per_image": null
       },
@@ -1507,8 +1507,8 @@
         "us-west-2"
       ],
       "on_demand": {
-        "input_per_1k": 2e-08,
-        "output_per_1k": null,
+        "input_per_1m": 2e-05,
+        "output_per_1m": null,
         "standard_per_image": null,
         "premium_per_image": null
       },
@@ -1533,8 +1533,8 @@
         "us-west-2"
       ],
       "on_demand": {
-        "input_per_1k": 0.002,
-        "output_per_1k": null,
+        "input_per_1m": 0.002,
+        "output_per_1m": null,
         "standard_per_image": null,
         "premium_per_image": null
       },
@@ -1557,8 +1557,8 @@
         "us-west-2"
       ],
       "on_demand": {
-        "input_per_1k": 0.00135,
-        "output_per_1k": 0.0054,
+        "input_per_1m": 1.35,
+        "output_per_1m": 5.4,
         "standard_per_image": null,
         "premium_per_image": null
       },
@@ -1580,8 +1580,8 @@
         "us-west-2"
       ],
       "on_demand": {
-        "input_per_1k": 0.000597,
-        "output_per_1k": 0.00173,
+        "input_per_1m": 0.597,
+        "output_per_1m": 1.73,
         "standard_per_image": null,
         "premium_per_image": null
       },
@@ -1604,8 +1604,8 @@
         "us-west-2"
       ],
       "on_demand": {
-        "input_per_1k": 0.00062,
-        "output_per_1k": 0.00185,
+        "input_per_1m": 0.62,
+        "output_per_1m": 1.85,
         "standard_per_image": null,
         "premium_per_image": null
       },
@@ -1629,8 +1629,8 @@
         "us-west-2"
       ],
       "on_demand": {
-        "input_per_1k": 9e-05,
-        "output_per_1k": 0.00029,
+        "input_per_1m": 0.09,
+        "output_per_1m": 0.29,
         "standard_per_image": null,
         "premium_per_image": null
       },
@@ -1655,8 +1655,8 @@
         "us-west-2"
       ],
       "on_demand": {
-        "input_per_1k": 0.00023,
-        "output_per_1k": 0.00038,
+        "input_per_1m": 0.23,
+        "output_per_1m": 0.38,
         "standard_per_image": null,
         "premium_per_image": null
       },
@@ -1681,8 +1681,8 @@
         "us-west-2"
       ],
       "on_demand": {
-        "input_per_1k": 4e-05,
-        "output_per_1k": 8e-05,
+        "input_per_1m": 0.04,
+        "output_per_1m": 0.08,
         "standard_per_image": null,
         "premium_per_image": null
       },
@@ -1705,8 +1705,8 @@
         "us-west-2"
       ],
       "on_demand": {
-        "input_per_1k": 0.08,
-        "output_per_1k": null,
+        "input_per_1m": 0.08,
+        "output_per_1m": null,
         "standard_per_image": null,
         "premium_per_image": null
       },
@@ -1728,8 +1728,8 @@
         "us-west-2"
       ],
       "on_demand": {
-        "input_per_1k": 0.00532,
-        "output_per_1k": 0.016,
+        "input_per_1m": 5.32,
+        "output_per_1m": 16.0,
         "standard_per_image": null,
         "premium_per_image": null
       },
@@ -1751,8 +1751,8 @@
         "us-west-2"
       ],
       "on_demand": {
-        "input_per_1k": 0.00072,
-        "output_per_1k": 0.00072,
+        "input_per_1m": 0.72,
+        "output_per_1m": 0.72,
         "standard_per_image": null,
         "premium_per_image": null
       },
@@ -1775,8 +1775,8 @@
         "us-west-2"
       ],
       "on_demand": {
-        "input_per_1k": 0.00072,
-        "output_per_1k": 0.00072,
+        "input_per_1m": 0.72,
+        "output_per_1m": 0.72,
         "standard_per_image": null,
         "premium_per_image": null
       },
@@ -1798,8 +1798,8 @@
         "us-west-2"
       ],
       "on_demand": {
-        "input_per_1k": 0.00022,
-        "output_per_1k": 0.00022,
+        "input_per_1m": 0.22,
+        "output_per_1m": 0.22,
         "standard_per_image": null,
         "premium_per_image": null
       },
@@ -1822,8 +1822,8 @@
         "us-west-2"
       ],
       "on_demand": {
-        "input_per_1k": 0.00022,
-        "output_per_1k": 0.00022,
+        "input_per_1m": 0.22,
+        "output_per_1m": 0.22,
         "standard_per_image": null,
         "premium_per_image": null
       },
@@ -1846,8 +1846,8 @@
         "us-west-2"
       ],
       "on_demand": {
-        "input_per_1k": 0.00016,
-        "output_per_1k": 0.00016,
+        "input_per_1m": 0.16,
+        "output_per_1m": 0.16,
         "standard_per_image": null,
         "premium_per_image": null
       },
@@ -1870,8 +1870,8 @@
         "us-west-2"
       ],
       "on_demand": {
-        "input_per_1k": 0.00016,
-        "output_per_1k": 0.00016,
+        "input_per_1m": 0.16,
+        "output_per_1m": 0.16,
         "standard_per_image": null,
         "premium_per_image": null
       },
@@ -1896,8 +1896,8 @@
         "us-west-2"
       ],
       "on_demand": {
-        "input_per_1k": 0.0001,
-        "output_per_1k": 0.0001,
+        "input_per_1m": 0.1,
+        "output_per_1m": 0.1,
         "standard_per_image": null,
         "premium_per_image": null
       },
@@ -1919,8 +1919,8 @@
         "us-west-2"
       ],
       "on_demand": {
-        "input_per_1k": 0.0001,
-        "output_per_1k": 0.0001,
+        "input_per_1m": 0.1,
+        "output_per_1m": 0.1,
         "standard_per_image": null,
         "premium_per_image": null
       },
@@ -1944,8 +1944,8 @@
         "us-west-2"
       ],
       "on_demand": {
-        "input_per_1k": 0.00015,
-        "output_per_1k": 0.00015,
+        "input_per_1m": 0.15,
+        "output_per_1m": 0.15,
         "standard_per_image": null,
         "premium_per_image": null
       },
@@ -1967,8 +1967,8 @@
         "us-west-2"
       ],
       "on_demand": {
-        "input_per_1k": 0.00015,
-        "output_per_1k": 0.00015,
+        "input_per_1m": 0.15,
+        "output_per_1m": 0.15,
         "standard_per_image": null,
         "premium_per_image": null
       },
@@ -1991,8 +1991,8 @@
         "us-west-2"
       ],
       "on_demand": {
-        "input_per_1k": 0.00072,
-        "output_per_1k": 0.00072,
+        "input_per_1m": 0.72,
+        "output_per_1m": 0.72,
         "standard_per_image": null,
         "premium_per_image": null
       },
@@ -2015,8 +2015,8 @@
         "us-west-2"
       ],
       "on_demand": {
-        "input_per_1k": 0.00072,
-        "output_per_1k": 0.00072,
+        "input_per_1m": 0.72,
+        "output_per_1m": 0.72,
         "standard_per_image": null,
         "premium_per_image": null
       },
@@ -2040,8 +2040,8 @@
         "us-west-2"
       ],
       "on_demand": {
-        "input_per_1k": 0.00072,
-        "output_per_1k": 0.00072,
+        "input_per_1m": 0.72,
+        "output_per_1m": 0.72,
         "standard_per_image": null,
         "premium_per_image": null
       },
@@ -2063,8 +2063,8 @@
         "us-west-2"
       ],
       "on_demand": {
-        "input_per_1k": 0.00072,
-        "output_per_1k": 0.00072,
+        "input_per_1m": 0.72,
+        "output_per_1m": 0.72,
         "standard_per_image": null,
         "premium_per_image": null
       },
@@ -2086,8 +2086,8 @@
         "us-west-2"
       ],
       "on_demand": {
-        "input_per_1k": 0.00265,
-        "output_per_1k": 0.0035,
+        "input_per_1m": 2.65,
+        "output_per_1m": 3.5,
         "standard_per_image": null,
         "premium_per_image": null
       },
@@ -2111,8 +2111,8 @@
         "us-west-2"
       ],
       "on_demand": {
-        "input_per_1k": 0.0003,
-        "output_per_1k": 0.0006,
+        "input_per_1m": 0.3,
+        "output_per_1m": 0.6,
         "standard_per_image": null,
         "premium_per_image": null
       },
@@ -2135,8 +2135,8 @@
         "us-west-2"
       ],
       "on_demand": {
-        "input_per_1k": 0.00024,
-        "output_per_1k": 0.00097,
+        "input_per_1m": 0.24,
+        "output_per_1m": 0.97,
         "standard_per_image": null,
         "premium_per_image": null
       },
@@ -2160,8 +2160,8 @@
         "us-west-2"
       ],
       "on_demand": {
-        "input_per_1k": 0.00017,
-        "output_per_1k": 0.00066,
+        "input_per_1m": 0.17,
+        "output_per_1m": 0.66,
         "standard_per_image": null,
         "premium_per_image": null
       },
@@ -2186,8 +2186,8 @@
         "us-west-2"
       ],
       "on_demand": {
-        "input_per_1k": 0.0003,
-        "output_per_1k": 0.0012,
+        "input_per_1m": 0.3,
+        "output_per_1m": 1.2,
         "standard_per_image": null,
         "premium_per_image": null
       },
@@ -2211,8 +2211,8 @@
         "us-west-2"
       ],
       "on_demand": {
-        "input_per_1k": 0.0003,
-        "output_per_1k": 0.0012,
+        "input_per_1m": 0.3,
+        "output_per_1m": 1.2,
         "standard_per_image": null,
         "premium_per_image": null
       },
@@ -2236,8 +2236,8 @@
         "us-west-2"
       ],
       "on_demand": {
-        "input_per_1k": 0.0003,
-        "output_per_1k": 0.0012,
+        "input_per_1m": 0.3,
+        "output_per_1m": 1.2,
         "standard_per_image": null,
         "premium_per_image": null
       },
@@ -2261,8 +2261,8 @@
         "us-west-2"
       ],
       "on_demand": {
-        "input_per_1k": 0.0004,
-        "output_per_1k": 0.002,
+        "input_per_1m": 0.4,
+        "output_per_1m": 2.0,
         "standard_per_image": null,
         "premium_per_image": null
       },
@@ -2286,8 +2286,8 @@
         "us-west-2"
       ],
       "on_demand": {
-        "input_per_1k": 0.0005,
-        "output_per_1k": 0.0015,
+        "input_per_1m": 0.5,
+        "output_per_1m": 1.5,
         "standard_per_image": null,
         "premium_per_image": null
       },
@@ -2312,8 +2312,8 @@
         "us-west-2"
       ],
       "on_demand": {
-        "input_per_1k": 0.0002,
-        "output_per_1k": 0.0002,
+        "input_per_1m": 0.2,
+        "output_per_1m": 0.2,
         "standard_per_image": null,
         "premium_per_image": null
       },
@@ -2338,8 +2338,8 @@
         "us-west-2"
       ],
       "on_demand": {
-        "input_per_1k": 0.0001,
-        "output_per_1k": 0.0001,
+        "input_per_1m": 0.1,
+        "output_per_1m": 0.1,
         "standard_per_image": null,
         "premium_per_image": null
       },
@@ -2364,8 +2364,8 @@
         "us-west-2"
       ],
       "on_demand": {
-        "input_per_1k": 0.00015,
-        "output_per_1k": 0.00015,
+        "input_per_1m": 0.15,
+        "output_per_1m": 0.15,
         "standard_per_image": null,
         "premium_per_image": null
       },
@@ -2389,8 +2389,8 @@
         "us-west-2"
       ],
       "on_demand": {
-        "input_per_1k": 0.00015,
-        "output_per_1k": 0.0002,
+        "input_per_1m": 0.15,
+        "output_per_1m": 0.2,
         "standard_per_image": null,
         "premium_per_image": null
       },
@@ -2415,8 +2415,8 @@
         "us-west-2"
       ],
       "on_demand": {
-        "input_per_1k": 0.004,
-        "output_per_1k": 0.012,
+        "input_per_1m": 4.0,
+        "output_per_1m": 12.0,
         "standard_per_image": null,
         "premium_per_image": null
       },
@@ -2437,8 +2437,8 @@
         "us-west-2"
       ],
       "on_demand": {
-        "input_per_1k": 0.0005,
-        "output_per_1k": 0.0015,
+        "input_per_1m": 0.5,
+        "output_per_1m": 1.5,
         "standard_per_image": null,
         "premium_per_image": null
       },
@@ -2462,8 +2462,8 @@
         "us-west-2"
       ],
       "on_demand": {
-        "input_per_1k": 0.0005,
-        "output_per_1k": 0.0015,
+        "input_per_1m": 0.5,
+        "output_per_1m": 1.5,
         "standard_per_image": null,
         "premium_per_image": null
       },
@@ -2486,8 +2486,8 @@
         "us-east-1"
       ],
       "on_demand": {
-        "input_per_1k": 0.001,
-        "output_per_1k": 0.003,
+        "input_per_1m": 1.0,
+        "output_per_1m": 3.0,
         "standard_per_image": null,
         "premium_per_image": null
       },
@@ -2511,8 +2511,8 @@
         "us-west-2"
       ],
       "on_demand": {
-        "input_per_1k": 0.00045,
-        "output_per_1k": 0.0007,
+        "input_per_1m": 0.45,
+        "output_per_1m": 0.7,
         "standard_per_image": null,
         "premium_per_image": null
       },
@@ -2536,8 +2536,8 @@
         "us-west-2"
       ],
       "on_demand": {
-        "input_per_1k": 0.002,
-        "output_per_1k": 0.006,
+        "input_per_1m": 2.0,
+        "output_per_1m": 6.0,
         "standard_per_image": null,
         "premium_per_image": null
       },
@@ -2562,8 +2562,8 @@
         "us-west-2"
       ],
       "on_demand": {
-        "input_per_1k": 4e-05,
-        "output_per_1k": 4e-05,
+        "input_per_1m": 0.04,
+        "output_per_1m": 0.04,
         "standard_per_image": null,
         "premium_per_image": null
       },
@@ -2587,8 +2587,8 @@
         "us-west-2"
       ],
       "on_demand": {
-        "input_per_1k": 0.0001,
-        "output_per_1k": 0.0003,
+        "input_per_1m": 0.1,
+        "output_per_1m": 0.3,
         "standard_per_image": null,
         "premium_per_image": null
       },
@@ -2611,8 +2611,8 @@
         "us-west-2"
       ],
       "on_demand": {
-        "input_per_1k": 0.0006,
-        "output_per_1k": 0.0025,
+        "input_per_1m": 0.6,
+        "output_per_1m": 2.5,
         "standard_per_image": null,
         "premium_per_image": null
       },
@@ -2635,8 +2635,8 @@
         "us-west-2"
       ],
       "on_demand": {
-        "input_per_1k": 0.0006,
-        "output_per_1k": 0.003,
+        "input_per_1m": 0.6,
+        "output_per_1m": 3.0,
         "standard_per_image": null,
         "premium_per_image": null
       },
@@ -2661,8 +2661,8 @@
         "us-west-2"
       ],
       "on_demand": {
-        "input_per_1k": 0.0002,
-        "output_per_1k": 0.0006,
+        "input_per_1m": 0.2,
+        "output_per_1m": 0.6,
         "standard_per_image": null,
         "premium_per_image": null
       },
@@ -2687,8 +2687,8 @@
         "us-west-2"
       ],
       "on_demand": {
-        "input_per_1k": 6e-05,
-        "output_per_1k": 0.00024,
+        "input_per_1m": 0.06,
+        "output_per_1m": 0.24,
         "standard_per_image": null,
         "premium_per_image": null
       },
@@ -2712,8 +2712,8 @@
         "us-west-2"
       ],
       "on_demand": {
-        "input_per_1k": 6e-05,
-        "output_per_1k": 0.00023,
+        "input_per_1m": 0.06,
+        "output_per_1m": 0.23,
         "standard_per_image": null,
         "premium_per_image": null
       },
@@ -2737,8 +2737,8 @@
         "us-west-2"
       ],
       "on_demand": {
-        "input_per_1k": 0.00015,
-        "output_per_1k": 0.00065,
+        "input_per_1m": 0.15,
+        "output_per_1m": 0.65,
         "standard_per_image": null,
         "premium_per_image": null
       },
@@ -2762,8 +2762,8 @@
         "us-west-2"
       ],
       "on_demand": {
-        "input_per_1k": 0.000154,
-        "output_per_1k": 0.000618,
+        "input_per_1m": 0.154,
+        "output_per_1m": 0.618,
         "standard_per_image": null,
         "premium_per_image": null
       },
@@ -2787,8 +2787,8 @@
         "us-west-2"
       ],
       "on_demand": {
-        "input_per_1k": 7.2e-05,
-        "output_per_1k": 0.000309,
+        "input_per_1m": 0.072,
+        "output_per_1m": 0.309,
         "standard_per_image": null,
         "premium_per_image": null
       },
@@ -2812,8 +2812,8 @@
         "us-west-2"
       ],
       "on_demand": {
-        "input_per_1k": 0.00015,
-        "output_per_1k": 0.0006,
+        "input_per_1m": 0.15,
+        "output_per_1m": 0.6,
         "standard_per_image": null,
         "premium_per_image": null
       },
@@ -2837,8 +2837,8 @@
         "us-west-2"
       ],
       "on_demand": {
-        "input_per_1k": 7e-05,
-        "output_per_1k": 0.0002,
+        "input_per_1m": 0.07,
+        "output_per_1m": 0.2,
         "standard_per_image": null,
         "premium_per_image": null
       },
@@ -2860,8 +2860,8 @@
         "us-west-2"
       ],
       "on_demand": {
-        "input_per_1k": 0.000227,
-        "output_per_1k": 0.000906,
+        "input_per_1m": 0.227,
+        "output_per_1m": 0.906,
         "standard_per_image": null,
         "premium_per_image": null
       },
@@ -2885,8 +2885,8 @@
         "us-west-2"
       ],
       "on_demand": {
-        "input_per_1k": 0.000154,
-        "output_per_1k": 0.000618,
+        "input_per_1m": 0.154,
+        "output_per_1m": 0.618,
         "standard_per_image": null,
         "premium_per_image": null
       },
@@ -2910,8 +2910,8 @@
         "us-west-2"
       ],
       "on_demand": {
-        "input_per_1k": 0.000154,
-        "output_per_1k": 0.000618,
+        "input_per_1m": 0.154,
+        "output_per_1m": 0.618,
         "standard_per_image": null,
         "premium_per_image": null
       },
@@ -2933,8 +2933,8 @@
         "us-west-2"
       ],
       "on_demand": {
-        "input_per_1k": 0.00045,
-        "output_per_1k": 0.0018,
+        "input_per_1m": 0.45,
+        "output_per_1m": 1.8,
         "standard_per_image": null,
         "premium_per_image": null
       },
@@ -2956,8 +2956,8 @@
         "us-east-1"
       ],
       "on_demand": {
-        "input_per_1k": 0.0005,
-        "output_per_1k": 0.0012,
+        "input_per_1m": 0.5,
+        "output_per_1m": 1.2,
         "standard_per_image": null,
         "premium_per_image": null
       },
@@ -2981,8 +2981,8 @@
         "us-west-2"
       ],
       "on_demand": {
-        "input_per_1k": 0.00015,
-        "output_per_1k": 0.0012,
+        "input_per_1m": 0.15,
+        "output_per_1m": 1.2,
         "standard_per_image": null,
         "premium_per_image": null
       },
@@ -3006,8 +3006,8 @@
         "us-west-2"
       ],
       "on_demand": {
-        "input_per_1k": 0.00053,
-        "output_per_1k": 0.00266,
+        "input_per_1m": 0.53,
+        "output_per_1m": 2.66,
         "standard_per_image": null,
         "premium_per_image": null
       },
@@ -3030,8 +3030,8 @@
         "us-west-2"
       ],
       "on_demand": {
-        "input_per_1k": null,
-        "output_per_1k": null,
+        "input_per_1m": null,
+        "output_per_1m": null,
         "standard_per_image": 0.08,
         "premium_per_image": null
       },
@@ -3055,8 +3055,8 @@
         "us-west-2"
       ],
       "on_demand": {
-        "input_per_1k": null,
-        "output_per_1k": null,
+        "input_per_1m": null,
+        "output_per_1m": null,
         "standard_per_image": 0.4,
         "premium_per_image": null
       },
@@ -3080,8 +3080,8 @@
         "us-west-2"
       ],
       "on_demand": {
-        "input_per_1k": null,
-        "output_per_1k": null,
+        "input_per_1m": null,
+        "output_per_1m": null,
         "standard_per_image": 0.6,
         "premium_per_image": null
       },
@@ -3105,8 +3105,8 @@
         "us-west-2"
       ],
       "on_demand": {
-        "input_per_1k": null,
-        "output_per_1k": null,
+        "input_per_1m": null,
+        "output_per_1m": null,
         "standard_per_image": 0.03,
         "premium_per_image": null
       },
@@ -3130,8 +3130,8 @@
         "us-west-2"
       ],
       "on_demand": {
-        "input_per_1k": null,
-        "output_per_1k": null,
+        "input_per_1m": null,
+        "output_per_1m": null,
         "standard_per_image": 0.07,
         "premium_per_image": null
       },
@@ -3155,8 +3155,8 @@
         "us-west-2"
       ],
       "on_demand": {
-        "input_per_1k": null,
-        "output_per_1k": null,
+        "input_per_1m": null,
+        "output_per_1m": null,
         "standard_per_image": 0.07,
         "premium_per_image": null
       },
@@ -3179,8 +3179,8 @@
         "us-west-2"
       ],
       "on_demand": {
-        "input_per_1k": null,
-        "output_per_1k": null,
+        "input_per_1m": null,
+        "output_per_1m": null,
         "standard_per_image": 0.04,
         "premium_per_image": null
       },
@@ -3204,8 +3204,8 @@
         "us-west-2"
       ],
       "on_demand": {
-        "input_per_1k": null,
-        "output_per_1k": null,
+        "input_per_1m": null,
+        "output_per_1m": null,
         "standard_per_image": 0.07,
         "premium_per_image": null
       },
@@ -3229,8 +3229,8 @@
         "us-west-2"
       ],
       "on_demand": {
-        "input_per_1k": null,
-        "output_per_1k": null,
+        "input_per_1m": null,
+        "output_per_1m": null,
         "standard_per_image": 0.07,
         "premium_per_image": null
       },
@@ -3254,8 +3254,8 @@
         "us-west-2"
       ],
       "on_demand": {
-        "input_per_1k": null,
-        "output_per_1k": null,
+        "input_per_1m": null,
+        "output_per_1m": null,
         "standard_per_image": 0.07,
         "premium_per_image": null
       },
@@ -3279,8 +3279,8 @@
         "us-west-2"
       ],
       "on_demand": {
-        "input_per_1k": null,
-        "output_per_1k": null,
+        "input_per_1m": null,
+        "output_per_1m": null,
         "standard_per_image": 0.07,
         "premium_per_image": null
       },
@@ -3304,8 +3304,8 @@
         "us-west-2"
       ],
       "on_demand": {
-        "input_per_1k": null,
-        "output_per_1k": null,
+        "input_per_1m": null,
+        "output_per_1m": null,
         "standard_per_image": 0.07,
         "premium_per_image": null
       },
@@ -3329,8 +3329,8 @@
         "us-west-2"
       ],
       "on_demand": {
-        "input_per_1k": null,
-        "output_per_1k": null,
+        "input_per_1m": null,
+        "output_per_1m": null,
         "standard_per_image": 0.07,
         "premium_per_image": null
       },
@@ -3353,8 +3353,8 @@
         "us-west-2"
       ],
       "on_demand": {
-        "input_per_1k": null,
-        "output_per_1k": null,
+        "input_per_1m": null,
+        "output_per_1m": null,
         "standard_per_image": 0.14,
         "premium_per_image": null
       },
@@ -3378,8 +3378,8 @@
         "us-west-2"
       ],
       "on_demand": {
-        "input_per_1k": null,
-        "output_per_1k": null,
+        "input_per_1m": null,
+        "output_per_1m": null,
         "standard_per_image": 0.06,
         "premium_per_image": null
       },
@@ -3403,8 +3403,8 @@
         "us-west-2"
       ],
       "on_demand": {
-        "input_per_1k": null,
-        "output_per_1k": null,
+        "input_per_1m": null,
+        "output_per_1m": null,
         "standard_per_image": 0.08,
         "premium_per_image": null
       },
@@ -3428,8 +3428,8 @@
         "us-east-1"
       ],
       "on_demand": {
-        "input_per_1k": 7e-05,
-        "output_per_1k": null,
+        "input_per_1m": 0.07,
+        "output_per_1m": null,
         "standard_per_image": null,
         "premium_per_image": null
       },
@@ -3454,8 +3454,8 @@
         "us-east-1"
       ],
       "on_demand": {
-        "input_per_1k": 7e-05,
-        "output_per_1k": null,
+        "input_per_1m": 0.07,
+        "output_per_1m": null,
         "standard_per_image": null,
         "premium_per_image": null
       },
@@ -3481,8 +3481,8 @@
         "us-west-2"
       ],
       "on_demand": {
-        "input_per_1k": null,
-        "output_per_1k": 0.0075,
+        "input_per_1m": null,
+        "output_per_1m": 7.5,
         "standard_per_image": null,
         "premium_per_image": null
       },
@@ -3505,8 +3505,8 @@
         "us-west-2"
       ],
       "on_demand": {
-        "input_per_1k": 0.00015,
-        "output_per_1k": 0.0006,
+        "input_per_1m": 0.15,
+        "output_per_1m": 0.6,
         "standard_per_image": null,
         "premium_per_image": null
       },
@@ -3530,8 +3530,8 @@
         "us-west-2"
       ],
       "on_demand": {
-        "input_per_1k": 0.0025,
-        "output_per_1k": 0.01,
+        "input_per_1m": 2.5,
+        "output_per_1m": 10.0,
         "standard_per_image": null,
         "premium_per_image": null
       },
@@ -3554,8 +3554,8 @@
         "us-west-2"
       ],
       "on_demand": {
-        "input_per_1k": 0.0006,
-        "output_per_1k": 0.006,
+        "input_per_1m": 0.6,
+        "output_per_1m": 6.0,
         "standard_per_image": null,
         "premium_per_image": null
       },
@@ -3578,8 +3578,8 @@
         "us-west-2"
       ],
       "on_demand": {
-        "input_per_1k": 0.0006,
-        "output_per_1k": 0.0022,
+        "input_per_1m": 0.6,
+        "output_per_1m": 2.2,
         "standard_per_image": null,
         "premium_per_image": null
       },
@@ -3603,8 +3603,8 @@
         "us-west-2"
       ],
       "on_demand": {
-        "input_per_1k": 7e-05,
-        "output_per_1k": 0.0004,
+        "input_per_1m": 0.07,
+        "output_per_1m": 0.4,
         "standard_per_image": null,
         "premium_per_image": null
       },
@@ -3627,8 +3627,8 @@
         "us-west-2"
       ],
       "on_demand": {
-        "input_per_1k": 0.001,
-        "output_per_1k": 0.0032,
+        "input_per_1m": 1.0,
+        "output_per_1m": 3.2,
         "standard_per_image": null,
         "premium_per_image": null
       },

@@ -8,17 +8,17 @@ from catalog_io import empty_on_demand, model_has_price
 # pricing_source remains "manual" — not overwritten by scrape merges.
 PRICE_SEEDS: dict[str, dict] = {
     "meta.llama3-1-405b-instruct-v1:0": {
-        "input_per_1k": 0.00532,
-        "output_per_1k": 0.016,
+        "input_per_1m": 5.32,
+        "output_per_1m": 16.0,
         "notes": "On-demand list price per AWS Bedrock pricing page (batch tiers may differ).",
     },
     "amazon.rerank-v1:0": {
-        "input_per_1k": 0.002,
+        "input_per_1m": 0.002,
         "notes": "Per search unit (Rerank API); aligned with Amazon Rerank 1.0 pricing examples on AWS site.",
     },
     "luma.ray-v2:0": {
-        "input_per_1k": 0.08,
-        "notes": "Video generation billed per second of output; value shown is USD per second (not per 1K tokens).",
+        "input_per_1m": 0.08,
+        "notes": "Video generation billed per second of output; value shown is USD per second (not per 1M tokens).",
     },
 }
 
@@ -34,12 +34,12 @@ def merge_price_seeds_into_catalog(catalog: dict) -> int:
         pricing_type = model["pricing_type"]
         new_slice = {**empty_on_demand(pricing_type), **model.get("on_demand", {})}
         if pricing_type == "token":
-            if seed.get("input_per_1k") is not None:
-                new_slice["input_per_1k"] = seed["input_per_1k"]
-            if seed.get("output_per_1k") is not None:
-                new_slice["output_per_1k"] = seed["output_per_1k"]
-        elif pricing_type == "embedding" and seed.get("input_per_1k") is not None:
-            new_slice["input_per_1k"] = seed["input_per_1k"]
+            if seed.get("input_per_1m") is not None:
+                new_slice["input_per_1m"] = seed["input_per_1m"]
+            if seed.get("output_per_1m") is not None:
+                new_slice["output_per_1m"] = seed["output_per_1m"]
+        elif pricing_type == "embedding" and seed.get("input_per_1m") is not None:
+            new_slice["input_per_1m"] = seed["input_per_1m"]
         if not model_has_price({"on_demand": new_slice, "pricing_type": pricing_type}):
             continue
         model["on_demand"] = new_slice

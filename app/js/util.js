@@ -22,6 +22,7 @@
     if (value === null || value === undefined) {
       return unknownLabel === undefined ? "—" : unknownLabel;
     }
+    if (value >= 1) return `$${value.toFixed(2)}`;
     if (value >= 0.01) return `$${value.toFixed(3)}`;
     if (value >= 0.001) return `$${value.toFixed(4)}`;
     return `$${value.toFixed(5)}`;
@@ -67,7 +68,7 @@
 
   function modelHasPrice(model) {
     const od = model.on_demand || {};
-    return ["input_per_1k", "output_per_1k", "standard_per_image", "premium_per_image"].some(
+    return ["input_per_1m", "output_per_1m", "standard_per_image", "premium_per_image"].some(
       (k) => od[k] != null && Number.isFinite(od[k]),
     );
   }

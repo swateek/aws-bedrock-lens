@@ -14,11 +14,11 @@ def test_fingerprint_changes_when_price_changes():
         {
             "model_id": "a",
             "pricing_type": "token",
-            "on_demand": {"input_per_1k": 0.001, "output_per_1k": 0.002},
+            "on_demand": {"input_per_1m": 1.0, "output_per_1m": 2.0},
         }
     ]
     h1 = pricing_fingerprint(models)
-    models[0]["on_demand"]["input_per_1k"] = 0.002
+    models[0]["on_demand"]["input_per_1m"] = 2.0
     h2 = pricing_fingerprint(models)
     assert h1 != h2
 
@@ -26,11 +26,11 @@ def test_fingerprint_changes_when_price_changes():
 def test_normalize_on_demand_token_shape():
     model = {
         "pricing_type": "token",
-        "on_demand": {"input_per_1k": 0.001, "output_per_1k": 0.002},
+        "on_demand": {"input_per_1m": 1.0, "output_per_1m": 2.0},
     }
     od = normalize_on_demand(model)
     assert od["standard_per_image"] is None
-    assert od["input_per_1k"] == 0.001
+    assert od["input_per_1m"] == 1.0
 
 
 def test_schema_accepts_minimal_v2_catalog():
@@ -63,8 +63,8 @@ def test_schema_accepts_minimal_v2_catalog():
                 "pricing_source": "manual",
                 "regions": ["us-east-1"],
                 "on_demand": {
-                    "input_per_1k": 0.001,
-                    "output_per_1k": 0.002,
+                    "input_per_1m": 1.0,
+                    "output_per_1m": 2.0,
                     "standard_per_image": None,
                     "premium_per_image": None,
                 },
@@ -85,7 +85,7 @@ def test_model_has_price_and_coverage_stats():
 
     model = {
         "pricing_type": "token",
-        "on_demand": {"input_per_1k": 0.001, "output_per_1k": None},
+        "on_demand": {"input_per_1m": 1.0, "output_per_1m": None},
     }
     assert model_has_price(model)
     stats = compute_coverage_stats(
@@ -122,8 +122,8 @@ def test_meaningful_diff_ignores_last_scraped_only():
                 "pricing_source": "manual",
                 "regions": ["us-east-1"],
                 "on_demand": {
-                    "input_per_1k": 0.001,
-                    "output_per_1k": 0.002,
+                    "input_per_1m": 1.0,
+                    "output_per_1m": 2.0,
                     "standard_per_image": None,
                     "premium_per_image": None,
                 },
@@ -163,8 +163,8 @@ def test_meaningful_diff_detects_price_change():
                 "pricing_source": "manual",
                 "regions": ["us-east-1"],
                 "on_demand": {
-                    "input_per_1k": 0.001,
-                    "output_per_1k": 0.002,
+                    "input_per_1m": 1.0,
+                    "output_per_1m": 2.0,
                     "standard_per_image": None,
                     "premium_per_image": None,
                 },
@@ -175,5 +175,5 @@ def test_meaningful_diff_detects_price_change():
         ],
     }
     after = json.loads(json.dumps(before))
-    after["models"][0]["on_demand"]["input_per_1k"] = 0.002
+    after["models"][0]["on_demand"]["input_per_1m"] = 2.0
     assert catalogs_meaningfully_differ(before, after)

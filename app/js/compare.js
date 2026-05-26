@@ -29,9 +29,9 @@
       return parts.length ? parts.join(" · ") : "—";
     }
     if (model.pricing_type === "embedding") {
-      return `${formatPrice(od.input_per_1k)} / 1K in · embedding`;
+      return `${formatPrice(od.input_per_1m)} / 1M in · embedding`;
     }
-    return `${formatPrice(od.input_per_1k)} / ${formatPrice(od.output_per_1k)} · ${formatContext(model.context_window)} · ${(model.modalities || []).join(", ") || "—"}`;
+    return `${formatPrice(od.input_per_1m)} / ${formatPrice(od.output_per_1m)} · ${formatContext(model.context_window)} · ${(model.modalities || []).join(", ") || "—"}`;
   }
 
   function homogeneousType(models) {
@@ -57,31 +57,31 @@
     const kind = homogeneousType(models);
 
     if (kind === "token" || kind === "embedding") {
-      const minIn = minFinite(models.map((m) => m.on_demand?.input_per_1k));
+      const minIn = minFinite(models.map((m) => m.on_demand?.input_per_1m));
       rows.push({
-        label: "Input / 1K",
-        render: (m) => formatPrice(m.on_demand?.input_per_1k, UNKNOWN),
-        best: (m) => isCheapest(m.on_demand?.input_per_1k, minIn),
+        label: "Input / 1M",
+        render: (m) => formatPrice(m.on_demand?.input_per_1m, UNKNOWN),
+        best: (m) => isCheapest(m.on_demand?.input_per_1m, minIn),
       });
 
       const hasOutput = models.some(
-        (m) => m.pricing_type === "token" && m.on_demand?.output_per_1k != null,
+        (m) => m.pricing_type === "token" && m.on_demand?.output_per_1m != null,
       );
       if (hasOutput) {
         const minOut = minFinite(
           models
             .filter((m) => m.pricing_type === "token")
-            .map((m) => m.on_demand?.output_per_1k),
+            .map((m) => m.on_demand?.output_per_1m),
         );
         rows.push({
-          label: "Output / 1K",
+          label: "Output / 1M",
           render: (m) =>
             m.pricing_type === "embedding"
               ? "—"
-              : formatPrice(m.on_demand?.output_per_1k, UNKNOWN),
+              : formatPrice(m.on_demand?.output_per_1m, UNKNOWN),
           best: (m) =>
             m.pricing_type === "token" &&
-            isCheapest(m.on_demand?.output_per_1k, minOut),
+            isCheapest(m.on_demand?.output_per_1m, minOut),
         });
       }
     } else if (kind === "image") {
