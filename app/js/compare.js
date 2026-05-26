@@ -122,11 +122,14 @@
         render: (m) => (m.modalities || []).join(", ") || "—",
       },
       {
-        label: "Regions",
+        label: "Available regions",
         render: (m) => {
-          const n = (m.regions || []).length;
-          return n === 1 ? "1 region" : `${n} regions`;
+          const list = escapeHtml(
+            (m.regions || []).slice().sort().join(", ") || "—",
+          );
+          return `<span class="region-list">${list}</span>`;
         },
+        html: true,
       },
     );
 

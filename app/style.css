@@ -422,7 +422,8 @@ body {
   color: var(--accent);
 }
 
-.compare-table .shared-regions {
+.compare-table .shared-regions,
+.compare-table .region-list {
   font-family: var(--font-mono);
   font-size: 0.78rem;
   word-break: break-word;
