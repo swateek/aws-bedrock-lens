@@ -29,7 +29,7 @@ AWS Bedrock Lens needs **on-demand list prices** mapped to **Bedrock `model_id`*
 | **Codex on Amazon Bedrock** | No separate `model_id`; documented under `meta.products` |
 | Frontier GPT models (limited preview) | Often listed with `availability: preview` and null prices until AWS publishes SKUs |
 
-**Process:** PR review for `data/pricing.json`, use scrape PRs only to update `pricing_source: "auto"` rows.
+**Process:** Review `data/pricing.json` on manual edits; weekly automation commits `pricing_source: "auto"` updates directly to `main` when prices or inventory meaningfully change.
 
 ## Model inventory: committed snapshot (`data/model-inventory.snapshot.json`)
 

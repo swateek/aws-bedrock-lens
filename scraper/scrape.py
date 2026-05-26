@@ -212,7 +212,7 @@ def main() -> int:
         f"inventory {stats['inventory_coverage_pct']}% of AWS "
         f"({stats['models_known_to_aws']} known)"
     )
-    print(f"PR-worthy changes: {'yes' if meaningful else 'no (metadata/scrape only)'}")
+    print(f"Commit-worthy changes: {'yes' if meaningful else 'no (metadata/scrape only)'}")
     return 0
 
 
