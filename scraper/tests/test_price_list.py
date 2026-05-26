@@ -84,3 +84,57 @@ def test_extract_token_prices_fixture():
     assert updated == 1
     assert matched == 1
     assert catalog["models"][0]["pricing_source"] == "auto"
+
+
+def test_merge_promotes_manual_when_prices_unchanged():
+    index = {
+        "products": {
+            "prod-in": {
+                "attributes": {
+                    "servicename": "Claude 3 Opus (Amazon Bedrock Edition)",
+                    "usagetype": "USE1_InputTokenCount-Units",
+                }
+            },
+            "prod-out": {
+                "attributes": {
+                    "servicename": "Claude 3 Opus (Amazon Bedrock Edition)",
+                    "usagetype": "USE1_OutputTokenCount-Units",
+                }
+            },
+        },
+        "terms": {
+            "OnDemand": {
+                "prod-in": {
+                    "term1": {
+                        "priceDimensions": {
+                            "dim1": {"pricePerUnit": {"USD": "15.0"}}
+                        }
+                    }
+                },
+                "prod-out": {
+                    "term1": {
+                        "priceDimensions": {
+                            "dim1": {"pricePerUnit": {"USD": "75.0"}}
+                        }
+                    }
+                },
+            }
+        },
+    }
+    catalog = {
+        "models": [
+            {
+                "model_id": "anthropic.claude-3-opus-20240229-v1:0",
+                "display_name": "Claude 3 Opus",
+                "pricing_type": "token",
+                "pricing_source": "manual",
+                "on_demand": {"input_per_1k": 0.015, "output_per_1k": 0.075},
+            }
+        ]
+    }
+    updated, matched, _warnings = merge_price_list_into_catalog(
+        catalog, index=index, region="us-east-1"
+    )
+    assert matched == 1
+    assert updated == 0
+    assert catalog["models"][0]["pricing_source"] == "auto"

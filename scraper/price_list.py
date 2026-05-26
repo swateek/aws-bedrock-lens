@@ -152,11 +152,11 @@ def merge_price_list_into_catalog(
         if prices.get("output_per_1k") is not None:
             new_slice["output_per_1k"] = prices["output_per_1k"]
 
+        model["pricing_source"] = "auto"
         if old == new_slice:
             continue
 
         model["on_demand"] = new_slice
-        model["pricing_source"] = "auto"
         updated += 1
 
     catalog.setdefault("meta", {})["price_list_region"] = region

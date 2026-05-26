@@ -903,7 +903,7 @@
         "text"
       ],
       "notes": null,
-      "pricing_source": "manual",
+      "pricing_source": "auto",
       "availability": "ga",
       "alternate_ids": []
     },
@@ -928,7 +928,7 @@
         "text"
       ],
       "notes": null,
-      "pricing_source": "manual",
+      "pricing_source": "auto",
       "availability": "ga",
       "alternate_ids": []
     },
@@ -1029,7 +1029,7 @@
         "text"
       ],
       "notes": null,
-      "pricing_source": "manual",
+      "pricing_source": "auto",
       "availability": "ga",
       "alternate_ids": []
     },
@@ -3640,11 +3640,11 @@
     }
   ],
   "scrape": {
-    "models_matched": 52,
+    "models_matched": 55,
     "models_in_catalog": 146,
     "models_with_prices": 64,
     "models_known_to_aws": 142,
-    "coverage_pct": 36,
+    "coverage_pct": 38,
     "price_coverage_pct": 44,
     "inventory_coverage_pct": 100,
     "warnings": [
