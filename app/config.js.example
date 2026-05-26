@@ -1,0 +1,3 @@
+// Copy for local dev: cp app/config.js.example app/config.js
+// Leave empty for local dev (avoids polluting production analytics)
+window.GA_MEASUREMENT_ID = '';

@@ -4,6 +4,10 @@ set -euo pipefail
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 cd "$ROOT"
 
+if [ ! -f app/config.js ]; then
+  cp app/config.js.example app/config.js
+fi
+
 rm -rf _site
 mkdir -p _site
 cp -r app/* _site/

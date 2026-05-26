@@ -157,3 +157,22 @@ See [LICENSE](LICENSE).
 ## Live URL
 
 [https://swateek.github.io/aws-bedrock-lens/](https://swateek.github.io/aws-bedrock-lens/)
+
+## Analytics (Google Analytics 4)
+
+Page views and filter interactions (provider, type, pricing filter, model selection, compare) are tracked in production via GA4.
+
+**One-time setup:**
+
+1. In [Google Analytics](https://analytics.google.com/), create a property and add a **Web** data stream for `https://swateek.github.io/aws-bedrock-lens/`.
+2. Copy the **Measurement ID** (`G-XXXXXXXXXX`).
+3. Add repository secret `GA_MEASUREMENT_ID` (Settings → Secrets → Actions). Redeploy Pages (push to `main` or re-run the deploy workflow).
+4. Verify in GA4 **Reports → Realtime** after visiting the live site and using filters or compare.
+
+Local dev leaves `GA_MEASUREMENT_ID` empty in `app/config.js` so analytics are disabled:
+
+```bash
+cp app/config.js.example app/config.js
+```
+
+`make preview` copies the example automatically when `app/config.js` is missing.

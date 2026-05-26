@@ -7,6 +7,9 @@
 
 _site
 
+# Frontend GA config (generated locally or by Pages deploy)
+app/config.js
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[codz]

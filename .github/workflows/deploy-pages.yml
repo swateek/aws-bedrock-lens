@@ -26,6 +26,18 @@ jobs:
         with:
           ref: main
 
+      - name: Generate config.js
+        env:
+          GA_MEASUREMENT_ID: ${{ secrets.GA_MEASUREMENT_ID }}
+        run: |
+          python3 -c "
+          import os
+          ga_id = os.environ.get('GA_MEASUREMENT_ID', '') or ''
+          with open('app/config.js', 'w') as f:
+              f.write('// Generated at deploy time — do not commit\n')
+              f.write(f'window.GA_MEASUREMENT_ID = {ga_id!r};\n')
+          "
+
       - name: Build site artifact (app at site root)
         run: |
           mkdir -p _site
