@@ -10,6 +10,18 @@ from typing import Any
 import httpx
 
 from catalog_io import empty_on_demand
+from inventory import (
+    inventory_record_from_stub,
+    provision_catalog_entries,
+    stub_catalog_entry_from_model_id,
+)
+from model_id_inference import (
+    _normalize_key,
+    build_name_lookup,
+    clean_service_name,
+    infer_model_id,
+    is_legacy_service_name,
+)
 
 PRICE_LIST_BASE = "https://pricing.us-east-1.amazonaws.com"
 FOUNDATION_MODELS_INDEX = (
@@ -17,7 +29,6 @@ FOUNDATION_MODELS_INDEX = (
 )
 OVERRIDES_PATH = Path(__file__).resolve().parent / "sku_overrides.json"
 
-_SERVICE_SUFFIX_RE = re.compile(r"\s*\(Amazon Bedrock Edition\)\s*$", re.IGNORECASE)
 _EXCLUDED_UT = re.compile(
     r"batch|flex|priority|latency|provisioned|reserved|cache|global|"
     r"customization|custom model",
@@ -30,28 +41,6 @@ def _load_overrides() -> dict[str, str]:
         return {}
     data = json.loads(OVERRIDES_PATH.read_text(encoding="utf-8"))
     return dict(data.get("service_name_to_model_id", {}))
-
-
-def clean_service_name(name: str) -> str:
-    return _SERVICE_SUFFIX_RE.sub("", name).strip()
-
-
-def _normalize_key(text: str) -> str:
-    return re.sub(r"[^a-z0-9]+", "", text.lower())
-
-
-def build_name_lookup(catalog: dict) -> dict[str, str]:
-    """Map normalized display/model names and overrides to model_id."""
-    lookup: dict[str, str] = {}
-    for override_name, model_id in _load_overrides().items():
-        lookup[_normalize_key(override_name)] = model_id
-    for model in catalog.get("models", []):
-        model_id = model["model_id"]
-        for name in (model.get("display_name"), model_id.split(".")[-1]):
-            if name:
-                lookup[_normalize_key(name)] = model_id
-        lookup[_normalize_key(model_id)] = model_id
-    return lookup
 
 
 def resolve_service_to_model_id(service_name: str, lookup: dict[str, str]) -> str | None:
@@ -144,6 +133,8 @@ def extract_prices_from_index(
         service_name = attrs.get("servicename", "")
         model_id = resolve_service_to_model_id(service_name, lookup)
         if not model_id:
+            model_id = infer_model_id(service_name, catalog)
+        if not model_id:
             continue
 
         price_usd = _price_from_on_demand(on_demand, product_id)
@@ -183,6 +174,58 @@ def extract_prices_from_index(
     return by_model
 
 
+def enumerate_on_demand_service_names(index: dict[str, Any]) -> dict[str, set[str]]:
+    """Return cleaned servicename -> usagetypes with OnDemand pricing."""
+    products = index.get("products", {})
+    on_demand = index.get("terms", {}).get("OnDemand", {})
+    by_name: dict[str, set[str]] = {}
+    for product_id, product in products.items():
+        if product_id not in on_demand:
+            continue
+        attrs = product.get("attributes", {})
+        service_name = clean_service_name(attrs.get("servicename", ""))
+        if not service_name:
+            continue
+        by_name.setdefault(service_name, set()).add(attrs.get("usagetype", ""))
+    return by_name
+
+
+def discover_models_from_price_list(
+    catalog: dict,
+    index: dict[str, Any],
+) -> tuple[int, list[dict[str, Any]], list[str]]:
+    """Infer and provision catalog entries for unknown Price List servicenames."""
+    warnings: list[str] = []
+    lookup = build_name_lookup(catalog)
+    by_id = {m["model_id"]: m for m in catalog.get("models", [])}
+    new_entries: list[dict[str, Any]] = []
+    new_records: list[dict[str, Any]] = []
+
+    for service_name in sorted(enumerate_on_demand_service_names(index)):
+        if resolve_service_to_model_id(service_name, lookup):
+            continue
+        if is_legacy_service_name(service_name):
+            continue
+        model_id = infer_model_id(service_name, catalog)
+        if not model_id:
+            warnings.append(f"Unmapped Price List service (add override): {service_name}")
+            continue
+        if model_id in by_id:
+            continue
+        entry = stub_catalog_entry_from_model_id(
+            model_id,
+            display_name=clean_service_name(service_name),
+        )
+        new_entries.append(entry)
+        new_records.append(inventory_record_from_stub(entry))
+        by_id[model_id] = entry
+        lookup[_normalize_key(service_name)] = model_id
+        warnings.append(f"Auto-provisioned catalog entry from Price List: {model_id}")
+
+    added = provision_catalog_entries(catalog, new_entries)
+    return added, new_records, warnings
+
+
 def extract_token_prices_from_index(
     index: dict[str, Any],
     catalog: dict,
@@ -213,8 +256,10 @@ def merge_price_list_into_catalog(
 
     for model_id, prices in prices_by_model.items():
         if model_id not in by_id:
-            warnings.append(f"Price list matched unknown model_id: {model_id}")
-            continue
+            entry = stub_catalog_entry_from_model_id(model_id)
+            provision_catalog_entries(catalog, [entry])
+            by_id[model_id] = entry
+            warnings.append(f"Auto-provisioned catalog entry from Price List: {model_id}")
         model = by_id[model_id]
         pricing_type = model["pricing_type"]
         if not any(v is not None for v in prices.values()):

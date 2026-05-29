@@ -24,9 +24,21 @@ from catalog_io import (
     update_scrape_manifest,
     write_catalog,
 )
-from inventory import SNAPSHOT_PATH_NAME, merge_inventory_into_catalog
-from parser import extract_rows
-from price_list import merge_price_list_into_catalog
+from inventory import (
+    SNAPSHOT_PATH_NAME,
+    append_inventory_records,
+    inventory_record_from_stub,
+    merge_inventory_into_catalog,
+    provision_catalog_entries,
+    stub_catalog_entry_from_model_id,
+)
+from model_id_inference import infer_model_id, is_legacy_service_name
+from parser import extract_rows, normalize_name
+from price_list import (
+    discover_models_from_price_list,
+    fetch_price_list_index,
+    merge_price_list_into_catalog,
+)
 from price_seeds import merge_price_seeds_into_catalog
 
 USER_AGENT = "aws-bedrock-lens-scraper/2.0 (+https://github.com/swateek/aws-bedrock-lens)"
@@ -82,7 +94,38 @@ def merge_scraped_prices(catalog: dict, scraped_rows: list[dict]) -> tuple[int, 
     return updated, unchanged, warnings
 
 
-def run_html_scrape(catalog: dict) -> tuple[list[dict], list[str], list[str]]:
+def provision_from_html_unmapped(
+    catalog: dict,
+    unmapped_names: list[str],
+) -> tuple[list[dict], list[str]]:
+    """Create catalog stubs for HTML table rows that inference can resolve."""
+    warnings: list[str] = []
+    snapshot_records: list[dict] = []
+    new_entries: list[dict] = []
+    by_id = {m["model_id"]: m for m in catalog.get("models", [])}
+
+    for raw_name in unmapped_names:
+        name = normalize_name(raw_name)
+        if is_legacy_service_name(name):
+            continue
+        model_id = infer_model_id(name, catalog)
+        if not model_id:
+            warnings.append(f"Unmapped pricing page row: {name}")
+            continue
+        if model_id in by_id:
+            continue
+        entry = stub_catalog_entry_from_model_id(model_id, display_name=name)
+        new_entries.append(entry)
+        snapshot_records.append(inventory_record_from_stub(entry))
+        by_id[model_id] = entry
+        warnings.append(f"Auto-provisioned catalog entry from HTML: {model_id}")
+
+    if new_entries:
+        provision_catalog_entries(catalog, new_entries)
+    return snapshot_records, warnings
+
+
+def run_html_scrape(catalog: dict) -> tuple[list[dict], list[str], list[dict]]:
     warnings: list[str] = []
     print(f"Fetching {PRICING_URL} ...")
     try:
@@ -99,13 +142,15 @@ def run_html_scrape(catalog: dict) -> tuple[list[dict], list[str], list[str]]:
 
     soup = BeautifulSoup(response.text, "html.parser")
     scraped_rows, unmapped = extract_rows(soup, catalog)
-    for name in unmapped:
-        warnings.append(f"Unmapped pricing page row: {name}")
+    html_records, provision_warnings = provision_from_html_unmapped(catalog, unmapped)
+    warnings.extend(provision_warnings)
+    if html_records:
+        scraped_rows, _unmapped = extract_rows(soup, catalog)
     if not scraped_rows:
         warnings.append("No pricing rows parsed from HTML (JS placeholders or layout change).")
     else:
         print(f"Parsed {len(scraped_rows)} model(s) with literal prices from page.")
-    return scraped_rows, warnings, unmapped
+    return scraped_rows, warnings, html_records
 
 
 def main() -> int:
@@ -150,9 +195,22 @@ def main() -> int:
         else:
             warnings.append(f"No inventory snapshot at {args.snapshot}; run sync-models first.")
 
+    snapshot_records_to_append: list[dict] = []
+
     if not args.skip_price_list:
         try:
-            pl_updated, pl_matched, pl_warnings = merge_price_list_into_catalog(catalog)
+            pl_index = fetch_price_list_index()
+            disc_added, disc_records, disc_warnings = discover_models_from_price_list(
+                catalog, pl_index
+            )
+            warnings.extend(disc_warnings)
+            snapshot_records_to_append.extend(disc_records)
+            if disc_added:
+                print(f"Price list discovery: {disc_added} new catalog entries")
+
+            pl_updated, pl_matched, pl_warnings = merge_price_list_into_catalog(
+                catalog, index=pl_index
+            )
             catalog["meta"]["last_price_list_at"] = today
             warnings.extend(pl_warnings)
             print(f"Price list: {pl_matched} mapped, {pl_updated} rows updated")
@@ -177,8 +235,9 @@ def main() -> int:
 
     html_updated = 0
     if not args.skip_html:
-        scraped_rows, html_warnings, _unmapped = run_html_scrape(catalog)
+        scraped_rows, html_warnings, html_records = run_html_scrape(catalog)
         warnings.extend(html_warnings)
+        snapshot_records_to_append.extend(html_records)
         if scraped_rows:
             html_updated, _unchanged, merge_warnings = merge_scraped_prices(catalog, scraped_rows)
             warnings.extend(merge_warnings)
@@ -194,6 +253,13 @@ def main() -> int:
         print("Pricing values changed — updated pricing_updated_at.")
     else:
         print("No pricing value changes — pricing_updated_at unchanged.")
+
+    if snapshot_records_to_append and args.snapshot.exists():
+        snap_added = append_inventory_records(args.snapshot, snapshot_records_to_append)
+        if snap_added:
+            inventory = load_snapshot(args.snapshot)
+            catalog["meta"]["models_known_to_aws"] = len(inventory)
+            print(f"Inventory snapshot: appended {snap_added} discovered model(s)")
 
     update_scrape_manifest(catalog, warnings=warnings)
     write_catalog(catalog)

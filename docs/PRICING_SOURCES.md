@@ -28,10 +28,19 @@ AWS Bedrock Lens needs **on-demand list prices** mapped to **Bedrock `model_id`*
 | Aspect | Assessment |
 |--------|------------|
 | Coverage | **High** for foundation models listed in the snapshot file. |
-| Accuracy | Depends on snapshot freshness; update via PR when AWS publishes new models on public docs/pages. |
-| Maintenance | Manual snapshot updates when the catalog needs new `model_id` rows before pricing appears. |
+| Accuracy | Depends on snapshot freshness; the scrape pipeline can append discovered models after Price List inference. |
+| Maintenance | Optional manual snapshot refresh for rich metadata; weekly scrape auto-appends models discovered from Price List. |
 | Auth | **None** — no `ListFoundationModels` calls in CI or default Makefile targets. |
-| Verdict | **Baseline** — `make sync-models` merges the snapshot into `data/pricing.json`. |
+| Verdict | **Baseline** — `make sync-models` merges the snapshot; `make scrape` also runs discovery (`scraper/model_id_inference.py` + `discover_models_from_price_list`). |
+
+## Model discovery (Price List + HTML)
+
+| Aspect | Assessment |
+|--------|------------|
+| Coverage | **Medium–high** for models AWS publishes to `AmazonBedrockFoundationModels` on-demand SKUs. |
+| Accuracy | Infers `model_id` from service names via overrides, catalog names, and provider rules (e.g. `Claude Opus 4.8` → `anthropic.claude-opus-4-8`). |
+| Maintenance | Extend `scraper/model_id_inference.py` when AWS introduces new naming patterns; use `sku_overrides.json` for ambiguous legacy names. |
+| Verdict | **Implemented** — runs after inventory merge, before price/HTML merges; syncs new rows back into the inventory snapshot. |
 
 ## Option B: AWS Price List public index (`AmazonBedrockFoundationModels`)
 
@@ -82,12 +91,14 @@ Public index URL (no credentials): `https://pricing.us-east-1.amazonaws.com/offe
 ```mermaid
 flowchart LR
   Snapshot[Inventory snapshot] --> Catalog[data/pricing.json]
+  Discovery[Price List discovery] --> Catalog
+  Discovery --> Snapshot
   HTML[HTML scrape] --> Catalog
   Manual[Manual seed] --> Catalog
   PL[Price List public index] --> Catalog
 ```
 
-1. **Now:** Snapshot merge (`sync_models.py`) + **two** public Price List offers (`AmazonBedrockFoundationModels` + `AmazonBedrock` in `bedrock_offer.py`) + HTML scrape + variant propagation + small `price_seeds.py` for batch-only / video SKUs + coverage UI (`price_coverage_pct`, `inventory_coverage_pct`). Entire pipeline is credential-free.
+1. **Now:** Snapshot merge (`sync_models.py`) + Price List **discovery** (infer `model_id`, provision catalog + snapshot) + **two** public Price List offers (`AmazonBedrockFoundationModels` + `AmazonBedrock` in `bedrock_offer.py`) + HTML scrape (with unmapped-row provisioning) + variant propagation + small `price_seeds.py` for batch-only / video SKUs + coverage UI (`price_coverage_pct`, `inventory_coverage_pct`). Entire pipeline is credential-free.
 2. **Next:** Regional price dimensions beyond us-east-1; optional headless browser for `{priceOf}` placeholders if AWS stops publishing SKUs.
 3. **Later:** Optional agreement-offer spot-checks if you have account access (not in CI).
 4. **Never:** Imply 100% priced catalog without reporting `scrape.price_coverage_pct`.

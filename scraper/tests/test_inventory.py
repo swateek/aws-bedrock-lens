@@ -1,7 +1,10 @@
 from inventory import (
+    append_inventory_records,
     infer_pricing_type,
+    inventory_record_from_stub,
     inventory_record_to_catalog_entry,
     merge_inventory_into_catalog,
+    stub_catalog_entry_from_model_id,
 )
 
 
@@ -72,3 +75,22 @@ def test_inventory_record_to_catalog_entry():
     )
     assert entry["model_id"] == "openai.gpt-oss-20b-1:0"
     assert entry["availability"] == "ga"
+
+
+def test_append_inventory_records_idempotent(tmp_path):
+    snapshot = tmp_path / "snapshot.json"
+    snapshot.write_text(
+        '{"synced_at":"2026-01-01","models":[{"modelId":"existing.model"}]}\n',
+        encoding="utf-8",
+    )
+    stub = stub_catalog_entry_from_model_id(
+        "anthropic.claude-opus-4-8",
+        display_name="Claude Opus 4.8",
+    )
+    record = inventory_record_from_stub(stub)
+    assert append_inventory_records(snapshot, [record]) == 1
+    assert append_inventory_records(snapshot, [record]) == 0
+    data = __import__("json").loads(snapshot.read_text(encoding="utf-8"))
+    ids = {m["modelId"] for m in data["models"]}
+    assert "anthropic.claude-opus-4-8" in ids
+    assert len(ids) == 2
