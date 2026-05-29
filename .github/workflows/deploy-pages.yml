@@ -5,51 +5,12 @@ on:
     branches: [main]
   workflow_dispatch:
 
-permissions:
-  contents: read
-  pages: write
-  id-token: write
-
-concurrency:
-  group: pages
-  cancel-in-progress: true
-
 jobs:
   deploy:
-    runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/main'
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    steps:
-      - uses: actions/checkout@v6
-        with:
-          ref: main
-
-      - name: Generate config.js
-        env:
-          GA_MEASUREMENT_ID: ${{ secrets.GA_MEASUREMENT_ID }}
-        run: |
-          python3 -c "
-          import os
-          ga_id = os.environ.get('GA_MEASUREMENT_ID', '') or ''
-          with open('app/config.js', 'w') as f:
-              f.write('// Generated at deploy time — do not commit\n')
-              f.write(f'window.GA_MEASUREMENT_ID = {ga_id!r};\n')
-          "
-
-      - name: Build site artifact (app at site root)
-        run: |
-          mkdir -p _site
-          cp -r app/* _site/
-          cp -r data _site/data
-          cp .nojekyll _site/
-          # Production paths: data/ at repo root (not ../data/)
-          sed -i 's|name="data-base" content="../data/"|name="data-base" content="data/"|g' _site/index.html
-
-      - uses: actions/upload-pages-artifact@v5
-        with:
-          path: _site
-
-      - id: deployment
-        uses: actions/deploy-pages@v5
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    uses: ./.github/workflows/deploy-pages-reusable.yml
+    secrets: inherit
