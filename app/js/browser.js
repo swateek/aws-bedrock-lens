@@ -46,11 +46,7 @@
         const total = scrape.models_in_catalog ?? catalog.models.length;
         const known = scrape.models_known_to_aws ?? total;
         const detail = `${priced}/${total} models have on-demand list prices (${scrape.price_coverage_pct ?? 0}%). ${known} foundation models known to AWS.`;
-        const productNote =
-          (catalog.meta.products || []).length > 0
-            ? " Codex on Bedrock is a product (see README), not a separate model_id."
-            : "";
-        els.coverageText.textContent = detail + productNote;
+        els.coverageText.textContent = detail;
       }
     }
   }

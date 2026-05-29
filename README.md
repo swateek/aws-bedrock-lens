@@ -12,7 +12,7 @@ A static tool for comparing AWS Bedrock foundation models by pricing, capabiliti
 - Full foundation-model inventory from a committed snapshot (`data/model-inventory.snapshot.json`)
 - Price coverage banner — models with on-demand list prices vs catalog size
 - Filter by provider, type, and whether list pricing is known
-- OpenAI foundation models (`openai.gpt-oss-*`); Codex documented as a Bedrock product (not a separate `model_id`)
+- OpenAI foundation models (`openai.gpt-oss-*`);
 
 ## Project structure
 

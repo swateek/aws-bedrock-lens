@@ -21,14 +21,6 @@ AWS Bedrock Lens needs **on-demand list prices** mapped to **Bedrock `model_id`*
 | Maintenance | Quarterly review or when AWS announces changes. |
 | Verdict | **Required** for preview models and gaps. Mark entries `pricing_source: "manual"`. |
 
-## Codex vs OpenAI foundation models
-
-| Item | In catalog? |
-|------|-------------|
-| `openai.gpt-oss-120b-1:0`, `openai.gpt-oss-20b-1:0`, safeguard variants | Yes — from committed inventory snapshot (`data/model-inventory.snapshot.json`) |
-| **Codex on Amazon Bedrock** | No separate `model_id`; documented under `meta.products` |
-| Frontier GPT models (limited preview) | Often listed with `availability: preview` and null prices until AWS publishes SKUs |
-
 **Process:** Review `data/pricing.json` on manual edits; weekly automation commits `pricing_source: "auto"` updates directly to `main` when prices or inventory meaningfully change.
 
 ## Model inventory: committed snapshot (`data/model-inventory.snapshot.json`)
