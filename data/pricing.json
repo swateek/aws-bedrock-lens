@@ -6,7 +6,7 @@
     "pricing_updated_at": "2026-05-29",
     "parser_version": "2",
     "last_inventory_sync_at": "2026-05-29",
-    "models_known_to_aws": 142,
+    "models_known_to_aws": 143,
     "last_price_list_at": "2026-05-29",
     "price_list_region": "us-east-1",
     "products": [
@@ -57,6 +57,29 @@
       "on_demand": {
         "input_per_1m": 0.2,
         "output_per_1m": 0.4,
+        "standard_per_image": null,
+        "premium_per_image": null
+      },
+      "context_window": null,
+      "modalities": [
+        "text"
+      ],
+      "notes": null,
+      "availability": "ga",
+      "alternate_ids": []
+    },
+    {
+      "model_id": "ai21.jamba-instruct-v1:0",
+      "display_name": "Jamba-Instruct",
+      "provider": "AI21 Labs",
+      "pricing_type": "token",
+      "pricing_source": "auto",
+      "regions": [
+        "us-east-1"
+      ],
+      "on_demand": {
+        "input_per_1m": 0.5,
+        "output_per_1m": 0.7,
         "standard_per_image": null,
         "premium_per_image": null
       },
@@ -935,6 +958,29 @@
       "alternate_ids": []
     },
     {
+      "model_id": "anthropic.claude-3-7-sonnet-20250219-v1:0",
+      "display_name": "Claude 3.7 Sonnet",
+      "provider": "Anthropic",
+      "pricing_type": "token",
+      "pricing_source": "auto",
+      "regions": [
+        "us-east-1"
+      ],
+      "on_demand": {
+        "input_per_1m": 3.0,
+        "output_per_1m": 15.0,
+        "standard_per_image": null,
+        "premium_per_image": null
+      },
+      "context_window": null,
+      "modalities": [
+        "text"
+      ],
+      "notes": null,
+      "availability": "ga",
+      "alternate_ids": []
+    },
+    {
       "model_id": "anthropic.claude-3-haiku-20240307-v1:0",
       "display_name": "Claude 3 Haiku",
       "provider": "Anthropic",
@@ -1268,6 +1314,29 @@
       "alternate_ids": []
     },
     {
+      "model_id": "anthropic.claude-opus-4-8",
+      "display_name": "Claude Opus 4.8",
+      "provider": "Anthropic",
+      "pricing_type": "token",
+      "pricing_source": "auto",
+      "regions": [
+        "us-east-1"
+      ],
+      "on_demand": {
+        "input_per_1m": 5.5,
+        "output_per_1m": 27.5,
+        "standard_per_image": null,
+        "premium_per_image": null
+      },
+      "context_window": null,
+      "modalities": [
+        "text"
+      ],
+      "notes": null,
+      "availability": "ga",
+      "alternate_ids": []
+    },
+    {
       "model_id": "anthropic.claude-sonnet-4-20250514-v1:0",
       "display_name": "Claude Sonnet 4",
       "provider": "Anthropic",
@@ -1346,6 +1415,29 @@
       "alternate_ids": []
     },
     {
+      "model_id": "cohere.command-light-text-v14",
+      "display_name": "Cohere Generate Model - Command-Light",
+      "provider": "Cohere",
+      "pricing_type": "token",
+      "pricing_source": "auto",
+      "regions": [
+        "us-east-1"
+      ],
+      "on_demand": {
+        "input_per_1m": 8.56,
+        "output_per_1m": 6.85,
+        "standard_per_image": null,
+        "premium_per_image": null
+      },
+      "context_window": null,
+      "modalities": [
+        "text"
+      ],
+      "notes": null,
+      "availability": "ga",
+      "alternate_ids": []
+    },
+    {
       "model_id": "cohere.command-r-plus-v1:0",
       "display_name": "Command R+",
       "provider": "Cohere",
@@ -1391,6 +1483,29 @@
       "notes": null,
       "pricing_source": "auto",
       "availability": "legacy",
+      "alternate_ids": []
+    },
+    {
+      "model_id": "cohere.command-text-v14",
+      "display_name": "Cohere Generate Model - Command",
+      "provider": "Cohere",
+      "pricing_type": "token",
+      "pricing_source": "auto",
+      "regions": [
+        "us-east-1"
+      ],
+      "on_demand": {
+        "input_per_1m": 49.5,
+        "output_per_1m": 39.6,
+        "standard_per_image": null,
+        "premium_per_image": null
+      },
+      "context_window": null,
+      "modalities": [
+        "text"
+      ],
+      "notes": null,
+      "availability": "ga",
       "alternate_ids": []
     },
     {
@@ -1715,6 +1830,52 @@
         "text"
       ],
       "notes": "Video generation billed per second of output; value shown is USD per second (not per 1K tokens).",
+      "availability": "ga",
+      "alternate_ids": []
+    },
+    {
+      "model_id": "meta.llama2-13b-chat-v1",
+      "display_name": "Meta Llama 2 Chat 13B",
+      "provider": "Meta",
+      "pricing_type": "token",
+      "pricing_source": "auto",
+      "regions": [
+        "us-east-1"
+      ],
+      "on_demand": {
+        "input_per_1m": 0.75,
+        "output_per_1m": 1.0,
+        "standard_per_image": null,
+        "premium_per_image": null
+      },
+      "context_window": null,
+      "modalities": [
+        "text"
+      ],
+      "notes": null,
+      "availability": "ga",
+      "alternate_ids": []
+    },
+    {
+      "model_id": "meta.llama2-70b-chat-v1",
+      "display_name": "Meta Llama 2 Chat 70B",
+      "provider": "Meta",
+      "pricing_type": "token",
+      "pricing_source": "auto",
+      "regions": [
+        "us-east-1"
+      ],
+      "on_demand": {
+        "input_per_1m": 1.95,
+        "output_per_1m": 2.56,
+        "standard_per_image": null,
+        "premium_per_image": null
+      },
+      "context_window": null,
+      "modalities": [
+        "text"
+      ],
+      "notes": null,
       "availability": "ga",
       "alternate_ids": []
     },
@@ -3045,6 +3206,29 @@
       "alternate_ids": []
     },
     {
+      "model_id": "stability.sd3-large-v1:0",
+      "display_name": "Stable Diffusion 3 Large v1.0",
+      "provider": "Stability AI",
+      "pricing_type": "token",
+      "pricing_source": "manual",
+      "regions": [
+        "us-east-1"
+      ],
+      "on_demand": {
+        "input_per_1m": null,
+        "output_per_1m": null,
+        "standard_per_image": null,
+        "premium_per_image": null
+      },
+      "context_window": null,
+      "modalities": [
+        "text"
+      ],
+      "notes": null,
+      "availability": "ga",
+      "alternate_ids": []
+    },
+    {
       "model_id": "stability.stable-conservative-upscale-v1:0",
       "display_name": "Stable Image Conservative Upscale",
       "provider": "Stability AI",
@@ -3642,12 +3826,12 @@
     }
   ],
   "scrape": {
-    "models_matched": 141,
-    "models_in_catalog": 146,
-    "models_with_prices": 146,
-    "models_known_to_aws": 142,
-    "coverage_pct": 97,
-    "price_coverage_pct": 100,
+    "models_matched": 148,
+    "models_in_catalog": 154,
+    "models_with_prices": 153,
+    "models_known_to_aws": 143,
+    "coverage_pct": 96,
+    "price_coverage_pct": 99,
     "inventory_coverage_pct": 100,
     "warnings": [
       "Low automated coverage: most AWS prices use JS placeholders; curate data/pricing.json manually or add a Price List API source.",
@@ -3699,7 +3883,15 @@
       "No catalog entry for scraped model: Cohere Command",
       "No catalog entry for scraped model: Cohere Command - Light",
       "No catalog entry for scraped model: Llama 2 Chat (13B)",
-      "No catalog entry for scraped model: Llama 2 Chat (70B)"
+      "No catalog entry for scraped model: Llama 2 Chat (70B)",
+      "Auto-provisioned catalog entry from Price List: anthropic.claude-opus-4-8",
+      "Auto-provisioned catalog entry from Price List: cohere.command-text-v14",
+      "Auto-provisioned catalog entry from Price List: meta.llama2-70b-chat-v1",
+      "Auto-provisioned catalog entry from Price List: meta.llama2-13b-chat-v1",
+      "Auto-provisioned catalog entry from Price List: anthropic.claude-3-7-sonnet-20250219-v1:0",
+      "Auto-provisioned catalog entry from Price List: cohere.command-light-text-v14",
+      "Auto-provisioned catalog entry from Price List: stability.sd3-large-v1:0",
+      "Auto-provisioned catalog entry from Price List: ai21.jamba-instruct-v1:0"
     ]
   }
 }

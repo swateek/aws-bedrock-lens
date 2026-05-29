@@ -46,11 +46,7 @@
         const total = scrape.models_in_catalog ?? catalog.models.length;
         const known = scrape.models_known_to_aws ?? total;
         const detail = `${priced}/${total} models have on-demand list prices (${scrape.price_coverage_pct ?? 0}%). ${known} foundation models known to AWS.`;
-        const productNote =
-          (catalog.meta.products || []).length > 0
-            ? " Codex on Bedrock is a product (see README), not a separate model_id."
-            : "";
-        els.coverageText.textContent = detail + productNote;
+        els.coverageText.textContent = detail;
       }
     }
   }
@@ -68,12 +64,26 @@
     }
   }
 
+  function populateRegionFilter(catalog, select) {
+    const regions = [
+      ...new Set(catalog.models.flatMap((m) => m.regions || [])),
+    ].sort();
+    while (select.options.length > 1) select.remove(1);
+    for (const r of regions) {
+      const opt = document.createElement("option");
+      opt.value = r;
+      opt.textContent = r;
+      select.appendChild(opt);
+    }
+  }
+
   function getFilteredModels(catalog, filters) {
     const q = filters.search.trim().toLowerCase();
-    const { provider, type, hasPricing } = filters;
+    const { provider, region, type, hasPricing } = filters;
 
     return catalog.models.filter((m) => {
       if (provider && m.provider !== provider) return false;
+      if (region && !(m.regions || []).includes(region)) return false;
       if (type && m.pricing_type !== type) return false;
       if (hasPricing === "yes" && !modelHasPrice(m)) return false;
       if (hasPricing === "no" && modelHasPrice(m)) return false;
@@ -156,6 +166,7 @@
   global.BedrockLens.browser = {
     updateMetaUI,
     populateProviderFilter,
+    populateRegionFilter,
     getFilteredModels,
     renderModelList,
     updateCompareBar,

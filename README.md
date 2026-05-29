@@ -12,7 +12,7 @@ A static tool for comparing AWS Bedrock foundation models by pricing, capabiliti
 - Full foundation-model inventory from a committed snapshot (`data/model-inventory.snapshot.json`)
 - Price coverage banner — models with on-demand list prices vs catalog size
 - Filter by provider, type, and whether list pricing is known
-- OpenAI foundation models (`openai.gpt-oss-*`); Codex documented as a Bedrock product (not a separate `model_id`)
+- OpenAI foundation models (`openai.gpt-oss-*`);
 
 ## Project structure
 
@@ -142,13 +142,14 @@ flowchart LR
 
 ### Practical flow when AWS adds a new provider/model
 
-1. **Inventory update**: when AWS publishes new models on public pages, update `data/model-inventory.snapshot.json` (manual PR) and run `make sync-models`.
-2. **Merge + validate**: run `make scrape` then `make validate`.
+1. **Weekly scrape** (`make scrape` or the `update-pricing.yml` workflow) discovers new models from the AWS Price List index via `scraper/model_id_inference.py`, provisions catalog rows, and appends them to `data/model-inventory.snapshot.json` when possible.
+2. **Merge + validate**: run `make validate` after scraping.
 3. **Check pricing status**:
    - If Price List/HTML contains the model, price fields are auto-populated.
-   - If not, model appears with `Price unknown` until AWS publishes pricing.
-4. **Only if needed**: add name mapping in `scraper/sku_overrides.json` when AWS service names do not match catalog names.
-5. Commit `data/model-inventory.snapshot.json`, `data/pricing.json`, and `data/pricing.embed.js`.
+   - If not, the model may still appear with `Price unknown` until AWS publishes on-demand SKUs.
+4. **Only if needed**: add a name mapping in `scraper/sku_overrides.json` when AWS uses an ambiguous service name (e.g. dated Claude IDs) that inference cannot derive.
+5. **Optional**: refresh `data/model-inventory.snapshot.json` from a fuller inventory source for rich metadata (regions, modalities); discovery fills gaps between snapshot updates.
+6. Commit `data/model-inventory.snapshot.json`, `data/pricing.json`, and `data/pricing.embed.js` when they change.
 
 ## License
 

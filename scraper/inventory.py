@@ -2,10 +2,14 @@
 
 from __future__ import annotations
 
+import json
 import re
+from datetime import date
+from pathlib import Path
 from typing import Any
 
 from catalog_io import empty_on_demand
+from model_id_inference import display_name_for_model_id, provider_for_model_id
 
 SNAPSHOT_PATH_NAME = "model-inventory.snapshot.json"
 
@@ -127,3 +131,94 @@ def merge_inventory_into_catalog(
 
     catalog["models"] = sorted(by_id.values(), key=lambda m: m["model_id"])
     return added, updated, warnings
+
+
+def stub_catalog_entry_from_model_id(
+    model_id: str,
+    *,
+    display_name: str | None = None,
+    provider: str | None = None,
+    regions: list[str] | None = None,
+) -> dict[str, Any]:
+    """Minimal catalog row for models discovered from Price List or HTML."""
+    pricing_type = infer_pricing_type(model_id, ["TEXT"], ["TEXT"])
+    label = display_name or display_name_for_model_id(model_id)
+    return {
+        "model_id": model_id,
+        "display_name": label,
+        "provider": provider or provider_for_model_id(model_id),
+        "pricing_type": pricing_type,
+        "pricing_source": "manual",
+        "regions": sorted(regions or ["us-east-1"]),
+        "on_demand": empty_on_demand(pricing_type),
+        "context_window": None,
+        "modalities": infer_modalities(["TEXT"], ["TEXT"]),
+        "notes": None,
+        "availability": "ga",
+        "alternate_ids": [],
+    }
+
+
+def inventory_record_from_stub(entry: dict[str, Any]) -> dict[str, Any]:
+    """Snapshot-shaped record for a provisioned catalog entry."""
+    return {
+        "modelId": entry["model_id"],
+        "modelName": entry.get("display_name") or entry["model_id"],
+        "providerName": entry.get("provider", "Unknown"),
+        "inputModalities": ["TEXT"],
+        "outputModalities": ["TEXT"]
+        if entry.get("pricing_type") == "token"
+        else (["IMAGE"] if entry.get("pricing_type") == "image" else ["EMBEDDING"]),
+        "responseStreamingSupported": entry.get("pricing_type") == "token",
+        "customizationsSupported": [],
+        "inferenceTypesSupported": ["ON_DEMAND"],
+        "modelLifecycle": {"status": "ACTIVE"},
+        "regions": list(entry.get("regions") or ["us-east-1"]),
+    }
+
+
+def append_inventory_records(
+    snapshot_path: Path,
+    records: list[dict[str, Any]],
+) -> int:
+    """Append new modelId rows to the inventory snapshot (idempotent)."""
+    if not records:
+        return 0
+    if snapshot_path.exists():
+        data = json.loads(snapshot_path.read_text(encoding="utf-8"))
+    else:
+        data = {"synced_at": None, "regions_scanned": ["us-east-1"], "models": []}
+    existing = {m["modelId"] for m in data.get("models", [])}
+    added = 0
+    for record in records:
+        mid = record["modelId"]
+        if mid in existing:
+            continue
+        data.setdefault("models", []).append(record)
+        existing.add(mid)
+        added += 1
+    if added:
+        data["synced_at"] = date.today().isoformat()
+        data["models"] = sorted(data["models"], key=lambda m: m["modelId"])
+        snapshot_path.write_text(
+            json.dumps(data, indent=2, ensure_ascii=False) + "\n",
+            encoding="utf-8",
+        )
+    return added
+
+
+def provision_catalog_entries(
+    catalog: dict,
+    entries: list[dict[str, Any]],
+) -> int:
+    """Insert stub catalog entries; skip existing model_id."""
+    by_id = {m["model_id"]: m for m in catalog.get("models", [])}
+    added = 0
+    for entry in entries:
+        mid = entry["model_id"]
+        if mid in by_id:
+            continue
+        by_id[mid] = entry
+        added += 1
+    catalog["models"] = sorted(by_id.values(), key=lambda m: m["model_id"])
+    return added

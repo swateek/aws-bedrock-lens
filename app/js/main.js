@@ -14,6 +14,7 @@
     lastUpdated: $("last-updated"),
     search: $("search"),
     filterProvider: $("filter-provider"),
+    filterRegion: $("filter-region"),
     filterType: $("filter-type"),
     filterHasPricing: $("filter-has-pricing"),
     modelList: $("model-list"),
@@ -34,6 +35,7 @@
     return {
       search: els.search.value,
       provider: els.filterProvider.value,
+      region: els.filterRegion.value,
       type: els.filterType.value,
       hasPricing: els.filterHasPricing?.value || "",
     };
@@ -102,6 +104,12 @@
       });
       refreshList();
     });
+    els.filterRegion.addEventListener("change", () => {
+      global.BedrockLens.util.trackEvent("filter_region_change", {
+        region: els.filterRegion.value,
+      });
+      refreshList();
+    });
     els.filterType.addEventListener("change", () => {
       global.BedrockLens.util.trackEvent("filter_type_change", {
         type: els.filterType.value,
@@ -135,6 +143,7 @@
       catalog,
       els.filterProvider,
     );
+    global.BedrockLens.browser.populateRegionFilter(catalog, els.filterRegion);
 
     const validIds = new Set(catalog.models.map((m) => m.model_id));
     const fromUrl = global.BedrockLens.urlState.parseSelection(
