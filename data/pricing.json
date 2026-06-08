@@ -2,12 +2,12 @@
   "meta": {
     "schema_version": "2.1",
     "source": "https://aws.amazon.com/bedrock/pricing/",
-    "last_scraped_at": "2026-06-01",
-    "pricing_updated_at": "2026-06-01",
+    "last_scraped_at": "2026-06-08",
+    "pricing_updated_at": "2026-06-08",
     "parser_version": "2",
-    "last_inventory_sync_at": "2026-06-01",
+    "last_inventory_sync_at": "2026-06-08",
     "models_known_to_aws": 143,
-    "last_price_list_at": "2026-06-01",
+    "last_price_list_at": "2026-06-08",
     "price_list_region": "us-east-1",
     "products": [
       {
@@ -19,7 +19,7 @@
       }
     ],
     "bedrock_offer_region": "us-east-1",
-    "last_bedrock_offer_at": "2026-06-01"
+    "last_bedrock_offer_at": "2026-06-08"
   },
   "models": [
     {
@@ -3891,7 +3891,9 @@
       "Auto-provisioned catalog entry from Price List: anthropic.claude-3-7-sonnet-20250219-v1:0",
       "Auto-provisioned catalog entry from Price List: cohere.command-light-text-v14",
       "Auto-provisioned catalog entry from Price List: stability.sd3-large-v1:0",
-      "Auto-provisioned catalog entry from Price List: ai21.jamba-instruct-v1:0"
+      "Auto-provisioned catalog entry from Price List: ai21.jamba-instruct-v1:0",
+      "Unmapped pricing page row: GPT-5.5",
+      "Unmapped pricing page row: GPT-5.4"
     ]
   }
 }
