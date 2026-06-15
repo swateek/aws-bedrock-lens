@@ -2,12 +2,12 @@
   "meta": {
     "schema_version": "2.1",
     "source": "https://aws.amazon.com/bedrock/pricing/",
-    "last_scraped_at": "2026-06-08",
-    "pricing_updated_at": "2026-06-08",
+    "last_scraped_at": "2026-06-15",
+    "pricing_updated_at": "2026-06-15",
     "parser_version": "2",
-    "last_inventory_sync_at": "2026-06-08",
+    "last_inventory_sync_at": "2026-06-15",
     "models_known_to_aws": 143,
-    "last_price_list_at": "2026-06-08",
+    "last_price_list_at": "2026-06-15",
     "price_list_region": "us-east-1",
     "products": [
       {
@@ -19,7 +19,7 @@
       }
     ],
     "bedrock_offer_region": "us-east-1",
-    "last_bedrock_offer_at": "2026-06-08"
+    "last_bedrock_offer_at": "2026-06-15"
   },
   "models": [
     {
@@ -3893,7 +3893,12 @@
       "Auto-provisioned catalog entry from Price List: stability.sd3-large-v1:0",
       "Auto-provisioned catalog entry from Price List: ai21.jamba-instruct-v1:0",
       "Unmapped pricing page row: GPT-5.5",
-      "Unmapped pricing page row: GPT-5.4"
+      "Unmapped pricing page row: GPT-5.4",
+      "Unmapped Price List service (add override): Claude Fable 5",
+      "Unmapped Price List service (add override): Maize",
+      "Unmapped pricing page row: Gemma 4 31B",
+      "Unmapped pricing page row: Gemma 4 26B A4B",
+      "Unmapped pricing page row: Gemma 4 E2B"
     ]
   }
 }
