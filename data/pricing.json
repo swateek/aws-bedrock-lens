@@ -2,12 +2,12 @@
   "meta": {
     "schema_version": "2.1",
     "source": "https://aws.amazon.com/bedrock/pricing/",
-    "last_scraped_at": "2026-06-15",
-    "pricing_updated_at": "2026-06-15",
+    "last_scraped_at": "2026-06-22",
+    "pricing_updated_at": "2026-06-22",
     "parser_version": "2",
-    "last_inventory_sync_at": "2026-06-15",
+    "last_inventory_sync_at": "2026-06-22",
     "models_known_to_aws": 143,
-    "last_price_list_at": "2026-06-15",
+    "last_price_list_at": "2026-06-22",
     "price_list_region": "us-east-1",
     "products": [
       {
@@ -19,7 +19,7 @@
       }
     ],
     "bedrock_offer_region": "us-east-1",
-    "last_bedrock_offer_at": "2026-06-15"
+    "last_bedrock_offer_at": "2026-06-22"
   },
   "models": [
     {
@@ -3898,7 +3898,22 @@
       "Unmapped Price List service (add override): Maize",
       "Unmapped pricing page row: Gemma 4 31B",
       "Unmapped pricing page row: Gemma 4 26B A4B",
-      "Unmapped pricing page row: Gemma 4 E2B"
+      "Unmapped pricing page row: Gemma 4 E2B",
+      "Unmapped pricing page row: Grok 4.3",
+      "Unmapped pricing page row: Index Storage",
+      "Unmapped pricing page row: Multimodal Document Parsing (managed parser)",
+      "Unmapped pricing page row: Embeddings Generation (managed model)",
+      "Unmapped pricing page row: Standard Retrieval (Retrieve API)",
+      "Unmapped pricing page row: Re-ranking (managed reranker)*",
+      "Unmapped pricing page row: Agentic Retrieval \u2014 Managed LLM planning**",
+      "Unmapped pricing page row: Contextual grounding checks**",
+      "Unmapped pricing page row: Content filters (text content only)",
+      "Unmapped pricing page row: Prompt attack (text content only) ***",
+      "Unmapped pricing page row: Standard Retrieval",
+      "Unmapped pricing page row: Re-ranking (managed reranker)",
+      "Unmapped pricing page row: Monthly Total",
+      "Unmapped pricing page row: Agentic Retrieve API calls",
+      "Unmapped pricing page row: Underlying Retrieve API calls"
     ]
   }
 }
