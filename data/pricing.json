@@ -2,12 +2,12 @@
   "meta": {
     "schema_version": "2.1",
     "source": "https://aws.amazon.com/bedrock/pricing/",
-    "last_scraped_at": "2026-07-13",
-    "pricing_updated_at": "2026-07-13",
+    "last_scraped_at": "2026-07-20",
+    "pricing_updated_at": "2026-07-20",
     "parser_version": "2",
-    "last_inventory_sync_at": "2026-07-13",
+    "last_inventory_sync_at": "2026-07-20",
     "models_known_to_aws": 143,
-    "last_price_list_at": "2026-07-13",
+    "last_price_list_at": "2026-07-20",
     "price_list_region": "us-east-1",
     "products": [
       {
@@ -19,7 +19,7 @@
       }
     ],
     "bedrock_offer_region": "us-east-1",
-    "last_bedrock_offer_at": "2026-07-13"
+    "last_bedrock_offer_at": "2026-07-20"
   },
   "models": [
     {
@@ -3915,7 +3915,10 @@
       "Unmapped pricing page row: Agentic Retrieve API calls",
       "Unmapped pricing page row: Underlying Retrieve API calls",
       "Unmapped Price List service (add override): Claude Mythos 5",
-      "Unmapped Price List service (add override): Claude Sonnet 5"
+      "Unmapped Price List service (add override): Claude Sonnet 5",
+      "Unmapped pricing page row: GPT-5.6 Sol",
+      "Unmapped pricing page row: GPT-5.6 Terra",
+      "Unmapped pricing page row: GPT-5.6 Luna"
     ]
   }
 }
