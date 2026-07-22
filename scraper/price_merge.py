@@ -80,6 +80,9 @@ def facts_to_catalog_fields(
             )
             if fill_gaps_only:
                 continue
+            # Prefer higher-confidence non-zero rate over a later conflicting SKU.
+            if fact.rate_usd <= existing:
+                continue
         if fill_gaps_only and existing is not None:
             continue
         if existing is None:
