@@ -9,7 +9,6 @@ from typing import Any
 
 import httpx
 
-from catalog_io import empty_on_demand
 from inventory import (
     inventory_record_from_stub,
     provision_catalog_entries,
@@ -22,15 +21,21 @@ from model_id_inference import (
     infer_model_id,
     is_legacy_service_name,
 )
+from price_merge import apply_price_facts, facts_to_catalog_fields
+from sku_facts import extract_fm_facts
 
 PRICE_LIST_BASE = "https://pricing.us-east-1.amazonaws.com"
+# Combined all-regions index (products carry attributes.regionCode)
 FOUNDATION_MODELS_INDEX = (
-    f"{PRICE_LIST_BASE}/offers/v1.0/aws/AmazonBedrockFoundationModels/current/us-east-1/index.json"
+    f"{PRICE_LIST_BASE}/offers/v1.0/aws/AmazonBedrockFoundationModels/current/index.json"
+)
+FOUNDATION_MODELS_INDEX_REGIONAL = (
+    f"{PRICE_LIST_BASE}/offers/v1.0/aws/AmazonBedrockFoundationModels/current/{{region}}/index.json"
 )
 OVERRIDES_PATH = Path(__file__).resolve().parent / "sku_overrides.json"
 
 _EXCLUDED_UT = re.compile(
-    r"batch|flex|priority|latency|provisioned|reserved|cache|global|"
+    r"latency|provisioned|reserved|"
     r"customization|custom model",
     re.IGNORECASE,
 )
@@ -118,59 +123,41 @@ def extract_prices_from_index(
     index: dict[str, Any],
     catalog: dict,
 ) -> dict[str, dict[str, float | None]]:
-    """Return model_id -> on_demand fields from Foundation Models OnDemand SKUs."""
-    lookup = build_name_lookup(catalog)
-    products = index.get("products", {})
-    on_demand = index.get("terms", {}).get("OnDemand", {})
+    """Return model_id -> on_demand fields from Foundation Models OnDemand SKUs.
 
+    Prefers us-east-1 on_demand tier; falls back to first available on_demand slice.
+    """
+    warnings: list[str] = []
+    facts = extract_fm_facts(index, warnings=warnings)
+    grouped = facts_to_catalog_fields(facts, catalog, warnings=warnings)
     by_model: dict[str, dict[str, float | None]] = {}
-
-    for product_id, product in products.items():
-        if product_id not in on_demand:
+    for model_id, region_payload in grouped.items():
+        fields: dict[str, float] = {}
+        # Prefer us-east-1 on_demand, then any on_demand, then any tier
+        preferred = None
+        if "us-east-1" in region_payload and "on_demand" in region_payload["us-east-1"]:
+            preferred = region_payload["us-east-1"]["on_demand"]
+        else:
+            for tiers in region_payload.values():
+                if "on_demand" in tiers:
+                    preferred = tiers["on_demand"]
+                    break
+            if preferred is None:
+                for tiers in region_payload.values():
+                    preferred = next(iter(tiers.values()), None)
+                    if preferred:
+                        break
+        if not preferred:
             continue
-        attrs = product.get("attributes", {})
-        usagetype = attrs.get("usagetype", "")
-        service_name = attrs.get("servicename", "")
-        model_id = resolve_service_to_model_id(service_name, lookup)
-        if not model_id:
-            model_id = infer_model_id(service_name, catalog)
-        if not model_id:
-            continue
-
-        price_usd = _price_from_on_demand(on_demand, product_id)
-        if price_usd is None:
-            continue
-
-        entry = by_model.setdefault(
-            model_id,
-            {
-                "input_per_1m": None,
-                "output_per_1m": None,
-                "standard_per_image": None,
-                "premium_per_image": None,
-            },
-        )
-
-        model = next((m for m in catalog.get("models", []) if m["model_id"] == model_id), None)
-        ptype = model.get("pricing_type", "token") if model else "token"
-
-        if ptype == "token" and is_on_demand_token_usagetype(usagetype):
-            field = _token_field(usagetype)
-            if field:
-                entry[field] = round(price_usd, 6)
-        elif ptype == "embedding":
-            if is_on_demand_rerank_usagetype(usagetype):
-                entry["input_per_1m"] = price_usd
-            elif is_on_demand_embedding_usagetype(usagetype) or is_on_demand_token_usagetype(
-                usagetype
-            ):
-                per_1m = round(price_usd, 6) if "tokencount" in usagetype.lower() else price_usd
-                if entry["input_per_1m"] is None:
-                    entry["input_per_1m"] = per_1m
-        elif ptype == "image" and is_on_demand_image_usagetype(usagetype):
-            if entry["standard_per_image"] is None:
-                entry["standard_per_image"] = price_usd
-
+        fields = preferred.get("fields", {})
+        by_model[model_id] = {
+            "input_per_1m": fields.get("input_per_1m"),
+            "output_per_1m": fields.get("output_per_1m"),
+            "standard_per_image": fields.get("standard_per_image"),
+            "premium_per_image": fields.get("premium_per_image"),
+            "per_second": fields.get("per_second"),
+            "per_search_unit": fields.get("per_search_unit"),
+        }
     return by_model
 
 
@@ -243,64 +230,31 @@ def merge_price_list_into_catalog(
     *,
     index: dict[str, Any] | None = None,
     region: str = "us-east-1",
+    regions_allowlist: set[str] | None = None,
 ) -> tuple[int, int, list[str]]:
-    """Apply Price List prices; set pricing_source to auto when matched."""
+    """Apply Price List prices; set pricing_source to price_list when matched."""
     warnings: list[str] = []
     if index is None:
         index = fetch_price_list_index()
 
-    prices_by_model = extract_prices_from_index(index, catalog)
-    by_id = {m["model_id"]: m for m in catalog["models"]}
-    updated = 0
-    skipped = 0
+    facts = extract_fm_facts(
+        index,
+        region=region,
+        regions_allowlist=regions_allowlist,
+        warnings=warnings,
+    )
+    updated, matched = apply_price_facts(
+        catalog,
+        facts,
+        fill_gaps_only=False,
+        source_label="price_list",
+        warnings=warnings,
+    )
 
-    for model_id, prices in prices_by_model.items():
-        if model_id not in by_id:
-            entry = stub_catalog_entry_from_model_id(model_id)
-            provision_catalog_entries(catalog, [entry])
-            by_id[model_id] = entry
-            warnings.append(f"Auto-provisioned catalog entry from Price List: {model_id}")
-        model = by_id[model_id]
-        pricing_type = model["pricing_type"]
-        if not any(v is not None for v in prices.values()):
-            continue
-
-        if pricing_type == "token":
-            if prices.get("input_per_1m") is None and prices.get("output_per_1m") is None:
-                continue
-        elif pricing_type == "embedding":
-            if prices.get("input_per_1m") is None:
-                skipped += 1
-                continue
-        elif pricing_type == "image":
-            if prices.get("standard_per_image") is None and prices.get("premium_per_image") is None:
-                skipped += 1
-                continue
-        else:
-            skipped += 1
-            continue
-
-        old = dict(model.get("on_demand", {}))
-        new_slice = {**empty_on_demand(pricing_type), **old}
-        if pricing_type == "token":
-            if prices.get("input_per_1m") is not None:
-                new_slice["input_per_1m"] = prices["input_per_1m"]
-            if prices.get("output_per_1m") is not None:
-                new_slice["output_per_1m"] = prices["output_per_1m"]
-        elif pricing_type == "embedding":
-            new_slice["input_per_1m"] = prices["input_per_1m"]
-        elif pricing_type == "image" and prices.get("standard_per_image") is not None:
-            new_slice["standard_per_image"] = prices["standard_per_image"]
-
-        model["pricing_source"] = "auto"
-        if old == new_slice:
-            continue
-
-        model["on_demand"] = new_slice
-        updated += 1
-
-    catalog.setdefault("meta", {})["price_list_region"] = region
-    return updated, len(prices_by_model), warnings
+    meta = catalog.setdefault("meta", {})
+    meta["default_price_region"] = region
+    meta["price_list_region"] = region
+    return updated, matched, warnings
 
 
 def main() -> int:

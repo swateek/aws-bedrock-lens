@@ -16,6 +16,7 @@ from catalog_io import (
     validate_catalog,
     write_catalog,
 )
+from golden_rates import validate_golden_canaries
 
 INVENTORY_STALE_DAYS = 90
 
@@ -86,6 +87,13 @@ def main() -> int:
     stale = _warn_stale_inventory(data.get("meta", {}))
     if stale:
         print(f"WARN: {stale}", file=sys.stderr)
+
+    golden_failures = validate_golden_canaries(data)
+    if golden_failures:
+        for msg in golden_failures:
+            print(f"ERROR: Golden canary: {msg}", file=sys.stderr)
+        return 1
+    print("OK: golden canary rates")
 
     print(f"OK: {path} matches schema v{data['meta']['schema_version']}")
     print(

@@ -103,7 +103,7 @@ python3 -m venv .venv && .venv/bin/pip install -r scraper/requirements.txt
 make validate   # schema + embed in sync
 make test
 make sync-models          # merge inventory snapshot into pricing.json
-make scrape               # inventory + Price List + HTML scrape
+make scrape               # inventory + Price List merge + HTML QA
 make scrape-all           # sync-models then scrape
 make price-list           # Price List public index only
 ```
@@ -120,7 +120,7 @@ make price-list           # Price List public index only
 
 ## Pricing automation
 
-Pipeline order: inventory snapshot merge → AWS Price List public index → HTML scrape. No AWS credentials. See [docs/PRICING_SOURCES.md](docs/PRICING_SOURCES.md).
+Pipeline order: inventory snapshot → AWS Price List (FM + Bedrock offer) → manual seeds → HTML QA (no price writes). No AWS credentials. See [docs/PRICING_SOURCES.md](docs/PRICING_SOURCES.md).
 
 - **Probe:** `make probe` or `python scraper/aws_pricing_probe.py`
 - **CI:** Weekly `update-pricing.yml` uses the committed inventory snapshot and public pricing sources (no AWS secrets)
@@ -137,7 +137,8 @@ flowchart LR
 
 1. Merge model inventory from the committed snapshot.
 2. Merge on-demand pricing from the AWS Price List public index.
-3. Backfill additional rows from HTML tables with literal prices.
+3. Gap-fill from AmazonBedrock offer index; manual seeds for remaining gaps.
+4. HTML marketing page is used for QA only (warnings on mismatch).
 4. Recompute coverage metrics and regenerate `pricing.embed.js`.
 
 ### Practical flow when AWS adds a new provider/model
@@ -145,7 +146,7 @@ flowchart LR
 1. **Weekly scrape** (`make scrape` or the `update-pricing.yml` workflow) discovers new models from the AWS Price List index via `scraper/model_id_inference.py`, provisions catalog rows, and appends them to `data/model-inventory.snapshot.json` when possible.
 2. **Merge + validate**: run `make validate` after scraping.
 3. **Check pricing status**:
-   - If Price List/HTML contains the model, price fields are auto-populated.
+   - If Price List contains the model, price fields are auto-populated (`pricing_source: price_list`).
    - If not, the model may still appear with `Price unknown` until AWS publishes on-demand SKUs.
 4. **Only if needed**: add a name mapping in `scraper/sku_overrides.json` when AWS uses an ambiguous service name (e.g. dated Claude IDs) that inference cannot derive.
 5. **Optional**: refresh `data/model-inventory.snapshot.json` from a fuller inventory source for rich metadata (regions, modalities); discovery fills gaps between snapshot updates.

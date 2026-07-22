@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Sync inventory, merge Price List + HTML scrape into data/pricing.json."""
+"""Sync inventory, merge Price List into data/pricing.json."""
 
 from __future__ import annotations
 
@@ -24,6 +24,7 @@ from catalog_io import (
     update_scrape_manifest,
     write_catalog,
 )
+from golden_rates import validate_golden_canaries
 from inventory import (
     SNAPSHOT_PATH_NAME,
     append_inventory_records,
@@ -39,9 +40,10 @@ from price_list import (
     fetch_price_list_index,
     merge_price_list_into_catalog,
 )
+from price_merge import qa_check_html_prices
 from price_seeds import merge_price_seeds_into_catalog
 
-USER_AGENT = "aws-bedrock-lens-scraper/2.0 (+https://github.com/swateek/aws-bedrock-lens)"
+USER_AGENT = "aws-bedrock-lens-scraper/3.0 (+https://github.com/swateek/aws-bedrock-lens)"
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
 SNAPSHOT_PATH = REPO_ROOT / "data" / SNAPSHOT_PATH_NAME
@@ -52,46 +54,6 @@ def load_snapshot(path: Path = SNAPSHOT_PATH) -> list[dict]:
         return []
     data = json.loads(path.read_text(encoding="utf-8"))
     return data.get("models", [])
-
-
-def merge_scraped_prices(catalog: dict, scraped_rows: list[dict]) -> tuple[int, int, list[str]]:
-    by_id = {m["model_id"]: m for m in catalog["models"]}
-    updated = 0
-    unchanged = 0
-    warnings: list[str] = []
-
-    for row in scraped_rows:
-        model_id = row["model_id"]
-        if model_id not in by_id:
-            warnings.append(f"No catalog entry for scraped model: {row['name']}")
-            continue
-
-        model = by_id[model_id]
-        pricing_type = model["pricing_type"]
-        unit = row.get("unit", "token")
-
-        if pricing_type == "image" and unit != "image":
-            warnings.append(f"Skipped {row['name']}: table unit mismatch (expected image)")
-            continue
-        if pricing_type == "embedding" and unit == "image":
-            warnings.append(f"Skipped {row['name']}: table unit mismatch (expected embedding)")
-            continue
-        if pricing_type == "token" and unit == "image":
-            warnings.append(f"Skipped {row['name']}: table unit mismatch (expected token)")
-            continue
-
-        old_slice = dict(model.get("on_demand", {}))
-        new_slice = {**old_slice, **row["pricing"]}
-        model["pricing_source"] = "auto"
-
-        if old_slice == new_slice:
-            unchanged += 1
-            continue
-
-        model["on_demand"] = new_slice
-        updated += 1
-
-    return updated, unchanged, warnings
 
 
 def provision_from_html_unmapped(
@@ -125,9 +87,10 @@ def provision_from_html_unmapped(
     return snapshot_records, warnings
 
 
-def run_html_scrape(catalog: dict) -> tuple[list[dict], list[str], list[dict]]:
+def run_html_qa(catalog: dict) -> tuple[int, list[str], list[dict]]:
+    """Fetch marketing page for discovery stubs and QA only (no price writes)."""
     warnings: list[str] = []
-    print(f"Fetching {PRICING_URL} ...")
+    print(f"Fetching {PRICING_URL} for QA ...")
     try:
         response = httpx.get(
             PRICING_URL,
@@ -137,8 +100,8 @@ def run_html_scrape(catalog: dict) -> tuple[list[dict], list[str], list[dict]]:
         )
         response.raise_for_status()
     except httpx.HTTPError as exc:
-        warnings.append(f"HTML scrape skipped: {exc}")
-        return [], warnings, []
+        warnings.append(f"HTML QA skipped: {exc}")
+        return 0, warnings, []
 
     soup = BeautifulSoup(response.text, "html.parser")
     scraped_rows, unmapped = extract_rows(soup, catalog)
@@ -146,11 +109,18 @@ def run_html_scrape(catalog: dict) -> tuple[list[dict], list[str], list[dict]]:
     warnings.extend(provision_warnings)
     if html_records:
         scraped_rows, _unmapped = extract_rows(soup, catalog)
+
     if not scraped_rows:
         warnings.append("No pricing rows parsed from HTML (JS placeholders or layout change).")
     else:
-        print(f"Parsed {len(scraped_rows)} model(s) with literal prices from page.")
-    return scraped_rows, warnings, html_records
+        print(f"Parsed {len(scraped_rows)} model(s) with literal prices for QA.")
+        mismatches = qa_check_html_prices(catalog, scraped_rows, warnings=warnings)
+        if mismatches:
+            print(f"HTML QA: {mismatches} price mismatch(es) vs catalog.")
+        else:
+            print("HTML QA: catalog matches parsed marketing literals.")
+
+    return len(scraped_rows), warnings, html_records
 
 
 def main() -> int:
@@ -163,12 +133,17 @@ def main() -> int:
     parser.add_argument(
         "--skip-price-list",
         action="store_true",
-        help="Do not merge AWS Price List API data",
+        help="Do not merge AWS Price List data",
     )
     parser.add_argument(
         "--skip-html",
         action="store_true",
-        help="Do not scrape AWS marketing pricing page",
+        help="Do not run HTML marketing page QA",
+    )
+    parser.add_argument(
+        "--skip-golden",
+        action="store_true",
+        help="Do not validate golden canary rates",
     )
     parser.add_argument(
         "--snapshot",
@@ -213,7 +188,7 @@ def main() -> int:
             )
             catalog["meta"]["last_price_list_at"] = today
             warnings.extend(pl_warnings)
-            print(f"Price list: {pl_matched} mapped, {pl_updated} rows updated")
+            print(f"Price list (FM): {pl_matched} mapped, {pl_updated} rows updated")
         except httpx.HTTPError as exc:
             warnings.append(f"Price list merge skipped: {exc}")
 
@@ -221,7 +196,7 @@ def main() -> int:
             bo_updated, bo_matched, bo_warnings = merge_bedrock_offer_into_catalog(catalog)
             catalog["meta"]["last_bedrock_offer_at"] = today
             warnings.extend(bo_warnings)
-            print(f"Bedrock offer: {bo_matched} mapped, {bo_updated} rows updated")
+            print(f"Bedrock offer: {bo_matched} mapped, {bo_updated} gap-fills")
         except httpx.HTTPError as exc:
             warnings.append(f"Bedrock offer merge skipped: {exc}")
 
@@ -233,20 +208,29 @@ def main() -> int:
     if seed_updated:
         print(f"Price seeds: {seed_updated} rows filled from curated list prices")
 
-    html_updated = 0
+    html_parsed = 0
     if not args.skip_html:
-        scraped_rows, html_warnings, html_records = run_html_scrape(catalog)
+        html_parsed, html_warnings, html_records = run_html_qa(catalog)
         warnings.extend(html_warnings)
         snapshot_records_to_append.extend(html_records)
-        if scraped_rows:
-            html_updated, _unchanged, merge_warnings = merge_scraped_prices(catalog, scraped_rows)
-            warnings.extend(merge_warnings)
+        if html_parsed:
             catalog["meta"]["last_scraped_at"] = today
+
+    if not args.skip_golden:
+        failures = validate_golden_canaries(catalog)
+        if failures:
+            for msg in failures:
+                warnings.append(f"Golden canary failed: {msg}")
+            print(f"Golden canaries: {len(failures)} failure(s)")
+            for msg in failures[:10]:
+                print(f"  - {msg}")
+            return 1
+        print("Golden canaries: pass")
 
     new_hash = pricing_fingerprint(catalog["models"])
     catalog["meta"]["parser_version"] = PARSER_VERSION
     catalog["meta"]["source"] = PRICING_URL
-    catalog["meta"]["schema_version"] = "2.1"
+    catalog["meta"]["schema_version"] = "3.0"
 
     if new_hash != old_hash:
         catalog["meta"]["pricing_updated_at"] = today
@@ -272,7 +256,7 @@ def main() -> int:
             fh.write(f"pricing_changed={'true' if meaningful else 'false'}\n")
 
     print(
-        f"Summary: HTML {html_updated} updated; "
+        f"Summary: HTML QA {html_parsed} parsed; "
         f"{stats['models_with_prices']}/{stats['models_in_catalog']} models have list prices "
         f"({stats['price_coverage_pct']}%); "
         f"inventory {stats['inventory_coverage_pct']}% of AWS "

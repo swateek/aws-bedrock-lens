@@ -1,115 +1,109 @@
-# Pricing data sources — evaluation
+# Pricing data sources
 
-AWS Bedrock Lens needs **on-demand list prices** mapped to **Bedrock `model_id`** values. This document evaluates options for closing the ~90% gap where the public pricing page uses JavaScript placeholders instead of static HTML.
+AWS Bedrock Lens publishes **on-demand list prices** mapped to Bedrock `model_id` values. The pipeline is credential-free and runs weekly in GitHub Actions.
 
-## Current approach: HTML scrape (`scraper/parser.py`)
+## System of record
 
-| Aspect | Assessment |
-|--------|------------|
-| Coverage | **Low–medium** for HTML alone. Many rows parse when the catalog drives name lookup; JS placeholders still limit totals. |
-| Accuracy | **High** for matched rows (same numbers as the marketing page). |
-| Maintenance | Breaks when table layout changes; cheap to run weekly. |
-| Auth | None required. |
-| Verdict | **Keep** as a free, automated signal. Do not treat as complete. |
+**AWS public Price List bulk JSON** (us-east-1) is the only automated source that writes prices:
 
-## Option A: Manual curation (recommended baseline)
+| Offer | Module | Role |
+|-------|--------|------|
+| `AmazonBedrockFoundationModels` | [`scraper/price_list.py`](../scraper/price_list.py) | Primary: marketplace foundation-model token/image SKUs |
+| `AmazonBedrock` | [`scraper/bedrock_offer.py`](../scraper/bedrock_offer.py) | Secondary: gap-fill for Amazon-native SKUs (Nova, Titan, mantle IDs in usagetype) |
 
-| Aspect | Assessment |
-|--------|------------|
-| Coverage | **100%** of models you add to `data/pricing.json`. |
-| Accuracy | Depends on reviewer; cross-check against [AWS Bedrock pricing](https://aws.amazon.com/bedrock/pricing/). |
-| Maintenance | Quarterly review or when AWS announces changes. |
-| Verdict | **Required** for preview models and gaps. Mark entries `pricing_source: "manual"`. |
+Public index URLs (no credentials):
 
-**Process:** Review `data/pricing.json` on manual edits; weekly automation commits `pricing_source: "auto"` updates directly to `main` when prices or inventory meaningfully change.
+- `https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AmazonBedrockFoundationModels/current/index.json` (all regions)
+- `https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AmazonBedrock/current/index.json` (all regions)
+- Regional mirrors: `…/current/{region}/index.json` (e.g. `us-east-1`)
 
-## Model inventory: committed snapshot (`data/model-inventory.snapshot.json`)
+## Unit normalization
 
-| Aspect | Assessment |
-|--------|------------|
-| Coverage | **High** for foundation models listed in the snapshot file. |
-| Accuracy | Depends on snapshot freshness; the scrape pipeline can append discovered models after Price List inference. |
-| Maintenance | Optional manual snapshot refresh for rich metadata; weekly scrape auto-appends models discovered from Price List. |
-| Auth | **None** — no `ListFoundationModels` calls in CI or default Makefile targets. |
-| Verdict | **Baseline** — `make sync-models` merges the snapshot; `make scrape` also runs discovery (`scraper/model_id_inference.py` + `discover_models_from_price_list`). |
+Rates are normalized from each SKU’s `priceDimensions.unit` (and description when `unit` is `Units`):
 
-## Model discovery (Price List + HTML)
+| Price List unit | Catalog field |
+|-----------------|---------------|
+| `1K tokens` | `input_per_1m` / `output_per_1m` (×1000) |
+| `1M tokens` / “Million … Tokens” | `*_per_1m` (no scale) |
+| `image` | `standard_per_image` / `premium_per_image` |
+| `seconds` | `per_second` (`pricing_type: video`) |
+| search / rerank units | `per_search_unit` (`pricing_type: rerank`) |
 
-| Aspect | Assessment |
-|--------|------------|
-| Coverage | **Medium–high** for models AWS publishes to `AmazonBedrockFoundationModels` on-demand SKUs. |
-| Accuracy | Infers `model_id` from service names via overrides, catalog names, and provider rules (e.g. `Claude Opus 4.8` → `anthropic.claude-opus-4-8`). |
-| Maintenance | Extend `scraper/model_id_inference.py` when AWS introduces new naming patterns; use `sku_overrides.json` for ambiguous legacy names. |
-| Verdict | **Implemented** — runs after inventory merge, before price/HTML merges; syncs new rows back into the inventory snapshot. |
+Implementation: [`scraper/normalize_rate.py`](../scraper/normalize_rate.py).
 
-## Option B: AWS Price List public index (`AmazonBedrockFoundationModels`)
+Unknown units are dropped with a warning — never guessed.
 
-Public index URL (no credentials): `https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AmazonBedrockFoundationModels/current/us-east-1/index.json`
+## Merge policy
 
-| Aspect | Assessment |
-|--------|------------|
-| Coverage | **Medium–high** for SKUs AWS publishes to the price list. On-demand token rows in the index JSON. |
-| Accuracy | Official AWS catalog; [docs note](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/price-changes.html) marketing page wins if they disagree. |
-| Maintenance | Stable index format; attribute names can shift. |
-| Auth | **None** in this repo — `scraper/price_list.py` downloads the public index via HTTP (`httpx`). |
-| Mapping | **Hard** — SKUs/descriptions must map to `model_id` (fuzzy string match + `sku_overrides.json`). |
-| Verdict | **Implemented** in `scraper/price_list.py` (us-east-1, token on-demand). Extend `scraper/sku_overrides.json` for ambiguous names. |
+Pipeline order in [`scraper/scrape.py`](../scraper/scrape.py):
 
-**Pros:** Batch-friendly, region-aware, no headless browser.
-**Cons:** Complex product JSON, not identical to Bedrock console labels, embedding/image units differ.
+1. Inventory snapshot merge (model metadata, not prices)
+2. Price List FM discover + merge (`pricing_source: price_list`)
+3. AmazonBedrock offer merge (**gap-fill only** — does not overwrite FM prices)
+4. Variant price propagation (context-window suffixes inherit base)
+5. Manual seeds ([`scraper/price_seeds.py`](../scraper/price_seeds.py)) — **null-fill only**
+6. HTML marketing page — **QA only** (warnings on mismatch; never writes prices)
 
-## Option C: Bedrock `ListFoundationModels` (API inventory)
+## Entity resolution
 
-| Aspect | Assessment |
-|--------|------------|
-| Coverage | Full per-region foundation model list when called live. |
-| Auth | AWS credentials (Bedrock API). |
-| Verdict | **Not used** in this project — inventory comes from the committed snapshot instead. |
+1. Bedrock `model_id` embedded in AmazonBedrock `usagetype` (preferred)
+2. Explicit map: [`scraper/sku_overrides.json`](../scraper/sku_overrides.json)
+3. Service name → `model_id` via catalog display names + [`scraper/model_id_inference.py`](../scraper/model_id_inference.py)
+4. Amazon offer keys via [`scraper/offer_key_map.py`](../scraper/offer_key_map.py)
 
-## Option D: Bedrock `ListFoundationModelAgreementOffers`
+Fuzzy inference provisions discovery stubs only; priced rows require a resolved SKU join.
 
-| Aspect | Assessment |
-|--------|------------|
-| Coverage | Per model you call; rate cards include usage dimensions. |
-| Accuracy | Contract/offer terms; good for agreement-gated models. |
-| Auth | Bedrock API + often model access / marketplace agreement. |
-| Mapping | `modelId` aligns with catalog — **best ID match**. |
-| Verdict | **Supplement** for models already enabled in your account; poor fit for unattended CI without broad model access. |
+## Provenance
 
-## Option E: Headless browser scrape
+Auto-priced models may include `price_provenance` per field (`offer`, `usagetype`, `unit`, `product_sku`). `pricing_source` is `price_list` or `manual`.
 
-| Aspect | Assessment |
-|--------|------------|
-| Coverage | Could match the public page after JS renders prices. |
-| Accuracy | Same as user-visible page. |
-| Maintenance | **Fragile** (selectors, A/B pages, runtime). |
-| CI cost | Playwright/Puppeteer in GitHub Actions — slower, heavier. |
-| Verdict | **Defer** unless Price List API mapping fails. |
+## Quality gates
 
-## Recommended roadmap
+- **Golden canaries**: [`scraper/tests/fixtures/golden_rates.json`](../scraper/tests/fixtures/golden_rates.json) — checked in `scrape.py` and `validate.py`
+- **HTML QA**: optional cross-check vs marketing literals
+- **Coverage**: `scrape.price_coverage_pct` — never imply 100% without it
 
-```mermaid
-flowchart LR
-  Snapshot[Inventory snapshot] --> Catalog[data/pricing.json]
-  Discovery[Price List discovery] --> Catalog
-  Discovery --> Snapshot
-  HTML[HTML scrape] --> Catalog
-  Manual[Manual seed] --> Catalog
-  PL[Price List public index] --> Catalog
-```
+## What we do not use in CI
 
-1. **Now:** Snapshot merge (`sync_models.py`) + Price List **discovery** (infer `model_id`, provision catalog + snapshot) + **two** public Price List offers (`AmazonBedrockFoundationModels` + `AmazonBedrock` in `bedrock_offer.py`) + HTML scrape (with unmapped-row provisioning) + variant propagation + small `price_seeds.py` for batch-only / video SKUs + coverage UI (`price_coverage_pct`, `inventory_coverage_pct`). Entire pipeline is credential-free.
-2. **Next:** Regional price dimensions beyond us-east-1; optional headless browser for `{priceOf}` placeholders if AWS stops publishing SKUs.
-3. **Later:** Optional agreement-offer spot-checks if you have account access (not in CI).
-4. **Never:** Imply 100% priced catalog without reporting `scrape.price_coverage_pct`.
+| Source | Status |
+|--------|--------|
+| HTML scrape as price writer | Removed — QA only |
+| Headless browser | Not used |
+| `pricing:GetProducts` (boto3) | Local probe only ([`scraper/aws_pricing_probe.py`](../scraper/aws_pricing_probe.py)) |
+| Bedrock `ListFoundationModels` | Not used — committed inventory snapshot |
+| `ListFoundationModelAgreementOffers` | Not used |
+
+## Manual curation
+
+Mark `pricing_source: "manual"` for preview models and gaps. Seeds in `price_seeds.py` fill only when Price List has no SKU.
+
+## Regional scope
+
+Automation fetches the **combined** Price List indexes (all regions in one file):
+
+- `…/AmazonBedrockFoundationModels/current/index.json`
+- `…/AmazonBedrock/current/index.json`
+
+Each product’s `attributes.regionCode` is stored under `list_prices[region][tier]`. Top-level `on_demand` remains a compat alias for `list_prices[meta.default_price_region].on_demand` (default `us-east-1`).
+
+### Tiers
+
+| Tier key | Meaning |
+|----------|---------|
+| `on_demand` | Regional on-demand standard |
+| `on_demand_global` | Global / cross-region inference |
+| `batch` / `batch_global` | Batch inference |
+| `flex` / `priority` | Flex and priority tiers (AmazonBedrock offer) |
+| `cache` / `cache_global` | Prompt-cache read/write rates |
+
+Provisioned, reserved, latency-optimized, and customization SKUs are still excluded.
+
+`meta.price_list_regions` lists regions present in the last scrape; `meta.price_list_region` mirrors `default_price_region` for older readers.
 
 ## Probe script
 
-Public index only (default):
-
 ```bash
 make probe
-# or: python scraper/aws_pricing_probe.py
+# Optional local debug with AWS creds:
+python scraper/aws_pricing_probe.py --sample
 ```
-
-The optional `--sample` flag calls `pricing:GetProducts` with boto3 and AWS credentials; it is for local debugging only and is not part of CI or the scrape pipeline.

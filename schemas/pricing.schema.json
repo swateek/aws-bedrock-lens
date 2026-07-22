@@ -17,7 +17,10 @@
       ],
       "additionalProperties": true,
       "properties": {
-        "schema_version": { "type": "string", "enum": ["2", "2.1", "2.2"] },
+        "schema_version": {
+          "type": "string",
+          "enum": ["2", "2.1", "2.2", "2.3", "3.0"]
+        },
         "source": { "type": "string", "format": "uri" },
         "last_scraped_at": { "type": ["string", "null"], "format": "date" },
         "pricing_updated_at": { "type": ["string", "null"], "format": "date" },
@@ -26,6 +29,11 @@
         "models_known_to_aws": { "type": ["integer", "null"], "minimum": 0 },
         "last_price_list_at": { "type": ["string", "null"], "format": "date" },
         "price_list_region": { "type": "string" },
+        "default_price_region": { "type": "string" },
+        "price_list_regions": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1 }
+        },
         "products": {
           "type": "array",
           "items": {
@@ -74,6 +82,37 @@
     }
   },
   "$defs": {
+    "rate_slice": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "input_per_1m": { "type": ["number", "null"] },
+        "output_per_1m": { "type": ["number", "null"] },
+        "standard_per_image": { "type": ["number", "null"] },
+        "premium_per_image": { "type": ["number", "null"] },
+        "per_second": { "type": ["number", "null"] },
+        "per_search_unit": { "type": ["number", "null"] },
+        "read_input_per_1m": { "type": ["number", "null"] },
+        "write_input_per_1m": { "type": ["number", "null"] },
+        "write_1h_input_per_1m": { "type": ["number", "null"] }
+      }
+    },
+    "region_prices": {
+      "type": "object",
+      "additionalProperties": { "$ref": "#/$defs/rate_slice" },
+      "propertyNames": {
+        "enum": [
+          "on_demand",
+          "on_demand_global",
+          "batch",
+          "batch_global",
+          "flex",
+          "priority",
+          "cache",
+          "cache_global"
+        ]
+      }
+    },
     "model": {
       "type": "object",
       "required": [
@@ -95,17 +134,21 @@
         "provider": { "type": "string", "minLength": 1 },
         "pricing_type": {
           "type": "string",
-          "enum": ["token", "image", "embedding"]
+          "enum": ["token", "image", "embedding", "video", "rerank"]
         },
         "pricing_source": {
           "type": "string",
-          "enum": ["manual", "auto"]
+          "enum": ["manual", "auto", "price_list"]
         },
         "regions": {
           "type": "array",
           "items": { "type": "string", "minLength": 1 }
         },
         "on_demand": { "$ref": "#/$defs/on_demand" },
+        "list_prices": {
+          "type": "object",
+          "additionalProperties": { "$ref": "#/$defs/region_prices" }
+        },
         "context_window": { "type": ["integer", "null"], "minimum": 0 },
         "modalities": {
           "type": "array",
@@ -122,6 +165,21 @@
         "alternate_ids": {
           "type": "array",
           "items": { "type": "string", "minLength": 1 }
+        },
+        "price_provenance": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "object",
+            "properties": {
+              "offer": { "type": "string" },
+              "usagetype": { "type": "string" },
+              "unit": { "type": "string" },
+              "product_sku": { "type": "string" },
+              "region": { "type": "string" },
+              "tier": { "type": "string" }
+            },
+            "additionalProperties": true
+          }
         }
       },
       "allOf": [
@@ -136,7 +194,9 @@
                   "input_per_1m": { "type": ["number", "null"], "exclusiveMinimum": 0 },
                   "output_per_1m": { "type": ["number", "null"], "exclusiveMinimum": 0 },
                   "standard_per_image": { "type": "null" },
-                  "premium_per_image": { "type": "null" }
+                  "premium_per_image": { "type": "null" },
+                  "per_second": { "type": "null" },
+                  "per_search_unit": { "type": "null" }
                 },
                 "additionalProperties": false
               }
@@ -154,7 +214,9 @@
                   "input_per_1m": { "type": ["number", "null"], "exclusiveMinimum": 0 },
                   "output_per_1m": { "type": "null" },
                   "standard_per_image": { "type": "null" },
-                  "premium_per_image": { "type": "null" }
+                  "premium_per_image": { "type": "null" },
+                  "per_second": { "type": "null" },
+                  "per_search_unit": { "type": "null" }
                 },
                 "additionalProperties": false
               }
@@ -172,12 +234,54 @@
                   "input_per_1m": { "type": "null" },
                   "output_per_1m": { "type": "null" },
                   "standard_per_image": { "type": ["number", "null"], "exclusiveMinimum": 0 },
-                  "premium_per_image": { "type": ["number", "null"], "exclusiveMinimum": 0 }
+                  "premium_per_image": { "type": ["number", "null"], "exclusiveMinimum": 0 },
+                  "per_second": { "type": "null" },
+                  "per_search_unit": { "type": "null" }
                 },
                 "anyOf": [
                   { "required": ["standard_per_image"] },
                   { "required": ["premium_per_image"] }
                 ]
+              }
+            }
+          }
+        },
+        {
+          "if": { "properties": { "pricing_type": { "const": "video" } } },
+          "then": {
+            "properties": {
+              "on_demand": {
+                "type": "object",
+                "required": ["per_second"],
+                "additionalProperties": false,
+                "properties": {
+                  "input_per_1m": { "type": "null" },
+                  "output_per_1m": { "type": "null" },
+                  "standard_per_image": { "type": "null" },
+                  "premium_per_image": { "type": "null" },
+                  "per_second": { "type": ["number", "null"], "exclusiveMinimum": 0 },
+                  "per_search_unit": { "type": "null" }
+                }
+              }
+            }
+          }
+        },
+        {
+          "if": { "properties": { "pricing_type": { "const": "rerank" } } },
+          "then": {
+            "properties": {
+              "on_demand": {
+                "type": "object",
+                "required": ["per_search_unit"],
+                "additionalProperties": false,
+                "properties": {
+                  "input_per_1m": { "type": "null" },
+                  "output_per_1m": { "type": "null" },
+                  "standard_per_image": { "type": "null" },
+                  "premium_per_image": { "type": "null" },
+                  "per_second": { "type": "null" },
+                  "per_search_unit": { "type": ["number", "null"], "exclusiveMinimum": 0 }
+                }
               }
             }
           }
@@ -190,7 +294,9 @@
         "input_per_1m": { "type": ["number", "null"] },
         "output_per_1m": { "type": ["number", "null"] },
         "standard_per_image": { "type": ["number", "null"] },
-        "premium_per_image": { "type": ["number", "null"] }
+        "premium_per_image": { "type": ["number", "null"] },
+        "per_second": { "type": ["number", "null"] },
+        "per_search_unit": { "type": ["number", "null"] }
       }
     }
   }
