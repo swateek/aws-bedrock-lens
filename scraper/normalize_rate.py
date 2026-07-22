@@ -14,9 +14,12 @@ CanonicalMetric = Literal[
     "video_second",
     "search_unit",
     "embedding_tokens",
+    "cache_read",
+    "cache_write",
+    "cache_write_1h",
 ]
 
-# Maps canonical metric -> catalog on_demand field name
+# Maps canonical metric -> catalog rate-slice field name
 METRIC_TO_FIELD: dict[CanonicalMetric, str] = {
     "input_tokens": "input_per_1m",
     "output_tokens": "output_per_1m",
@@ -25,6 +28,9 @@ METRIC_TO_FIELD: dict[CanonicalMetric, str] = {
     "video_second": "per_second",
     "search_unit": "per_search_unit",
     "embedding_tokens": "input_per_1m",
+    "cache_read": "read_input_per_1m",
+    "cache_write": "write_input_per_1m",
+    "cache_write_1h": "write_1h_input_per_1m",
 }
 
 _MILLION_RE = re.compile(r"million|per\s+1\s*m(?:illion)?\s+token", re.IGNORECASE)
@@ -129,7 +135,14 @@ def normalize_rate(
     unit_lower = (unit or "").strip().lower()
     desc = description or ""
 
-    if metric_hint in ("input_tokens", "output_tokens", "embedding_tokens"):
+    if metric_hint in (
+        "input_tokens",
+        "output_tokens",
+        "embedding_tokens",
+        "cache_read",
+        "cache_write",
+        "cache_write_1h",
+    ):
         token_rate = normalize_token_rate(unit, price_usd, description=desc)
         if token_rate:
             field = METRIC_TO_FIELD[metric_hint]

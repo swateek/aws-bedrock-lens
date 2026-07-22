@@ -25,33 +25,60 @@
   }
 
   function modelHasPrice(model) {
-    const od = model.on_demand || {};
-    return [
-      "input_per_1m",
-      "output_per_1m",
-      "standard_per_image",
-      "premium_per_image",
-      "per_second",
-      "per_search_unit",
-    ].some((k) => od[k] != null && Number.isFinite(od[k]));
+    return global.BedrockLens.util.modelHasPrice(model);
+  }
+
+  function ensureListPrices(model, defaultRegion) {
+    const listPrices = model.list_prices || {};
+    const region = defaultRegion || "us-east-1";
+    if (!listPrices[region] && model.on_demand) {
+      const od = normalizeOnDemand(model);
+      if (Object.values(od).some((v) => v != null)) {
+        listPrices[region] = { on_demand: { ...od } };
+      }
+    }
+    return listPrices;
   }
 
   function normalizeCatalog(raw) {
-    const models = (raw.models || []).map((m) => ({
-      ...m,
-      pricing_source: m.pricing_source || "manual",
-      availability: m.availability || "ga",
-      alternate_ids: m.alternate_ids || [],
-      on_demand: normalizeOnDemand(m),
-    }));
+    const defaultRegion =
+      raw.meta?.default_price_region ||
+      raw.meta?.price_list_region ||
+      "us-east-1";
+
+    const models = (raw.models || []).map((m) => {
+      const onDemand = normalizeOnDemand(m);
+      const listPrices = ensureListPrices(
+        { ...m, on_demand: onDemand },
+        defaultRegion,
+      );
+      return {
+        ...m,
+        pricing_source: m.pricing_source || "manual",
+        availability: m.availability || "ga",
+        alternate_ids: m.alternate_ids || [],
+        on_demand: onDemand,
+        list_prices: listPrices,
+        _defaultPriceRegion: defaultRegion,
+      };
+    });
 
     const withPrices = models.filter(modelHasPrice).length;
     const inCatalog = models.length;
     const knownToAws = raw.meta?.models_known_to_aws ?? inCatalog;
+    const derivedRegions = [
+      ...new Set(models.flatMap((m) => Object.keys(m.list_prices || {}))),
+    ].sort();
+    const priceListRegions =
+      raw.meta?.price_list_regions?.length > 0
+        ? raw.meta.price_list_regions
+        : derivedRegions.length
+          ? derivedRegions
+          : [defaultRegion];
 
     const catalog = {
       meta: {
-        schema_version: String(raw.meta?.schema_version || "2.1"),
+        schema_version: String(raw.meta?.schema_version || "3.0"),
         source: raw.meta?.source || "",
         last_scraped_at:
           raw.meta?.last_scraped_at ?? raw.meta?.last_updated ?? null,
@@ -61,7 +88,9 @@
         last_inventory_sync_at: raw.meta?.last_inventory_sync_at ?? null,
         models_known_to_aws: knownToAws,
         last_price_list_at: raw.meta?.last_price_list_at ?? null,
-        price_list_region: raw.meta?.price_list_region || "us-east-1",
+        price_list_region: defaultRegion,
+        default_price_region: defaultRegion,
+        price_list_regions: priceListRegions,
         products: raw.meta?.products || [],
       },
       scrape: {

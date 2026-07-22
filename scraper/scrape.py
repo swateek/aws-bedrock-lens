@@ -230,7 +230,7 @@ def main() -> int:
     new_hash = pricing_fingerprint(catalog["models"])
     catalog["meta"]["parser_version"] = PARSER_VERSION
     catalog["meta"]["source"] = PRICING_URL
-    catalog["meta"]["schema_version"] = "2.3"
+    catalog["meta"]["schema_version"] = "3.0"
 
     if new_hash != old_hash:
         catalog["meta"]["pricing_updated_at"] = today

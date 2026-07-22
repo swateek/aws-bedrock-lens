@@ -25,13 +25,17 @@ from price_merge import apply_price_facts, facts_to_catalog_fields
 from sku_facts import extract_fm_facts
 
 PRICE_LIST_BASE = "https://pricing.us-east-1.amazonaws.com"
+# Combined all-regions index (products carry attributes.regionCode)
 FOUNDATION_MODELS_INDEX = (
-    f"{PRICE_LIST_BASE}/offers/v1.0/aws/AmazonBedrockFoundationModels/current/us-east-1/index.json"
+    f"{PRICE_LIST_BASE}/offers/v1.0/aws/AmazonBedrockFoundationModels/current/index.json"
+)
+FOUNDATION_MODELS_INDEX_REGIONAL = (
+    f"{PRICE_LIST_BASE}/offers/v1.0/aws/AmazonBedrockFoundationModels/current/{{region}}/index.json"
 )
 OVERRIDES_PATH = Path(__file__).resolve().parent / "sku_overrides.json"
 
 _EXCLUDED_UT = re.compile(
-    r"batch|flex|priority|latency|provisioned|reserved|cache|global|"
+    r"latency|provisioned|reserved|"
     r"customization|custom model",
     re.IGNORECASE,
 )
@@ -119,13 +123,33 @@ def extract_prices_from_index(
     index: dict[str, Any],
     catalog: dict,
 ) -> dict[str, dict[str, float | None]]:
-    """Return model_id -> on_demand fields from Foundation Models OnDemand SKUs."""
+    """Return model_id -> on_demand fields from Foundation Models OnDemand SKUs.
+
+    Prefers us-east-1 on_demand tier; falls back to first available on_demand slice.
+    """
     warnings: list[str] = []
     facts = extract_fm_facts(index, warnings=warnings)
     grouped = facts_to_catalog_fields(facts, catalog, warnings=warnings)
     by_model: dict[str, dict[str, float | None]] = {}
-    for model_id, payload in grouped.items():
-        fields = payload["fields"]
+    for model_id, region_payload in grouped.items():
+        fields: dict[str, float] = {}
+        # Prefer us-east-1 on_demand, then any on_demand, then any tier
+        preferred = None
+        if "us-east-1" in region_payload and "on_demand" in region_payload["us-east-1"]:
+            preferred = region_payload["us-east-1"]["on_demand"]
+        else:
+            for tiers in region_payload.values():
+                if "on_demand" in tiers:
+                    preferred = tiers["on_demand"]
+                    break
+            if preferred is None:
+                for tiers in region_payload.values():
+                    preferred = next(iter(tiers.values()), None)
+                    if preferred:
+                        break
+        if not preferred:
+            continue
+        fields = preferred.get("fields", {})
         by_model[model_id] = {
             "input_per_1m": fields.get("input_per_1m"),
             "output_per_1m": fields.get("output_per_1m"),
@@ -206,13 +230,19 @@ def merge_price_list_into_catalog(
     *,
     index: dict[str, Any] | None = None,
     region: str = "us-east-1",
+    regions_allowlist: set[str] | None = None,
 ) -> tuple[int, int, list[str]]:
     """Apply Price List prices; set pricing_source to price_list when matched."""
     warnings: list[str] = []
     if index is None:
         index = fetch_price_list_index()
 
-    facts = extract_fm_facts(index, region=region, warnings=warnings)
+    facts = extract_fm_facts(
+        index,
+        region=region,
+        regions_allowlist=regions_allowlist,
+        warnings=warnings,
+    )
     updated, matched = apply_price_facts(
         catalog,
         facts,
@@ -221,7 +251,9 @@ def merge_price_list_into_catalog(
         warnings=warnings,
     )
 
-    catalog.setdefault("meta", {})["price_list_region"] = region
+    meta = catalog.setdefault("meta", {})
+    meta["default_price_region"] = region
+    meta["price_list_region"] = region
     return updated, matched, warnings
 
 

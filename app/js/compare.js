@@ -10,34 +10,57 @@
     formatContext,
     minFinite,
     isCheapest,
-    modelHasPrice,
+    resolveRates,
+    formatScopeChip,
+    unknownPriceReason,
+    blendedCost,
+    sliceHasPrice,
   } = global.BedrockLens.util;
 
-  const UNKNOWN = "Price unknown";
+  function scope() {
+    return (
+      global.BedrockLens._priceScope || {
+        region: "us-east-1",
+        tier: "on_demand",
+        blendIn: 1,
+        blendOut: 3,
+      }
+    );
+  }
 
-  function formatListPrice(model) {
-    if (!modelHasPrice(model)) return UNKNOWN;
-    const od = model.on_demand || {};
+  function ratesFor(model) {
+    const s = scope();
+    return resolveRates(model, s.region, s.tier);
+  }
+
+  function formatListPrice(model, opts) {
+    const s = scope();
+    const region = opts?.region ?? s.region;
+    const tier = opts?.tier ?? s.tier;
+    const od = resolveRates(model, region, tier);
+    if (!sliceHasPrice(od)) {
+      return unknownPriceReason(model, region, tier);
+    }
     if (model.pricing_type === "image") {
       const parts = [];
       if (od.standard_per_image != null) {
-        parts.push(`${formatPrice(od.standard_per_image)}/img std`);
+        parts.push(`${formatPrice(od.standard_per_image)} / image (standard)`);
       }
       if (od.premium_per_image != null) {
-        parts.push(`${formatPrice(od.premium_per_image)}/img prem`);
+        parts.push(`${formatPrice(od.premium_per_image)} / image (premium)`);
       }
       return parts.length ? parts.join(" · ") : "—";
     }
     if (model.pricing_type === "embedding") {
-      return `${formatPrice(od.input_per_1m)} / 1M in · embedding`;
+      return `${formatPrice(od.input_per_1m)} / 1M input · embedding`;
     }
     if (model.pricing_type === "video") {
-      return `${formatPrice(od.per_second)}/sec · video`;
+      return `${formatPrice(od.per_second)} / sec · video`;
     }
     if (model.pricing_type === "rerank") {
-      return `${formatPrice(od.per_search_unit)}/search · rerank`;
+      return `${formatPrice(od.per_search_unit)} / search · rerank`;
     }
-    return `${formatPrice(od.input_per_1m)} / ${formatPrice(od.output_per_1m)} · ${formatContext(model.context_window)} · ${(model.modalities || []).join(", ") || "—"}`;
+    return `${formatPrice(od.input_per_1m)} / 1M in · ${formatPrice(od.output_per_1m)} / 1M out · ${formatContext(model.context_window)}`;
   }
 
   function homogeneousType(models) {
@@ -46,7 +69,23 @@
     return "mixed";
   }
 
+  function pushMetricRow(rows, label, models, getter) {
+    const values = models.map(getter);
+    const withVal = values.filter((v) => v != null && Number.isFinite(v));
+    if (withVal.length < 1) return;
+    const min = minFinite(values);
+    rows.push({
+      label,
+      render: (m) => {
+        const v = getter(m);
+        return v == null ? "—" : formatPrice(v, unknownPriceReason(m));
+      },
+      best: (m) => isCheapest(getter(m), min),
+    });
+  }
+
   function getCompareRows(models) {
+    const s = scope();
     const rows = [
       { label: "Provider", render: (m) => m.provider },
       {
@@ -55,6 +94,10 @@
           m.pricing_source === "price_list" || m.pricing_source === "auto"
             ? "price_list"
             : "manual",
+      },
+      {
+        label: "Pricing scope",
+        render: () => formatScopeChip(s.region, s.tier),
       },
       {
         label: "Model ID",
@@ -66,74 +109,126 @@
     const kind = homogeneousType(models);
 
     if (kind === "token" || kind === "embedding") {
-      const minIn = minFinite(models.map((m) => m.on_demand?.input_per_1m));
-      rows.push({
-        label: "Input / 1M",
-        render: (m) => formatPrice(m.on_demand?.input_per_1m, UNKNOWN),
-        best: (m) => isCheapest(m.on_demand?.input_per_1m, minIn),
-      });
+      pushMetricRow(
+        rows,
+        "Input / 1M",
+        models,
+        (m) => ratesFor(m).input_per_1m,
+      );
 
       const hasOutput = models.some(
-        (m) => m.pricing_type === "token" && m.on_demand?.output_per_1m != null,
+        (m) => m.pricing_type === "token" && ratesFor(m).output_per_1m != null,
       );
       if (hasOutput) {
-        const minOut = minFinite(
-          models
-            .filter((m) => m.pricing_type === "token")
-            .map((m) => m.on_demand?.output_per_1m),
+        pushMetricRow(rows, "Output / 1M", models, (m) =>
+          m.pricing_type === "embedding" ? null : ratesFor(m).output_per_1m,
         );
-        rows.push({
-          label: "Output / 1M",
-          render: (m) =>
-            m.pricing_type === "embedding"
-              ? "—"
-              : formatPrice(m.on_demand?.output_per_1m, UNKNOWN),
-          best: (m) =>
-            m.pricing_type === "token" &&
-            isCheapest(m.on_demand?.output_per_1m, minOut),
-        });
       }
+
+      if (kind === "token") {
+        const blends = models.map((m) =>
+          blendedCost(ratesFor(m), s.blendIn, s.blendOut),
+        );
+        if (blends.some((v) => v != null)) {
+          const minBlend = minFinite(blends);
+          rows.push({
+            label: `Blended / 1M (${s.blendIn}:${s.blendOut})`,
+            render: (m) => {
+              const v = blendedCost(ratesFor(m), s.blendIn, s.blendOut);
+              return v == null ? "—" : formatPrice(v);
+            },
+            best: (m) =>
+              isCheapest(
+                blendedCost(ratesFor(m), s.blendIn, s.blendOut),
+                minBlend,
+              ),
+          });
+        }
+      }
+
+      // Cache rows when present on any model for this region
+      pushMetricRow(rows, "Cache read / 1M", models, (m) => {
+        const cache = resolveRates(m, s.region, "cache");
+        return cache.read_input_per_1m;
+      });
+      pushMetricRow(rows, "Cache write / 1M", models, (m) => {
+        const cache = resolveRates(m, s.region, "cache");
+        return cache.write_input_per_1m;
+      });
+      pushMetricRow(rows, "Cache write 1h / 1M", models, (m) => {
+        const cache = resolveRates(m, s.region, "cache");
+        return cache.write_1h_input_per_1m;
+      });
     } else if (kind === "image") {
-      const minStd = minFinite(
-        models.map((m) => m.on_demand?.standard_per_image),
+      pushMetricRow(
+        rows,
+        "Standard / image",
+        models,
+        (m) => ratesFor(m).standard_per_image,
       );
-      rows.push({
-        label: "Standard / image",
-        render: (m) => formatPrice(m.on_demand?.standard_per_image, UNKNOWN),
-        best: (m) => isCheapest(m.on_demand?.standard_per_image, minStd),
-      });
-      if (models.some((m) => m.on_demand?.premium_per_image != null)) {
-        const minPrem = minFinite(
-          models.map((m) => m.on_demand?.premium_per_image),
-        );
-        rows.push({
-          label: "Premium / image",
-          render: (m) => formatPrice(m.on_demand?.premium_per_image, UNKNOWN),
-          best: (m) => isCheapest(m.on_demand?.premium_per_image, minPrem),
-        });
-      }
+      pushMetricRow(
+        rows,
+        "Premium / image",
+        models,
+        (m) => ratesFor(m).premium_per_image,
+      );
     } else if (kind === "video") {
-      const minSec = minFinite(models.map((m) => m.on_demand?.per_second));
-      rows.push({
-        label: "Price / second",
-        render: (m) => formatPrice(m.on_demand?.per_second, UNKNOWN),
-        best: (m) => isCheapest(m.on_demand?.per_second, minSec),
-      });
-    } else if (kind === "rerank") {
-      const minUnit = minFinite(
-        models.map((m) => m.on_demand?.per_search_unit),
+      pushMetricRow(
+        rows,
+        "Price / second",
+        models,
+        (m) => ratesFor(m).per_second,
       );
-      rows.push({
-        label: "Price / search unit",
-        render: (m) => formatPrice(m.on_demand?.per_search_unit, UNKNOWN),
-        best: (m) => isCheapest(m.on_demand?.per_search_unit, minUnit),
-      });
+    } else if (kind === "rerank") {
+      pushMetricRow(
+        rows,
+        "Price / search unit",
+        models,
+        (m) => ratesFor(m).per_search_unit,
+      );
     } else {
+      // Mixed: summary + shared numeric metrics
       rows.push({
-        label: "Pricing",
+        label: "Summary",
         render: (m) => escapeHtml(formatListPrice(m)),
         html: true,
       });
+      pushMetricRow(
+        rows,
+        "Input / 1M",
+        models,
+        (m) => ratesFor(m).input_per_1m,
+      );
+      pushMetricRow(
+        rows,
+        "Output / 1M",
+        models,
+        (m) => ratesFor(m).output_per_1m,
+      );
+      pushMetricRow(
+        rows,
+        "Standard / image",
+        models,
+        (m) => ratesFor(m).standard_per_image,
+      );
+      pushMetricRow(
+        rows,
+        "Premium / image",
+        models,
+        (m) => ratesFor(m).premium_per_image,
+      );
+      pushMetricRow(
+        rows,
+        "Price / second",
+        models,
+        (m) => ratesFor(m).per_second,
+      );
+      pushMetricRow(
+        rows,
+        "Price / search unit",
+        models,
+        (m) => ratesFor(m).per_search_unit,
+      );
     }
 
     rows.push(

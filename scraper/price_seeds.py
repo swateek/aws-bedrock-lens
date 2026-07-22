@@ -2,7 +2,13 @@
 
 from __future__ import annotations
 
-from catalog_io import empty_on_demand, model_has_price
+from catalog_io import (
+    DEFAULT_PRICE_REGION,
+    empty_on_demand,
+    ensure_list_prices,
+    model_has_price,
+    sync_on_demand_alias,
+)
 
 # Verified against AWS marketing examples or published list prices (2026-05).
 # pricing_source remains "manual" — only fills nulls; never overwritten by Price List.
@@ -32,6 +38,7 @@ PRICE_SEEDS: dict[str, dict] = {
 def merge_price_seeds_into_catalog(catalog: dict) -> int:
     """Fill gaps from PRICE_SEEDS for models still without list prices."""
     by_id = {m["model_id"]: m for m in catalog["models"]}
+    default_region = catalog.get("meta", {}).get("default_price_region") or DEFAULT_PRICE_REGION
     updated = 0
     for model_id, seed in PRICE_SEEDS.items():
         model = by_id.get(model_id)
@@ -54,6 +61,11 @@ def merge_price_seeds_into_catalog(catalog: dict) -> int:
         if not model_has_price({"on_demand": new_slice, "pricing_type": pricing_type}):
             continue
         model["on_demand"] = new_slice
+        ensure_list_prices(model, default_region=default_region)
+        list_prices = model.setdefault("list_prices", {})
+        region_prices = list_prices.setdefault(default_region, {})
+        region_prices["on_demand"] = dict(new_slice)
+        sync_on_demand_alias(model, default_region=default_region)
         model["pricing_source"] = "manual"
         if seed.get("notes"):
             model["notes"] = seed["notes"]

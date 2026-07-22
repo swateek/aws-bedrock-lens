@@ -10,21 +10,16 @@
     formatRelativeDate,
     daysSince,
     modelHasPrice,
+    formatScopeChip,
   } = global.BedrockLens.util;
   const { formatListPrice } = global.BedrockLens.compare;
   const { STALE_DAYS } = global.BedrockLens.CONSTANTS;
 
   function updateMetaUI(catalog, els) {
     const pricingAt = catalog.meta.pricing_updated_at;
-    const scrapedAt = catalog.meta.last_scraped_at;
-    const parts = [];
-    if (pricingAt) {
-      parts.push(`pricing updated ${formatRelativeDate(pricingAt)}`);
-    }
-    if (scrapedAt) {
-      parts.push(`scraped ${formatRelativeDate(scrapedAt)}`);
-    }
-    els.lastUpdated.textContent = parts.length ? parts.join(" · ") : "—";
+    els.lastUpdated.textContent = pricingAt
+      ? `pricing updated ${formatRelativeDate(pricingAt)}`
+      : "—";
 
     const staleDays = pricingAt ? daysSince(pricingAt) : null;
     if (staleDays != null && staleDays > STALE_DAYS) {
@@ -45,9 +40,14 @@
         const priced = scrape.models_with_prices ?? 0;
         const total = scrape.models_in_catalog ?? catalog.models.length;
         const known = scrape.models_known_to_aws ?? total;
-        const detail = `${priced}/${total} models have on-demand list prices (${scrape.price_coverage_pct ?? 0}%). ${known} foundation models known to AWS.`;
+        const detail = `${priced}/${total} models have list prices (${scrape.price_coverage_pct ?? 0}%). ${known} foundation models known to AWS.`;
         els.coverageText.textContent = detail;
       }
+    }
+
+    if (els.scopeChip) {
+      const s = global.BedrockLens._priceScope || {};
+      els.scopeChip.textContent = formatScopeChip(s.region, s.tier);
     }
   }
 
@@ -65,6 +65,7 @@
   }
 
   function populateRegionFilter(catalog, select) {
+    // Availability only — do not mix in priced-region keys
     const regions = [
       ...new Set(catalog.models.flatMap((m) => m.regions || [])),
     ].sort();
@@ -77,16 +78,68 @@
     }
   }
 
+  function populateTierFilter(catalog, select, region) {
+    const defaultRegion = catalog.meta?.default_price_region || "us-east-1";
+    const r = region || defaultRegion;
+    const tiers = new Set(["on_demand"]);
+    for (const m of catalog.models) {
+      // Prefer selected region; also surface tiers from default if browsing All
+      const sources = [m.list_prices?.[r] || {}];
+      if (r !== defaultRegion) {
+        sources.push(m.list_prices?.[defaultRegion] || {});
+      }
+      for (const regionTiers of sources) {
+        for (const [t, slice] of Object.entries(regionTiers)) {
+          if (
+            global.BedrockLens.util.sliceHasPrice(slice) &&
+            !t.startsWith("cache")
+          ) {
+            tiers.add(t);
+          }
+        }
+      }
+    }
+    const order = [
+      "on_demand",
+      "on_demand_global",
+      "batch",
+      "batch_global",
+      "flex",
+      "priority",
+    ];
+    const sorted = [...tiers].sort(
+      (a, b) =>
+        (order.indexOf(a) === -1 ? 99 : order.indexOf(a)) -
+        (order.indexOf(b) === -1 ? 99 : order.indexOf(b)),
+    );
+    const prev = select.value;
+    select.innerHTML = "";
+    for (const t of sorted) {
+      const opt = document.createElement("option");
+      opt.value = t;
+      opt.textContent = global.BedrockLens.util.formatTierLabel(t);
+      select.appendChild(opt);
+    }
+    if (sorted.includes(prev)) select.value = prev;
+    else select.value = "on_demand";
+  }
+
   function getFilteredModels(catalog, filters) {
     const q = filters.search.trim().toLowerCase();
     const { provider, region, type, hasPricing } = filters;
+    const priceRegion =
+      global.BedrockLens._priceScope?.region ||
+      catalog.meta?.default_price_region ||
+      "us-east-1";
+    const priceTier = global.BedrockLens._priceScope?.tier || "on_demand";
 
     return catalog.models.filter((m) => {
       if (provider && m.provider !== provider) return false;
       if (region && !(m.regions || []).includes(region)) return false;
       if (type && m.pricing_type !== type) return false;
-      if (hasPricing === "yes" && !modelHasPrice(m)) return false;
-      if (hasPricing === "no" && modelHasPrice(m)) return false;
+      const has = modelHasPrice(m, priceRegion, priceTier);
+      if (hasPricing === "yes" && !has) return false;
+      if (hasPricing === "no" && has) return false;
       if (q) {
         const hay =
           `${m.display_name} ${m.provider} ${m.model_id}`.toLowerCase();
@@ -94,6 +147,21 @@
       }
       return true;
     });
+  }
+
+  function activeFilterCount(filters) {
+    let n = 0;
+    if (filters.provider) n += 1;
+    if (filters.type) n += 1;
+    if (filters.hasPricing) n += 1;
+    return n;
+  }
+
+  function updateFiltersToggle(els, filters) {
+    if (!els.filtersToggle || !els.filtersCount) return;
+    const n = activeFilterCount(filters);
+    els.filtersCount.hidden = n === 0;
+    els.filtersCount.textContent = String(n);
   }
 
   function renderModelList(catalog, selected, filters, listEl, onToggle) {
@@ -117,17 +185,13 @@
       }
 
       const checked = selected.has(model.model_id);
-      const sourceBadge =
-        model.pricing_source === "auto"
-          ? '<span class="badge badge--auto">auto</span>'
-          : '<span class="badge badge--manual">manual</span>';
       const previewBadge =
         model.availability === "preview"
           ? '<span class="badge badge--preview">preview</span>'
           : "";
-      const priceClass = modelHasPrice(model)
-        ? ""
-        : " model-card__meta--unknown";
+      const s = global.BedrockLens._priceScope || {};
+      const has = modelHasPrice(model, s.region, s.tier);
+      const priceClass = has ? "" : " model-card__meta--unknown";
 
       li.innerHTML = `
         <input type="checkbox" class="model-card__check" ${checked ? "checked" : ""} aria-label="Select ${escapeAttr(model.display_name)}">
@@ -135,7 +199,7 @@
           <div class="model-card__row">
             <span class="model-card__name">${escapeHtml(model.display_name)}</span>
             <span class="model-card__provider" data-provider="${escapeAttr(model.provider)}">${escapeHtml(model.provider)}</span>
-            ${sourceBadge}${previewBadge}
+            ${previewBadge}
           </div>
           <div class="model-card__meta${priceClass}">${escapeHtml(formatListPrice(model))}</div>
           <span class="model-card__id">${escapeHtml(model.model_id)}</span>
@@ -161,14 +225,18 @@
     const n = selected.size;
     els.compareCount.textContent = String(n);
     els.compareBar.hidden = n < 1;
+    document.body.classList.toggle("has-compare-bar", n >= 1);
   }
 
   global.BedrockLens.browser = {
     updateMetaUI,
     populateProviderFilter,
     populateRegionFilter,
+    populateTierFilter,
     getFilteredModels,
     renderModelList,
     updateCompareBar,
+    updateFiltersToggle,
+    activeFilterCount,
   };
 })(window);

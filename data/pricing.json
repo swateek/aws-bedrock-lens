@@ -1,6 +1,6 @@
 {
   "meta": {
-    "schema_version": "2.3",
+    "schema_version": "3.0",
     "source": "https://aws.amazon.com/bedrock/pricing/",
     "last_scraped_at": "2026-07-22",
     "pricing_updated_at": "2026-07-22",
@@ -19,7 +19,11 @@
       }
     ],
     "bedrock_offer_region": "us-east-1",
-    "last_bedrock_offer_at": "2026-07-22"
+    "last_bedrock_offer_at": "2026-07-22",
+    "default_price_region": "us-east-1",
+    "price_list_regions": [
+      "us-east-1"
+    ]
   },
   "models": [
     {
@@ -58,6 +62,18 @@
           "usagetype": "USE1-MP:USE1_OutputTokenCount-Units",
           "unit": "Units",
           "product_sku": "6B3GPX39E7A8C2N3"
+        }
+      },
+      "list_prices": {
+        "us-east-1": {
+          "on_demand": {
+            "input_per_1m": 2.0,
+            "output_per_1m": 8.0,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
         }
       }
     },
@@ -98,6 +114,18 @@
           "unit": "Units",
           "product_sku": "4A2Y4HKKGKS4F2JP"
         }
+      },
+      "list_prices": {
+        "us-east-1": {
+          "on_demand": {
+            "input_per_1m": 0.2,
+            "output_per_1m": 0.4,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
+        }
       }
     },
     {
@@ -137,6 +165,18 @@
           "unit": "Units",
           "product_sku": "FQPWBW828BNU89MP"
         }
+      },
+      "list_prices": {
+        "us-east-1": {
+          "on_demand": {
+            "input_per_1m": 0.5,
+            "output_per_1m": 0.7,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
+        }
       }
     },
     {
@@ -165,7 +205,19 @@
       ],
       "notes": null,
       "availability": "ga",
-      "alternate_ids": []
+      "alternate_ids": [],
+      "list_prices": {
+        "us-east-1": {
+          "on_demand": {
+            "input_per_1m": 0.33,
+            "output_per_1m": 2.75,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
+        }
+      }
     },
     {
       "model_id": "amazon.nova-2-lite-v1:0:256k",
@@ -191,7 +243,19 @@
       ],
       "notes": null,
       "availability": "ga",
-      "alternate_ids": []
+      "alternate_ids": [],
+      "list_prices": {
+        "us-east-1": {
+          "on_demand": {
+            "input_per_1m": 0.33,
+            "output_per_1m": 2.75,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
+        }
+      }
     },
     {
       "model_id": "amazon.nova-2-multimodal-embeddings-v1:0",
@@ -226,6 +290,18 @@
           "unit": "1K tokens",
           "product_sku": "J2D4JFVY35KCT3WP"
         }
+      },
+      "list_prices": {
+        "us-east-1": {
+          "on_demand": {
+            "input_per_1m": 0.135,
+            "output_per_1m": null,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
+        }
       }
     },
     {
@@ -252,7 +328,19 @@
       ],
       "notes": null,
       "availability": "ga",
-      "alternate_ids": []
+      "alternate_ids": [],
+      "list_prices": {
+        "us-east-1": {
+          "on_demand": {
+            "input_per_1m": 0.33,
+            "output_per_1m": 12.0,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
+        }
+      }
     },
     {
       "model_id": "amazon.nova-canvas-v1:0",
@@ -292,6 +380,18 @@
           "usagetype": "USE1-NovaCanvas-T2I-1024-Premium",
           "unit": "image",
           "product_sku": "JY7C2967XHZKN58E"
+        }
+      },
+      "list_prices": {
+        "us-east-1": {
+          "on_demand": {
+            "input_per_1m": null,
+            "output_per_1m": null,
+            "standard_per_image": 0.04,
+            "premium_per_image": 0.06,
+            "per_second": null,
+            "per_search_unit": null
+          }
         }
       }
     },
@@ -335,6 +435,18 @@
           "unit": "1K tokens",
           "product_sku": "QRGWJ3P8FT28EYX2"
         }
+      },
+      "list_prices": {
+        "us-east-1": {
+          "on_demand": {
+            "input_per_1m": 0.06,
+            "output_per_1m": 0.24,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
+        }
       }
     },
     {
@@ -361,7 +473,19 @@
       ],
       "notes": null,
       "availability": "ga",
-      "alternate_ids": []
+      "alternate_ids": [],
+      "list_prices": {
+        "us-east-1": {
+          "on_demand": {
+            "input_per_1m": 0.06,
+            "output_per_1m": 0.24,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
+        }
+      }
     },
     {
       "model_id": "amazon.nova-lite-v1:0:300k",
@@ -387,7 +511,19 @@
       ],
       "notes": null,
       "availability": "ga",
-      "alternate_ids": []
+      "alternate_ids": [],
+      "list_prices": {
+        "us-east-1": {
+          "on_demand": {
+            "input_per_1m": 0.06,
+            "output_per_1m": 0.24,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
+        }
+      }
     },
     {
       "model_id": "amazon.nova-micro-v1:0",
@@ -428,6 +564,18 @@
           "unit": "1K tokens",
           "product_sku": "YUSGHKDUPQRC75RK"
         }
+      },
+      "list_prices": {
+        "us-east-1": {
+          "on_demand": {
+            "input_per_1m": 0.035,
+            "output_per_1m": 0.14,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
+        }
       }
     },
     {
@@ -453,7 +601,19 @@
       ],
       "notes": null,
       "availability": "ga",
-      "alternate_ids": []
+      "alternate_ids": [],
+      "list_prices": {
+        "us-east-1": {
+          "on_demand": {
+            "input_per_1m": 0.035,
+            "output_per_1m": 0.14,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
+        }
+      }
     },
     {
       "model_id": "amazon.nova-micro-v1:0:24k",
@@ -478,7 +638,19 @@
       ],
       "notes": null,
       "availability": "ga",
-      "alternate_ids": []
+      "alternate_ids": [],
+      "list_prices": {
+        "us-east-1": {
+          "on_demand": {
+            "input_per_1m": 0.035,
+            "output_per_1m": 0.14,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
+        }
+      }
     },
     {
       "model_id": "amazon.nova-premier-v1:0",
@@ -519,6 +691,18 @@
           "unit": "1K tokens",
           "product_sku": "6QAAYR5SSN69NABR"
         }
+      },
+      "list_prices": {
+        "us-east-1": {
+          "on_demand": {
+            "input_per_1m": 2.5,
+            "output_per_1m": 12.5,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
+        }
       }
     },
     {
@@ -546,7 +730,19 @@
       ],
       "notes": null,
       "availability": "legacy",
-      "alternate_ids": []
+      "alternate_ids": [],
+      "list_prices": {
+        "us-east-1": {
+          "on_demand": {
+            "input_per_1m": 2.5,
+            "output_per_1m": 12.5,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
+        }
+      }
     },
     {
       "model_id": "amazon.nova-premier-v1:0:20k",
@@ -573,7 +769,19 @@
       ],
       "notes": null,
       "availability": "legacy",
-      "alternate_ids": []
+      "alternate_ids": [],
+      "list_prices": {
+        "us-east-1": {
+          "on_demand": {
+            "input_per_1m": 2.5,
+            "output_per_1m": 12.5,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
+        }
+      }
     },
     {
       "model_id": "amazon.nova-premier-v1:0:8k",
@@ -600,7 +808,19 @@
       ],
       "notes": null,
       "availability": "legacy",
-      "alternate_ids": []
+      "alternate_ids": [],
+      "list_prices": {
+        "us-east-1": {
+          "on_demand": {
+            "input_per_1m": 2.5,
+            "output_per_1m": 12.5,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
+        }
+      }
     },
     {
       "model_id": "amazon.nova-premier-v1:0:mm",
@@ -627,7 +847,19 @@
       ],
       "notes": null,
       "availability": "legacy",
-      "alternate_ids": []
+      "alternate_ids": [],
+      "list_prices": {
+        "us-east-1": {
+          "on_demand": {
+            "input_per_1m": 2.5,
+            "output_per_1m": 12.5,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
+        }
+      }
     },
     {
       "model_id": "amazon.nova-pro-v1:0",
@@ -669,6 +901,18 @@
           "unit": "1K tokens",
           "product_sku": "8X836UXRHN5Q5T2H"
         }
+      },
+      "list_prices": {
+        "us-east-1": {
+          "on_demand": {
+            "input_per_1m": 0.8,
+            "output_per_1m": 3.2,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
+        }
       }
     },
     {
@@ -695,7 +939,19 @@
       ],
       "notes": null,
       "availability": "ga",
-      "alternate_ids": []
+      "alternate_ids": [],
+      "list_prices": {
+        "us-east-1": {
+          "on_demand": {
+            "input_per_1m": 0.8,
+            "output_per_1m": 3.2,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
+        }
+      }
     },
     {
       "model_id": "amazon.nova-pro-v1:0:300k",
@@ -721,7 +977,19 @@
       ],
       "notes": null,
       "availability": "ga",
-      "alternate_ids": []
+      "alternate_ids": [],
+      "list_prices": {
+        "us-east-1": {
+          "on_demand": {
+            "input_per_1m": 0.8,
+            "output_per_1m": 3.2,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
+        }
+      }
     },
     {
       "model_id": "amazon.nova-reel-v1:0",
@@ -748,7 +1016,19 @@
       ],
       "notes": null,
       "availability": "legacy",
-      "alternate_ids": []
+      "alternate_ids": [],
+      "list_prices": {
+        "us-east-1": {
+          "on_demand": {
+            "input_per_1m": null,
+            "output_per_1m": null,
+            "standard_per_image": 0.08,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
+        }
+      }
     },
     {
       "model_id": "amazon.nova-reel-v1:1",
@@ -774,7 +1054,19 @@
       ],
       "notes": null,
       "availability": "legacy",
-      "alternate_ids": []
+      "alternate_ids": [],
+      "list_prices": {
+        "us-east-1": {
+          "on_demand": {
+            "input_per_1m": null,
+            "output_per_1m": null,
+            "standard_per_image": 0.08,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
+        }
+      }
     },
     {
       "model_id": "amazon.nova-sonic-v1:0",
@@ -813,6 +1105,18 @@
           "unit": "1K tokens",
           "product_sku": "T2ZZEYJ6HBSGHATR"
         }
+      },
+      "list_prices": {
+        "us-east-1": {
+          "on_demand": {
+            "input_per_1m": 0.06,
+            "output_per_1m": 13.6,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
+        }
       }
     },
     {
@@ -838,7 +1142,19 @@
       ],
       "notes": "Per search unit (Rerank API); aligned with Amazon Rerank 1.0 pricing examples on AWS site.",
       "availability": "ga",
-      "alternate_ids": []
+      "alternate_ids": [],
+      "list_prices": {
+        "us-east-1": {
+          "on_demand": {
+            "input_per_1m": null,
+            "output_per_1m": null,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": 0.002
+          }
+        }
+      }
     },
     {
       "model_id": "amazon.titan-embed-g1-text-02",
@@ -872,6 +1188,18 @@
           "usagetype": "USE1-TitanEmbeddingsG1-Text-input-tokens",
           "unit": "1K tokens",
           "product_sku": "RS4JPUWRVXVJCUCE"
+        }
+      },
+      "list_prices": {
+        "us-east-1": {
+          "on_demand": {
+            "input_per_1m": 0.1,
+            "output_per_1m": null,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
         }
       }
     },
@@ -910,6 +1238,18 @@
           "unit": "1K tokens",
           "product_sku": "8WG9RB8FVXQR4STK"
         }
+      },
+      "list_prices": {
+        "us-east-1": {
+          "on_demand": {
+            "input_per_1m": 0.8,
+            "output_per_1m": null,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
+        }
       }
     },
     {
@@ -939,7 +1279,19 @@
       ],
       "notes": null,
       "availability": "ga",
-      "alternate_ids": []
+      "alternate_ids": [],
+      "list_prices": {
+        "us-east-1": {
+          "on_demand": {
+            "input_per_1m": 0.8,
+            "output_per_1m": null,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
+        }
+      }
     },
     {
       "model_id": "amazon.titan-embed-text-v1",
@@ -966,7 +1318,19 @@
       ],
       "notes": null,
       "availability": "ga",
-      "alternate_ids": []
+      "alternate_ids": [],
+      "list_prices": {
+        "us-east-1": {
+          "on_demand": {
+            "input_per_1m": 0.1,
+            "output_per_1m": null,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
+        }
+      }
     },
     {
       "model_id": "amazon.titan-embed-text-v1:2:8k",
@@ -993,7 +1357,19 @@
       ],
       "notes": null,
       "availability": "ga",
-      "alternate_ids": []
+      "alternate_ids": [],
+      "list_prices": {
+        "us-east-1": {
+          "on_demand": {
+            "input_per_1m": 0.1,
+            "output_per_1m": null,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
+        }
+      }
     },
     {
       "model_id": "amazon.titan-embed-text-v2:0",
@@ -1029,6 +1405,18 @@
           "unit": "1K tokens",
           "product_sku": "EDNQYEHQ3XQ8N7EY"
         }
+      },
+      "list_prices": {
+        "us-east-1": {
+          "on_demand": {
+            "input_per_1m": 0.02,
+            "output_per_1m": null,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
+        }
       }
     },
     {
@@ -1055,7 +1443,19 @@
       ],
       "notes": null,
       "availability": "ga",
-      "alternate_ids": []
+      "alternate_ids": [],
+      "list_prices": {
+        "us-east-1": {
+          "on_demand": {
+            "input_per_1m": 0.02,
+            "output_per_1m": null,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
+        }
+      }
     },
     {
       "model_id": "amazon.titan-image-generator-v1",
@@ -1094,6 +1494,18 @@
           "usagetype": "USE1-TitanImageGeneratorG1-T2I-1024-Standard",
           "unit": "image",
           "product_sku": "8Y8RXFC3QZNKYNVP"
+        }
+      },
+      "list_prices": {
+        "us-east-1": {
+          "on_demand": {
+            "input_per_1m": null,
+            "output_per_1m": null,
+            "standard_per_image": 0.01,
+            "premium_per_image": 0.022,
+            "per_second": null,
+            "per_search_unit": null
+          }
         }
       }
     },
@@ -1136,6 +1548,18 @@
           "unit": "image",
           "product_sku": "5DRBQCK2SUKSM3FJ"
         }
+      },
+      "list_prices": {
+        "us-east-1": {
+          "on_demand": {
+            "input_per_1m": null,
+            "output_per_1m": null,
+            "standard_per_image": 0.01,
+            "premium_per_image": 0.012,
+            "per_second": null,
+            "per_search_unit": null
+          }
+        }
       }
     },
     {
@@ -1162,7 +1586,19 @@
       ],
       "notes": null,
       "availability": "legacy",
-      "alternate_ids": []
+      "alternate_ids": [],
+      "list_prices": {
+        "us-east-1": {
+          "on_demand": {
+            "input_per_1m": 0.8,
+            "output_per_1m": 4.0,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
+        }
+      }
     },
     {
       "model_id": "anthropic.claude-3-5-sonnet-20240620-v1:0",
@@ -1203,6 +1639,18 @@
           "usagetype": "USE1-MP:USE1_OutputTokenCount-Units",
           "unit": "Units",
           "product_sku": "UEEUFU4E34P5QEKS"
+        }
+      },
+      "list_prices": {
+        "us-east-1": {
+          "on_demand": {
+            "input_per_1m": 3.0,
+            "output_per_1m": 15.0,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
         }
       }
     },
@@ -1245,6 +1693,18 @@
           "unit": "Units",
           "product_sku": "G9H8GZD6JNDG8SYS"
         }
+      },
+      "list_prices": {
+        "us-east-1": {
+          "on_demand": {
+            "input_per_1m": 3.0,
+            "output_per_1m": 15.0,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
+        }
       }
     },
     {
@@ -1283,6 +1743,18 @@
           "usagetype": "USE1-MP:USE1_InputTokenCount-Units",
           "unit": "Units",
           "product_sku": "S7PWAXCQTA6VXCXQ"
+        }
+      },
+      "list_prices": {
+        "us-east-1": {
+          "on_demand": {
+            "input_per_1m": 3.0,
+            "output_per_1m": 15.0,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
         }
       }
     },
@@ -1326,6 +1798,18 @@
           "unit": "1K tokens",
           "product_sku": "KMZFVEBPVFAP5FUF"
         }
+      },
+      "list_prices": {
+        "us-east-1": {
+          "on_demand": {
+            "input_per_1m": 0.8,
+            "output_per_1m": 1.25,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
+        }
       }
     },
     {
@@ -1353,7 +1837,19 @@
       ],
       "notes": null,
       "availability": "legacy",
-      "alternate_ids": []
+      "alternate_ids": [],
+      "list_prices": {
+        "us-east-1": {
+          "on_demand": {
+            "input_per_1m": 0.25,
+            "output_per_1m": 4.0,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
+        }
+      }
     },
     {
       "model_id": "anthropic.claude-3-haiku-20240307-v1:0:48k",
@@ -1381,7 +1877,19 @@
       ],
       "notes": null,
       "availability": "legacy",
-      "alternate_ids": []
+      "alternate_ids": [],
+      "list_prices": {
+        "us-east-1": {
+          "on_demand": {
+            "input_per_1m": 0.25,
+            "output_per_1m": 1.25,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
+        }
+      }
     },
     {
       "model_id": "anthropic.claude-3-opus-20240229-v1:0",
@@ -1420,6 +1928,18 @@
           "usagetype": "USE1-MP:USE1_InputTokenCount-Units",
           "unit": "Units",
           "product_sku": "MS3HY7MHUKSXTCEZ"
+        }
+      },
+      "list_prices": {
+        "us-east-1": {
+          "on_demand": {
+            "input_per_1m": 15.0,
+            "output_per_1m": 75.0,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
         }
       }
     },
@@ -1463,6 +1983,18 @@
           "unit": "1K tokens",
           "product_sku": "ZEJSXGT973DYB7JF"
         }
+      },
+      "list_prices": {
+        "us-east-1": {
+          "on_demand": {
+            "input_per_1m": 3.0,
+            "output_per_1m": 15.0,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
+        }
       }
     },
     {
@@ -1491,7 +2023,19 @@
       ],
       "notes": null,
       "availability": "legacy",
-      "alternate_ids": []
+      "alternate_ids": [],
+      "list_prices": {
+        "us-east-1": {
+          "on_demand": {
+            "input_per_1m": 3.0,
+            "output_per_1m": null,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
+        }
+      }
     },
     {
       "model_id": "anthropic.claude-3-sonnet-20240229-v1:0:28k",
@@ -1519,7 +2063,19 @@
       ],
       "notes": null,
       "availability": "legacy",
-      "alternate_ids": []
+      "alternate_ids": [],
+      "list_prices": {
+        "us-east-1": {
+          "on_demand": {
+            "input_per_1m": 3.0,
+            "output_per_1m": 15.0,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
+        }
+      }
     },
     {
       "model_id": "anthropic.claude-haiku-4-5-20251001-v1:0",
@@ -1560,6 +2116,18 @@
           "usagetype": "USE1-MP:USE1_OutputTokenCount-Units",
           "unit": "Units",
           "product_sku": "X629GDA2GXAP6R54"
+        }
+      },
+      "list_prices": {
+        "us-east-1": {
+          "on_demand": {
+            "input_per_1m": 1.1,
+            "output_per_1m": 5.5,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
         }
       }
     },
@@ -1602,6 +2170,18 @@
           "unit": "Units",
           "product_sku": "NG5X94VNYG2HZC6B"
         }
+      },
+      "list_prices": {
+        "us-east-1": {
+          "on_demand": {
+            "input_per_1m": 15.0,
+            "output_per_1m": 75.0,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
+        }
       }
     },
     {
@@ -1642,6 +2222,18 @@
           "usagetype": "USE1-MP:USE1_InputTokenCount-Units",
           "unit": "Units",
           "product_sku": "5Y54F44PS3RN47J3"
+        }
+      },
+      "list_prices": {
+        "us-east-1": {
+          "on_demand": {
+            "input_per_1m": 15.0,
+            "output_per_1m": 75.0,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
         }
       }
     },
@@ -1685,6 +2277,18 @@
           "unit": "Units",
           "product_sku": "YKNFEHQXMAYYRR5M"
         }
+      },
+      "list_prices": {
+        "us-east-1": {
+          "on_demand": {
+            "input_per_1m": 5.5,
+            "output_per_1m": 27.5,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
+        }
       }
     },
     {
@@ -1726,6 +2330,18 @@
           "usagetype": "USE1-MP:USE1_OutputTokenCount-Units",
           "unit": "Units",
           "product_sku": "HTCQM6TSYSHDEY34"
+        }
+      },
+      "list_prices": {
+        "us-east-1": {
+          "on_demand": {
+            "input_per_1m": 5.5,
+            "output_per_1m": 27.5,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
         }
       }
     },
@@ -1769,6 +2385,18 @@
           "unit": "Units",
           "product_sku": "4RW4ZBG4G4YU6S6S"
         }
+      },
+      "list_prices": {
+        "us-east-1": {
+          "on_demand": {
+            "input_per_1m": 5.5,
+            "output_per_1m": 27.5,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
+        }
       }
     },
     {
@@ -1807,6 +2435,18 @@
           "usagetype": "USE1-MP:USE1_input_tokens_standard-Units",
           "unit": "Units",
           "product_sku": "4AVHTD2NXFKSU6HU"
+        }
+      },
+      "list_prices": {
+        "us-east-1": {
+          "on_demand": {
+            "input_per_1m": 5.5,
+            "output_per_1m": 27.5,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
         }
       }
     },
@@ -1850,6 +2490,18 @@
           "unit": "Units",
           "product_sku": "A8AX5C4CZN5SDSDZ"
         }
+      },
+      "list_prices": {
+        "us-east-1": {
+          "on_demand": {
+            "input_per_1m": 3.0,
+            "output_per_1m": 15.0,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
+        }
       }
     },
     {
@@ -1891,6 +2543,18 @@
           "usagetype": "USE1-MP:USE1_OutputTokenCount-Units",
           "unit": "Units",
           "product_sku": "3YN5KGC2HJU9VC5A"
+        }
+      },
+      "list_prices": {
+        "us-east-1": {
+          "on_demand": {
+            "input_per_1m": 3.3,
+            "output_per_1m": 16.5,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
         }
       }
     },
@@ -1934,6 +2598,18 @@
           "unit": "Units",
           "product_sku": "KPFGPZJ8VWMREGAV"
         }
+      },
+      "list_prices": {
+        "us-east-1": {
+          "on_demand": {
+            "input_per_1m": 3.3,
+            "output_per_1m": 16.5,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
+        }
       }
     },
     {
@@ -1967,6 +2643,18 @@
           "unit": "1K tokens",
           "product_sku": "3G679R3Y8YSQSJTA"
         }
+      },
+      "list_prices": {
+        "us-east-1": {
+          "on_demand": {
+            "input_per_1m": 8.0,
+            "output_per_1m": null,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
+        }
       }
     },
     {
@@ -1999,6 +2687,18 @@
           "usagetype": "USE1-Claude2.1-input-tokens",
           "unit": "1K tokens",
           "product_sku": "DNHX8RUT8JXY6B4P"
+        }
+      },
+      "list_prices": {
+        "us-east-1": {
+          "on_demand": {
+            "input_per_1m": 8.0,
+            "output_per_1m": null,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
         }
       }
     },
@@ -2038,6 +2738,18 @@
           "usagetype": "USE1-MP:USE1_OutputTokenCount-Units",
           "unit": "Units",
           "product_sku": "HZUZ58ZVY89BNND3"
+        }
+      },
+      "list_prices": {
+        "us-east-1": {
+          "on_demand": {
+            "input_per_1m": 0.3,
+            "output_per_1m": 0.6,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
         }
       }
     },
@@ -2079,6 +2791,18 @@
           "unit": "Units",
           "product_sku": "TQ7UCF825SAA35Q8"
         }
+      },
+      "list_prices": {
+        "us-east-1": {
+          "on_demand": {
+            "input_per_1m": 0.5,
+            "output_per_1m": 15.0,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
+        }
       }
     },
     {
@@ -2105,7 +2829,19 @@
       "notes": null,
       "pricing_source": "auto",
       "availability": "legacy",
-      "alternate_ids": []
+      "alternate_ids": [],
+      "list_prices": {
+        "us-east-1": {
+          "on_demand": {
+            "input_per_1m": 3.0,
+            "output_per_1m": 1.5,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
+        }
+      }
     },
     {
       "model_id": "cohere.command-text-v14",
@@ -2144,6 +2880,18 @@
           "unit": "Units",
           "product_sku": "BUQXEJBJBDMAABGZ"
         }
+      },
+      "list_prices": {
+        "us-east-1": {
+          "on_demand": {
+            "input_per_1m": 1.0,
+            "output_per_1m": 2.0,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
+        }
       }
     },
     {
@@ -2180,6 +2928,18 @@
           "unit": "Units",
           "product_sku": "E5RFAVXKSC2JPT8K"
         }
+      },
+      "list_prices": {
+        "us-east-1": {
+          "on_demand": {
+            "input_per_1m": 0.1,
+            "output_per_1m": null,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
+        }
       }
     },
     {
@@ -2207,7 +2967,19 @@
       ],
       "notes": null,
       "availability": "ga",
-      "alternate_ids": []
+      "alternate_ids": [],
+      "list_prices": {
+        "us-east-1": {
+          "on_demand": {
+            "input_per_1m": 0.1,
+            "output_per_1m": null,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
+        }
+      }
     },
     {
       "model_id": "cohere.embed-multilingual-v3",
@@ -2243,6 +3015,18 @@
           "unit": "Units",
           "product_sku": "RV9YM56S47WA82X6"
         }
+      },
+      "list_prices": {
+        "us-east-1": {
+          "on_demand": {
+            "input_per_1m": 0.1,
+            "output_per_1m": null,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
+        }
       }
     },
     {
@@ -2270,7 +3054,19 @@
       ],
       "notes": null,
       "availability": "ga",
-      "alternate_ids": []
+      "alternate_ids": [],
+      "list_prices": {
+        "us-east-1": {
+          "on_demand": {
+            "input_per_1m": 0.1,
+            "output_per_1m": null,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
+        }
+      }
     },
     {
       "model_id": "cohere.embed-v4:0",
@@ -2307,6 +3103,18 @@
           "unit": "Units",
           "product_sku": "HBJH94F362NSVQWJ"
         }
+      },
+      "list_prices": {
+        "us-east-1": {
+          "on_demand": {
+            "input_per_1m": 0.12,
+            "output_per_1m": null,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
+        }
       }
     },
     {
@@ -2333,7 +3141,19 @@
       ],
       "notes": null,
       "availability": "ga",
-      "alternate_ids": []
+      "alternate_ids": [],
+      "list_prices": {
+        "us-east-1": {
+          "on_demand": {
+            "input_per_1m": 0.002,
+            "output_per_1m": null,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
+        }
+      }
     },
     {
       "model_id": "deepseek.r1-v1:0",
@@ -2373,6 +3193,18 @@
           "unit": "1K tokens",
           "product_sku": "TGVVM4SUDQNTXBKU"
         }
+      },
+      "list_prices": {
+        "us-east-1": {
+          "on_demand": {
+            "input_per_1m": 1.35,
+            "output_per_1m": 5.4,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
+        }
       }
     },
     {
@@ -2398,7 +3230,19 @@
       ],
       "notes": null,
       "availability": "ga",
-      "alternate_ids": []
+      "alternate_ids": [],
+      "list_prices": {
+        "us-east-1": {
+          "on_demand": {
+            "input_per_1m": 0.5974,
+            "output_per_1m": 1.7304,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
+        }
+      }
     },
     {
       "model_id": "deepseek.v3.1-mantle",
@@ -2436,6 +3280,18 @@
           "usagetype": "USE1-deepseek.v3.1-mantle-output-tokens-standard",
           "unit": "1K tokens",
           "product_sku": "RN99F994PC92V8H6"
+        }
+      },
+      "list_prices": {
+        "us-east-1": {
+          "on_demand": {
+            "input_per_1m": 0.58,
+            "output_per_1m": 1.68,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
         }
       }
     },
@@ -2477,6 +3333,18 @@
           "unit": "1K tokens",
           "product_sku": "GKSCNNJ6M7WBX7C3"
         }
+      },
+      "list_prices": {
+        "us-east-1": {
+          "on_demand": {
+            "input_per_1m": 0.62,
+            "output_per_1m": 1.85,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
+        }
       }
     },
     {
@@ -2515,6 +3383,18 @@
           "usagetype": "USE1-deepseek.v3.2-mantle-output-tokens-standard",
           "unit": "1K tokens",
           "product_sku": "K33JU6PD6BDYVSRR"
+        }
+      },
+      "list_prices": {
+        "us-east-1": {
+          "on_demand": {
+            "input_per_1m": 0.62,
+            "output_per_1m": 1.85,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
         }
       }
     },
@@ -2558,6 +3438,18 @@
           "unit": "1K tokens",
           "product_sku": "DSFFTYMJV7CSVQKS"
         }
+      },
+      "list_prices": {
+        "us-east-1": {
+          "on_demand": {
+            "input_per_1m": 0.09,
+            "output_per_1m": 0.29,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
+        }
       }
     },
     {
@@ -2596,6 +3488,18 @@
           "usagetype": "USE1-google.gemma-3-12b-it-mantle-input-tokens-standard",
           "unit": "1K tokens",
           "product_sku": "WZVSEBAA7AMRTGCF"
+        }
+      },
+      "list_prices": {
+        "us-east-1": {
+          "on_demand": {
+            "input_per_1m": 0.09,
+            "output_per_1m": 0.29,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
         }
       }
     },
@@ -2639,6 +3543,18 @@
           "unit": "1K tokens",
           "product_sku": "9598YVSH4YHJ62JH"
         }
+      },
+      "list_prices": {
+        "us-east-1": {
+          "on_demand": {
+            "input_per_1m": 0.23,
+            "output_per_1m": 0.38,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
+        }
       }
     },
     {
@@ -2677,6 +3593,18 @@
           "usagetype": "USE1-google.gemma-3-27b-it-mantle-input-tokens-standard",
           "unit": "1K tokens",
           "product_sku": "JN3W4A3CFHBQ8MBJ"
+        }
+      },
+      "list_prices": {
+        "us-east-1": {
+          "on_demand": {
+            "input_per_1m": 0.23,
+            "output_per_1m": 0.38,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
         }
       }
     },
@@ -2720,6 +3648,18 @@
           "unit": "1K tokens",
           "product_sku": "HW9GGXUDMEPF287T"
         }
+      },
+      "list_prices": {
+        "us-east-1": {
+          "on_demand": {
+            "input_per_1m": 0.04,
+            "output_per_1m": 0.08,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
+        }
       }
     },
     {
@@ -2758,6 +3698,18 @@
           "usagetype": "USE1-google.gemma-3-4b-it-mantle-input-tokens-standard",
           "unit": "1K tokens",
           "product_sku": "9E5YX7K8ZEAFZRC4"
+        }
+      },
+      "list_prices": {
+        "us-east-1": {
+          "on_demand": {
+            "input_per_1m": 0.04,
+            "output_per_1m": 0.08,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
         }
       }
     },
@@ -2798,6 +3750,18 @@
           "unit": "1K tokens",
           "product_sku": "8U5GMJ74UDCQC28D"
         }
+      },
+      "list_prices": {
+        "us-east-1": {
+          "on_demand": {
+            "input_per_1m": 0.13,
+            "output_per_1m": 0.4,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
+        }
       }
     },
     {
@@ -2836,6 +3800,18 @@
           "usagetype": "USE1-google.gemma-4-31b-mantle-output-tokens-standard",
           "unit": "1K tokens",
           "product_sku": "F2RSSBZ8F3XQP2AN"
+        }
+      },
+      "list_prices": {
+        "us-east-1": {
+          "on_demand": {
+            "input_per_1m": 0.14,
+            "output_per_1m": 0.4,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
         }
       }
     },
@@ -2876,6 +3852,18 @@
           "unit": "1K tokens",
           "product_sku": "BMGYJH57QTSYN3EV"
         }
+      },
+      "list_prices": {
+        "us-east-1": {
+          "on_demand": {
+            "input_per_1m": 0.04,
+            "output_per_1m": 0.08,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
+        }
       }
     },
     {
@@ -2901,7 +3889,19 @@
       ],
       "notes": "Video generation billed per second of output; value shown is USD per second (not per 1K tokens).",
       "availability": "ga",
-      "alternate_ids": []
+      "alternate_ids": [],
+      "list_prices": {
+        "us-east-1": {
+          "on_demand": {
+            "input_per_1m": null,
+            "output_per_1m": null,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": 0.08,
+            "per_search_unit": null
+          }
+        }
+      }
     },
     {
       "model_id": "meta.llama2-13b-chat-v1",
@@ -2939,6 +3939,18 @@
           "usagetype": "USE1-MP:USE1_OutputTokenCount-Units",
           "unit": "Units",
           "product_sku": "VZKPR9VHN5K3ADS6"
+        }
+      },
+      "list_prices": {
+        "us-east-1": {
+          "on_demand": {
+            "input_per_1m": 0.75,
+            "output_per_1m": 1.0,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
         }
       }
     },
@@ -2979,6 +3991,18 @@
           "unit": "Units",
           "product_sku": "25TSN3JCUAVNTTZB"
         }
+      },
+      "list_prices": {
+        "us-east-1": {
+          "on_demand": {
+            "input_per_1m": 1.95,
+            "output_per_1m": 2.56,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
+        }
       }
     },
     {
@@ -3004,7 +4028,19 @@
       ],
       "notes": "On-demand list price per AWS Bedrock pricing page (batch tiers may differ).",
       "availability": "legacy",
-      "alternate_ids": []
+      "alternate_ids": [],
+      "list_prices": {
+        "us-east-1": {
+          "on_demand": {
+            "input_per_1m": 5.32,
+            "output_per_1m": 16.0,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
+        }
+      }
     },
     {
       "model_id": "meta.llama3-1-70b-instruct-v1:0",
@@ -3044,6 +4080,18 @@
           "unit": "1K tokens",
           "product_sku": "HDNPB7D2GKVWKWYZ"
         }
+      },
+      "list_prices": {
+        "us-east-1": {
+          "on_demand": {
+            "input_per_1m": 0.72,
+            "output_per_1m": 0.72,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
+        }
       }
     },
     {
@@ -3069,7 +4117,19 @@
       ],
       "notes": null,
       "availability": "ga",
-      "alternate_ids": []
+      "alternate_ids": [],
+      "list_prices": {
+        "us-east-1": {
+          "on_demand": {
+            "input_per_1m": 0.72,
+            "output_per_1m": 0.72,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
+        }
+      }
     },
     {
       "model_id": "meta.llama3-1-8b-instruct-v1:0",
@@ -3109,6 +4169,18 @@
           "unit": "1K tokens",
           "product_sku": "T5HJEUP9S7VHFFCF"
         }
+      },
+      "list_prices": {
+        "us-east-1": {
+          "on_demand": {
+            "input_per_1m": 0.22,
+            "output_per_1m": 0.22,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
+        }
       }
     },
     {
@@ -3134,7 +4206,19 @@
       ],
       "notes": null,
       "availability": "ga",
-      "alternate_ids": []
+      "alternate_ids": [],
+      "list_prices": {
+        "us-east-1": {
+          "on_demand": {
+            "input_per_1m": 0.22,
+            "output_per_1m": 0.22,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
+        }
+      }
     },
     {
       "model_id": "meta.llama3-2-11b-instruct-v1:0",
@@ -3175,6 +4259,18 @@
           "unit": "1K tokens",
           "product_sku": "XVQBF4C2WERM5RM6"
         }
+      },
+      "list_prices": {
+        "us-east-1": {
+          "on_demand": {
+            "input_per_1m": 0.16,
+            "output_per_1m": 0.16,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
+        }
       }
     },
     {
@@ -3201,7 +4297,19 @@
       ],
       "notes": null,
       "availability": "legacy",
-      "alternate_ids": []
+      "alternate_ids": [],
+      "list_prices": {
+        "us-east-1": {
+          "on_demand": {
+            "input_per_1m": 0.16,
+            "output_per_1m": 0.16,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
+        }
+      }
     },
     {
       "model_id": "meta.llama3-2-1b-instruct-v1:0",
@@ -3242,6 +4350,18 @@
           "unit": "1K tokens",
           "product_sku": "FPDMHFA85G6AMHZA"
         }
+      },
+      "list_prices": {
+        "us-east-1": {
+          "on_demand": {
+            "input_per_1m": 0.1,
+            "output_per_1m": 0.1,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
+        }
       }
     },
     {
@@ -3267,7 +4387,19 @@
       ],
       "notes": null,
       "availability": "legacy",
-      "alternate_ids": []
+      "alternate_ids": [],
+      "list_prices": {
+        "us-east-1": {
+          "on_demand": {
+            "input_per_1m": 0.1,
+            "output_per_1m": 0.1,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
+        }
+      }
     },
     {
       "model_id": "meta.llama3-2-3b-instruct-v1:0",
@@ -3308,6 +4440,18 @@
           "unit": "1K tokens",
           "product_sku": "HKZGRBRHTJKZ2MBM"
         }
+      },
+      "list_prices": {
+        "us-east-1": {
+          "on_demand": {
+            "input_per_1m": 0.15,
+            "output_per_1m": 0.15,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
+        }
       }
     },
     {
@@ -3333,7 +4477,19 @@
       ],
       "notes": null,
       "availability": "legacy",
-      "alternate_ids": []
+      "alternate_ids": [],
+      "list_prices": {
+        "us-east-1": {
+          "on_demand": {
+            "input_per_1m": 0.15,
+            "output_per_1m": 0.15,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
+        }
+      }
     },
     {
       "model_id": "meta.llama3-2-90b-instruct-v1:0",
@@ -3374,6 +4530,18 @@
           "unit": "1K tokens",
           "product_sku": "QUJRS9XSCE2FQBQV"
         }
+      },
+      "list_prices": {
+        "us-east-1": {
+          "on_demand": {
+            "input_per_1m": 0.72,
+            "output_per_1m": 0.72,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
+        }
       }
     },
     {
@@ -3400,7 +4568,19 @@
       ],
       "notes": null,
       "availability": "legacy",
-      "alternate_ids": []
+      "alternate_ids": [],
+      "list_prices": {
+        "us-east-1": {
+          "on_demand": {
+            "input_per_1m": 0.72,
+            "output_per_1m": 0.72,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
+        }
+      }
     },
     {
       "model_id": "meta.llama3-3-70b-instruct-v1:0",
@@ -3440,6 +4620,18 @@
           "unit": "1K tokens",
           "product_sku": "NFE9F5EY3U77MWSW"
         }
+      },
+      "list_prices": {
+        "us-east-1": {
+          "on_demand": {
+            "input_per_1m": 0.72,
+            "output_per_1m": 0.72,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
+        }
       }
     },
     {
@@ -3465,7 +4657,19 @@
       ],
       "notes": null,
       "availability": "ga",
-      "alternate_ids": []
+      "alternate_ids": [],
+      "list_prices": {
+        "us-east-1": {
+          "on_demand": {
+            "input_per_1m": 0.72,
+            "output_per_1m": 0.72,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
+        }
+      }
     },
     {
       "model_id": "meta.llama3-70b-instruct-v1:0",
@@ -3491,7 +4695,19 @@
       "notes": null,
       "pricing_source": "manual",
       "availability": "ga",
-      "alternate_ids": []
+      "alternate_ids": [],
+      "list_prices": {
+        "us-east-1": {
+          "on_demand": {
+            "input_per_1m": 2.65,
+            "output_per_1m": 3.5,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
+        }
+      }
     },
     {
       "model_id": "meta.llama3-8b-instruct-v1:0",
@@ -3530,6 +4746,18 @@
           "usagetype": "USE1-Llama3-8B-input-tokens",
           "unit": "1K tokens",
           "product_sku": "TVXDZHHJWJ5B7JSS"
+        }
+      },
+      "list_prices": {
+        "us-east-1": {
+          "on_demand": {
+            "input_per_1m": 0.3,
+            "output_per_1m": 0.6,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
         }
       }
     },
@@ -3572,6 +4800,18 @@
           "unit": "1K tokens",
           "product_sku": "8BCTPZBR6YK9PVER"
         }
+      },
+      "list_prices": {
+        "us-east-1": {
+          "on_demand": {
+            "input_per_1m": 0.24,
+            "output_per_1m": 0.97,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
+        }
       }
     },
     {
@@ -3613,6 +4853,18 @@
           "unit": "1K tokens",
           "product_sku": "3NRMZNF7G8SFHU4N"
         }
+      },
+      "list_prices": {
+        "us-east-1": {
+          "on_demand": {
+            "input_per_1m": 0.17,
+            "output_per_1m": 0.66,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
+        }
       }
     },
     {
@@ -3640,7 +4892,19 @@
       ],
       "notes": null,
       "availability": "ga",
-      "alternate_ids": []
+      "alternate_ids": [],
+      "list_prices": {
+        "us-east-1": {
+          "on_demand": {
+            "input_per_1m": 0.3,
+            "output_per_1m": 1.2,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
+        }
+      }
     },
     {
       "model_id": "minimax.minimax-m2-mantle",
@@ -3678,6 +4942,18 @@
           "usagetype": "USE1-minimax.minimax-m2-mantle-input-tokens-standard",
           "unit": "1K tokens",
           "product_sku": "4J23WNURNKVMTTRR"
+        }
+      },
+      "list_prices": {
+        "us-east-1": {
+          "on_demand": {
+            "input_per_1m": 0.3,
+            "output_per_1m": 1.2,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
         }
       }
     },
@@ -3720,6 +4996,18 @@
           "unit": "1K tokens",
           "product_sku": "ZQ2KCY6N2EGWVV34"
         }
+      },
+      "list_prices": {
+        "us-east-1": {
+          "on_demand": {
+            "input_per_1m": 0.3,
+            "output_per_1m": 1.2,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
+        }
       }
     },
     {
@@ -3758,6 +5046,18 @@
           "usagetype": "USE1-minimax.minimax-m2.1-mantle-output-tokens-standard",
           "unit": "1K tokens",
           "product_sku": "UH5HV2GRHWNAKE5S"
+        }
+      },
+      "list_prices": {
+        "us-east-1": {
+          "on_demand": {
+            "input_per_1m": 0.3,
+            "output_per_1m": 1.2,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
         }
       }
     },
@@ -3800,6 +5100,18 @@
           "unit": "1K tokens",
           "product_sku": "XMZZ9T5P66WUD5F6"
         }
+      },
+      "list_prices": {
+        "us-east-1": {
+          "on_demand": {
+            "input_per_1m": 0.3,
+            "output_per_1m": 1.2,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
+        }
       }
     },
     {
@@ -3838,6 +5150,18 @@
           "usagetype": "USE1-minimax.minimax-m2.5-mantle-input-tokens-standard",
           "unit": "1K tokens",
           "product_sku": "VMMW9TM8DRZAW2S9"
+        }
+      },
+      "list_prices": {
+        "us-east-1": {
+          "on_demand": {
+            "input_per_1m": 0.3,
+            "output_per_1m": 1.2,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
         }
       }
     },
@@ -3880,6 +5204,18 @@
           "unit": "1K tokens",
           "product_sku": "HHJQZ9UEURJERYWM"
         }
+      },
+      "list_prices": {
+        "us-east-1": {
+          "on_demand": {
+            "input_per_1m": 0.4,
+            "output_per_1m": 2.0,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
+        }
       }
     },
     {
@@ -3918,6 +5254,18 @@
           "usagetype": "USE1-mistral.devstral-2-123b-mantle-input-tokens-standard",
           "unit": "1K tokens",
           "product_sku": "TK76GF2NTN5Q4RRT"
+        }
+      },
+      "list_prices": {
+        "us-east-1": {
+          "on_demand": {
+            "input_per_1m": 0.4,
+            "output_per_1m": 2.0,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
         }
       }
     },
@@ -3961,6 +5309,18 @@
           "unit": "1K tokens",
           "product_sku": "ZPBW9CEXKE8MA2M9"
         }
+      },
+      "list_prices": {
+        "us-east-1": {
+          "on_demand": {
+            "input_per_1m": 0.5,
+            "output_per_1m": 1.5,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
+        }
       }
     },
     {
@@ -3999,6 +5359,18 @@
           "usagetype": "USE1-mistral.magistral-small-2509-mantle-output-tokens-standard",
           "unit": "1K tokens",
           "product_sku": "4WCW2KFJRP48XRS2"
+        }
+      },
+      "list_prices": {
+        "us-east-1": {
+          "on_demand": {
+            "input_per_1m": 0.5,
+            "output_per_1m": 1.5,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
         }
       }
     },
@@ -4042,6 +5414,18 @@
           "unit": "1K tokens",
           "product_sku": "PEJYT8R59KMVVQQ7"
         }
+      },
+      "list_prices": {
+        "us-east-1": {
+          "on_demand": {
+            "input_per_1m": 0.2,
+            "output_per_1m": 0.2,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
+        }
       }
     },
     {
@@ -4080,6 +5464,18 @@
           "usagetype": "USE1-mistral.ministral-3-14b-instruct-mantle-output-tokens-standard",
           "unit": "1K tokens",
           "product_sku": "499E63T6752U7UCF"
+        }
+      },
+      "list_prices": {
+        "us-east-1": {
+          "on_demand": {
+            "input_per_1m": 0.2,
+            "output_per_1m": 0.2,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
         }
       }
     },
@@ -4123,6 +5519,18 @@
           "unit": "1K tokens",
           "product_sku": "B4JJ2YUQAEAE5WEV"
         }
+      },
+      "list_prices": {
+        "us-east-1": {
+          "on_demand": {
+            "input_per_1m": 0.1,
+            "output_per_1m": 0.1,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
+        }
       }
     },
     {
@@ -4161,6 +5569,18 @@
           "usagetype": "USE1-mistral.ministral-3-3b-instruct-mantle-input-tokens-standard",
           "unit": "1K tokens",
           "product_sku": "ZA8BMP9DGTTHTVFJ"
+        }
+      },
+      "list_prices": {
+        "us-east-1": {
+          "on_demand": {
+            "input_per_1m": 0.1,
+            "output_per_1m": 0.1,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
         }
       }
     },
@@ -4204,6 +5624,18 @@
           "unit": "1K tokens",
           "product_sku": "W5FVV9YWGYPMRKYA"
         }
+      },
+      "list_prices": {
+        "us-east-1": {
+          "on_demand": {
+            "input_per_1m": 0.15,
+            "output_per_1m": 0.15,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
+        }
       }
     },
     {
@@ -4243,6 +5675,18 @@
           "unit": "1K tokens",
           "product_sku": "AHR6EQE3NRXYT8TK"
         }
+      },
+      "list_prices": {
+        "us-east-1": {
+          "on_demand": {
+            "input_per_1m": 0.15,
+            "output_per_1m": 0.15,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
+        }
       }
     },
     {
@@ -4270,7 +5714,19 @@
       "notes": null,
       "pricing_source": "manual",
       "availability": "ga",
-      "alternate_ids": []
+      "alternate_ids": [],
+      "list_prices": {
+        "us-east-1": {
+          "on_demand": {
+            "input_per_1m": 0.15,
+            "output_per_1m": 0.2,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
+        }
+      }
     },
     {
       "model_id": "mistral.mistral-large-2402-v1:0",
@@ -4311,6 +5767,18 @@
           "unit": "1K tokens",
           "product_sku": "WHNSGG64M5QAAPU7"
         }
+      },
+      "list_prices": {
+        "us-east-1": {
+          "on_demand": {
+            "input_per_1m": 4.0,
+            "output_per_1m": 12.0,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
+        }
       }
     },
     {
@@ -4336,7 +5804,19 @@
       "notes": null,
       "pricing_source": "auto",
       "availability": "ga",
-      "alternate_ids": []
+      "alternate_ids": [],
+      "list_prices": {
+        "us-east-1": {
+          "on_demand": {
+            "input_per_1m": 0.5,
+            "output_per_1m": 1.5,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
+        }
+      }
     },
     {
       "model_id": "mistral.mistral-large-3-675b-instruct",
@@ -4363,7 +5843,19 @@
       ],
       "notes": null,
       "availability": "ga",
-      "alternate_ids": []
+      "alternate_ids": [],
+      "list_prices": {
+        "us-east-1": {
+          "on_demand": {
+            "input_per_1m": 0.5,
+            "output_per_1m": 1.5,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
+        }
+      }
     },
     {
       "model_id": "mistral.mistral-large-3-675b-instruct-mantle",
@@ -4401,6 +5893,18 @@
           "usagetype": "USE1-mistral.mistral-large-3-675b-instruct-mantle-output-tokens-standard",
           "unit": "1K tokens",
           "product_sku": "M3DT5P7Z22CBYS8X"
+        }
+      },
+      "list_prices": {
+        "us-east-1": {
+          "on_demand": {
+            "input_per_1m": 0.5,
+            "output_per_1m": 1.5,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
         }
       }
     },
@@ -4440,6 +5944,18 @@
           "usagetype": "USE1-MistralSmall-output-tokens",
           "unit": "1K tokens",
           "product_sku": "XAJFCJ3MVMUBDUYB"
+        }
+      },
+      "list_prices": {
+        "us-east-1": {
+          "on_demand": {
+            "input_per_1m": 1.0,
+            "output_per_1m": 3.0,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
         }
       }
     },
@@ -4481,6 +5997,18 @@
           "usagetype": "USE1-Mixtral8x7B-input-tokens",
           "unit": "1K tokens",
           "product_sku": "X89U3A2X9YF453CH"
+        }
+      },
+      "list_prices": {
+        "us-east-1": {
+          "on_demand": {
+            "input_per_1m": 0.45,
+            "output_per_1m": 0.7,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
         }
       }
     },
@@ -4524,6 +6052,18 @@
           "unit": "1K tokens",
           "product_sku": "46BCPSFY57NVQ3DW"
         }
+      },
+      "list_prices": {
+        "us-east-1": {
+          "on_demand": {
+            "input_per_1m": 2.0,
+            "output_per_1m": 6.0,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
+        }
       }
     },
     {
@@ -4565,6 +6105,18 @@
           "unit": "1K tokens",
           "product_sku": "5E468MPM7QWNY5RN"
         }
+      },
+      "list_prices": {
+        "us-east-1": {
+          "on_demand": {
+            "input_per_1m": 0.04,
+            "output_per_1m": 0.04,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
+        }
       }
     },
     {
@@ -4603,6 +6155,18 @@
           "usagetype": "USE1-mistral.voxtral-mini-3b-2507-mantle-input-tokens-standard",
           "unit": "1K tokens",
           "product_sku": "WS67YY6G4ZQ6H736"
+        }
+      },
+      "list_prices": {
+        "us-east-1": {
+          "on_demand": {
+            "input_per_1m": 0.04,
+            "output_per_1m": 0.04,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
         }
       }
     },
@@ -4645,6 +6209,18 @@
           "unit": "1K tokens",
           "product_sku": "5WQHCTAD3TNMPXCM"
         }
+      },
+      "list_prices": {
+        "us-east-1": {
+          "on_demand": {
+            "input_per_1m": 0.1,
+            "output_per_1m": 0.3,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
+        }
       }
     },
     {
@@ -4684,6 +6260,18 @@
           "unit": "1K tokens",
           "product_sku": "DUQV6QJWCRJMDRG5"
         }
+      },
+      "list_prices": {
+        "us-east-1": {
+          "on_demand": {
+            "input_per_1m": 0.1,
+            "output_per_1m": 0.3,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
+        }
       }
     },
     {
@@ -4710,7 +6298,19 @@
       ],
       "notes": null,
       "availability": "ga",
-      "alternate_ids": []
+      "alternate_ids": [],
+      "list_prices": {
+        "us-east-1": {
+          "on_demand": {
+            "input_per_1m": 0.6,
+            "output_per_1m": 2.5,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
+        }
+      }
     },
     {
       "model_id": "moonshotai.kimi-k2-thinking-mantle",
@@ -4748,6 +6348,18 @@
           "usagetype": "USE1-moonshotai.kimi-k2-thinking-mantle-output-tokens-standard",
           "unit": "1K tokens",
           "product_sku": "QUTKKAGKGM8NCR6Y"
+        }
+      },
+      "list_prices": {
+        "us-east-1": {
+          "on_demand": {
+            "input_per_1m": 0.6,
+            "output_per_1m": 2.5,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
         }
       }
     },
@@ -4790,6 +6402,18 @@
           "unit": "1K tokens",
           "product_sku": "YNK8F43XVNEFZ9GR"
         }
+      },
+      "list_prices": {
+        "us-east-1": {
+          "on_demand": {
+            "input_per_1m": 0.6,
+            "output_per_1m": 3.0,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
+        }
       }
     },
     {
@@ -4828,6 +6452,18 @@
           "usagetype": "USE1-moonshotai.kimi-k2.5-mantle-input-tokens-standard",
           "unit": "1K tokens",
           "product_sku": "VFQ8D595KFNJ2W57"
+        }
+      },
+      "list_prices": {
+        "us-east-1": {
+          "on_demand": {
+            "input_per_1m": 0.6,
+            "output_per_1m": 3.0,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
         }
       }
     },
@@ -4868,6 +6504,18 @@
           "unit": "1K tokens",
           "product_sku": "DY69Q8C3F88CHA2Q"
         }
+      },
+      "list_prices": {
+        "us-east-1": {
+          "on_demand": {
+            "input_per_1m": 0.33,
+            "output_per_1m": 2.75,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
+        }
       }
     },
     {
@@ -4906,6 +6554,18 @@
           "usagetype": "USE1-Nova2.0Omni-text-output-tokens",
           "unit": "1K tokens",
           "product_sku": "JZM7NR5W9AMX8V6U"
+        }
+      },
+      "list_prices": {
+        "us-east-1": {
+          "on_demand": {
+            "input_per_1m": 0.3,
+            "output_per_1m": 2.8,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
         }
       }
     },
@@ -4946,6 +6606,18 @@
           "unit": "1K tokens",
           "product_sku": "YD5R9YU3WJN5AX2A"
         }
+      },
+      "list_prices": {
+        "us-east-1": {
+          "on_demand": {
+            "input_per_1m": 1.375,
+            "output_per_1m": 11.0,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
+        }
       }
     },
     {
@@ -4985,6 +6657,18 @@
           "unit": "1K tokens",
           "product_sku": "C45RS4T6DNQCCEBW"
         }
+      },
+      "list_prices": {
+        "us-east-1": {
+          "on_demand": {
+            "input_per_1m": 3.0,
+            "output_per_1m": 12.0,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
+        }
       }
     },
     {
@@ -5023,6 +6707,18 @@
           "usagetype": "USE1-NovaSonic2.0-text-output-tokens",
           "unit": "1K tokens",
           "product_sku": "7RN7V9VZB66QFXM9"
+        }
+      },
+      "list_prices": {
+        "us-east-1": {
+          "on_demand": {
+            "input_per_1m": 0.33,
+            "output_per_1m": 2.75,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
         }
       }
     },
@@ -5066,6 +6762,18 @@
           "unit": "1K tokens",
           "product_sku": "PJDFZ637TBR8EHBV"
         }
+      },
+      "list_prices": {
+        "us-east-1": {
+          "on_demand": {
+            "input_per_1m": 0.2,
+            "output_per_1m": 0.6,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
+        }
       }
     },
     {
@@ -5104,6 +6812,18 @@
           "usagetype": "USE1-nvidia.nemotron-nano-12b-v2-mantle-input-tokens-standard",
           "unit": "1K tokens",
           "product_sku": "WY6SSA3NJN42ZH5R"
+        }
+      },
+      "list_prices": {
+        "us-east-1": {
+          "on_demand": {
+            "input_per_1m": 0.2,
+            "output_per_1m": 0.6,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
         }
       }
     },
@@ -5146,6 +6866,18 @@
           "unit": "1K tokens",
           "product_sku": "HPZYJSYSKB4D2D8R"
         }
+      },
+      "list_prices": {
+        "us-east-1": {
+          "on_demand": {
+            "input_per_1m": 0.06,
+            "output_per_1m": 0.24,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
+        }
       }
     },
     {
@@ -5184,6 +6916,18 @@
           "usagetype": "USE1-nvidia.nemotron-nano-3-30b-mantle-output-tokens-standard",
           "unit": "1K tokens",
           "product_sku": "Q45CMRRWA828DG8G"
+        }
+      },
+      "list_prices": {
+        "us-east-1": {
+          "on_demand": {
+            "input_per_1m": 0.06,
+            "output_per_1m": 0.24,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
         }
       }
     },
@@ -5226,6 +6970,18 @@
           "unit": "1K tokens",
           "product_sku": "7VXA8AYU96VQBDG6"
         }
+      },
+      "list_prices": {
+        "us-east-1": {
+          "on_demand": {
+            "input_per_1m": 0.06,
+            "output_per_1m": 0.23,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
+        }
       }
     },
     {
@@ -5264,6 +7020,18 @@
           "usagetype": "USE1-nvidia.nemotron-nano-9b-v2-mantle-output-tokens-standard",
           "unit": "1K tokens",
           "product_sku": "8U2TDG93YYC4VGGM"
+        }
+      },
+      "list_prices": {
+        "us-east-1": {
+          "on_demand": {
+            "input_per_1m": 0.06,
+            "output_per_1m": 0.23,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
         }
       }
     },
@@ -5306,6 +7074,18 @@
           "unit": "1K tokens",
           "product_sku": "5VZ5KD9CSMJX2G44"
         }
+      },
+      "list_prices": {
+        "us-east-1": {
+          "on_demand": {
+            "input_per_1m": 0.15,
+            "output_per_1m": 0.65,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
+        }
       }
     },
     {
@@ -5344,6 +7124,18 @@
           "usagetype": "USE1-nvidia.nemotron-super-3-120b-mantle-input-tokens-standard",
           "unit": "1K tokens",
           "product_sku": "3589FV4TTHJXCUUJ"
+        }
+      },
+      "list_prices": {
+        "us-east-1": {
+          "on_demand": {
+            "input_per_1m": 0.15,
+            "output_per_1m": 0.65,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
         }
       }
     },
@@ -5386,6 +7178,18 @@
           "unit": "1K tokens",
           "product_sku": "KGHQD8ZHB5468Z38"
         }
+      },
+      "list_prices": {
+        "us-east-1": {
+          "on_demand": {
+            "input_per_1m": 0.1545,
+            "output_per_1m": 0.618,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
+        }
       }
     },
     {
@@ -5424,6 +7228,18 @@
           "usagetype": "USE1-openai.gpt-oss-120b-mantle-input-tokens-standard",
           "unit": "1K tokens",
           "product_sku": "K7EPD38WB9WRZSJH"
+        }
+      },
+      "list_prices": {
+        "us-east-1": {
+          "on_demand": {
+            "input_per_1m": 0.15,
+            "output_per_1m": 0.6,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
         }
       }
     },
@@ -5466,6 +7282,18 @@
           "unit": "1K tokens",
           "product_sku": "F9R4KP9PYNDYGQ9E"
         }
+      },
+      "list_prices": {
+        "us-east-1": {
+          "on_demand": {
+            "input_per_1m": 0.0721,
+            "output_per_1m": 0.309,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
+        }
       }
     },
     {
@@ -5505,6 +7333,18 @@
           "unit": "1K tokens",
           "product_sku": "ER2U9SYS47STYZSM"
         }
+      },
+      "list_prices": {
+        "us-east-1": {
+          "on_demand": {
+            "input_per_1m": 0.07,
+            "output_per_1m": 0.3,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
+        }
       }
     },
     {
@@ -5532,7 +7372,19 @@
       ],
       "notes": null,
       "availability": "ga",
-      "alternate_ids": []
+      "alternate_ids": [],
+      "list_prices": {
+        "us-east-1": {
+          "on_demand": {
+            "input_per_1m": 0.15,
+            "output_per_1m": 0.6,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
+        }
+      }
     },
     {
       "model_id": "openai.gpt-oss-safeguard-120b-mantle",
@@ -5571,6 +7423,18 @@
           "unit": "1K tokens",
           "product_sku": "TTY3KJ2GAVD4NNUS"
         }
+      },
+      "list_prices": {
+        "us-east-1": {
+          "on_demand": {
+            "input_per_1m": 0.15,
+            "output_per_1m": 0.6,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
+        }
       }
     },
     {
@@ -5598,7 +7462,19 @@
       ],
       "notes": null,
       "availability": "ga",
-      "alternate_ids": []
+      "alternate_ids": [],
+      "list_prices": {
+        "us-east-1": {
+          "on_demand": {
+            "input_per_1m": 0.07,
+            "output_per_1m": 0.2,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
+        }
+      }
     },
     {
       "model_id": "openai.gpt-oss-safeguard-20b-mantle",
@@ -5636,6 +7512,18 @@
           "usagetype": "USE1-openai.gpt-oss-safeguard-20b-mantle-output-tokens-standard",
           "unit": "1K tokens",
           "product_sku": "76NNGNZUCG6Y62CC"
+        }
+      },
+      "list_prices": {
+        "us-east-1": {
+          "on_demand": {
+            "input_per_1m": 0.07,
+            "output_per_1m": 0.2,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
         }
       }
     },
@@ -5676,6 +7564,18 @@
           "unit": "1K tokens",
           "product_sku": "9AUAQPGBC5N42SHP"
         }
+      },
+      "list_prices": {
+        "us-east-1": {
+          "on_demand": {
+            "input_per_1m": 0.22,
+            "output_per_1m": 0.88,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
+        }
       }
     },
     {
@@ -5701,7 +7601,19 @@
       ],
       "notes": null,
       "availability": "ga",
-      "alternate_ids": []
+      "alternate_ids": [],
+      "list_prices": {
+        "us-east-1": {
+          "on_demand": {
+            "input_per_1m": 0.2266,
+            "output_per_1m": 0.9064,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
+        }
+      }
     },
     {
       "model_id": "qwen.qwen3-32b-mantle",
@@ -5739,6 +7651,18 @@
           "usagetype": "USE1-qwen.qwen3-32b-mantle-output-tokens-standard",
           "unit": "1K tokens",
           "product_sku": "7TG6VJR3W3D8EKG8"
+        }
+      },
+      "list_prices": {
+        "us-east-1": {
+          "on_demand": {
+            "input_per_1m": 0.15,
+            "output_per_1m": 0.6,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
         }
       }
     },
@@ -5781,6 +7705,18 @@
           "unit": "1K tokens",
           "product_sku": "5UQHJ7CFUZCUD9UX"
         }
+      },
+      "list_prices": {
+        "us-east-1": {
+          "on_demand": {
+            "input_per_1m": 0.1545,
+            "output_per_1m": 0.618,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
+        }
       }
     },
     {
@@ -5819,6 +7755,18 @@
           "usagetype": "USE1-qwen.qwen3-coder-30b-a3b-instruct-mantle-output-tokens-standard",
           "unit": "1K tokens",
           "product_sku": "SB2ARNJRMN5X9ZFH"
+        }
+      },
+      "list_prices": {
+        "us-east-1": {
+          "on_demand": {
+            "input_per_1m": 0.15,
+            "output_per_1m": 0.6,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
         }
       }
     },
@@ -5861,6 +7809,18 @@
           "unit": "1K tokens",
           "product_sku": "YU2KANUJTJMP2G6V"
         }
+      },
+      "list_prices": {
+        "us-east-1": {
+          "on_demand": {
+            "input_per_1m": 0.1545,
+            "output_per_1m": 0.618,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
+        }
       }
     },
     {
@@ -5900,6 +7860,18 @@
           "unit": "1K tokens",
           "product_sku": "ENFWCHRGAA6S5XJQ"
         }
+      },
+      "list_prices": {
+        "us-east-1": {
+          "on_demand": {
+            "input_per_1m": 0.45,
+            "output_per_1m": 1.8,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
+        }
       }
     },
     {
@@ -5925,7 +7897,19 @@
       ],
       "notes": null,
       "availability": "ga",
-      "alternate_ids": []
+      "alternate_ids": [],
+      "list_prices": {
+        "us-east-1": {
+          "on_demand": {
+            "input_per_1m": 0.45,
+            "output_per_1m": 1.8,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
+        }
+      }
     },
     {
       "model_id": "qwen.qwen3-coder-next",
@@ -5963,6 +7947,18 @@
           "usagetype": "USE1-qwen.qwen3-coder-next-output-tokens",
           "unit": "1K tokens",
           "product_sku": "3AG5B2N9PWGPR8AC"
+        }
+      },
+      "list_prices": {
+        "us-east-1": {
+          "on_demand": {
+            "input_per_1m": 0.5,
+            "output_per_1m": 1.2,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
         }
       }
     },
@@ -6003,6 +7999,18 @@
           "unit": "1K tokens",
           "product_sku": "XZ679CZVJZPPQ9HW"
         }
+      },
+      "list_prices": {
+        "us-east-1": {
+          "on_demand": {
+            "input_per_1m": 0.5,
+            "output_per_1m": 1.2,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
+        }
       }
     },
     {
@@ -6030,7 +8038,19 @@
       ],
       "notes": null,
       "availability": "ga",
-      "alternate_ids": []
+      "alternate_ids": [],
+      "list_prices": {
+        "us-east-1": {
+          "on_demand": {
+            "input_per_1m": 0.15,
+            "output_per_1m": 1.2,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
+        }
+      }
     },
     {
       "model_id": "qwen.qwen3-next-80b-a3b-instruct-mantle",
@@ -6069,6 +8089,18 @@
           "unit": "1K tokens",
           "product_sku": "XXAPBBJFSGYFCVCU"
         }
+      },
+      "list_prices": {
+        "us-east-1": {
+          "on_demand": {
+            "input_per_1m": 0.14,
+            "output_per_1m": 1.2,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
+        }
       }
     },
     {
@@ -6097,7 +8129,19 @@
       ],
       "notes": null,
       "availability": "ga",
-      "alternate_ids": []
+      "alternate_ids": [],
+      "list_prices": {
+        "us-east-1": {
+          "on_demand": {
+            "input_per_1m": 0.53,
+            "output_per_1m": 2.66,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
+        }
+      }
     },
     {
       "model_id": "qwen.qwen3-vl-235b-a22b-instruct-mantle",
@@ -6136,6 +8180,18 @@
           "unit": "1K tokens",
           "product_sku": "HFQ6GFED7VP7WA5Z"
         }
+      },
+      "list_prices": {
+        "us-east-1": {
+          "on_demand": {
+            "input_per_1m": 0.53,
+            "output_per_1m": 2.66,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
+        }
       }
     },
     {
@@ -6162,7 +8218,19 @@
       ],
       "notes": null,
       "availability": "ga",
-      "alternate_ids": []
+      "alternate_ids": [],
+      "list_prices": {
+        "us-east-1": {
+          "on_demand": {
+            "input_per_1m": null,
+            "output_per_1m": null,
+            "standard_per_image": 0.08,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
+        }
+      }
     },
     {
       "model_id": "stability.sd3-large-v1:0",
@@ -6187,7 +8255,10 @@
       ],
       "notes": null,
       "availability": "ga",
-      "alternate_ids": []
+      "alternate_ids": [],
+      "list_prices": {
+        "us-east-1": {}
+      }
     },
     {
       "model_id": "stability.stable-conservative-upscale-v1:0",
@@ -6214,7 +8285,19 @@
       ],
       "notes": null,
       "availability": "ga",
-      "alternate_ids": []
+      "alternate_ids": [],
+      "list_prices": {
+        "us-east-1": {
+          "on_demand": {
+            "input_per_1m": null,
+            "output_per_1m": null,
+            "standard_per_image": 0.4,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
+        }
+      }
     },
     {
       "model_id": "stability.stable-creative-upscale-v1:0",
@@ -6241,7 +8324,19 @@
       ],
       "notes": null,
       "availability": "ga",
-      "alternate_ids": []
+      "alternate_ids": [],
+      "list_prices": {
+        "us-east-1": {
+          "on_demand": {
+            "input_per_1m": null,
+            "output_per_1m": null,
+            "standard_per_image": 0.6,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
+        }
+      }
     },
     {
       "model_id": "stability.stable-fast-upscale-v1:0",
@@ -6268,7 +8363,19 @@
       ],
       "notes": null,
       "availability": "ga",
-      "alternate_ids": []
+      "alternate_ids": [],
+      "list_prices": {
+        "us-east-1": {
+          "on_demand": {
+            "input_per_1m": null,
+            "output_per_1m": null,
+            "standard_per_image": 0.03,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
+        }
+      }
     },
     {
       "model_id": "stability.stable-image-control-sketch-v1:0",
@@ -6295,7 +8402,19 @@
       ],
       "notes": null,
       "availability": "ga",
-      "alternate_ids": []
+      "alternate_ids": [],
+      "list_prices": {
+        "us-east-1": {
+          "on_demand": {
+            "input_per_1m": null,
+            "output_per_1m": null,
+            "standard_per_image": 0.07,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
+        }
+      }
     },
     {
       "model_id": "stability.stable-image-control-structure-v1:0",
@@ -6322,7 +8441,19 @@
       ],
       "notes": null,
       "availability": "ga",
-      "alternate_ids": []
+      "alternate_ids": [],
+      "list_prices": {
+        "us-east-1": {
+          "on_demand": {
+            "input_per_1m": null,
+            "output_per_1m": null,
+            "standard_per_image": 0.07,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
+        }
+      }
     },
     {
       "model_id": "stability.stable-image-core-v1:1",
@@ -6348,7 +8479,19 @@
       ],
       "notes": null,
       "availability": "ga",
-      "alternate_ids": []
+      "alternate_ids": [],
+      "list_prices": {
+        "us-east-1": {
+          "on_demand": {
+            "input_per_1m": null,
+            "output_per_1m": null,
+            "standard_per_image": 0.04,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
+        }
+      }
     },
     {
       "model_id": "stability.stable-image-erase-object-v1:0",
@@ -6375,7 +8518,19 @@
       ],
       "notes": null,
       "availability": "ga",
-      "alternate_ids": []
+      "alternate_ids": [],
+      "list_prices": {
+        "us-east-1": {
+          "on_demand": {
+            "input_per_1m": null,
+            "output_per_1m": null,
+            "standard_per_image": 0.07,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
+        }
+      }
     },
     {
       "model_id": "stability.stable-image-inpaint-v1:0",
@@ -6402,7 +8557,19 @@
       ],
       "notes": null,
       "availability": "ga",
-      "alternate_ids": []
+      "alternate_ids": [],
+      "list_prices": {
+        "us-east-1": {
+          "on_demand": {
+            "input_per_1m": null,
+            "output_per_1m": null,
+            "standard_per_image": 0.07,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
+        }
+      }
     },
     {
       "model_id": "stability.stable-image-remove-background-v1:0",
@@ -6429,7 +8596,19 @@
       ],
       "notes": null,
       "availability": "ga",
-      "alternate_ids": []
+      "alternate_ids": [],
+      "list_prices": {
+        "us-east-1": {
+          "on_demand": {
+            "input_per_1m": null,
+            "output_per_1m": null,
+            "standard_per_image": 0.07,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
+        }
+      }
     },
     {
       "model_id": "stability.stable-image-search-recolor-v1:0",
@@ -6456,7 +8635,19 @@
       ],
       "notes": null,
       "availability": "ga",
-      "alternate_ids": []
+      "alternate_ids": [],
+      "list_prices": {
+        "us-east-1": {
+          "on_demand": {
+            "input_per_1m": null,
+            "output_per_1m": null,
+            "standard_per_image": 0.07,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
+        }
+      }
     },
     {
       "model_id": "stability.stable-image-search-replace-v1:0",
@@ -6483,7 +8674,19 @@
       ],
       "notes": null,
       "availability": "ga",
-      "alternate_ids": []
+      "alternate_ids": [],
+      "list_prices": {
+        "us-east-1": {
+          "on_demand": {
+            "input_per_1m": null,
+            "output_per_1m": null,
+            "standard_per_image": 0.07,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
+        }
+      }
     },
     {
       "model_id": "stability.stable-image-style-guide-v1:0",
@@ -6510,7 +8713,19 @@
       ],
       "notes": null,
       "availability": "ga",
-      "alternate_ids": []
+      "alternate_ids": [],
+      "list_prices": {
+        "us-east-1": {
+          "on_demand": {
+            "input_per_1m": null,
+            "output_per_1m": null,
+            "standard_per_image": 0.07,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
+        }
+      }
     },
     {
       "model_id": "stability.stable-image-ultra-v1:1",
@@ -6536,7 +8751,19 @@
       ],
       "notes": null,
       "availability": "ga",
-      "alternate_ids": []
+      "alternate_ids": [],
+      "list_prices": {
+        "us-east-1": {
+          "on_demand": {
+            "input_per_1m": null,
+            "output_per_1m": null,
+            "standard_per_image": 0.14,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
+        }
+      }
     },
     {
       "model_id": "stability.stable-outpaint-v1:0",
@@ -6563,7 +8790,19 @@
       ],
       "notes": null,
       "availability": "ga",
-      "alternate_ids": []
+      "alternate_ids": [],
+      "list_prices": {
+        "us-east-1": {
+          "on_demand": {
+            "input_per_1m": null,
+            "output_per_1m": null,
+            "standard_per_image": 0.06,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
+        }
+      }
     },
     {
       "model_id": "stability.stable-style-transfer-v1:0",
@@ -6590,7 +8829,19 @@
       ],
       "notes": null,
       "availability": "ga",
-      "alternate_ids": []
+      "alternate_ids": [],
+      "list_prices": {
+        "us-east-1": {
+          "on_demand": {
+            "input_per_1m": null,
+            "output_per_1m": null,
+            "standard_per_image": 0.08,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
+        }
+      }
     },
     {
       "model_id": "twelvelabs.marengo-embed-2-7-v1:0",
@@ -6618,7 +8869,19 @@
       ],
       "notes": null,
       "availability": "ga",
-      "alternate_ids": []
+      "alternate_ids": [],
+      "list_prices": {
+        "us-east-1": {
+          "on_demand": {
+            "input_per_1m": 7e-05,
+            "output_per_1m": null,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
+        }
+      }
     },
     {
       "model_id": "twelvelabs.marengo-embed-3-0-v1:0",
@@ -6646,7 +8909,19 @@
       ],
       "notes": null,
       "availability": "ga",
-      "alternate_ids": []
+      "alternate_ids": [],
+      "list_prices": {
+        "us-east-1": {
+          "on_demand": {
+            "input_per_1m": 7e-05,
+            "output_per_1m": null,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
+        }
+      }
     },
     {
       "model_id": "twelvelabs.pegasus-1-2-v1:0",
@@ -6680,6 +8955,18 @@
           "usagetype": "USE1-MP:USE1_OutputTokenCount-Units",
           "unit": "Units",
           "product_sku": "9H6ZZ52QDVGRKBRW"
+        }
+      },
+      "list_prices": {
+        "us-east-1": {
+          "on_demand": {
+            "input_per_1m": null,
+            "output_per_1m": 7.5,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
         }
       }
     },
@@ -6722,6 +9009,18 @@
           "unit": "1K tokens",
           "product_sku": "78PSD9CUURA7DBRG"
         }
+      },
+      "list_prices": {
+        "us-east-1": {
+          "on_demand": {
+            "input_per_1m": 0.15,
+            "output_per_1m": 0.6,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
+        }
       }
     },
     {
@@ -6760,6 +9059,18 @@
           "usagetype": "USE1-writer.palmyra-vision-7b-mantle-output-tokens-standard",
           "unit": "1K tokens",
           "product_sku": "HPK96NV6FPTAZGRW"
+        }
+      },
+      "list_prices": {
+        "us-east-1": {
+          "on_demand": {
+            "input_per_1m": 0.15,
+            "output_per_1m": 0.6,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
         }
       }
     },
@@ -6800,6 +9111,18 @@
           "unit": "Units",
           "product_sku": "VW363VCDHZFM4S9A"
         }
+      },
+      "list_prices": {
+        "us-east-1": {
+          "on_demand": {
+            "input_per_1m": 2.5,
+            "output_per_1m": 10.0,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
+        }
       }
     },
     {
@@ -6826,7 +9149,19 @@
       ],
       "notes": null,
       "availability": "ga",
-      "alternate_ids": []
+      "alternate_ids": [],
+      "list_prices": {
+        "us-east-1": {
+          "on_demand": {
+            "input_per_1m": 2.5,
+            "output_per_1m": 10.0,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
+        }
+      }
     },
     {
       "model_id": "writer.palmyra-x5",
@@ -6865,6 +9200,18 @@
           "unit": "Units",
           "product_sku": "VZJ43UDRVKSZY776"
         }
+      },
+      "list_prices": {
+        "us-east-1": {
+          "on_demand": {
+            "input_per_1m": 0.6,
+            "output_per_1m": 6.0,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
+        }
       }
     },
     {
@@ -6891,7 +9238,19 @@
       ],
       "notes": null,
       "availability": "ga",
-      "alternate_ids": []
+      "alternate_ids": [],
+      "list_prices": {
+        "us-east-1": {
+          "on_demand": {
+            "input_per_1m": 0.6,
+            "output_per_1m": 6.0,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
+        }
+      }
     },
     {
       "model_id": "xai.grok-4.3-mantle",
@@ -6929,6 +9288,18 @@
           "usagetype": "USE1-xai.grok-4.3-mantle-output-tokens-standard",
           "unit": "1M tokens",
           "product_sku": "G347Q73G3CQN8KCD"
+        }
+      },
+      "list_prices": {
+        "us-east-1": {
+          "on_demand": {
+            "input_per_1m": 1.25,
+            "output_per_1m": 2.5,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
         }
       }
     },
@@ -6969,6 +9340,18 @@
           "usagetype": "USE1-zai.glm-4.7-input-tokens",
           "unit": "1K tokens",
           "product_sku": "DU5E4KA49NHCSD3D"
+        }
+      },
+      "list_prices": {
+        "us-east-1": {
+          "on_demand": {
+            "input_per_1m": 0.6,
+            "output_per_1m": 2.2,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
         }
       }
     },
@@ -7011,6 +9394,18 @@
           "unit": "1K tokens",
           "product_sku": "2P9GC66NVRGK2833"
         }
+      },
+      "list_prices": {
+        "us-east-1": {
+          "on_demand": {
+            "input_per_1m": 0.07,
+            "output_per_1m": 0.4,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
+        }
       }
     },
     {
@@ -7049,6 +9444,18 @@
           "usagetype": "USE1-zai.glm-4.7-flash-mantle-output-tokens-standard",
           "unit": "1K tokens",
           "product_sku": "G3ZQZBGERU52ANZ4"
+        }
+      },
+      "list_prices": {
+        "us-east-1": {
+          "on_demand": {
+            "input_per_1m": 0.07,
+            "output_per_1m": 0.4,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
         }
       }
     },
@@ -7089,6 +9496,18 @@
           "unit": "1K tokens",
           "product_sku": "VEDK5P7PGR585K9X"
         }
+      },
+      "list_prices": {
+        "us-east-1": {
+          "on_demand": {
+            "input_per_1m": 0.6,
+            "output_per_1m": 2.2,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
+        }
       }
     },
     {
@@ -7115,7 +9534,19 @@
       ],
       "notes": null,
       "availability": "ga",
-      "alternate_ids": []
+      "alternate_ids": [],
+      "list_prices": {
+        "us-east-1": {
+          "on_demand": {
+            "input_per_1m": 1.0,
+            "output_per_1m": 3.2,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
+        }
+      }
     },
     {
       "model_id": "zai.glm5",
@@ -7153,6 +9584,18 @@
           "usagetype": "USE1-zai.glm5-output-tokens",
           "unit": "1K tokens",
           "product_sku": "8RQBEKEP5KG2MZY7"
+        }
+      },
+      "list_prices": {
+        "us-east-1": {
+          "on_demand": {
+            "input_per_1m": 1.0,
+            "output_per_1m": 3.2,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
         }
       }
     },
@@ -7192,6 +9635,18 @@
           "usagetype": "USE1-zai.glm5-mantle-input-tokens-standard",
           "unit": "1K tokens",
           "product_sku": "NA22NCHSRXXKNYR8"
+        }
+      },
+      "list_prices": {
+        "us-east-1": {
+          "on_demand": {
+            "input_per_1m": 1.0,
+            "output_per_1m": 3.2,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
         }
       }
     }

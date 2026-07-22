@@ -12,8 +12,9 @@ from price_merge import apply_price_facts
 from sku_facts import extract_bedrock_offer_facts
 
 PRICE_LIST_BASE = "https://pricing.us-east-1.amazonaws.com"
-BEDROCK_OFFER_INDEX = (
-    f"{PRICE_LIST_BASE}/offers/v1.0/aws/AmazonBedrock/current/us-east-1/index.json"
+BEDROCK_OFFER_INDEX = f"{PRICE_LIST_BASE}/offers/v1.0/aws/AmazonBedrock/current/index.json"
+BEDROCK_OFFER_INDEX_REGIONAL = (
+    f"{PRICE_LIST_BASE}/offers/v1.0/aws/AmazonBedrock/current/{{region}}/index.json"
 )
 
 _TOKEN_UT_SUFFIXES = (
@@ -75,13 +76,19 @@ def merge_bedrock_offer_into_catalog(
     *,
     index: dict[str, Any] | None = None,
     region: str = "us-east-1",
+    regions_allowlist: set[str] | None = None,
 ) -> tuple[int, int, list[str]]:
     """Apply AmazonBedrock offer prices to catalog (fills gaps after FM Price List)."""
     warnings: list[str] = []
     if index is None:
         index = fetch_bedrock_offer_index()
 
-    facts = extract_bedrock_offer_facts(index, region=region, warnings=warnings)
+    facts = extract_bedrock_offer_facts(
+        index,
+        region=region,
+        regions_allowlist=regions_allowlist,
+        warnings=warnings,
+    )
     updated, matched = apply_price_facts(
         catalog,
         facts,
@@ -95,8 +102,11 @@ def merge_bedrock_offer_into_catalog(
 
 
 def propagate_variant_prices(catalog: dict) -> int:
-    """Copy on_demand prices from base model_id to context variants."""
+    """Copy on_demand / list_prices from base model_id to context variants."""
+    from catalog_io import DEFAULT_PRICE_REGION, ensure_list_prices, sync_on_demand_alias
+
     by_id = {m["model_id"]: m for m in catalog["models"]}
+    default_region = catalog.get("meta", {}).get("default_price_region") or DEFAULT_PRICE_REGION
     updated = 0
     for model in catalog["models"]:
         if model_has_price(model):
@@ -113,6 +123,14 @@ def propagate_variant_prices(catalog: dict) -> int:
             continue
         old = dict(model.get("on_demand", {}))
         model["on_demand"] = {**empty_on_demand(model["pricing_type"]), **base.get("on_demand", {})}
+        if base.get("list_prices"):
+            model["list_prices"] = {
+                region: {tier: dict(slice_) for tier, slice_ in tiers.items()}
+                for region, tiers in base["list_prices"].items()
+            }
+        else:
+            ensure_list_prices(model, default_region=default_region)
+        sync_on_demand_alias(model, default_region=default_region)
         model["pricing_source"] = base.get("pricing_source", "price_list")
         if base.get("price_provenance"):
             model["price_provenance"] = dict(base["price_provenance"])

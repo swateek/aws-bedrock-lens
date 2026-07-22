@@ -13,8 +13,9 @@ AWS Bedrock Lens publishes **on-demand list prices** mapped to Bedrock `model_id
 
 Public index URLs (no credentials):
 
-- `https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AmazonBedrockFoundationModels/current/us-east-1/index.json`
-- `https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AmazonBedrock/current/us-east-1/index.json`
+- `https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AmazonBedrockFoundationModels/current/index.json` (all regions)
+- `https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AmazonBedrock/current/index.json` (all regions)
+- Regional mirrors: `…/current/{region}/index.json` (e.g. `us-east-1`)
 
 ## Unit normalization
 
@@ -78,7 +79,26 @@ Mark `pricing_source: "manual"` for preview models and gaps. Seeds in `price_see
 
 ## Regional scope
 
-Current automation targets **us-east-1** list prices (`meta.price_list_region`). Regional dimensions are a future extension.
+Automation fetches the **combined** Price List indexes (all regions in one file):
+
+- `…/AmazonBedrockFoundationModels/current/index.json`
+- `…/AmazonBedrock/current/index.json`
+
+Each product’s `attributes.regionCode` is stored under `list_prices[region][tier]`. Top-level `on_demand` remains a compat alias for `list_prices[meta.default_price_region].on_demand` (default `us-east-1`).
+
+### Tiers
+
+| Tier key | Meaning |
+|----------|---------|
+| `on_demand` | Regional on-demand standard |
+| `on_demand_global` | Global / cross-region inference |
+| `batch` / `batch_global` | Batch inference |
+| `flex` / `priority` | Flex and priority tiers (AmazonBedrock offer) |
+| `cache` / `cache_global` | Prompt-cache read/write rates |
+
+Provisioned, reserved, latency-optimized, and customization SKUs are still excluded.
+
+`meta.price_list_regions` lists regions present in the last scrape; `meta.price_list_region` mirrors `default_price_region` for older readers.
 
 ## Probe script
 
