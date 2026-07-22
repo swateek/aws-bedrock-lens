@@ -1,0 +1,26 @@
+[
+  {
+    "model_id": "amazon.nova-lite-v1:0",
+    "on_demand": {
+      "input_per_1m": 0.06,
+      "output_per_1m": 0.24
+    },
+    "epsilon": 0.001
+  },
+  {
+    "model_id": "amazon.nova-micro-v1:0",
+    "on_demand": {
+      "input_per_1m": 0.035,
+      "output_per_1m": 0.14
+    },
+    "epsilon": 0.001
+  },
+  {
+    "model_id": "anthropic.claude-3-5-sonnet-20240620-v1:0",
+    "on_demand": {
+      "input_per_1m": 3.0,
+      "output_per_1m": 15.0
+    },
+    "epsilon": 0.01
+  }
+]

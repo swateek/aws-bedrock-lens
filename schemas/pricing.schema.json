@@ -17,7 +17,7 @@
       ],
       "additionalProperties": true,
       "properties": {
-        "schema_version": { "type": "string", "enum": ["2", "2.1", "2.2"] },
+        "schema_version": { "type": "string", "enum": ["2", "2.1", "2.2", "2.3"] },
         "source": { "type": "string", "format": "uri" },
         "last_scraped_at": { "type": ["string", "null"], "format": "date" },
         "pricing_updated_at": { "type": ["string", "null"], "format": "date" },
@@ -95,11 +95,11 @@
         "provider": { "type": "string", "minLength": 1 },
         "pricing_type": {
           "type": "string",
-          "enum": ["token", "image", "embedding"]
+          "enum": ["token", "image", "embedding", "video", "rerank"]
         },
         "pricing_source": {
           "type": "string",
-          "enum": ["manual", "auto"]
+          "enum": ["manual", "auto", "price_list"]
         },
         "regions": {
           "type": "array",
@@ -122,6 +122,19 @@
         "alternate_ids": {
           "type": "array",
           "items": { "type": "string", "minLength": 1 }
+        },
+        "price_provenance": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "object",
+            "properties": {
+              "offer": { "type": "string" },
+              "usagetype": { "type": "string" },
+              "unit": { "type": "string" },
+              "product_sku": { "type": "string" }
+            },
+            "additionalProperties": true
+          }
         }
       },
       "allOf": [
@@ -136,7 +149,9 @@
                   "input_per_1m": { "type": ["number", "null"], "exclusiveMinimum": 0 },
                   "output_per_1m": { "type": ["number", "null"], "exclusiveMinimum": 0 },
                   "standard_per_image": { "type": "null" },
-                  "premium_per_image": { "type": "null" }
+                  "premium_per_image": { "type": "null" },
+                  "per_second": { "type": "null" },
+                  "per_search_unit": { "type": "null" }
                 },
                 "additionalProperties": false
               }
@@ -154,7 +169,9 @@
                   "input_per_1m": { "type": ["number", "null"], "exclusiveMinimum": 0 },
                   "output_per_1m": { "type": "null" },
                   "standard_per_image": { "type": "null" },
-                  "premium_per_image": { "type": "null" }
+                  "premium_per_image": { "type": "null" },
+                  "per_second": { "type": "null" },
+                  "per_search_unit": { "type": "null" }
                 },
                 "additionalProperties": false
               }
@@ -172,12 +189,54 @@
                   "input_per_1m": { "type": "null" },
                   "output_per_1m": { "type": "null" },
                   "standard_per_image": { "type": ["number", "null"], "exclusiveMinimum": 0 },
-                  "premium_per_image": { "type": ["number", "null"], "exclusiveMinimum": 0 }
+                  "premium_per_image": { "type": ["number", "null"], "exclusiveMinimum": 0 },
+                  "per_second": { "type": "null" },
+                  "per_search_unit": { "type": "null" }
                 },
                 "anyOf": [
                   { "required": ["standard_per_image"] },
                   { "required": ["premium_per_image"] }
                 ]
+              }
+            }
+          }
+        },
+        {
+          "if": { "properties": { "pricing_type": { "const": "video" } } },
+          "then": {
+            "properties": {
+              "on_demand": {
+                "type": "object",
+                "required": ["per_second"],
+                "additionalProperties": false,
+                "properties": {
+                  "input_per_1m": { "type": "null" },
+                  "output_per_1m": { "type": "null" },
+                  "standard_per_image": { "type": "null" },
+                  "premium_per_image": { "type": "null" },
+                  "per_second": { "type": ["number", "null"], "exclusiveMinimum": 0 },
+                  "per_search_unit": { "type": "null" }
+                }
+              }
+            }
+          }
+        },
+        {
+          "if": { "properties": { "pricing_type": { "const": "rerank" } } },
+          "then": {
+            "properties": {
+              "on_demand": {
+                "type": "object",
+                "required": ["per_search_unit"],
+                "additionalProperties": false,
+                "properties": {
+                  "input_per_1m": { "type": "null" },
+                  "output_per_1m": { "type": "null" },
+                  "standard_per_image": { "type": "null" },
+                  "premium_per_image": { "type": "null" },
+                  "per_second": { "type": "null" },
+                  "per_search_unit": { "type": ["number", "null"], "exclusiveMinimum": 0 }
+                }
               }
             }
           }
@@ -190,7 +249,9 @@
         "input_per_1m": { "type": ["number", "null"] },
         "output_per_1m": { "type": ["number", "null"] },
         "standard_per_image": { "type": ["number", "null"] },
-        "premium_per_image": { "type": ["number", "null"] }
+        "premium_per_image": { "type": ["number", "null"] },
+        "per_second": { "type": ["number", "null"] },
+        "per_search_unit": { "type": ["number", "null"] }
       }
     }
   }

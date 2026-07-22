@@ -17,8 +17,10 @@ _IMAGE_ID_RE = re.compile(
     r"image|canvas|reel|stable-image|titan-image|nova-canvas|nova-reel",
     re.IGNORECASE,
 )
+_VIDEO_ID_RE = re.compile(r"ray|reel|video|t2v|i2v", re.IGNORECASE)
+_RERANK_ID_RE = re.compile(r"rerank", re.IGNORECASE)
 _EMBED_ID_RE = re.compile(
-    r"embed|embedding|rerank|titan-embed|nova.*embed",
+    r"embed|embedding|titan-embed|nova.*embed",
     re.IGNORECASE,
 )
 
@@ -28,6 +30,10 @@ def provider_display(provider_name: str) -> str:
 
 
 def infer_pricing_type(model_id: str, input_mods: list[str], output_mods: list[str]) -> str:
+    if _RERANK_ID_RE.search(model_id):
+        return "rerank"
+    if _VIDEO_ID_RE.search(model_id) and not _EMBED_ID_RE.search(model_id):
+        return "video"
     if _EMBED_ID_RE.search(model_id):
         return "embedding"
     if _IMAGE_ID_RE.search(model_id):

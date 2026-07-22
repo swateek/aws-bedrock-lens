@@ -13,6 +13,8 @@
       output_per_1m: null,
       standard_per_image: null,
       premium_per_image: null,
+      per_second: null,
+      per_search_unit: null,
     };
     const incoming = model.on_demand || {};
     for (const key of Object.keys(base)) {
@@ -29,6 +31,8 @@
       "output_per_1m",
       "standard_per_image",
       "premium_per_image",
+      "per_second",
+      "per_search_unit",
     ].some((k) => od[k] != null && Number.isFinite(od[k]));
   }
 

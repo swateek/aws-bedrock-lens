@@ -73,6 +73,8 @@
       "output_per_1m",
       "standard_per_image",
       "premium_per_image",
+      "per_second",
+      "per_search_unit",
     ].some((k) => od[k] != null && Number.isFinite(od[k]));
   }
 

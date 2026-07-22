@@ -31,6 +31,12 @@
     if (model.pricing_type === "embedding") {
       return `${formatPrice(od.input_per_1m)} / 1M in · embedding`;
     }
+    if (model.pricing_type === "video") {
+      return `${formatPrice(od.per_second)}/sec · video`;
+    }
+    if (model.pricing_type === "rerank") {
+      return `${formatPrice(od.per_search_unit)}/search · rerank`;
+    }
     return `${formatPrice(od.input_per_1m)} / ${formatPrice(od.output_per_1m)} · ${formatContext(model.context_window)} · ${(model.modalities || []).join(", ") || "—"}`;
   }
 
@@ -45,7 +51,10 @@
       { label: "Provider", render: (m) => m.provider },
       {
         label: "Source",
-        render: (m) => (m.pricing_source === "auto" ? "auto" : "manual"),
+        render: (m) =>
+          m.pricing_source === "price_list" || m.pricing_source === "auto"
+            ? "price_list"
+            : "manual",
       },
       {
         label: "Model ID",
@@ -103,6 +112,22 @@
           best: (m) => isCheapest(m.on_demand?.premium_per_image, minPrem),
         });
       }
+    } else if (kind === "video") {
+      const minSec = minFinite(models.map((m) => m.on_demand?.per_second));
+      rows.push({
+        label: "Price / second",
+        render: (m) => formatPrice(m.on_demand?.per_second, UNKNOWN),
+        best: (m) => isCheapest(m.on_demand?.per_second, minSec),
+      });
+    } else if (kind === "rerank") {
+      const minUnit = minFinite(
+        models.map((m) => m.on_demand?.per_search_unit),
+      );
+      rows.push({
+        label: "Price / search unit",
+        render: (m) => formatPrice(m.on_demand?.per_search_unit, UNKNOWN),
+        best: (m) => isCheapest(m.on_demand?.per_search_unit, minUnit),
+      });
     } else {
       rows.push({
         label: "Pricing",

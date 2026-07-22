@@ -28,6 +28,36 @@ def test_variant_base_candidates_embed():
     assert "cohere.embed-english-v3" in candidates
 
 
+def test_extract_offer_prices_1m_tokens_not_scaled():
+    """1M token SKUs must not be multiplied by 1000."""
+    index = {
+        "products": {
+            "p1": {
+                "attributes": {
+                    "usagetype": "USE1-xai.grok-4.3-mantle-output-tokens",
+                }
+            },
+        },
+        "terms": {
+            "OnDemand": {
+                "p1": {
+                    "t1": {
+                        "priceDimensions": {
+                            "d1": {
+                                "pricePerUnit": {"USD": "1.25"},
+                                "unit": "1M tokens",
+                                "description": "USD 1.25 per 1M tokens",
+                            }
+                        }
+                    }
+                },
+            }
+        },
+    }
+    prices = extract_offer_prices(index)
+    assert prices["xai.grok-4.3-mantle"]["output_per_1m"] == 1.25
+
+
 def test_merge_bedrock_offer_fixture():
     index = {
         "products": {
@@ -44,8 +74,28 @@ def test_merge_bedrock_offer_fixture():
         },
         "terms": {
             "OnDemand": {
-                "p1": {"t1": {"priceDimensions": {"d1": {"pricePerUnit": {"USD": "0.00006"}}}}},
-                "p2": {"t1": {"priceDimensions": {"d1": {"pricePerUnit": {"USD": "0.00024"}}}}},
+                "p1": {
+                    "t1": {
+                        "priceDimensions": {
+                            "d1": {
+                                "pricePerUnit": {"USD": "0.00006"},
+                                "unit": "1K tokens",
+                                "description": "$0.00006 per 1K input tokens",
+                            }
+                        }
+                    }
+                },
+                "p2": {
+                    "t1": {
+                        "priceDimensions": {
+                            "d2": {
+                                "pricePerUnit": {"USD": "0.00024"},
+                                "unit": "1K tokens",
+                                "description": "$0.00024 per 1K output tokens",
+                            }
+                        }
+                    }
+                },
             }
         },
     }
@@ -71,4 +121,4 @@ def test_merge_bedrock_offer_fixture():
     updated, matched, _ = merge_bedrock_offer_into_catalog(catalog, index=index)
     assert matched == 1
     assert updated == 1
-    assert catalog["models"][0]["pricing_source"] == "auto"
+    assert catalog["models"][0]["pricing_source"] == "price_list"

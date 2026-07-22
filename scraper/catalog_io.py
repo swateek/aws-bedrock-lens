@@ -14,7 +14,8 @@ DATA_PATH = REPO_ROOT / "data" / "pricing.json"
 EMBED_PATH = REPO_ROOT / "data" / "pricing.embed.js"
 SCHEMA_PATH = REPO_ROOT / "schemas" / "pricing.schema.json"
 PRICING_URL = "https://aws.amazon.com/bedrock/pricing/"
-PARSER_VERSION = "2"
+PARSER_VERSION = "3"
+PRICE_EPSILON = 1e-6
 
 
 def load_schema() -> dict:
@@ -62,26 +63,23 @@ def catalogs_meaningfully_differ(before: dict, after: dict) -> bool:
 
 
 def empty_on_demand(pricing_type: str) -> dict:
-    if pricing_type == "image":
-        return {
-            "input_per_1m": None,
-            "output_per_1m": None,
-            "standard_per_image": None,
-            "premium_per_image": None,
-        }
-    if pricing_type == "embedding":
-        return {
-            "input_per_1m": None,
-            "output_per_1m": None,
-            "standard_per_image": None,
-            "premium_per_image": None,
-        }
-    return {
+    base = {
         "input_per_1m": None,
         "output_per_1m": None,
         "standard_per_image": None,
         "premium_per_image": None,
+        "per_second": None,
+        "per_search_unit": None,
     }
+    if pricing_type == "image":
+        return dict(base)
+    if pricing_type == "embedding":
+        return dict(base)
+    if pricing_type == "video":
+        return dict(base)
+    if pricing_type == "rerank":
+        return dict(base)
+    return dict(base)
 
 
 def normalize_on_demand(model: dict) -> dict:
@@ -101,13 +99,34 @@ def normalize_on_demand(model: dict) -> dict:
     elif pricing_type == "image":
         base["input_per_1m"] = None
         base["output_per_1m"] = None
+        base["per_second"] = None
+        base["per_search_unit"] = None
+    elif pricing_type == "video":
+        base["input_per_1m"] = None
+        base["output_per_1m"] = None
+        base["standard_per_image"] = None
+        base["premium_per_image"] = None
+        base["per_search_unit"] = None
+    elif pricing_type == "rerank":
+        base["input_per_1m"] = None
+        base["output_per_1m"] = None
+        base["standard_per_image"] = None
+        base["premium_per_image"] = None
+        base["per_second"] = None
     return base
 
 
 def model_has_price(model: dict) -> bool:
     """True if any on_demand field has a numeric price."""
     od = model.get("on_demand") or {}
-    for key in ("input_per_1m", "output_per_1m", "standard_per_image", "premium_per_image"):
+    for key in (
+        "input_per_1m",
+        "output_per_1m",
+        "standard_per_image",
+        "premium_per_image",
+        "per_second",
+        "per_search_unit",
+    ):
         val = od.get(key)
         if val is not None and isinstance(val, int | float):
             return True
@@ -118,7 +137,7 @@ def compute_coverage_stats(catalog: dict) -> dict[str, Any]:
     models = catalog.get("models", [])
     total = len(models)
     with_prices = sum(1 for m in models if model_has_price(m))
-    auto_count = sum(1 for m in models if m.get("pricing_source") == "auto")
+    auto_count = sum(1 for m in models if m.get("pricing_source") in ("auto", "price_list"))
     models_known = catalog.get("meta", {}).get("models_known_to_aws") or total
     return {
         "models_matched": auto_count,
@@ -134,10 +153,28 @@ def compute_coverage_stats(catalog: dict) -> dict[str, Any]:
     }
 
 
+def migrate_legacy_unit_fields(model: dict) -> None:
+    """Move mis-typed per-second / per-search prices off input_per_1m."""
+    model_id = model.get("model_id", "")
+    od = model.get("on_demand") or {}
+    if model_id == "amazon.rerank-v1:0" and od.get("input_per_1m") is not None:
+        model["pricing_type"] = "rerank"
+        od = {**empty_on_demand("rerank"), **od}
+        od["per_search_unit"] = od.pop("input_per_1m")
+        od["input_per_1m"] = None
+        model["on_demand"] = od
+    if model_id == "luma.ray-v2:0" and od.get("input_per_1m") is not None:
+        model["pricing_type"] = "video"
+        od = {**empty_on_demand("video"), **od}
+        od["per_second"] = od.pop("input_per_1m")
+        od["input_per_1m"] = None
+        model["on_demand"] = od
+
+
 def normalize_catalog(data: dict) -> dict:
     """Ensure v2 shape and consistent on_demand keys."""
     meta = data.setdefault("meta", {})
-    meta.setdefault("schema_version", "2.1")
+    meta["schema_version"] = "2.3"
     meta.setdefault("source", PRICING_URL)
     meta.setdefault("parser_version", PARSER_VERSION)
     meta.setdefault("last_scraped_at", None)
@@ -173,6 +210,7 @@ def normalize_catalog(data: dict) -> dict:
     scrape.setdefault("warnings", [])
 
     for model in data.get("models", []):
+        migrate_legacy_unit_fields(model)
         model.setdefault("pricing_source", "manual")
         model.setdefault("availability", "ga")
         model.setdefault("alternate_ids", [])

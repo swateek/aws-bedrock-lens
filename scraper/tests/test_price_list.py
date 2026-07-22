@@ -26,6 +26,25 @@ def test_resolve_service_with_catalog():
     assert mid == "anthropic.claude-3-5-sonnet-20240620-v1:0"
 
 
+def _fm_dim(usd: str, *, token: str = "input") -> dict:
+    desc = (
+        "AWS Marketplace software usage|us-east-1|Price per 1 million input tokens"
+        if token == "input"
+        else "AWS Marketplace software usage|us-east-1|Price per 1 million output tokens"
+    )
+    return {
+        "term1": {
+            "priceDimensions": {
+                "dim1": {
+                    "pricePerUnit": {"USD": usd},
+                    "unit": "Units",
+                    "description": desc,
+                }
+            }
+        }
+    }
+
+
 def test_extract_token_prices_fixture():
     index = {
         "products": {
@@ -44,12 +63,8 @@ def test_extract_token_prices_fixture():
         },
         "terms": {
             "OnDemand": {
-                "prod-in": {
-                    "term1": {"priceDimensions": {"dim1": {"pricePerUnit": {"USD": "3.0"}}}}
-                },
-                "prod-out": {
-                    "term1": {"priceDimensions": {"dim1": {"pricePerUnit": {"USD": "15.0"}}}}
-                },
+                "prod-in": _fm_dim("3.0", token="input"),
+                "prod-out": _fm_dim("15.0", token="output"),
             }
         },
     }
@@ -76,7 +91,7 @@ def test_extract_token_prices_fixture():
     )
     assert updated == 1
     assert matched == 1
-    assert catalog["models"][0]["pricing_source"] == "auto"
+    assert catalog["models"][0]["pricing_source"] == "price_list"
 
 
 def test_extract_new_style_token_usagetypes():
@@ -97,12 +112,8 @@ def test_extract_new_style_token_usagetypes():
         },
         "terms": {
             "OnDemand": {
-                "prod-in": {
-                    "term1": {"priceDimensions": {"dim1": {"pricePerUnit": {"USD": "5.5"}}}}
-                },
-                "prod-out": {
-                    "term1": {"priceDimensions": {"dim1": {"pricePerUnit": {"USD": "27.5"}}}}
-                },
+                "prod-in": _fm_dim("5.5", token="input"),
+                "prod-out": _fm_dim("27.5", token="output"),
             }
         },
     }
@@ -140,12 +151,8 @@ def test_merge_promotes_manual_when_prices_unchanged():
         },
         "terms": {
             "OnDemand": {
-                "prod-in": {
-                    "term1": {"priceDimensions": {"dim1": {"pricePerUnit": {"USD": "15.0"}}}}
-                },
-                "prod-out": {
-                    "term1": {"priceDimensions": {"dim1": {"pricePerUnit": {"USD": "75.0"}}}}
-                },
+                "prod-in": _fm_dim("15.0", token="input"),
+                "prod-out": _fm_dim("75.0", token="output"),
             }
         },
     }
@@ -170,7 +177,7 @@ def test_merge_promotes_manual_when_prices_unchanged():
     )
     assert matched == 1
     assert updated == 0
-    assert catalog["models"][0]["pricing_source"] == "auto"
+    assert catalog["models"][0]["pricing_source"] == "price_list"
 
 
 def test_discover_provisions_opus_48_and_merges_prices():
@@ -191,12 +198,8 @@ def test_discover_provisions_opus_48_and_merges_prices():
         },
         "terms": {
             "OnDemand": {
-                "prod-in": {
-                    "term1": {"priceDimensions": {"dim1": {"pricePerUnit": {"USD": "6.0"}}}}
-                },
-                "prod-out": {
-                    "term1": {"priceDimensions": {"dim1": {"pricePerUnit": {"USD": "30.0"}}}}
-                },
+                "prod-in": _fm_dim("6.0", token="input"),
+                "prod-out": _fm_dim("30.0", token="output"),
             }
         },
     }
