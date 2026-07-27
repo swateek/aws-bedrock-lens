@@ -22,6 +22,8 @@
     filterHasPricing: $("filter-has-pricing"),
     filtersToggle: $("filters-toggle"),
     filtersPanel: $("filters-panel"),
+    filtersBackdrop: $("filters-backdrop"),
+    filtersDone: $("filters-done"),
     filtersCount: $("filters-count"),
     modelList: $("model-list"),
     browserView: $("browser-view"),
@@ -81,6 +83,7 @@
       search: els.search.value,
       provider: els.filterProvider.value,
       region: els.filterRegion.value,
+      tier: els.filterTier.value || "on_demand",
       type: els.filterType.value,
       hasPricing: els.filterHasPricing?.value || "",
     };
@@ -201,13 +204,61 @@
     els.filterTier.addEventListener("change", onRegionOrTierChange);
 
     if (els.filtersToggle && els.filtersPanel) {
-      els.filtersToggle.addEventListener("click", () => {
-        const open = els.filtersPanel.classList.toggle("filters-panel--open");
+      const isFiltersSheetMode = () =>
+        window.matchMedia("(max-width: 600px)").matches;
+
+      const setFiltersOpen = (open) => {
+        if (!isFiltersSheetMode()) return;
+        els.filtersPanel.classList.toggle("filters-panel--open", open);
         els.filtersToggle.setAttribute(
           "aria-expanded",
           open ? "true" : "false",
         );
+        document.body.classList.toggle("filters-sheet-open", open);
+        if (els.filtersBackdrop) {
+          els.filtersBackdrop.hidden = !open;
+        }
+        if (open) {
+          const focusTarget = els.filtersDone || els.filterRegion;
+          if (focusTarget) focusTarget.focus();
+        } else {
+          els.filtersToggle.focus();
+        }
+      };
+
+      els.filtersToggle.addEventListener("click", () => {
+        if (!isFiltersSheetMode()) return;
+        const open = !els.filtersPanel.classList.contains(
+          "filters-panel--open",
+        );
+        setFiltersOpen(open);
       });
+
+      if (els.filtersDone) {
+        els.filtersDone.addEventListener("click", () => setFiltersOpen(false));
+      }
+      if (els.filtersBackdrop) {
+        els.filtersBackdrop.addEventListener("click", () =>
+          setFiltersOpen(false),
+        );
+      }
+      document.addEventListener("keydown", (e) => {
+        if (e.key !== "Escape") return;
+        if (!els.filtersPanel.classList.contains("filters-panel--open")) {
+          return;
+        }
+        setFiltersOpen(false);
+      });
+
+      window
+        .matchMedia("(max-width: 600px)")
+        .addEventListener("change", (e) => {
+          if (e.matches) return;
+          els.filtersPanel.classList.remove("filters-panel--open");
+          els.filtersToggle.setAttribute("aria-expanded", "false");
+          document.body.classList.remove("filters-sheet-open");
+          if (els.filtersBackdrop) els.filtersBackdrop.hidden = true;
+        });
     }
 
     if (els.themeToggle) {

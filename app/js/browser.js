@@ -154,6 +154,8 @@
     if (filters.provider) n += 1;
     if (filters.type) n += 1;
     if (filters.hasPricing) n += 1;
+    if (filters.region) n += 1;
+    if (filters.tier && filters.tier !== "on_demand") n += 1;
     return n;
   }
 
