@@ -86,21 +86,6 @@
             />
           </label>
 
-          <div class="toolbar__price-scope">
-            <label class="toolbar__field">
-              <span class="toolbar__label">Availability region</span>
-              <select id="filter-region" class="toolbar__select">
-                <option value="">All</option>
-              </select>
-            </label>
-            <label class="toolbar__field">
-              <span class="toolbar__label">Tier</span>
-              <select id="filter-tier" class="toolbar__select">
-                <option value="on_demand">on-demand</option>
-              </select>
-            </label>
-          </div>
-
           <button
             type="button"
             id="filters-toggle"
@@ -113,31 +98,61 @@
           </button>
 
           <div id="filters-panel" class="filters-panel">
-            <label class="toolbar__field">
-              <span class="toolbar__label">Provider</span>
-              <select id="filter-provider" class="toolbar__select">
-                <option value="">All</option>
-              </select>
-            </label>
-            <label class="toolbar__field">
-              <span class="toolbar__label">Type</span>
-              <select id="filter-type" class="toolbar__select">
-                <option value="">All</option>
-                <option value="token">Token</option>
-                <option value="image">Image</option>
-                <option value="embedding">Embedding</option>
-              </select>
-            </label>
-            <label class="toolbar__field">
-              <span class="toolbar__label">Pricing</span>
-              <select id="filter-has-pricing" class="toolbar__select">
-                <option value="">All</option>
-                <option value="yes">Has list price</option>
-                <option value="no">Price unknown</option>
-              </select>
-            </label>
+            <div class="filters-sheet__header">
+              <span class="filters-sheet__title">Filters</span>
+              <button
+                type="button"
+                id="filters-done"
+                class="btn btn--ghost filters-sheet__done"
+              >
+                Done
+              </button>
+            </div>
+
+            <div class="toolbar__price-scope">
+              <label class="toolbar__field">
+                <span class="toolbar__label">Availability region</span>
+                <select id="filter-region" class="toolbar__select">
+                  <option value="">All</option>
+                </select>
+              </label>
+              <label class="toolbar__field">
+                <span class="toolbar__label">Tier</span>
+                <select id="filter-tier" class="toolbar__select">
+                  <option value="on_demand">on-demand</option>
+                </select>
+              </label>
+            </div>
+
+            <div class="filters-panel__more">
+              <label class="toolbar__field">
+                <span class="toolbar__label">Provider</span>
+                <select id="filter-provider" class="toolbar__select">
+                  <option value="">All</option>
+                </select>
+              </label>
+              <label class="toolbar__field">
+                <span class="toolbar__label">Type</span>
+                <select id="filter-type" class="toolbar__select">
+                  <option value="">All</option>
+                  <option value="token">Token</option>
+                  <option value="image">Image</option>
+                  <option value="embedding">Embedding</option>
+                </select>
+              </label>
+              <label class="toolbar__field">
+                <span class="toolbar__label">Pricing</span>
+                <select id="filter-has-pricing" class="toolbar__select">
+                  <option value="">All</option>
+                  <option value="yes">Has list price</option>
+                  <option value="no">Price unknown</option>
+                </select>
+              </label>
+            </div>
           </div>
         </div>
+
+        <div id="filters-backdrop" class="filters-backdrop" hidden></div>
 
         <ul id="model-list" class="model-list" aria-label="Models"></ul>
       </section>

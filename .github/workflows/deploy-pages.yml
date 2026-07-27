@@ -4,13 +4,22 @@ on:
   push:
     branches: [main]
   workflow_dispatch:
+    inputs:
+      ref:
+        description: Git ref (branch, tag, or SHA) to build and deploy
+        required: true
+        default: main
+        type: string
 
 jobs:
   deploy:
-    if: github.ref == 'refs/heads/main'
+    # Auto-deploy on push to main; allow manual deploy from any chosen ref.
+    if: github.event_name == 'workflow_dispatch' || github.ref == 'refs/heads/main'
     permissions:
       contents: read
       pages: write
       id-token: write
     uses: ./.github/workflows/deploy-pages-reusable.yml
+    with:
+      checkout_ref: ${{ github.event_name == 'workflow_dispatch' && inputs.ref || 'main' }}
     secrets: inherit
