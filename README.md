@@ -20,7 +20,7 @@ A static tool for comparing AWS Bedrock foundation models by pricing, capabiliti
 aws-bedrock-lens/
 ├── .github/workflows/
 │   ├── ci.yml                 # pre-commit + schema/embed + tests
-│   ├── deploy-pages.yml       # site root = app + data/
+│   ├── deploy-pages.yml       # push main + manual deploy (any ref) → Pages
 │   └── update-pricing.yml     # weekly scrape → commit to main (meaningful changes only)
 ├── app/
 │   ├── index.html
@@ -168,7 +168,7 @@ Page views and filter interactions (provider, type, pricing filter, model select
 
 1. In [Google Analytics](https://analytics.google.com/), create a property and add a **Web** data stream for `https://swateek.github.io/aws-bedrock-lens/`.
 2. Copy the **Measurement ID** (`G-XXXXXXXXXX`).
-3. Add repository secret `GA_MEASUREMENT_ID` (Settings → Secrets → Actions). Redeploy Pages (push to `main` or re-run the deploy workflow).
+3. Add repository secret `GA_MEASUREMENT_ID` (Settings → Secrets → Actions). Redeploy Pages (push to `main`, or run **Deploy GitHub Pages** via Actions and set **ref** to the branch/tag/SHA to deploy).
 4. Verify in GA4 **Reports → Realtime** after visiting the live site and using filters or compare.
 
 Local dev leaves `GA_MEASUREMENT_ID` empty in `app/config.js` so analytics are disabled:

@@ -3,6 +3,11 @@ name: Deploy GitHub Pages (reusable)
 on:
   workflow_call:
     inputs:
+      checkout_ref:
+        description: Git ref (branch, tag, or SHA) to checkout and deploy
+        required: false
+        type: string
+        default: main
       data_artifact:
         description: Optional artifact name with scraped data/ to overlay after checkout
         required: false
@@ -27,7 +32,7 @@ jobs:
     steps:
       - uses: actions/checkout@v6
         with:
-          ref: main
+          ref: ${{ inputs.checkout_ref }}
 
       - name: Overlay scraped data from artifact
         if: inputs.data_artifact != ''
