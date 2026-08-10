@@ -2,12 +2,12 @@
   "meta": {
     "schema_version": "3.0",
     "source": "https://aws.amazon.com/bedrock/pricing/",
-    "last_scraped_at": "2026-07-27",
+    "last_scraped_at": "2026-08-10",
     "pricing_updated_at": "2026-07-27",
     "parser_version": "4",
-    "last_inventory_sync_at": "2026-07-27",
+    "last_inventory_sync_at": "2026-08-10",
     "models_known_to_aws": 143,
-    "last_price_list_at": "2026-07-27",
+    "last_price_list_at": "2026-08-10",
     "price_list_region": "us-east-1",
     "products": [
       {
@@ -19,7 +19,7 @@
       }
     ],
     "bedrock_offer_region": "us-east-1",
-    "last_bedrock_offer_at": "2026-07-27",
+    "last_bedrock_offer_at": "2026-08-10",
     "default_price_region": "us-east-1",
     "price_list_regions": [
       "af-south-1",
@@ -70886,7 +70886,9 @@
       "Auto-provisioned catalog entry from Price List: openai.gpt-5.6-luna-mantle-cache-read-tokens",
       "Auto-provisioned catalog entry from Price List: openai.gpt-5.6-terra-mantle-cache-read-tokens",
       "Auto-provisioned catalog entry from Price List: openai.gpt-5.6-terra-mantle-cache-write-tokens-30m",
-      "Auto-provisioned catalog entry from Price List: openai.gpt-5.6-luna-mantle-cache-write-tokens-30m"
+      "Auto-provisioned catalog entry from Price List: openai.gpt-5.6-luna-mantle-cache-write-tokens-30m",
+      "Unmapped Price List service (add override): Claude Mythos Preview",
+      "Unmapped pricing page row: Web Search queries"
     ]
   }
 }
