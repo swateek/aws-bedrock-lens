@@ -2,12 +2,12 @@
   "meta": {
     "schema_version": "3.0",
     "source": "https://aws.amazon.com/bedrock/pricing/",
-    "last_scraped_at": "2026-08-17",
-    "pricing_updated_at": "2026-08-17",
+    "last_scraped_at": "2026-08-31",
+    "pricing_updated_at": "2026-08-31",
     "parser_version": "4",
-    "last_inventory_sync_at": "2026-08-17",
+    "last_inventory_sync_at": "2026-08-31",
     "models_known_to_aws": 143,
-    "last_price_list_at": "2026-08-17",
+    "last_price_list_at": "2026-08-31",
     "price_list_region": "us-east-1",
     "products": [
       {
@@ -19,10 +19,11 @@
       }
     ],
     "bedrock_offer_region": "us-east-1",
-    "last_bedrock_offer_at": "2026-08-17",
+    "last_bedrock_offer_at": "2026-08-31",
     "default_price_region": "us-east-1",
     "price_list_regions": [
       "af-south-1",
+      "ap-east-1",
       "ap-east-2",
       "ap-northeast-1",
       "ap-northeast-2",
@@ -68128,6 +68129,3045 @@
       }
     },
     {
+      "model_id": "xai.grok-4.6-mantle",
+      "display_name": "Grok 4.6 Mantle",
+      "provider": "Unknown",
+      "pricing_type": "token",
+      "pricing_source": "price_list",
+      "regions": [
+        "us-east-1"
+      ],
+      "on_demand": {
+        "input_per_1m": 2.2,
+        "output_per_1m": 6.6,
+        "standard_per_image": null,
+        "premium_per_image": null,
+        "per_second": null,
+        "per_search_unit": null
+      },
+      "context_window": null,
+      "modalities": [
+        "text"
+      ],
+      "notes": null,
+      "availability": "ga",
+      "alternate_ids": [],
+      "list_prices": {
+        "il-central-1": {
+          "on_demand": {
+            "input_per_1m": 2.2,
+            "output_per_1m": 6.6,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          },
+          "cache": {
+            "read_input_per_1m": 0.55,
+            "write_input_per_1m": null,
+            "write_1h_input_per_1m": null
+          },
+          "cache_global": {
+            "read_input_per_1m": 0.5,
+            "write_input_per_1m": null,
+            "write_1h_input_per_1m": null
+          }
+        },
+        "ap-south-2": {
+          "cache_global": {
+            "read_input_per_1m": 0.5,
+            "write_input_per_1m": null,
+            "write_1h_input_per_1m": null
+          },
+          "on_demand": {
+            "input_per_1m": 2.2,
+            "output_per_1m": 6.6,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          },
+          "cache": {
+            "read_input_per_1m": 0.55,
+            "write_input_per_1m": null,
+            "write_1h_input_per_1m": null
+          }
+        },
+        "us-west-2": {
+          "cache_global": {
+            "read_input_per_1m": 0.5,
+            "write_input_per_1m": null,
+            "write_1h_input_per_1m": null
+          },
+          "on_demand": {
+            "input_per_1m": 2.2,
+            "output_per_1m": 6.6,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          },
+          "cache": {
+            "read_input_per_1m": 0.55,
+            "write_input_per_1m": null,
+            "write_1h_input_per_1m": null
+          }
+        },
+        "us-gov-east-1": {
+          "cache": {
+            "read_input_per_1m": 0.66,
+            "write_input_per_1m": null,
+            "write_1h_input_per_1m": null
+          },
+          "on_demand": {
+            "input_per_1m": 2.64,
+            "output_per_1m": 7.92,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          },
+          "cache_global": {
+            "read_input_per_1m": 0.6,
+            "write_input_per_1m": null,
+            "write_1h_input_per_1m": null
+          }
+        },
+        "ap-east-1": {
+          "cache_global": {
+            "read_input_per_1m": 0.5,
+            "write_input_per_1m": null,
+            "write_1h_input_per_1m": null
+          },
+          "cache": {
+            "read_input_per_1m": 0.55,
+            "write_input_per_1m": null,
+            "write_1h_input_per_1m": null
+          },
+          "on_demand": {
+            "input_per_1m": 2.2,
+            "output_per_1m": 6.6,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
+        },
+        "ap-northeast-2": {
+          "on_demand": {
+            "input_per_1m": 2.2,
+            "output_per_1m": 6.6,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          },
+          "cache": {
+            "read_input_per_1m": 0.55,
+            "write_input_per_1m": null,
+            "write_1h_input_per_1m": null
+          },
+          "cache_global": {
+            "read_input_per_1m": 0.5,
+            "write_input_per_1m": null,
+            "write_1h_input_per_1m": null
+          }
+        },
+        "ap-southeast-7": {
+          "cache_global": {
+            "read_input_per_1m": 0.5,
+            "write_input_per_1m": null,
+            "write_1h_input_per_1m": null
+          },
+          "cache": {
+            "read_input_per_1m": 0.55,
+            "write_input_per_1m": null,
+            "write_1h_input_per_1m": null
+          },
+          "on_demand": {
+            "input_per_1m": 2.2,
+            "output_per_1m": 6.6,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
+        },
+        "ap-southeast-4": {
+          "cache": {
+            "read_input_per_1m": 0.55,
+            "write_input_per_1m": null,
+            "write_1h_input_per_1m": null
+          },
+          "cache_global": {
+            "read_input_per_1m": 0.5,
+            "write_input_per_1m": null,
+            "write_1h_input_per_1m": null
+          },
+          "on_demand": {
+            "input_per_1m": 2.2,
+            "output_per_1m": 6.6,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
+        },
+        "us-east-2": {
+          "on_demand": {
+            "input_per_1m": 2.2,
+            "output_per_1m": 6.6,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          },
+          "cache_global": {
+            "read_input_per_1m": 0.5,
+            "write_input_per_1m": null,
+            "write_1h_input_per_1m": null
+          },
+          "cache": {
+            "read_input_per_1m": 0.55,
+            "write_input_per_1m": null,
+            "write_1h_input_per_1m": null
+          }
+        },
+        "eu-north-1": {
+          "on_demand": {
+            "input_per_1m": 2.2,
+            "output_per_1m": 6.6,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          },
+          "cache": {
+            "read_input_per_1m": 0.55,
+            "write_input_per_1m": null,
+            "write_1h_input_per_1m": null
+          },
+          "cache_global": {
+            "read_input_per_1m": 0.5,
+            "write_input_per_1m": null,
+            "write_1h_input_per_1m": null
+          }
+        },
+        "me-south-1": {
+          "on_demand": {
+            "input_per_1m": 2.2,
+            "output_per_1m": 6.6,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          },
+          "cache_global": {
+            "read_input_per_1m": 0.5,
+            "write_input_per_1m": null,
+            "write_1h_input_per_1m": null
+          },
+          "cache": {
+            "read_input_per_1m": 0.55,
+            "write_input_per_1m": null,
+            "write_1h_input_per_1m": null
+          }
+        },
+        "eu-west-3": {
+          "cache_global": {
+            "read_input_per_1m": 0.5,
+            "write_input_per_1m": null,
+            "write_1h_input_per_1m": null
+          },
+          "cache": {
+            "read_input_per_1m": 0.55,
+            "write_input_per_1m": null,
+            "write_1h_input_per_1m": null
+          },
+          "on_demand": {
+            "input_per_1m": 2.2,
+            "output_per_1m": 6.6,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
+        },
+        "ap-northeast-3": {
+          "cache": {
+            "read_input_per_1m": 0.55,
+            "write_input_per_1m": null,
+            "write_1h_input_per_1m": null
+          },
+          "cache_global": {
+            "read_input_per_1m": 0.5,
+            "write_input_per_1m": null,
+            "write_1h_input_per_1m": null
+          },
+          "on_demand": {
+            "input_per_1m": 2.2,
+            "output_per_1m": 6.6,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
+        },
+        "ap-southeast-2": {
+          "cache_global": {
+            "read_input_per_1m": 0.5,
+            "write_input_per_1m": null,
+            "write_1h_input_per_1m": null
+          },
+          "on_demand": {
+            "input_per_1m": 2.2,
+            "output_per_1m": 6.6,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          },
+          "cache": {
+            "read_input_per_1m": 0.55,
+            "write_input_per_1m": null,
+            "write_1h_input_per_1m": null
+          }
+        },
+        "af-south-1": {
+          "cache": {
+            "read_input_per_1m": 0.55,
+            "write_input_per_1m": null,
+            "write_1h_input_per_1m": null
+          },
+          "on_demand": {
+            "input_per_1m": 2.2,
+            "output_per_1m": 6.6,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          },
+          "cache_global": {
+            "read_input_per_1m": 0.5,
+            "write_input_per_1m": null,
+            "write_1h_input_per_1m": null
+          }
+        },
+        "us-gov-west-1": {
+          "on_demand": {
+            "input_per_1m": 2.64,
+            "output_per_1m": 7.92,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          },
+          "cache": {
+            "read_input_per_1m": 0.66,
+            "write_input_per_1m": null,
+            "write_1h_input_per_1m": null
+          },
+          "cache_global": {
+            "read_input_per_1m": 0.6,
+            "write_input_per_1m": null,
+            "write_1h_input_per_1m": null
+          }
+        },
+        "us-east-1": {
+          "on_demand": {
+            "input_per_1m": 2.2,
+            "output_per_1m": 6.6,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          },
+          "cache": {
+            "read_input_per_1m": 0.55,
+            "write_input_per_1m": null,
+            "write_1h_input_per_1m": null
+          },
+          "cache_global": {
+            "read_input_per_1m": 0.5,
+            "write_input_per_1m": null,
+            "write_1h_input_per_1m": null
+          }
+        },
+        "eu-west-2": {
+          "on_demand": {
+            "input_per_1m": 2.2,
+            "output_per_1m": 6.6,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          },
+          "cache_global": {
+            "read_input_per_1m": 0.5,
+            "write_input_per_1m": null,
+            "write_1h_input_per_1m": null
+          },
+          "cache": {
+            "read_input_per_1m": 0.55,
+            "write_input_per_1m": null,
+            "write_1h_input_per_1m": null
+          }
+        },
+        "mx-central-1": {
+          "on_demand": {
+            "input_per_1m": 2.2,
+            "output_per_1m": 6.6,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          },
+          "cache_global": {
+            "read_input_per_1m": 0.5,
+            "write_input_per_1m": null,
+            "write_1h_input_per_1m": null
+          },
+          "cache": {
+            "read_input_per_1m": 0.55,
+            "write_input_per_1m": null,
+            "write_1h_input_per_1m": null
+          }
+        },
+        "eu-west-1": {
+          "on_demand": {
+            "input_per_1m": 2.2,
+            "output_per_1m": 6.6,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          },
+          "cache": {
+            "read_input_per_1m": 0.55,
+            "write_input_per_1m": null,
+            "write_1h_input_per_1m": null
+          },
+          "cache_global": {
+            "read_input_per_1m": 0.5,
+            "write_input_per_1m": null,
+            "write_1h_input_per_1m": null
+          }
+        },
+        "ca-west-1": {
+          "on_demand": {
+            "input_per_1m": 2.2,
+            "output_per_1m": 6.6,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          },
+          "cache_global": {
+            "read_input_per_1m": 0.5,
+            "write_input_per_1m": null,
+            "write_1h_input_per_1m": null
+          },
+          "cache": {
+            "read_input_per_1m": 0.55,
+            "write_input_per_1m": null,
+            "write_1h_input_per_1m": null
+          }
+        },
+        "ap-southeast-1": {
+          "cache_global": {
+            "read_input_per_1m": 0.5,
+            "write_input_per_1m": null,
+            "write_1h_input_per_1m": null
+          },
+          "on_demand": {
+            "input_per_1m": 2.2,
+            "output_per_1m": 6.6,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          },
+          "cache": {
+            "read_input_per_1m": 0.55,
+            "write_input_per_1m": null,
+            "write_1h_input_per_1m": null
+          }
+        },
+        "ap-south-1": {
+          "cache": {
+            "read_input_per_1m": 0.55,
+            "write_input_per_1m": null,
+            "write_1h_input_per_1m": null
+          },
+          "on_demand": {
+            "input_per_1m": 2.2,
+            "output_per_1m": 6.6,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          },
+          "cache_global": {
+            "read_input_per_1m": 0.5,
+            "write_input_per_1m": null,
+            "write_1h_input_per_1m": null
+          }
+        },
+        "me-central-1": {
+          "cache_global": {
+            "read_input_per_1m": 0.5,
+            "write_input_per_1m": null,
+            "write_1h_input_per_1m": null
+          },
+          "cache": {
+            "read_input_per_1m": 0.55,
+            "write_input_per_1m": null,
+            "write_1h_input_per_1m": null
+          },
+          "on_demand": {
+            "input_per_1m": 2.2,
+            "output_per_1m": 6.6,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
+        },
+        "eu-central-2": {
+          "on_demand": {
+            "input_per_1m": 2.2,
+            "output_per_1m": 6.6,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          },
+          "cache_global": {
+            "read_input_per_1m": 0.5,
+            "write_input_per_1m": null,
+            "write_1h_input_per_1m": null
+          },
+          "cache": {
+            "read_input_per_1m": 0.55,
+            "write_input_per_1m": null,
+            "write_1h_input_per_1m": null
+          }
+        },
+        "ca-central-1": {
+          "on_demand": {
+            "input_per_1m": 2.2,
+            "output_per_1m": 6.6,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          },
+          "cache": {
+            "read_input_per_1m": 0.55,
+            "write_input_per_1m": null,
+            "write_1h_input_per_1m": null
+          },
+          "cache_global": {
+            "read_input_per_1m": 0.5,
+            "write_input_per_1m": null,
+            "write_1h_input_per_1m": null
+          }
+        },
+        "us-west-1": {
+          "cache_global": {
+            "read_input_per_1m": 0.5,
+            "write_input_per_1m": null,
+            "write_1h_input_per_1m": null
+          },
+          "on_demand": {
+            "input_per_1m": 2.2,
+            "output_per_1m": 6.6,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          },
+          "cache": {
+            "read_input_per_1m": 0.55,
+            "write_input_per_1m": null,
+            "write_1h_input_per_1m": null
+          }
+        },
+        "ap-east-2": {
+          "cache": {
+            "read_input_per_1m": 0.55,
+            "write_input_per_1m": null,
+            "write_1h_input_per_1m": null
+          },
+          "cache_global": {
+            "read_input_per_1m": 0.5,
+            "write_input_per_1m": null,
+            "write_1h_input_per_1m": null
+          },
+          "on_demand": {
+            "input_per_1m": 2.2,
+            "output_per_1m": 6.6,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
+        },
+        "sa-east-1": {
+          "on_demand": {
+            "input_per_1m": 2.2,
+            "output_per_1m": 6.6,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          },
+          "cache": {
+            "read_input_per_1m": 0.55,
+            "write_input_per_1m": null,
+            "write_1h_input_per_1m": null
+          },
+          "cache_global": {
+            "read_input_per_1m": 0.5,
+            "write_input_per_1m": null,
+            "write_1h_input_per_1m": null
+          }
+        },
+        "eu-central-1": {
+          "cache": {
+            "read_input_per_1m": 0.55,
+            "write_input_per_1m": null,
+            "write_1h_input_per_1m": null
+          },
+          "on_demand": {
+            "input_per_1m": 2.2,
+            "output_per_1m": 6.6,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          },
+          "cache_global": {
+            "read_input_per_1m": 0.5,
+            "write_input_per_1m": null,
+            "write_1h_input_per_1m": null
+          }
+        },
+        "eu-south-2": {
+          "cache": {
+            "read_input_per_1m": 0.55,
+            "write_input_per_1m": null,
+            "write_1h_input_per_1m": null
+          },
+          "cache_global": {
+            "read_input_per_1m": 0.5,
+            "write_input_per_1m": null,
+            "write_1h_input_per_1m": null
+          },
+          "on_demand": {
+            "input_per_1m": 2.2,
+            "output_per_1m": 6.6,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
+        },
+        "eu-south-1": {
+          "cache": {
+            "read_input_per_1m": 0.55,
+            "write_input_per_1m": null,
+            "write_1h_input_per_1m": null
+          },
+          "on_demand": {
+            "input_per_1m": 2.2,
+            "output_per_1m": 6.6,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          },
+          "cache_global": {
+            "read_input_per_1m": 0.5,
+            "write_input_per_1m": null,
+            "write_1h_input_per_1m": null
+          }
+        },
+        "ap-southeast-5": {
+          "on_demand": {
+            "input_per_1m": 2.2,
+            "output_per_1m": 6.6,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          },
+          "cache": {
+            "read_input_per_1m": 0.55,
+            "write_input_per_1m": null,
+            "write_1h_input_per_1m": null
+          },
+          "cache_global": {
+            "read_input_per_1m": 0.5,
+            "write_input_per_1m": null,
+            "write_1h_input_per_1m": null
+          }
+        },
+        "ap-southeast-6": {
+          "on_demand": {
+            "input_per_1m": 2.2,
+            "output_per_1m": 6.6,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          },
+          "cache": {
+            "read_input_per_1m": 0.55,
+            "write_input_per_1m": null,
+            "write_1h_input_per_1m": null
+          },
+          "cache_global": {
+            "read_input_per_1m": 0.5,
+            "write_input_per_1m": null,
+            "write_1h_input_per_1m": null
+          }
+        },
+        "ap-northeast-1": {
+          "cache": {
+            "read_input_per_1m": 0.55,
+            "write_input_per_1m": null,
+            "write_1h_input_per_1m": null
+          },
+          "cache_global": {
+            "read_input_per_1m": 0.5,
+            "write_input_per_1m": null,
+            "write_1h_input_per_1m": null
+          },
+          "on_demand": {
+            "input_per_1m": 2.2,
+            "output_per_1m": 6.6,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
+        },
+        "ap-southeast-3": {
+          "cache_global": {
+            "read_input_per_1m": 0.5,
+            "write_input_per_1m": null,
+            "write_1h_input_per_1m": null
+          },
+          "cache": {
+            "read_input_per_1m": 0.55,
+            "write_input_per_1m": null,
+            "write_1h_input_per_1m": null
+          },
+          "on_demand": {
+            "input_per_1m": 2.2,
+            "output_per_1m": 6.6,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
+        }
+      },
+      "price_provenance": {
+        "il-central-1.on_demand.input_per_1m": {
+          "offer": "AmazonBedrock",
+          "usagetype": "ILC1-xai.grok-4.6-mantle-input-tokens-standard",
+          "unit": "1K tokens",
+          "product_sku": "6XF77EDEW9RJBYWM",
+          "region": "il-central-1",
+          "tier": "on_demand"
+        },
+        "il-central-1.on_demand.output_per_1m": {
+          "offer": "AmazonBedrock",
+          "usagetype": "ILC1-xai.grok-4.6-mantle-output-tokens-standard",
+          "unit": "1K tokens",
+          "product_sku": "E37XABE6KHPMFUCV",
+          "region": "il-central-1",
+          "tier": "on_demand"
+        },
+        "il-central-1.cache.read_input_per_1m": {
+          "offer": "AmazonBedrock",
+          "usagetype": "ILC1-xai.grok-4.6-mantle-cache-read-tokens-standard",
+          "unit": "1K tokens",
+          "product_sku": "5HGC8GQ77PZJ3HKP",
+          "region": "il-central-1",
+          "tier": "cache"
+        },
+        "il-central-1.cache_global.read_input_per_1m": {
+          "offer": "AmazonBedrock",
+          "usagetype": "ILC1-xai.grok-4.6-mantle-cache-read-tokens-global-standard",
+          "unit": "1K tokens",
+          "product_sku": "QC3CAKZ6X3RSXY4H",
+          "region": "il-central-1",
+          "tier": "cache_global"
+        },
+        "ap-south-2.cache_global.read_input_per_1m": {
+          "offer": "AmazonBedrock",
+          "usagetype": "APS5-xai.grok-4.6-mantle-cache-read-tokens-global-standard",
+          "unit": "1K tokens",
+          "product_sku": "3DY3BUQNZXRWBX8W",
+          "region": "ap-south-2",
+          "tier": "cache_global"
+        },
+        "ap-south-2.on_demand.output_per_1m": {
+          "offer": "AmazonBedrock",
+          "usagetype": "APS5-xai.grok-4.6-mantle-output-tokens-standard",
+          "unit": "1K tokens",
+          "product_sku": "2SN9AUP7DTGPGR2K",
+          "region": "ap-south-2",
+          "tier": "on_demand"
+        },
+        "ap-south-2.on_demand.input_per_1m": {
+          "offer": "AmazonBedrock",
+          "usagetype": "APS5-xai.grok-4.6-mantle-input-tokens-standard",
+          "unit": "1K tokens",
+          "product_sku": "77Y6CF9BXGK8S4FQ",
+          "region": "ap-south-2",
+          "tier": "on_demand"
+        },
+        "ap-south-2.cache.read_input_per_1m": {
+          "offer": "AmazonBedrock",
+          "usagetype": "APS5-xai.grok-4.6-mantle-cache-read-tokens-standard",
+          "unit": "1K tokens",
+          "product_sku": "XT7CEQU93QTHTDYX",
+          "region": "ap-south-2",
+          "tier": "cache"
+        },
+        "us-west-2.cache_global.read_input_per_1m": {
+          "offer": "AmazonBedrock",
+          "usagetype": "USW2-xai.grok-4.6-mantle-cache-read-tokens-global-standard",
+          "unit": "1K tokens",
+          "product_sku": "2JZCFK852ASZDHUR",
+          "region": "us-west-2",
+          "tier": "cache_global"
+        },
+        "us-west-2.on_demand.output_per_1m": {
+          "offer": "AmazonBedrock",
+          "usagetype": "USW2-xai.grok-4.6-mantle-output-tokens-standard",
+          "unit": "1K tokens",
+          "product_sku": "H7HQV4NFHCAT3QY2",
+          "region": "us-west-2",
+          "tier": "on_demand"
+        },
+        "us-west-2.on_demand.input_per_1m": {
+          "offer": "AmazonBedrock",
+          "usagetype": "USW2-xai.grok-4.6-mantle-input-tokens-standard",
+          "unit": "1K tokens",
+          "product_sku": "SD5HYBXPEJX8YRY4",
+          "region": "us-west-2",
+          "tier": "on_demand"
+        },
+        "us-west-2.cache.read_input_per_1m": {
+          "offer": "AmazonBedrock",
+          "usagetype": "USW2-xai.grok-4.6-mantle-cache-read-tokens-standard",
+          "unit": "1K tokens",
+          "product_sku": "N2KJVRVBJV43QTCQ",
+          "region": "us-west-2",
+          "tier": "cache"
+        },
+        "us-gov-east-1.cache.read_input_per_1m": {
+          "offer": "AmazonBedrock",
+          "usagetype": "UGE1-xai.grok-4.6-mantle-cache-read-tokens-standard",
+          "unit": "1K tokens",
+          "product_sku": "M2GTAZD2WTPATT9T",
+          "region": "us-gov-east-1",
+          "tier": "cache"
+        },
+        "us-gov-east-1.on_demand.output_per_1m": {
+          "offer": "AmazonBedrock",
+          "usagetype": "UGE1-xai.grok-4.6-mantle-output-tokens-standard",
+          "unit": "1K tokens",
+          "product_sku": "S2DA7E69QBXNEFHN",
+          "region": "us-gov-east-1",
+          "tier": "on_demand"
+        },
+        "us-gov-east-1.on_demand.input_per_1m": {
+          "offer": "AmazonBedrock",
+          "usagetype": "UGE1-xai.grok-4.6-mantle-input-tokens-standard",
+          "unit": "1K tokens",
+          "product_sku": "ANVZR7DUYAJNSGP2",
+          "region": "us-gov-east-1",
+          "tier": "on_demand"
+        },
+        "us-gov-east-1.cache_global.read_input_per_1m": {
+          "offer": "AmazonBedrock",
+          "usagetype": "UGE1-xai.grok-4.6-mantle-cache-read-tokens-global-standard",
+          "unit": "1K tokens",
+          "product_sku": "S8KX7D9JY2CGMEU5",
+          "region": "us-gov-east-1",
+          "tier": "cache_global"
+        },
+        "ap-east-1.cache_global.read_input_per_1m": {
+          "offer": "AmazonBedrock",
+          "usagetype": "APE1-xai.grok-4.6-mantle-cache-read-tokens-global-standard",
+          "unit": "1K tokens",
+          "product_sku": "MVFF9C9T53BRSB49",
+          "region": "ap-east-1",
+          "tier": "cache_global"
+        },
+        "ap-east-1.cache.read_input_per_1m": {
+          "offer": "AmazonBedrock",
+          "usagetype": "APE1-xai.grok-4.6-mantle-cache-read-tokens-standard",
+          "unit": "1K tokens",
+          "product_sku": "FFDWZCB9RYKPVG85",
+          "region": "ap-east-1",
+          "tier": "cache"
+        },
+        "ap-east-1.on_demand.input_per_1m": {
+          "offer": "AmazonBedrock",
+          "usagetype": "APE1-xai.grok-4.6-mantle-input-tokens-standard",
+          "unit": "1K tokens",
+          "product_sku": "864JHAS73D4T7GG9",
+          "region": "ap-east-1",
+          "tier": "on_demand"
+        },
+        "ap-east-1.on_demand.output_per_1m": {
+          "offer": "AmazonBedrock",
+          "usagetype": "APE1-xai.grok-4.6-mantle-output-tokens-standard",
+          "unit": "1K tokens",
+          "product_sku": "2UZQSZXBHZTK528M",
+          "region": "ap-east-1",
+          "tier": "on_demand"
+        },
+        "ap-northeast-2.on_demand.output_per_1m": {
+          "offer": "AmazonBedrock",
+          "usagetype": "APN2-xai.grok-4.6-mantle-output-tokens-standard",
+          "unit": "1K tokens",
+          "product_sku": "JV98VJE5QJXG9Q63",
+          "region": "ap-northeast-2",
+          "tier": "on_demand"
+        },
+        "ap-northeast-2.on_demand.input_per_1m": {
+          "offer": "AmazonBedrock",
+          "usagetype": "APN2-xai.grok-4.6-mantle-input-tokens-standard",
+          "unit": "1K tokens",
+          "product_sku": "548TYNNNGSDDRNKG",
+          "region": "ap-northeast-2",
+          "tier": "on_demand"
+        },
+        "ap-northeast-2.cache.read_input_per_1m": {
+          "offer": "AmazonBedrock",
+          "usagetype": "APN2-xai.grok-4.6-mantle-cache-read-tokens-standard",
+          "unit": "1K tokens",
+          "product_sku": "Y6YSKCHPEDHV6G3T",
+          "region": "ap-northeast-2",
+          "tier": "cache"
+        },
+        "ap-northeast-2.cache_global.read_input_per_1m": {
+          "offer": "AmazonBedrock",
+          "usagetype": "APN2-xai.grok-4.6-mantle-cache-read-tokens-global-standard",
+          "unit": "1K tokens",
+          "product_sku": "HVGXZQBRJH4QSFRQ",
+          "region": "ap-northeast-2",
+          "tier": "cache_global"
+        },
+        "ap-southeast-7.cache_global.read_input_per_1m": {
+          "offer": "AmazonBedrock",
+          "usagetype": "APS9-xai.grok-4.6-mantle-cache-read-tokens-global-standard",
+          "unit": "1K tokens",
+          "product_sku": "F3G7AB339E3DYG4J",
+          "region": "ap-southeast-7",
+          "tier": "cache_global"
+        },
+        "ap-southeast-7.cache.read_input_per_1m": {
+          "offer": "AmazonBedrock",
+          "usagetype": "APS9-xai.grok-4.6-mantle-cache-read-tokens-standard",
+          "unit": "1K tokens",
+          "product_sku": "9TBW7A32MKBDQVB2",
+          "region": "ap-southeast-7",
+          "tier": "cache"
+        },
+        "ap-southeast-7.on_demand.input_per_1m": {
+          "offer": "AmazonBedrock",
+          "usagetype": "APS9-xai.grok-4.6-mantle-input-tokens-standard",
+          "unit": "1K tokens",
+          "product_sku": "PGNNS4WMNJV32U5C",
+          "region": "ap-southeast-7",
+          "tier": "on_demand"
+        },
+        "ap-southeast-7.on_demand.output_per_1m": {
+          "offer": "AmazonBedrock",
+          "usagetype": "APS9-xai.grok-4.6-mantle-output-tokens-standard",
+          "unit": "1K tokens",
+          "product_sku": "5GYHPCCFRDEN9CFS",
+          "region": "ap-southeast-7",
+          "tier": "on_demand"
+        },
+        "ap-southeast-4.cache.read_input_per_1m": {
+          "offer": "AmazonBedrock",
+          "usagetype": "APS6-xai.grok-4.6-mantle-cache-read-tokens-standard",
+          "unit": "1K tokens",
+          "product_sku": "KW735HPZJZFBD7Y7",
+          "region": "ap-southeast-4",
+          "tier": "cache"
+        },
+        "ap-southeast-4.cache_global.read_input_per_1m": {
+          "offer": "AmazonBedrock",
+          "usagetype": "APS6-xai.grok-4.6-mantle-cache-read-tokens-global-standard",
+          "unit": "1K tokens",
+          "product_sku": "FP54F5SPMYMJ3GNC",
+          "region": "ap-southeast-4",
+          "tier": "cache_global"
+        },
+        "ap-southeast-4.on_demand.input_per_1m": {
+          "offer": "AmazonBedrock",
+          "usagetype": "APS6-xai.grok-4.6-mantle-input-tokens-standard",
+          "unit": "1K tokens",
+          "product_sku": "ZXG9E6MKNM36HDES",
+          "region": "ap-southeast-4",
+          "tier": "on_demand"
+        },
+        "ap-southeast-4.on_demand.output_per_1m": {
+          "offer": "AmazonBedrock",
+          "usagetype": "APS6-xai.grok-4.6-mantle-output-tokens-standard",
+          "unit": "1K tokens",
+          "product_sku": "VW9CZZCAWT4HKZHQ",
+          "region": "ap-southeast-4",
+          "tier": "on_demand"
+        },
+        "us-east-2.on_demand.input_per_1m": {
+          "offer": "AmazonBedrock",
+          "usagetype": "USE2-xai.grok-4.6-mantle-input-tokens-standard",
+          "unit": "1K tokens",
+          "product_sku": "CMZ4J7SJVQ2WXJ6Q",
+          "region": "us-east-2",
+          "tier": "on_demand"
+        },
+        "us-east-2.on_demand.output_per_1m": {
+          "offer": "AmazonBedrock",
+          "usagetype": "USE2-xai.grok-4.6-mantle-output-tokens-standard",
+          "unit": "1K tokens",
+          "product_sku": "J78G37WR55EPBDTD",
+          "region": "us-east-2",
+          "tier": "on_demand"
+        },
+        "us-east-2.cache_global.read_input_per_1m": {
+          "offer": "AmazonBedrock",
+          "usagetype": "USE2-xai.grok-4.6-mantle-cache-read-tokens-global-standard",
+          "unit": "1K tokens",
+          "product_sku": "3VER3ZRBHBHMZV9U",
+          "region": "us-east-2",
+          "tier": "cache_global"
+        },
+        "us-east-2.cache.read_input_per_1m": {
+          "offer": "AmazonBedrock",
+          "usagetype": "USE2-xai.grok-4.6-mantle-cache-read-tokens-standard",
+          "unit": "1K tokens",
+          "product_sku": "H8AF43NHAGVNSD3F",
+          "region": "us-east-2",
+          "tier": "cache"
+        },
+        "eu-north-1.on_demand.output_per_1m": {
+          "offer": "AmazonBedrock",
+          "usagetype": "EUN1-xai.grok-4.6-mantle-output-tokens-standard",
+          "unit": "1K tokens",
+          "product_sku": "U5S5SSMKZ9YA4FDH",
+          "region": "eu-north-1",
+          "tier": "on_demand"
+        },
+        "eu-north-1.on_demand.input_per_1m": {
+          "offer": "AmazonBedrock",
+          "usagetype": "EUN1-xai.grok-4.6-mantle-input-tokens-standard",
+          "unit": "1K tokens",
+          "product_sku": "DY6S9RNRPQ5H7U5K",
+          "region": "eu-north-1",
+          "tier": "on_demand"
+        },
+        "eu-north-1.cache.read_input_per_1m": {
+          "offer": "AmazonBedrock",
+          "usagetype": "EUN1-xai.grok-4.6-mantle-cache-read-tokens-standard",
+          "unit": "1K tokens",
+          "product_sku": "S5DMWE7MRRFFM7Z7",
+          "region": "eu-north-1",
+          "tier": "cache"
+        },
+        "eu-north-1.cache_global.read_input_per_1m": {
+          "offer": "AmazonBedrock",
+          "usagetype": "EUN1-xai.grok-4.6-mantle-cache-read-tokens-global-standard",
+          "unit": "1K tokens",
+          "product_sku": "9DZPKKVYX8GZE9KY",
+          "region": "eu-north-1",
+          "tier": "cache_global"
+        },
+        "me-south-1.on_demand.input_per_1m": {
+          "offer": "AmazonBedrock",
+          "usagetype": "MES1-xai.grok-4.6-mantle-input-tokens-standard",
+          "unit": "1K tokens",
+          "product_sku": "YKDR436UZV85GUCP",
+          "region": "me-south-1",
+          "tier": "on_demand"
+        },
+        "me-south-1.on_demand.output_per_1m": {
+          "offer": "AmazonBedrock",
+          "usagetype": "MES1-xai.grok-4.6-mantle-output-tokens-standard",
+          "unit": "1K tokens",
+          "product_sku": "6CZSFGKZ8KHBY72N",
+          "region": "me-south-1",
+          "tier": "on_demand"
+        },
+        "me-south-1.cache_global.read_input_per_1m": {
+          "offer": "AmazonBedrock",
+          "usagetype": "MES1-xai.grok-4.6-mantle-cache-read-tokens-global-standard",
+          "unit": "1K tokens",
+          "product_sku": "DT9QUP8EJ8GB9F5W",
+          "region": "me-south-1",
+          "tier": "cache_global"
+        },
+        "me-south-1.cache.read_input_per_1m": {
+          "offer": "AmazonBedrock",
+          "usagetype": "MES1-xai.grok-4.6-mantle-cache-read-tokens-standard",
+          "unit": "1K tokens",
+          "product_sku": "HEJN9QHSABRWCYFB",
+          "region": "me-south-1",
+          "tier": "cache"
+        },
+        "eu-west-3.cache_global.read_input_per_1m": {
+          "offer": "AmazonBedrock",
+          "usagetype": "EUW3-xai.grok-4.6-mantle-cache-read-tokens-global-standard",
+          "unit": "1K tokens",
+          "product_sku": "EXTMRR8BE35EW9GZ",
+          "region": "eu-west-3",
+          "tier": "cache_global"
+        },
+        "eu-west-3.cache.read_input_per_1m": {
+          "offer": "AmazonBedrock",
+          "usagetype": "EUW3-xai.grok-4.6-mantle-cache-read-tokens-standard",
+          "unit": "1K tokens",
+          "product_sku": "4D6PJ7T4YMHJF2QN",
+          "region": "eu-west-3",
+          "tier": "cache"
+        },
+        "eu-west-3.on_demand.input_per_1m": {
+          "offer": "AmazonBedrock",
+          "usagetype": "EUW3-xai.grok-4.6-mantle-input-tokens-standard",
+          "unit": "1K tokens",
+          "product_sku": "NQ4BR97GNS7YEZ2H",
+          "region": "eu-west-3",
+          "tier": "on_demand"
+        },
+        "eu-west-3.on_demand.output_per_1m": {
+          "offer": "AmazonBedrock",
+          "usagetype": "EUW3-xai.grok-4.6-mantle-output-tokens-standard",
+          "unit": "1K tokens",
+          "product_sku": "JDDXXMFPNDXSSQY8",
+          "region": "eu-west-3",
+          "tier": "on_demand"
+        },
+        "ap-northeast-3.cache.read_input_per_1m": {
+          "offer": "AmazonBedrock",
+          "usagetype": "APN3-xai.grok-4.6-mantle-cache-read-tokens-standard",
+          "unit": "1K tokens",
+          "product_sku": "XWEUCUDHC6KSJVBT",
+          "region": "ap-northeast-3",
+          "tier": "cache"
+        },
+        "ap-northeast-3.cache_global.read_input_per_1m": {
+          "offer": "AmazonBedrock",
+          "usagetype": "APN3-xai.grok-4.6-mantle-cache-read-tokens-global-standard",
+          "unit": "1K tokens",
+          "product_sku": "3SBU5PB9VCAVX225",
+          "region": "ap-northeast-3",
+          "tier": "cache_global"
+        },
+        "ap-northeast-3.on_demand.output_per_1m": {
+          "offer": "AmazonBedrock",
+          "usagetype": "APN3-xai.grok-4.6-mantle-output-tokens-standard",
+          "unit": "1K tokens",
+          "product_sku": "3NWMUHWC34CKB3N2",
+          "region": "ap-northeast-3",
+          "tier": "on_demand"
+        },
+        "ap-northeast-3.on_demand.input_per_1m": {
+          "offer": "AmazonBedrock",
+          "usagetype": "APN3-xai.grok-4.6-mantle-input-tokens-standard",
+          "unit": "1K tokens",
+          "product_sku": "42QEEDG3E3PHTKYY",
+          "region": "ap-northeast-3",
+          "tier": "on_demand"
+        },
+        "ap-southeast-2.cache_global.read_input_per_1m": {
+          "offer": "AmazonBedrock",
+          "usagetype": "APS2-xai.grok-4.6-mantle-cache-read-tokens-global-standard",
+          "unit": "1K tokens",
+          "product_sku": "V446NS64WW4UH386",
+          "region": "ap-southeast-2",
+          "tier": "cache_global"
+        },
+        "ap-southeast-2.on_demand.input_per_1m": {
+          "offer": "AmazonBedrock",
+          "usagetype": "APS2-xai.grok-4.6-mantle-input-tokens-standard",
+          "unit": "1K tokens",
+          "product_sku": "YDJVPUKKTM9TU337",
+          "region": "ap-southeast-2",
+          "tier": "on_demand"
+        },
+        "ap-southeast-2.on_demand.output_per_1m": {
+          "offer": "AmazonBedrock",
+          "usagetype": "APS2-xai.grok-4.6-mantle-output-tokens-standard",
+          "unit": "1K tokens",
+          "product_sku": "4ZMP4K5BUFX4JSPA",
+          "region": "ap-southeast-2",
+          "tier": "on_demand"
+        },
+        "ap-southeast-2.cache.read_input_per_1m": {
+          "offer": "AmazonBedrock",
+          "usagetype": "APS2-xai.grok-4.6-mantle-cache-read-tokens-standard",
+          "unit": "1K tokens",
+          "product_sku": "487655U9NREH9DCR",
+          "region": "ap-southeast-2",
+          "tier": "cache"
+        },
+        "af-south-1.cache.read_input_per_1m": {
+          "offer": "AmazonBedrock",
+          "usagetype": "AFS1-xai.grok-4.6-mantle-cache-read-tokens-standard",
+          "unit": "1K tokens",
+          "product_sku": "UX326B77YV4AN27P",
+          "region": "af-south-1",
+          "tier": "cache"
+        },
+        "af-south-1.on_demand.input_per_1m": {
+          "offer": "AmazonBedrock",
+          "usagetype": "AFS1-xai.grok-4.6-mantle-input-tokens-standard",
+          "unit": "1K tokens",
+          "product_sku": "GD6H3YN79Y45WUFZ",
+          "region": "af-south-1",
+          "tier": "on_demand"
+        },
+        "af-south-1.on_demand.output_per_1m": {
+          "offer": "AmazonBedrock",
+          "usagetype": "AFS1-xai.grok-4.6-mantle-output-tokens-standard",
+          "unit": "1K tokens",
+          "product_sku": "NGDCGVRJDCSPK4PG",
+          "region": "af-south-1",
+          "tier": "on_demand"
+        },
+        "af-south-1.cache_global.read_input_per_1m": {
+          "offer": "AmazonBedrock",
+          "usagetype": "AFS1-xai.grok-4.6-mantle-cache-read-tokens-global-standard",
+          "unit": "1K tokens",
+          "product_sku": "TVGGPNP8QTAF9UN6",
+          "region": "af-south-1",
+          "tier": "cache_global"
+        },
+        "us-gov-west-1.on_demand.input_per_1m": {
+          "offer": "AmazonBedrock",
+          "usagetype": "UGW1-xai.grok-4.6-mantle-input-tokens-standard",
+          "unit": "1K tokens",
+          "product_sku": "3NQ5T873TZS44G5K",
+          "region": "us-gov-west-1",
+          "tier": "on_demand"
+        },
+        "us-gov-west-1.on_demand.output_per_1m": {
+          "offer": "AmazonBedrock",
+          "usagetype": "UGW1-xai.grok-4.6-mantle-output-tokens-standard",
+          "unit": "1K tokens",
+          "product_sku": "P3DPB7ZKQAPJDGXG",
+          "region": "us-gov-west-1",
+          "tier": "on_demand"
+        },
+        "us-gov-west-1.cache.read_input_per_1m": {
+          "offer": "AmazonBedrock",
+          "usagetype": "UGW1-xai.grok-4.6-mantle-cache-read-tokens-standard",
+          "unit": "1K tokens",
+          "product_sku": "3WKFZFE4R8JCMQH3",
+          "region": "us-gov-west-1",
+          "tier": "cache"
+        },
+        "us-gov-west-1.cache_global.read_input_per_1m": {
+          "offer": "AmazonBedrock",
+          "usagetype": "UGW1-xai.grok-4.6-mantle-cache-read-tokens-global-standard",
+          "unit": "1K tokens",
+          "product_sku": "CXTQVV437NG7PE7N",
+          "region": "us-gov-west-1",
+          "tier": "cache_global"
+        },
+        "us-east-1.on_demand.input_per_1m": {
+          "offer": "AmazonBedrock",
+          "usagetype": "USE1-xai.grok-4.6-mantle-input-tokens-standard",
+          "unit": "1K tokens",
+          "product_sku": "QSA3QSGVYYU258F4",
+          "region": "us-east-1",
+          "tier": "on_demand"
+        },
+        "us-east-1.on_demand.output_per_1m": {
+          "offer": "AmazonBedrock",
+          "usagetype": "USE1-xai.grok-4.6-mantle-output-tokens-standard",
+          "unit": "1K tokens",
+          "product_sku": "4NPVARQ2PV52GKA5",
+          "region": "us-east-1",
+          "tier": "on_demand"
+        },
+        "us-east-1.cache.read_input_per_1m": {
+          "offer": "AmazonBedrock",
+          "usagetype": "USE1-xai.grok-4.6-mantle-cache-read-tokens-standard",
+          "unit": "1K tokens",
+          "product_sku": "HPYRKXF8AJN8HEWT",
+          "region": "us-east-1",
+          "tier": "cache"
+        },
+        "us-east-1.cache_global.read_input_per_1m": {
+          "offer": "AmazonBedrock",
+          "usagetype": "USE1-xai.grok-4.6-mantle-cache-read-tokens-global-standard",
+          "unit": "1K tokens",
+          "product_sku": "EGRFJP567AQ4V7QP",
+          "region": "us-east-1",
+          "tier": "cache_global"
+        },
+        "eu-west-2.on_demand.input_per_1m": {
+          "offer": "AmazonBedrock",
+          "usagetype": "EUW2-xai.grok-4.6-mantle-input-tokens-standard",
+          "unit": "1K tokens",
+          "product_sku": "P2GN8QTZ2UCAZHVF",
+          "region": "eu-west-2",
+          "tier": "on_demand"
+        },
+        "eu-west-2.on_demand.output_per_1m": {
+          "offer": "AmazonBedrock",
+          "usagetype": "EUW2-xai.grok-4.6-mantle-output-tokens-standard",
+          "unit": "1K tokens",
+          "product_sku": "DP9GZGFX6N7KUAA8",
+          "region": "eu-west-2",
+          "tier": "on_demand"
+        },
+        "eu-west-2.cache_global.read_input_per_1m": {
+          "offer": "AmazonBedrock",
+          "usagetype": "EUW2-xai.grok-4.6-mantle-cache-read-tokens-global-standard",
+          "unit": "1K tokens",
+          "product_sku": "PR2AKMK4WHMMBAAE",
+          "region": "eu-west-2",
+          "tier": "cache_global"
+        },
+        "eu-west-2.cache.read_input_per_1m": {
+          "offer": "AmazonBedrock",
+          "usagetype": "EUW2-xai.grok-4.6-mantle-cache-read-tokens-standard",
+          "unit": "1K tokens",
+          "product_sku": "FB6MBDJJCFZENEX2",
+          "region": "eu-west-2",
+          "tier": "cache"
+        },
+        "mx-central-1.on_demand.input_per_1m": {
+          "offer": "AmazonBedrock",
+          "usagetype": "MXC1-xai.grok-4.6-mantle-input-tokens-standard",
+          "unit": "1K tokens",
+          "product_sku": "TCGDZENNRDHKNWCX",
+          "region": "mx-central-1",
+          "tier": "on_demand"
+        },
+        "mx-central-1.on_demand.output_per_1m": {
+          "offer": "AmazonBedrock",
+          "usagetype": "MXC1-xai.grok-4.6-mantle-output-tokens-standard",
+          "unit": "1K tokens",
+          "product_sku": "S8NBKH32NF8W7TU2",
+          "region": "mx-central-1",
+          "tier": "on_demand"
+        },
+        "mx-central-1.cache_global.read_input_per_1m": {
+          "offer": "AmazonBedrock",
+          "usagetype": "MXC1-xai.grok-4.6-mantle-cache-read-tokens-global-standard",
+          "unit": "1K tokens",
+          "product_sku": "C6B2BNFJ74H8E5V3",
+          "region": "mx-central-1",
+          "tier": "cache_global"
+        },
+        "mx-central-1.cache.read_input_per_1m": {
+          "offer": "AmazonBedrock",
+          "usagetype": "MXC1-xai.grok-4.6-mantle-cache-read-tokens-standard",
+          "unit": "1K tokens",
+          "product_sku": "57FPZXYPY9Q88CRB",
+          "region": "mx-central-1",
+          "tier": "cache"
+        },
+        "eu-west-1.on_demand.input_per_1m": {
+          "offer": "AmazonBedrock",
+          "usagetype": "EU-xai.grok-4.6-mantle-input-tokens-standard",
+          "unit": "1K tokens",
+          "product_sku": "AC8N2CNUQ6MEJWZT",
+          "region": "eu-west-1",
+          "tier": "on_demand"
+        },
+        "eu-west-1.on_demand.output_per_1m": {
+          "offer": "AmazonBedrock",
+          "usagetype": "EU-xai.grok-4.6-mantle-output-tokens-standard",
+          "unit": "1K tokens",
+          "product_sku": "P7DX4M2URSND27SE",
+          "region": "eu-west-1",
+          "tier": "on_demand"
+        },
+        "eu-west-1.cache.read_input_per_1m": {
+          "offer": "AmazonBedrock",
+          "usagetype": "EU-xai.grok-4.6-mantle-cache-read-tokens-standard",
+          "unit": "1K tokens",
+          "product_sku": "W5GX2AU3HFC2XEFV",
+          "region": "eu-west-1",
+          "tier": "cache"
+        },
+        "eu-west-1.cache_global.read_input_per_1m": {
+          "offer": "AmazonBedrock",
+          "usagetype": "EU-xai.grok-4.6-mantle-cache-read-tokens-global-standard",
+          "unit": "1K tokens",
+          "product_sku": "9UYC7QGTNU7TBRFA",
+          "region": "eu-west-1",
+          "tier": "cache_global"
+        },
+        "ca-west-1.on_demand.output_per_1m": {
+          "offer": "AmazonBedrock",
+          "usagetype": "CAN2-xai.grok-4.6-mantle-output-tokens-standard",
+          "unit": "1K tokens",
+          "product_sku": "PURTGPM7W5AKRWGU",
+          "region": "ca-west-1",
+          "tier": "on_demand"
+        },
+        "ca-west-1.on_demand.input_per_1m": {
+          "offer": "AmazonBedrock",
+          "usagetype": "CAN2-xai.grok-4.6-mantle-input-tokens-standard",
+          "unit": "1K tokens",
+          "product_sku": "8T3NPXY43FMZDM6D",
+          "region": "ca-west-1",
+          "tier": "on_demand"
+        },
+        "ca-west-1.cache_global.read_input_per_1m": {
+          "offer": "AmazonBedrock",
+          "usagetype": "CAN2-xai.grok-4.6-mantle-cache-read-tokens-global-standard",
+          "unit": "1K tokens",
+          "product_sku": "3NTUDX47Q5QAHEA8",
+          "region": "ca-west-1",
+          "tier": "cache_global"
+        },
+        "ca-west-1.cache.read_input_per_1m": {
+          "offer": "AmazonBedrock",
+          "usagetype": "CAN2-xai.grok-4.6-mantle-cache-read-tokens-standard",
+          "unit": "1K tokens",
+          "product_sku": "ZTK4SMPZ8HZ8ZA2P",
+          "region": "ca-west-1",
+          "tier": "cache"
+        },
+        "ap-southeast-1.cache_global.read_input_per_1m": {
+          "offer": "AmazonBedrock",
+          "usagetype": "APS1-xai.grok-4.6-mantle-cache-read-tokens-global-standard",
+          "unit": "1K tokens",
+          "product_sku": "E4C8TCG2YEAH8U89",
+          "region": "ap-southeast-1",
+          "tier": "cache_global"
+        },
+        "ap-southeast-1.on_demand.output_per_1m": {
+          "offer": "AmazonBedrock",
+          "usagetype": "APS1-xai.grok-4.6-mantle-output-tokens-standard",
+          "unit": "1K tokens",
+          "product_sku": "B28UYXTWUAMREQSQ",
+          "region": "ap-southeast-1",
+          "tier": "on_demand"
+        },
+        "ap-southeast-1.on_demand.input_per_1m": {
+          "offer": "AmazonBedrock",
+          "usagetype": "APS1-xai.grok-4.6-mantle-input-tokens-standard",
+          "unit": "1K tokens",
+          "product_sku": "C4G4CJCXE3CMB3YF",
+          "region": "ap-southeast-1",
+          "tier": "on_demand"
+        },
+        "ap-southeast-1.cache.read_input_per_1m": {
+          "offer": "AmazonBedrock",
+          "usagetype": "APS1-xai.grok-4.6-mantle-cache-read-tokens-standard",
+          "unit": "1K tokens",
+          "product_sku": "GSXEQRTH58YVAZFN",
+          "region": "ap-southeast-1",
+          "tier": "cache"
+        },
+        "ap-south-1.cache.read_input_per_1m": {
+          "offer": "AmazonBedrock",
+          "usagetype": "APS3-xai.grok-4.6-mantle-cache-read-tokens-standard",
+          "unit": "1K tokens",
+          "product_sku": "N9KW4VEPVYRQMAH4",
+          "region": "ap-south-1",
+          "tier": "cache"
+        },
+        "ap-south-1.on_demand.input_per_1m": {
+          "offer": "AmazonBedrock",
+          "usagetype": "APS3-xai.grok-4.6-mantle-input-tokens-standard",
+          "unit": "1K tokens",
+          "product_sku": "YBG4N4PG2CFPNZ6Y",
+          "region": "ap-south-1",
+          "tier": "on_demand"
+        },
+        "ap-south-1.on_demand.output_per_1m": {
+          "offer": "AmazonBedrock",
+          "usagetype": "APS3-xai.grok-4.6-mantle-output-tokens-standard",
+          "unit": "1K tokens",
+          "product_sku": "KNYQ9QB39KESBXCQ",
+          "region": "ap-south-1",
+          "tier": "on_demand"
+        },
+        "ap-south-1.cache_global.read_input_per_1m": {
+          "offer": "AmazonBedrock",
+          "usagetype": "APS3-xai.grok-4.6-mantle-cache-read-tokens-global-standard",
+          "unit": "1K tokens",
+          "product_sku": "J6AAK6VJYUH5BBK7",
+          "region": "ap-south-1",
+          "tier": "cache_global"
+        },
+        "me-central-1.cache_global.read_input_per_1m": {
+          "offer": "AmazonBedrock",
+          "usagetype": "MEC1-xai.grok-4.6-mantle-cache-read-tokens-global-standard",
+          "unit": "1K tokens",
+          "product_sku": "AXVJHMVKC3EHF4PF",
+          "region": "me-central-1",
+          "tier": "cache_global"
+        },
+        "me-central-1.cache.read_input_per_1m": {
+          "offer": "AmazonBedrock",
+          "usagetype": "MEC1-xai.grok-4.6-mantle-cache-read-tokens-standard",
+          "unit": "1K tokens",
+          "product_sku": "XNG6GHRXUV9YTA3E",
+          "region": "me-central-1",
+          "tier": "cache"
+        },
+        "me-central-1.on_demand.output_per_1m": {
+          "offer": "AmazonBedrock",
+          "usagetype": "MEC1-xai.grok-4.6-mantle-output-tokens-standard",
+          "unit": "1K tokens",
+          "product_sku": "NY2WZCXDRKA4ZMFZ",
+          "region": "me-central-1",
+          "tier": "on_demand"
+        },
+        "me-central-1.on_demand.input_per_1m": {
+          "offer": "AmazonBedrock",
+          "usagetype": "MEC1-xai.grok-4.6-mantle-input-tokens-standard",
+          "unit": "1K tokens",
+          "product_sku": "KTA4FB5JNWZMYCMJ",
+          "region": "me-central-1",
+          "tier": "on_demand"
+        },
+        "eu-central-2.on_demand.output_per_1m": {
+          "offer": "AmazonBedrock",
+          "usagetype": "EUC2-xai.grok-4.6-mantle-output-tokens-standard",
+          "unit": "1K tokens",
+          "product_sku": "ZVCG4BXTPT9APAF4",
+          "region": "eu-central-2",
+          "tier": "on_demand"
+        },
+        "eu-central-2.on_demand.input_per_1m": {
+          "offer": "AmazonBedrock",
+          "usagetype": "EUC2-xai.grok-4.6-mantle-input-tokens-standard",
+          "unit": "1K tokens",
+          "product_sku": "WEDJEG5FCUYEUCHZ",
+          "region": "eu-central-2",
+          "tier": "on_demand"
+        },
+        "eu-central-2.cache_global.read_input_per_1m": {
+          "offer": "AmazonBedrock",
+          "usagetype": "EUC2-xai.grok-4.6-mantle-cache-read-tokens-global-standard",
+          "unit": "1K tokens",
+          "product_sku": "PEHK3XKBXPA6SETB",
+          "region": "eu-central-2",
+          "tier": "cache_global"
+        },
+        "eu-central-2.cache.read_input_per_1m": {
+          "offer": "AmazonBedrock",
+          "usagetype": "EUC2-xai.grok-4.6-mantle-cache-read-tokens-standard",
+          "unit": "1K tokens",
+          "product_sku": "REAUEE6WWQWJB8S6",
+          "region": "eu-central-2",
+          "tier": "cache"
+        },
+        "ca-central-1.on_demand.input_per_1m": {
+          "offer": "AmazonBedrock",
+          "usagetype": "CAN1-xai.grok-4.6-mantle-input-tokens-standard",
+          "unit": "1K tokens",
+          "product_sku": "4SNX77BFY9MW94W9",
+          "region": "ca-central-1",
+          "tier": "on_demand"
+        },
+        "ca-central-1.on_demand.output_per_1m": {
+          "offer": "AmazonBedrock",
+          "usagetype": "CAN1-xai.grok-4.6-mantle-output-tokens-standard",
+          "unit": "1K tokens",
+          "product_sku": "D6Q8MRNS3YRYJ832",
+          "region": "ca-central-1",
+          "tier": "on_demand"
+        },
+        "ca-central-1.cache.read_input_per_1m": {
+          "offer": "AmazonBedrock",
+          "usagetype": "CAN1-xai.grok-4.6-mantle-cache-read-tokens-standard",
+          "unit": "1K tokens",
+          "product_sku": "5QXQVC4MXVDS4NBY",
+          "region": "ca-central-1",
+          "tier": "cache"
+        },
+        "ca-central-1.cache_global.read_input_per_1m": {
+          "offer": "AmazonBedrock",
+          "usagetype": "CAN1-xai.grok-4.6-mantle-cache-read-tokens-global-standard",
+          "unit": "1K tokens",
+          "product_sku": "58U3BASE8S58TGVJ",
+          "region": "ca-central-1",
+          "tier": "cache_global"
+        },
+        "us-west-1.cache_global.read_input_per_1m": {
+          "offer": "AmazonBedrock",
+          "usagetype": "USW1-xai.grok-4.6-mantle-cache-read-tokens-global-standard",
+          "unit": "1K tokens",
+          "product_sku": "6VT5XX5Q9AMVM55A",
+          "region": "us-west-1",
+          "tier": "cache_global"
+        },
+        "us-west-1.on_demand.input_per_1m": {
+          "offer": "AmazonBedrock",
+          "usagetype": "USW1-xai.grok-4.6-mantle-input-tokens-standard",
+          "unit": "1K tokens",
+          "product_sku": "2UGCCSTK89U4JCHC",
+          "region": "us-west-1",
+          "tier": "on_demand"
+        },
+        "us-west-1.on_demand.output_per_1m": {
+          "offer": "AmazonBedrock",
+          "usagetype": "USW1-xai.grok-4.6-mantle-output-tokens-standard",
+          "unit": "1K tokens",
+          "product_sku": "SMU5KM7GRCTDB5ZK",
+          "region": "us-west-1",
+          "tier": "on_demand"
+        },
+        "us-west-1.cache.read_input_per_1m": {
+          "offer": "AmazonBedrock",
+          "usagetype": "USW1-xai.grok-4.6-mantle-cache-read-tokens-standard",
+          "unit": "1K tokens",
+          "product_sku": "AR9FZ4DE5AS4U8DY",
+          "region": "us-west-1",
+          "tier": "cache"
+        },
+        "ap-east-2.cache.read_input_per_1m": {
+          "offer": "AmazonBedrock",
+          "usagetype": "APE2-xai.grok-4.6-mantle-cache-read-tokens-standard",
+          "unit": "1K tokens",
+          "product_sku": "27HJBXBTBBY5XT28",
+          "region": "ap-east-2",
+          "tier": "cache"
+        },
+        "ap-east-2.cache_global.read_input_per_1m": {
+          "offer": "AmazonBedrock",
+          "usagetype": "APE2-xai.grok-4.6-mantle-cache-read-tokens-global-standard",
+          "unit": "1K tokens",
+          "product_sku": "YRYKMHDV7CKKB6RK",
+          "region": "ap-east-2",
+          "tier": "cache_global"
+        },
+        "ap-east-2.on_demand.output_per_1m": {
+          "offer": "AmazonBedrock",
+          "usagetype": "APE2-xai.grok-4.6-mantle-output-tokens-standard",
+          "unit": "1K tokens",
+          "product_sku": "J6X6CX4X3AM6QPXP",
+          "region": "ap-east-2",
+          "tier": "on_demand"
+        },
+        "ap-east-2.on_demand.input_per_1m": {
+          "offer": "AmazonBedrock",
+          "usagetype": "APE2-xai.grok-4.6-mantle-input-tokens-standard",
+          "unit": "1K tokens",
+          "product_sku": "V59UA443M5ZN6ZK8",
+          "region": "ap-east-2",
+          "tier": "on_demand"
+        },
+        "sa-east-1.on_demand.output_per_1m": {
+          "offer": "AmazonBedrock",
+          "usagetype": "SAE1-xai.grok-4.6-mantle-output-tokens-standard",
+          "unit": "1K tokens",
+          "product_sku": "YTFJ5TFDSYW583N7",
+          "region": "sa-east-1",
+          "tier": "on_demand"
+        },
+        "sa-east-1.on_demand.input_per_1m": {
+          "offer": "AmazonBedrock",
+          "usagetype": "SAE1-xai.grok-4.6-mantle-input-tokens-standard",
+          "unit": "1K tokens",
+          "product_sku": "FE3Q3CF8BX7VX6PM",
+          "region": "sa-east-1",
+          "tier": "on_demand"
+        },
+        "sa-east-1.cache.read_input_per_1m": {
+          "offer": "AmazonBedrock",
+          "usagetype": "SAE1-xai.grok-4.6-mantle-cache-read-tokens-standard",
+          "unit": "1K tokens",
+          "product_sku": "9KQRWW6ZC4CZCY67",
+          "region": "sa-east-1",
+          "tier": "cache"
+        },
+        "sa-east-1.cache_global.read_input_per_1m": {
+          "offer": "AmazonBedrock",
+          "usagetype": "SAE1-xai.grok-4.6-mantle-cache-read-tokens-global-standard",
+          "unit": "1K tokens",
+          "product_sku": "PXT4ZGCUZ8Z9TWKB",
+          "region": "sa-east-1",
+          "tier": "cache_global"
+        },
+        "eu-central-1.cache.read_input_per_1m": {
+          "offer": "AmazonBedrock",
+          "usagetype": "EUC1-xai.grok-4.6-mantle-cache-read-tokens-standard",
+          "unit": "1K tokens",
+          "product_sku": "FFAJWPVHNM8S69PS",
+          "region": "eu-central-1",
+          "tier": "cache"
+        },
+        "eu-central-1.on_demand.output_per_1m": {
+          "offer": "AmazonBedrock",
+          "usagetype": "EUC1-xai.grok-4.6-mantle-output-tokens-standard",
+          "unit": "1K tokens",
+          "product_sku": "YRMWBZD2JMRYBKSB",
+          "region": "eu-central-1",
+          "tier": "on_demand"
+        },
+        "eu-central-1.on_demand.input_per_1m": {
+          "offer": "AmazonBedrock",
+          "usagetype": "EUC1-xai.grok-4.6-mantle-input-tokens-standard",
+          "unit": "1K tokens",
+          "product_sku": "NETVUFARUF8HDCKH",
+          "region": "eu-central-1",
+          "tier": "on_demand"
+        },
+        "eu-central-1.cache_global.read_input_per_1m": {
+          "offer": "AmazonBedrock",
+          "usagetype": "EUC1-xai.grok-4.6-mantle-cache-read-tokens-global-standard",
+          "unit": "1K tokens",
+          "product_sku": "PQW34MT93SDDE9CC",
+          "region": "eu-central-1",
+          "tier": "cache_global"
+        },
+        "eu-south-2.cache.read_input_per_1m": {
+          "offer": "AmazonBedrock",
+          "usagetype": "EUS2-xai.grok-4.6-mantle-cache-read-tokens-standard",
+          "unit": "1K tokens",
+          "product_sku": "77Z2S35FYDT59CHF",
+          "region": "eu-south-2",
+          "tier": "cache"
+        },
+        "eu-south-2.cache_global.read_input_per_1m": {
+          "offer": "AmazonBedrock",
+          "usagetype": "EUS2-xai.grok-4.6-mantle-cache-read-tokens-global-standard",
+          "unit": "1K tokens",
+          "product_sku": "SPHWPKKTRSVBEVA7",
+          "region": "eu-south-2",
+          "tier": "cache_global"
+        },
+        "eu-south-2.on_demand.input_per_1m": {
+          "offer": "AmazonBedrock",
+          "usagetype": "EUS2-xai.grok-4.6-mantle-input-tokens-standard",
+          "unit": "1K tokens",
+          "product_sku": "DUUDGKWFD3YBH8KT",
+          "region": "eu-south-2",
+          "tier": "on_demand"
+        },
+        "eu-south-2.on_demand.output_per_1m": {
+          "offer": "AmazonBedrock",
+          "usagetype": "EUS2-xai.grok-4.6-mantle-output-tokens-standard",
+          "unit": "1K tokens",
+          "product_sku": "ZVBS49V3QKPMYKNV",
+          "region": "eu-south-2",
+          "tier": "on_demand"
+        },
+        "eu-south-1.cache.read_input_per_1m": {
+          "offer": "AmazonBedrock",
+          "usagetype": "EUS1-xai.grok-4.6-mantle-cache-read-tokens-standard",
+          "unit": "1K tokens",
+          "product_sku": "5HS62CZJ99KCYB6N",
+          "region": "eu-south-1",
+          "tier": "cache"
+        },
+        "eu-south-1.on_demand.input_per_1m": {
+          "offer": "AmazonBedrock",
+          "usagetype": "EUS1-xai.grok-4.6-mantle-input-tokens-standard",
+          "unit": "1K tokens",
+          "product_sku": "5UHD56Z7J95QX9RX",
+          "region": "eu-south-1",
+          "tier": "on_demand"
+        },
+        "eu-south-1.on_demand.output_per_1m": {
+          "offer": "AmazonBedrock",
+          "usagetype": "EUS1-xai.grok-4.6-mantle-output-tokens-standard",
+          "unit": "1K tokens",
+          "product_sku": "GZNA98E5H8XQTXRC",
+          "region": "eu-south-1",
+          "tier": "on_demand"
+        },
+        "eu-south-1.cache_global.read_input_per_1m": {
+          "offer": "AmazonBedrock",
+          "usagetype": "EUS1-xai.grok-4.6-mantle-cache-read-tokens-global-standard",
+          "unit": "1K tokens",
+          "product_sku": "3FDP7DAAVM7527TA",
+          "region": "eu-south-1",
+          "tier": "cache_global"
+        },
+        "ap-southeast-5.on_demand.input_per_1m": {
+          "offer": "AmazonBedrock",
+          "usagetype": "APS7-xai.grok-4.6-mantle-input-tokens-standard",
+          "unit": "1K tokens",
+          "product_sku": "WVBZSYY8QM2H7DT6",
+          "region": "ap-southeast-5",
+          "tier": "on_demand"
+        },
+        "ap-southeast-5.on_demand.output_per_1m": {
+          "offer": "AmazonBedrock",
+          "usagetype": "APS7-xai.grok-4.6-mantle-output-tokens-standard",
+          "unit": "1K tokens",
+          "product_sku": "RMKT8K85AZS4MDMK",
+          "region": "ap-southeast-5",
+          "tier": "on_demand"
+        },
+        "ap-southeast-5.cache.read_input_per_1m": {
+          "offer": "AmazonBedrock",
+          "usagetype": "APS7-xai.grok-4.6-mantle-cache-read-tokens-standard",
+          "unit": "1K tokens",
+          "product_sku": "ETV4NQQG42GTUZUM",
+          "region": "ap-southeast-5",
+          "tier": "cache"
+        },
+        "ap-southeast-5.cache_global.read_input_per_1m": {
+          "offer": "AmazonBedrock",
+          "usagetype": "APS7-xai.grok-4.6-mantle-cache-read-tokens-global-standard",
+          "unit": "1K tokens",
+          "product_sku": "MR334SS5XQV6FP7M",
+          "region": "ap-southeast-5",
+          "tier": "cache_global"
+        },
+        "ap-southeast-6.on_demand.input_per_1m": {
+          "offer": "AmazonBedrock",
+          "usagetype": "APS8-xai.grok-4.6-mantle-input-tokens-standard",
+          "unit": "1K tokens",
+          "product_sku": "PSPHZTX7RY66MKPP",
+          "region": "ap-southeast-6",
+          "tier": "on_demand"
+        },
+        "ap-southeast-6.on_demand.output_per_1m": {
+          "offer": "AmazonBedrock",
+          "usagetype": "APS8-xai.grok-4.6-mantle-output-tokens-standard",
+          "unit": "1K tokens",
+          "product_sku": "H6CAGMV6QC6ZWFQN",
+          "region": "ap-southeast-6",
+          "tier": "on_demand"
+        },
+        "ap-southeast-6.cache.read_input_per_1m": {
+          "offer": "AmazonBedrock",
+          "usagetype": "APS8-xai.grok-4.6-mantle-cache-read-tokens-standard",
+          "unit": "1K tokens",
+          "product_sku": "GN8GP23BM3RQBMDH",
+          "region": "ap-southeast-6",
+          "tier": "cache"
+        },
+        "ap-southeast-6.cache_global.read_input_per_1m": {
+          "offer": "AmazonBedrock",
+          "usagetype": "APS8-xai.grok-4.6-mantle-cache-read-tokens-global-standard",
+          "unit": "1K tokens",
+          "product_sku": "AJ8AUX3FQT7M4VHZ",
+          "region": "ap-southeast-6",
+          "tier": "cache_global"
+        },
+        "ap-northeast-1.cache.read_input_per_1m": {
+          "offer": "AmazonBedrock",
+          "usagetype": "APN1-xai.grok-4.6-mantle-cache-read-tokens-standard",
+          "unit": "1K tokens",
+          "product_sku": "ERR8F8WU8DBGDYBC",
+          "region": "ap-northeast-1",
+          "tier": "cache"
+        },
+        "ap-northeast-1.cache_global.read_input_per_1m": {
+          "offer": "AmazonBedrock",
+          "usagetype": "APN1-xai.grok-4.6-mantle-cache-read-tokens-global-standard",
+          "unit": "1K tokens",
+          "product_sku": "6GPBMPA2AQ95KPP9",
+          "region": "ap-northeast-1",
+          "tier": "cache_global"
+        },
+        "ap-northeast-1.on_demand.output_per_1m": {
+          "offer": "AmazonBedrock",
+          "usagetype": "APN1-xai.grok-4.6-mantle-output-tokens-standard",
+          "unit": "1K tokens",
+          "product_sku": "MF4CDP2WK8N95DDV",
+          "region": "ap-northeast-1",
+          "tier": "on_demand"
+        },
+        "ap-northeast-1.on_demand.input_per_1m": {
+          "offer": "AmazonBedrock",
+          "usagetype": "APN1-xai.grok-4.6-mantle-input-tokens-standard",
+          "unit": "1K tokens",
+          "product_sku": "XVTRBKETMND5C5TS",
+          "region": "ap-northeast-1",
+          "tier": "on_demand"
+        },
+        "ap-southeast-3.cache_global.read_input_per_1m": {
+          "offer": "AmazonBedrock",
+          "usagetype": "APS4-xai.grok-4.6-mantle-cache-read-tokens-global-standard",
+          "unit": "1K tokens",
+          "product_sku": "QK424HNH2NHPW36Z",
+          "region": "ap-southeast-3",
+          "tier": "cache_global"
+        },
+        "ap-southeast-3.cache.read_input_per_1m": {
+          "offer": "AmazonBedrock",
+          "usagetype": "APS4-xai.grok-4.6-mantle-cache-read-tokens-standard",
+          "unit": "1K tokens",
+          "product_sku": "3NZQ6U8YN53E76AQ",
+          "region": "ap-southeast-3",
+          "tier": "cache"
+        },
+        "ap-southeast-3.on_demand.input_per_1m": {
+          "offer": "AmazonBedrock",
+          "usagetype": "APS4-xai.grok-4.6-mantle-input-tokens-standard",
+          "unit": "1K tokens",
+          "product_sku": "8PYYVYZZR4F4TK4S",
+          "region": "ap-southeast-3",
+          "tier": "on_demand"
+        },
+        "ap-southeast-3.on_demand.output_per_1m": {
+          "offer": "AmazonBedrock",
+          "usagetype": "APS4-xai.grok-4.6-mantle-output-tokens-standard",
+          "unit": "1K tokens",
+          "product_sku": "F48NM3BAAMMAK949",
+          "region": "ap-southeast-3",
+          "tier": "on_demand"
+        }
+      }
+    },
+    {
+      "model_id": "xai.grok-4.6-mantle-cache-read-tokens",
+      "display_name": "Grok 4.6 Mantle Cache Read Tokens",
+      "provider": "Unknown",
+      "pricing_type": "token",
+      "pricing_source": "price_list",
+      "regions": [
+        "us-east-1"
+      ],
+      "on_demand": {
+        "input_per_1m": null,
+        "output_per_1m": null,
+        "standard_per_image": null,
+        "premium_per_image": null,
+        "per_second": null,
+        "per_search_unit": null
+      },
+      "context_window": null,
+      "modalities": [
+        "text"
+      ],
+      "notes": null,
+      "availability": "ga",
+      "alternate_ids": [],
+      "list_prices": {
+        "mx-central-1": {
+          "cache": {
+            "read_input_per_1m": 0.9625,
+            "write_input_per_1m": null,
+            "write_1h_input_per_1m": null
+          }
+        },
+        "eu-central-1": {
+          "cache": {
+            "read_input_per_1m": 0.275,
+            "write_input_per_1m": null,
+            "write_1h_input_per_1m": null
+          }
+        },
+        "ap-southeast-7": {
+          "cache": {
+            "read_input_per_1m": 0.9625,
+            "write_input_per_1m": null,
+            "write_1h_input_per_1m": null
+          }
+        },
+        "ap-east-2": {
+          "cache": {
+            "read_input_per_1m": 0.275,
+            "write_input_per_1m": null,
+            "write_1h_input_per_1m": null
+          }
+        },
+        "ap-southeast-5": {
+          "cache": {
+            "read_input_per_1m": 0.9625,
+            "write_input_per_1m": null,
+            "write_1h_input_per_1m": null
+          }
+        },
+        "eu-west-1": {
+          "cache": {
+            "read_input_per_1m": 0.275,
+            "write_input_per_1m": null,
+            "write_1h_input_per_1m": null
+          }
+        },
+        "me-central-1": {
+          "cache": {
+            "read_input_per_1m": 0.275,
+            "write_input_per_1m": null,
+            "write_1h_input_per_1m": null
+          }
+        },
+        "ap-southeast-3": {
+          "cache": {
+            "read_input_per_1m": 0.275,
+            "write_input_per_1m": null,
+            "write_1h_input_per_1m": null
+          }
+        },
+        "ap-northeast-1": {
+          "cache": {
+            "read_input_per_1m": 0.275,
+            "write_input_per_1m": null,
+            "write_1h_input_per_1m": null
+          }
+        },
+        "eu-west-2": {
+          "cache": {
+            "read_input_per_1m": 0.275,
+            "write_input_per_1m": null,
+            "write_1h_input_per_1m": null
+          }
+        },
+        "ap-south-2": {
+          "cache": {
+            "read_input_per_1m": 0.9625,
+            "write_input_per_1m": null,
+            "write_1h_input_per_1m": null
+          }
+        },
+        "ap-southeast-2": {
+          "cache": {
+            "read_input_per_1m": 0.9625,
+            "write_input_per_1m": null,
+            "write_1h_input_per_1m": null
+          }
+        },
+        "us-gov-east-1": {
+          "cache": {
+            "read_input_per_1m": 0.33,
+            "write_input_per_1m": null,
+            "write_1h_input_per_1m": null
+          }
+        },
+        "us-west-2": {
+          "cache": {
+            "read_input_per_1m": 0.275,
+            "write_input_per_1m": null,
+            "write_1h_input_per_1m": null
+          }
+        },
+        "eu-south-2": {
+          "cache": {
+            "read_input_per_1m": 0.275,
+            "write_input_per_1m": null,
+            "write_1h_input_per_1m": null
+          }
+        },
+        "ap-southeast-4": {
+          "cache": {
+            "read_input_per_1m": 0.275,
+            "write_input_per_1m": null,
+            "write_1h_input_per_1m": null
+          }
+        },
+        "ap-northeast-2": {
+          "cache": {
+            "read_input_per_1m": 0.9625,
+            "write_input_per_1m": null,
+            "write_1h_input_per_1m": null
+          }
+        },
+        "ap-east-1": {
+          "cache": {
+            "read_input_per_1m": 0.9625,
+            "write_input_per_1m": null,
+            "write_1h_input_per_1m": null
+          }
+        },
+        "ap-southeast-6": {
+          "cache": {
+            "read_input_per_1m": 0.9625,
+            "write_input_per_1m": null,
+            "write_1h_input_per_1m": null
+          }
+        },
+        "us-west-1": {
+          "cache": {
+            "read_input_per_1m": 0.9625,
+            "write_input_per_1m": null,
+            "write_1h_input_per_1m": null
+          }
+        },
+        "eu-west-3": {
+          "cache": {
+            "read_input_per_1m": 0.275,
+            "write_input_per_1m": null,
+            "write_1h_input_per_1m": null
+          }
+        },
+        "ca-central-1": {
+          "cache": {
+            "read_input_per_1m": 0.9625,
+            "write_input_per_1m": null,
+            "write_1h_input_per_1m": null
+          }
+        },
+        "me-south-1": {
+          "cache": {
+            "read_input_per_1m": 0.275,
+            "write_input_per_1m": null,
+            "write_1h_input_per_1m": null
+          }
+        },
+        "af-south-1": {
+          "cache": {
+            "read_input_per_1m": 0.275,
+            "write_input_per_1m": null,
+            "write_1h_input_per_1m": null
+          }
+        },
+        "sa-east-1": {
+          "cache": {
+            "read_input_per_1m": 0.9625,
+            "write_input_per_1m": null,
+            "write_1h_input_per_1m": null
+          }
+        },
+        "eu-south-1": {
+          "cache": {
+            "read_input_per_1m": 0.275,
+            "write_input_per_1m": null,
+            "write_1h_input_per_1m": null
+          }
+        },
+        "ap-northeast-3": {
+          "cache": {
+            "read_input_per_1m": 0.275,
+            "write_input_per_1m": null,
+            "write_1h_input_per_1m": null
+          }
+        },
+        "us-east-1": {
+          "cache": {
+            "read_input_per_1m": 0.275,
+            "write_input_per_1m": null,
+            "write_1h_input_per_1m": null
+          }
+        },
+        "ap-southeast-1": {
+          "cache": {
+            "read_input_per_1m": 0.9625,
+            "write_input_per_1m": null,
+            "write_1h_input_per_1m": null
+          }
+        },
+        "eu-north-1": {
+          "cache": {
+            "read_input_per_1m": 0.275,
+            "write_input_per_1m": null,
+            "write_1h_input_per_1m": null
+          }
+        },
+        "us-east-2": {
+          "cache": {
+            "read_input_per_1m": 0.9625,
+            "write_input_per_1m": null,
+            "write_1h_input_per_1m": null
+          }
+        },
+        "il-central-1": {
+          "cache": {
+            "read_input_per_1m": 0.9625,
+            "write_input_per_1m": null,
+            "write_1h_input_per_1m": null
+          }
+        },
+        "ap-south-1": {
+          "cache": {
+            "read_input_per_1m": 0.9625,
+            "write_input_per_1m": null,
+            "write_1h_input_per_1m": null
+          }
+        },
+        "us-gov-west-1": {
+          "cache": {
+            "read_input_per_1m": 0.33,
+            "write_input_per_1m": null,
+            "write_1h_input_per_1m": null
+          }
+        },
+        "eu-central-2": {
+          "cache": {
+            "read_input_per_1m": 0.9625,
+            "write_input_per_1m": null,
+            "write_1h_input_per_1m": null
+          }
+        },
+        "ca-west-1": {
+          "cache": {
+            "read_input_per_1m": 0.9625,
+            "write_input_per_1m": null,
+            "write_1h_input_per_1m": null
+          }
+        }
+      },
+      "price_provenance": {
+        "mx-central-1.cache.read_input_per_1m": {
+          "offer": "AmazonBedrock",
+          "usagetype": "MXC1-xai.grok-4.6-mantle-cache-read-tokens-priority",
+          "unit": "1K tokens",
+          "product_sku": "NWP9TGY6PRMEQ8AE",
+          "region": "mx-central-1",
+          "tier": "cache"
+        },
+        "eu-central-1.cache.read_input_per_1m": {
+          "offer": "AmazonBedrock",
+          "usagetype": "EUC1-xai.grok-4.6-mantle-cache-read-tokens-flex",
+          "unit": "1K tokens",
+          "product_sku": "DKBCBKGAB6MM3H9C",
+          "region": "eu-central-1",
+          "tier": "cache"
+        },
+        "ap-southeast-7.cache.read_input_per_1m": {
+          "offer": "AmazonBedrock",
+          "usagetype": "APS9-xai.grok-4.6-mantle-cache-read-tokens-priority",
+          "unit": "1K tokens",
+          "product_sku": "QVPEFJYW3FBWZ2N4",
+          "region": "ap-southeast-7",
+          "tier": "cache"
+        },
+        "ap-east-2.cache.read_input_per_1m": {
+          "offer": "AmazonBedrock",
+          "usagetype": "APE2-xai.grok-4.6-mantle-cache-read-tokens-flex",
+          "unit": "1K tokens",
+          "product_sku": "GJBMNB23NFRXKZYQ",
+          "region": "ap-east-2",
+          "tier": "cache"
+        },
+        "ap-southeast-5.cache.read_input_per_1m": {
+          "offer": "AmazonBedrock",
+          "usagetype": "APS7-xai.grok-4.6-mantle-cache-read-tokens-priority",
+          "unit": "1K tokens",
+          "product_sku": "FBB9Y6XEXGEZ7EJJ",
+          "region": "ap-southeast-5",
+          "tier": "cache"
+        },
+        "eu-west-1.cache.read_input_per_1m": {
+          "offer": "AmazonBedrock",
+          "usagetype": "EU-xai.grok-4.6-mantle-cache-read-tokens-flex",
+          "unit": "1K tokens",
+          "product_sku": "YK9SEE342C64AADM",
+          "region": "eu-west-1",
+          "tier": "cache"
+        },
+        "me-central-1.cache.read_input_per_1m": {
+          "offer": "AmazonBedrock",
+          "usagetype": "MEC1-xai.grok-4.6-mantle-cache-read-tokens-flex",
+          "unit": "1K tokens",
+          "product_sku": "MK27CPA5KWMNKVBN",
+          "region": "me-central-1",
+          "tier": "cache"
+        },
+        "ap-southeast-3.cache.read_input_per_1m": {
+          "offer": "AmazonBedrock",
+          "usagetype": "APS4-xai.grok-4.6-mantle-cache-read-tokens-flex",
+          "unit": "1K tokens",
+          "product_sku": "NYP77VD9UDGVPJPU",
+          "region": "ap-southeast-3",
+          "tier": "cache"
+        },
+        "ap-northeast-1.cache.read_input_per_1m": {
+          "offer": "AmazonBedrock",
+          "usagetype": "APN1-xai.grok-4.6-mantle-cache-read-tokens-flex",
+          "unit": "1K tokens",
+          "product_sku": "2EA9TBWE5N3FJRCF",
+          "region": "ap-northeast-1",
+          "tier": "cache"
+        },
+        "eu-west-2.cache.read_input_per_1m": {
+          "offer": "AmazonBedrock",
+          "usagetype": "EUW2-xai.grok-4.6-mantle-cache-read-tokens-flex",
+          "unit": "1K tokens",
+          "product_sku": "EEYHD6EK6C3DJN8H",
+          "region": "eu-west-2",
+          "tier": "cache"
+        },
+        "ap-south-2.cache.read_input_per_1m": {
+          "offer": "AmazonBedrock",
+          "usagetype": "APS5-xai.grok-4.6-mantle-cache-read-tokens-priority",
+          "unit": "1K tokens",
+          "product_sku": "H3UQ6A7DD3PERM3R",
+          "region": "ap-south-2",
+          "tier": "cache"
+        },
+        "ap-southeast-2.cache.read_input_per_1m": {
+          "offer": "AmazonBedrock",
+          "usagetype": "APS2-xai.grok-4.6-mantle-cache-read-tokens-priority",
+          "unit": "1K tokens",
+          "product_sku": "HVA6B4PQEPCXQ27A",
+          "region": "ap-southeast-2",
+          "tier": "cache"
+        },
+        "us-gov-east-1.cache.read_input_per_1m": {
+          "offer": "AmazonBedrock",
+          "usagetype": "UGE1-xai.grok-4.6-mantle-cache-read-tokens-flex",
+          "unit": "1K tokens",
+          "product_sku": "REX4V8ZZAZQVXH8C",
+          "region": "us-gov-east-1",
+          "tier": "cache"
+        },
+        "us-west-2.cache.read_input_per_1m": {
+          "offer": "AmazonBedrock",
+          "usagetype": "USW2-xai.grok-4.6-mantle-cache-read-tokens-flex",
+          "unit": "1K tokens",
+          "product_sku": "7J77Y75G4VAKYYS4",
+          "region": "us-west-2",
+          "tier": "cache"
+        },
+        "eu-south-2.cache.read_input_per_1m": {
+          "offer": "AmazonBedrock",
+          "usagetype": "EUS2-xai.grok-4.6-mantle-cache-read-tokens-flex",
+          "unit": "1K tokens",
+          "product_sku": "9MGQYZR7QNY32JPD",
+          "region": "eu-south-2",
+          "tier": "cache"
+        },
+        "ap-southeast-4.cache.read_input_per_1m": {
+          "offer": "AmazonBedrock",
+          "usagetype": "APS6-xai.grok-4.6-mantle-cache-read-tokens-flex",
+          "unit": "1K tokens",
+          "product_sku": "KJDJMZ9W4QPMF38J",
+          "region": "ap-southeast-4",
+          "tier": "cache"
+        },
+        "ap-northeast-2.cache.read_input_per_1m": {
+          "offer": "AmazonBedrock",
+          "usagetype": "APN2-xai.grok-4.6-mantle-cache-read-tokens-priority",
+          "unit": "1K tokens",
+          "product_sku": "6YZZUWVZRX74EUKZ",
+          "region": "ap-northeast-2",
+          "tier": "cache"
+        },
+        "ap-east-1.cache.read_input_per_1m": {
+          "offer": "AmazonBedrock",
+          "usagetype": "APE1-xai.grok-4.6-mantle-cache-read-tokens-priority",
+          "unit": "1K tokens",
+          "product_sku": "8GE8UJT4WMDMDQ3Z",
+          "region": "ap-east-1",
+          "tier": "cache"
+        },
+        "ap-southeast-6.cache.read_input_per_1m": {
+          "offer": "AmazonBedrock",
+          "usagetype": "APS8-xai.grok-4.6-mantle-cache-read-tokens-priority",
+          "unit": "1K tokens",
+          "product_sku": "3UK4TJEHKERNQG8D",
+          "region": "ap-southeast-6",
+          "tier": "cache"
+        },
+        "us-west-1.cache.read_input_per_1m": {
+          "offer": "AmazonBedrock",
+          "usagetype": "USW1-xai.grok-4.6-mantle-cache-read-tokens-priority",
+          "unit": "1K tokens",
+          "product_sku": "HS4Z9SRTDNBCWSDT",
+          "region": "us-west-1",
+          "tier": "cache"
+        },
+        "eu-west-3.cache.read_input_per_1m": {
+          "offer": "AmazonBedrock",
+          "usagetype": "EUW3-xai.grok-4.6-mantle-cache-read-tokens-flex",
+          "unit": "1K tokens",
+          "product_sku": "XJRE55XD8CNB7TJP",
+          "region": "eu-west-3",
+          "tier": "cache"
+        },
+        "ca-central-1.cache.read_input_per_1m": {
+          "offer": "AmazonBedrock",
+          "usagetype": "CAN1-xai.grok-4.6-mantle-cache-read-tokens-priority",
+          "unit": "1K tokens",
+          "product_sku": "YMEFJJV6AJ89ECSU",
+          "region": "ca-central-1",
+          "tier": "cache"
+        },
+        "me-south-1.cache.read_input_per_1m": {
+          "offer": "AmazonBedrock",
+          "usagetype": "MES1-xai.grok-4.6-mantle-cache-read-tokens-flex",
+          "unit": "1K tokens",
+          "product_sku": "FHPT66FNRT2AP7QR",
+          "region": "me-south-1",
+          "tier": "cache"
+        },
+        "af-south-1.cache.read_input_per_1m": {
+          "offer": "AmazonBedrock",
+          "usagetype": "AFS1-xai.grok-4.6-mantle-cache-read-tokens-flex",
+          "unit": "1K tokens",
+          "product_sku": "MNGU34RFD2SJNCU6",
+          "region": "af-south-1",
+          "tier": "cache"
+        },
+        "sa-east-1.cache.read_input_per_1m": {
+          "offer": "AmazonBedrock",
+          "usagetype": "SAE1-xai.grok-4.6-mantle-cache-read-tokens-priority",
+          "unit": "1K tokens",
+          "product_sku": "JANUAKBVV4MRTW8Q",
+          "region": "sa-east-1",
+          "tier": "cache"
+        },
+        "eu-south-1.cache.read_input_per_1m": {
+          "offer": "AmazonBedrock",
+          "usagetype": "EUS1-xai.grok-4.6-mantle-cache-read-tokens-flex",
+          "unit": "1K tokens",
+          "product_sku": "CH8GSJ3969W89UEP",
+          "region": "eu-south-1",
+          "tier": "cache"
+        },
+        "ap-northeast-3.cache.read_input_per_1m": {
+          "offer": "AmazonBedrock",
+          "usagetype": "APN3-xai.grok-4.6-mantle-cache-read-tokens-flex",
+          "unit": "1K tokens",
+          "product_sku": "Q7FJBNGVPUKHCSP2",
+          "region": "ap-northeast-3",
+          "tier": "cache"
+        },
+        "us-east-1.cache.read_input_per_1m": {
+          "offer": "AmazonBedrock",
+          "usagetype": "USE1-xai.grok-4.6-mantle-cache-read-tokens-flex",
+          "unit": "1K tokens",
+          "product_sku": "WTV9RAPGQM6P3NP7",
+          "region": "us-east-1",
+          "tier": "cache"
+        },
+        "ap-southeast-1.cache.read_input_per_1m": {
+          "offer": "AmazonBedrock",
+          "usagetype": "APS1-xai.grok-4.6-mantle-cache-read-tokens-priority",
+          "unit": "1K tokens",
+          "product_sku": "45C3ZBCRVGQ6G2Y6",
+          "region": "ap-southeast-1",
+          "tier": "cache"
+        },
+        "eu-north-1.cache.read_input_per_1m": {
+          "offer": "AmazonBedrock",
+          "usagetype": "EUN1-xai.grok-4.6-mantle-cache-read-tokens-flex",
+          "unit": "1K tokens",
+          "product_sku": "V6BVVTPD2CCZERKJ",
+          "region": "eu-north-1",
+          "tier": "cache"
+        },
+        "us-east-2.cache.read_input_per_1m": {
+          "offer": "AmazonBedrock",
+          "usagetype": "USE2-xai.grok-4.6-mantle-cache-read-tokens-priority",
+          "unit": "1K tokens",
+          "product_sku": "MJBAWPE9NZUYW6WG",
+          "region": "us-east-2",
+          "tier": "cache"
+        },
+        "il-central-1.cache.read_input_per_1m": {
+          "offer": "AmazonBedrock",
+          "usagetype": "ILC1-xai.grok-4.6-mantle-cache-read-tokens-priority",
+          "unit": "1K tokens",
+          "product_sku": "8P8WMMXPMNBD5YGE",
+          "region": "il-central-1",
+          "tier": "cache"
+        },
+        "ap-south-1.cache.read_input_per_1m": {
+          "offer": "AmazonBedrock",
+          "usagetype": "APS3-xai.grok-4.6-mantle-cache-read-tokens-priority",
+          "unit": "1K tokens",
+          "product_sku": "TUME6WGWGBPX2XQ2",
+          "region": "ap-south-1",
+          "tier": "cache"
+        },
+        "us-gov-west-1.cache.read_input_per_1m": {
+          "offer": "AmazonBedrock",
+          "usagetype": "UGW1-xai.grok-4.6-mantle-cache-read-tokens-flex",
+          "unit": "1K tokens",
+          "product_sku": "G4PY9GEFHCRRRP8W",
+          "region": "us-gov-west-1",
+          "tier": "cache"
+        },
+        "eu-central-2.cache.read_input_per_1m": {
+          "offer": "AmazonBedrock",
+          "usagetype": "EUC2-xai.grok-4.6-mantle-cache-read-tokens-priority",
+          "unit": "1K tokens",
+          "product_sku": "9SMQDVAM486RRXT4",
+          "region": "eu-central-2",
+          "tier": "cache"
+        },
+        "ca-west-1.cache.read_input_per_1m": {
+          "offer": "AmazonBedrock",
+          "usagetype": "CAN2-xai.grok-4.6-mantle-cache-read-tokens-priority",
+          "unit": "1K tokens",
+          "product_sku": "37DNJZH3JYFU2JK9",
+          "region": "ca-west-1",
+          "tier": "cache"
+        }
+      }
+    },
+    {
+      "model_id": "xai.grok-4.6-mantle-cache-read-tokens-global",
+      "display_name": "Grok 4.6 Mantle Cache Read Tokens Global",
+      "provider": "Unknown",
+      "pricing_type": "token",
+      "pricing_source": "price_list",
+      "regions": [
+        "us-east-1"
+      ],
+      "on_demand": {
+        "input_per_1m": null,
+        "output_per_1m": null,
+        "standard_per_image": null,
+        "premium_per_image": null,
+        "per_second": null,
+        "per_search_unit": null
+      },
+      "context_window": null,
+      "modalities": [
+        "text"
+      ],
+      "notes": null,
+      "availability": "ga",
+      "alternate_ids": [],
+      "list_prices": {
+        "us-gov-west-1": {
+          "cache_global": {
+            "read_input_per_1m": 1.05,
+            "write_input_per_1m": null,
+            "write_1h_input_per_1m": null
+          }
+        },
+        "us-west-1": {
+          "cache_global": {
+            "read_input_per_1m": 0.25,
+            "write_input_per_1m": null,
+            "write_1h_input_per_1m": null
+          }
+        },
+        "eu-west-3": {
+          "cache_global": {
+            "read_input_per_1m": 0.875,
+            "write_input_per_1m": null,
+            "write_1h_input_per_1m": null
+          }
+        },
+        "us-east-1": {
+          "cache_global": {
+            "read_input_per_1m": 0.875,
+            "write_input_per_1m": null,
+            "write_1h_input_per_1m": null
+          }
+        },
+        "ap-southeast-3": {
+          "cache_global": {
+            "read_input_per_1m": 0.25,
+            "write_input_per_1m": null,
+            "write_1h_input_per_1m": null
+          }
+        },
+        "ca-west-1": {
+          "cache_global": {
+            "read_input_per_1m": 0.875,
+            "write_input_per_1m": null,
+            "write_1h_input_per_1m": null
+          }
+        },
+        "eu-west-2": {
+          "cache_global": {
+            "read_input_per_1m": 0.25,
+            "write_input_per_1m": null,
+            "write_1h_input_per_1m": null
+          }
+        },
+        "ap-southeast-1": {
+          "cache_global": {
+            "read_input_per_1m": 0.875,
+            "write_input_per_1m": null,
+            "write_1h_input_per_1m": null
+          }
+        },
+        "ap-northeast-2": {
+          "cache_global": {
+            "read_input_per_1m": 0.875,
+            "write_input_per_1m": null,
+            "write_1h_input_per_1m": null
+          }
+        },
+        "ca-central-1": {
+          "cache_global": {
+            "read_input_per_1m": 0.25,
+            "write_input_per_1m": null,
+            "write_1h_input_per_1m": null
+          }
+        },
+        "ap-northeast-1": {
+          "cache_global": {
+            "read_input_per_1m": 0.875,
+            "write_input_per_1m": null,
+            "write_1h_input_per_1m": null
+          }
+        },
+        "us-west-2": {
+          "cache_global": {
+            "read_input_per_1m": 0.875,
+            "write_input_per_1m": null,
+            "write_1h_input_per_1m": null
+          }
+        },
+        "ap-southeast-2": {
+          "cache_global": {
+            "read_input_per_1m": 0.25,
+            "write_input_per_1m": null,
+            "write_1h_input_per_1m": null
+          }
+        },
+        "mx-central-1": {
+          "cache_global": {
+            "read_input_per_1m": 0.25,
+            "write_input_per_1m": null,
+            "write_1h_input_per_1m": null
+          }
+        },
+        "ap-east-2": {
+          "cache_global": {
+            "read_input_per_1m": 0.875,
+            "write_input_per_1m": null,
+            "write_1h_input_per_1m": null
+          }
+        },
+        "eu-south-1": {
+          "cache_global": {
+            "read_input_per_1m": 0.25,
+            "write_input_per_1m": null,
+            "write_1h_input_per_1m": null
+          }
+        },
+        "ap-southeast-5": {
+          "cache_global": {
+            "read_input_per_1m": 0.875,
+            "write_input_per_1m": null,
+            "write_1h_input_per_1m": null
+          }
+        },
+        "ap-southeast-4": {
+          "cache_global": {
+            "read_input_per_1m": 0.25,
+            "write_input_per_1m": null,
+            "write_1h_input_per_1m": null
+          }
+        },
+        "af-south-1": {
+          "cache_global": {
+            "read_input_per_1m": 0.875,
+            "write_input_per_1m": null,
+            "write_1h_input_per_1m": null
+          }
+        },
+        "us-east-2": {
+          "cache_global": {
+            "read_input_per_1m": 0.875,
+            "write_input_per_1m": null,
+            "write_1h_input_per_1m": null
+          }
+        },
+        "eu-central-2": {
+          "cache_global": {
+            "read_input_per_1m": 0.25,
+            "write_input_per_1m": null,
+            "write_1h_input_per_1m": null
+          }
+        },
+        "ap-south-2": {
+          "cache_global": {
+            "read_input_per_1m": 0.875,
+            "write_input_per_1m": null,
+            "write_1h_input_per_1m": null
+          }
+        },
+        "eu-central-1": {
+          "cache_global": {
+            "read_input_per_1m": 0.875,
+            "write_input_per_1m": null,
+            "write_1h_input_per_1m": null
+          }
+        },
+        "sa-east-1": {
+          "cache_global": {
+            "read_input_per_1m": 0.875,
+            "write_input_per_1m": null,
+            "write_1h_input_per_1m": null
+          }
+        },
+        "eu-north-1": {
+          "cache_global": {
+            "read_input_per_1m": 0.25,
+            "write_input_per_1m": null,
+            "write_1h_input_per_1m": null
+          }
+        },
+        "eu-south-2": {
+          "cache_global": {
+            "read_input_per_1m": 0.25,
+            "write_input_per_1m": null,
+            "write_1h_input_per_1m": null
+          }
+        },
+        "me-central-1": {
+          "cache_global": {
+            "read_input_per_1m": 0.25,
+            "write_input_per_1m": null,
+            "write_1h_input_per_1m": null
+          }
+        },
+        "ap-south-1": {
+          "cache_global": {
+            "read_input_per_1m": 0.25,
+            "write_input_per_1m": null,
+            "write_1h_input_per_1m": null
+          }
+        },
+        "eu-west-1": {
+          "cache_global": {
+            "read_input_per_1m": 0.875,
+            "write_input_per_1m": null,
+            "write_1h_input_per_1m": null
+          }
+        },
+        "ap-southeast-7": {
+          "cache_global": {
+            "read_input_per_1m": 0.875,
+            "write_input_per_1m": null,
+            "write_1h_input_per_1m": null
+          }
+        },
+        "me-south-1": {
+          "cache_global": {
+            "read_input_per_1m": 0.25,
+            "write_input_per_1m": null,
+            "write_1h_input_per_1m": null
+          }
+        },
+        "ap-east-1": {
+          "cache_global": {
+            "read_input_per_1m": 0.25,
+            "write_input_per_1m": null,
+            "write_1h_input_per_1m": null
+          }
+        },
+        "ap-northeast-3": {
+          "cache_global": {
+            "read_input_per_1m": 0.25,
+            "write_input_per_1m": null,
+            "write_1h_input_per_1m": null
+          }
+        },
+        "us-gov-east-1": {
+          "cache_global": {
+            "read_input_per_1m": 0.3,
+            "write_input_per_1m": null,
+            "write_1h_input_per_1m": null
+          }
+        },
+        "il-central-1": {
+          "cache_global": {
+            "read_input_per_1m": 0.25,
+            "write_input_per_1m": null,
+            "write_1h_input_per_1m": null
+          }
+        },
+        "ap-southeast-6": {
+          "cache_global": {
+            "read_input_per_1m": 0.875,
+            "write_input_per_1m": null,
+            "write_1h_input_per_1m": null
+          }
+        }
+      },
+      "price_provenance": {
+        "us-gov-west-1.cache_global.read_input_per_1m": {
+          "offer": "AmazonBedrock",
+          "usagetype": "UGW1-xai.grok-4.6-mantle-cache-read-tokens-global-priority",
+          "unit": "1K tokens",
+          "product_sku": "PK6KNVQCEVG7GQFP",
+          "region": "us-gov-west-1",
+          "tier": "cache_global"
+        },
+        "us-west-1.cache_global.read_input_per_1m": {
+          "offer": "AmazonBedrock",
+          "usagetype": "USW1-xai.grok-4.6-mantle-cache-read-tokens-global-flex",
+          "unit": "1K tokens",
+          "product_sku": "TZH97JDJ485DPDUW",
+          "region": "us-west-1",
+          "tier": "cache_global"
+        },
+        "eu-west-3.cache_global.read_input_per_1m": {
+          "offer": "AmazonBedrock",
+          "usagetype": "EUW3-xai.grok-4.6-mantle-cache-read-tokens-global-priority",
+          "unit": "1K tokens",
+          "product_sku": "ZRBWDMN5RZHN37XX",
+          "region": "eu-west-3",
+          "tier": "cache_global"
+        },
+        "us-east-1.cache_global.read_input_per_1m": {
+          "offer": "AmazonBedrock",
+          "usagetype": "USE1-xai.grok-4.6-mantle-cache-read-tokens-global-priority",
+          "unit": "1K tokens",
+          "product_sku": "287ZNXQ32XNMTM6V",
+          "region": "us-east-1",
+          "tier": "cache_global"
+        },
+        "ap-southeast-3.cache_global.read_input_per_1m": {
+          "offer": "AmazonBedrock",
+          "usagetype": "APS4-xai.grok-4.6-mantle-cache-read-tokens-global-flex",
+          "unit": "1K tokens",
+          "product_sku": "HXGJ8C5PPCCKEQ38",
+          "region": "ap-southeast-3",
+          "tier": "cache_global"
+        },
+        "ca-west-1.cache_global.read_input_per_1m": {
+          "offer": "AmazonBedrock",
+          "usagetype": "CAN2-xai.grok-4.6-mantle-cache-read-tokens-global-priority",
+          "unit": "1K tokens",
+          "product_sku": "U5EN485HCSPMXGGB",
+          "region": "ca-west-1",
+          "tier": "cache_global"
+        },
+        "eu-west-2.cache_global.read_input_per_1m": {
+          "offer": "AmazonBedrock",
+          "usagetype": "EUW2-xai.grok-4.6-mantle-cache-read-tokens-global-flex",
+          "unit": "1K tokens",
+          "product_sku": "B7ZUKCRBNEYSDJCV",
+          "region": "eu-west-2",
+          "tier": "cache_global"
+        },
+        "ap-southeast-1.cache_global.read_input_per_1m": {
+          "offer": "AmazonBedrock",
+          "usagetype": "APS1-xai.grok-4.6-mantle-cache-read-tokens-global-priority",
+          "unit": "1K tokens",
+          "product_sku": "RRAZJMU96KB6XNNJ",
+          "region": "ap-southeast-1",
+          "tier": "cache_global"
+        },
+        "ap-northeast-2.cache_global.read_input_per_1m": {
+          "offer": "AmazonBedrock",
+          "usagetype": "APN2-xai.grok-4.6-mantle-cache-read-tokens-global-priority",
+          "unit": "1K tokens",
+          "product_sku": "TJMWKYP94P2MXXE5",
+          "region": "ap-northeast-2",
+          "tier": "cache_global"
+        },
+        "ca-central-1.cache_global.read_input_per_1m": {
+          "offer": "AmazonBedrock",
+          "usagetype": "CAN1-xai.grok-4.6-mantle-cache-read-tokens-global-flex",
+          "unit": "1K tokens",
+          "product_sku": "U5Y4M6TKPSMRNJ97",
+          "region": "ca-central-1",
+          "tier": "cache_global"
+        },
+        "ap-northeast-1.cache_global.read_input_per_1m": {
+          "offer": "AmazonBedrock",
+          "usagetype": "APN1-xai.grok-4.6-mantle-cache-read-tokens-global-priority",
+          "unit": "1K tokens",
+          "product_sku": "ZGKDHYME25KMPVCC",
+          "region": "ap-northeast-1",
+          "tier": "cache_global"
+        },
+        "us-west-2.cache_global.read_input_per_1m": {
+          "offer": "AmazonBedrock",
+          "usagetype": "USW2-xai.grok-4.6-mantle-cache-read-tokens-global-priority",
+          "unit": "1K tokens",
+          "product_sku": "N2VGKR8HY3Y83XD4",
+          "region": "us-west-2",
+          "tier": "cache_global"
+        },
+        "ap-southeast-2.cache_global.read_input_per_1m": {
+          "offer": "AmazonBedrock",
+          "usagetype": "APS2-xai.grok-4.6-mantle-cache-read-tokens-global-flex",
+          "unit": "1K tokens",
+          "product_sku": "S6BTJ587G8TR6RPK",
+          "region": "ap-southeast-2",
+          "tier": "cache_global"
+        },
+        "mx-central-1.cache_global.read_input_per_1m": {
+          "offer": "AmazonBedrock",
+          "usagetype": "MXC1-xai.grok-4.6-mantle-cache-read-tokens-global-flex",
+          "unit": "1K tokens",
+          "product_sku": "28VDX64SDW5K2HTF",
+          "region": "mx-central-1",
+          "tier": "cache_global"
+        },
+        "ap-east-2.cache_global.read_input_per_1m": {
+          "offer": "AmazonBedrock",
+          "usagetype": "APE2-xai.grok-4.6-mantle-cache-read-tokens-global-priority",
+          "unit": "1K tokens",
+          "product_sku": "6FS2ACQCP25F4WCR",
+          "region": "ap-east-2",
+          "tier": "cache_global"
+        },
+        "eu-south-1.cache_global.read_input_per_1m": {
+          "offer": "AmazonBedrock",
+          "usagetype": "EUS1-xai.grok-4.6-mantle-cache-read-tokens-global-flex",
+          "unit": "1K tokens",
+          "product_sku": "H98SFYPKJ272F7ZR",
+          "region": "eu-south-1",
+          "tier": "cache_global"
+        },
+        "ap-southeast-5.cache_global.read_input_per_1m": {
+          "offer": "AmazonBedrock",
+          "usagetype": "APS7-xai.grok-4.6-mantle-cache-read-tokens-global-priority",
+          "unit": "1K tokens",
+          "product_sku": "K3F9ENY8737ZYGUZ",
+          "region": "ap-southeast-5",
+          "tier": "cache_global"
+        },
+        "ap-southeast-4.cache_global.read_input_per_1m": {
+          "offer": "AmazonBedrock",
+          "usagetype": "APS6-xai.grok-4.6-mantle-cache-read-tokens-global-flex",
+          "unit": "1K tokens",
+          "product_sku": "4MQVG4CAGPEJ4A6H",
+          "region": "ap-southeast-4",
+          "tier": "cache_global"
+        },
+        "af-south-1.cache_global.read_input_per_1m": {
+          "offer": "AmazonBedrock",
+          "usagetype": "AFS1-xai.grok-4.6-mantle-cache-read-tokens-global-priority",
+          "unit": "1K tokens",
+          "product_sku": "FCQYRT3YRCYNFJUG",
+          "region": "af-south-1",
+          "tier": "cache_global"
+        },
+        "us-east-2.cache_global.read_input_per_1m": {
+          "offer": "AmazonBedrock",
+          "usagetype": "USE2-xai.grok-4.6-mantle-cache-read-tokens-global-priority",
+          "unit": "1K tokens",
+          "product_sku": "PGHYN9NJGRVUKYGA",
+          "region": "us-east-2",
+          "tier": "cache_global"
+        },
+        "eu-central-2.cache_global.read_input_per_1m": {
+          "offer": "AmazonBedrock",
+          "usagetype": "EUC2-xai.grok-4.6-mantle-cache-read-tokens-global-flex",
+          "unit": "1K tokens",
+          "product_sku": "YHZ8HAC7RQEH7AN5",
+          "region": "eu-central-2",
+          "tier": "cache_global"
+        },
+        "ap-south-2.cache_global.read_input_per_1m": {
+          "offer": "AmazonBedrock",
+          "usagetype": "APS5-xai.grok-4.6-mantle-cache-read-tokens-global-priority",
+          "unit": "1K tokens",
+          "product_sku": "FMXUAKDWG2GU4TMU",
+          "region": "ap-south-2",
+          "tier": "cache_global"
+        },
+        "eu-central-1.cache_global.read_input_per_1m": {
+          "offer": "AmazonBedrock",
+          "usagetype": "EUC1-xai.grok-4.6-mantle-cache-read-tokens-global-priority",
+          "unit": "1K tokens",
+          "product_sku": "VZN6FVCDHGEVMQK6",
+          "region": "eu-central-1",
+          "tier": "cache_global"
+        },
+        "sa-east-1.cache_global.read_input_per_1m": {
+          "offer": "AmazonBedrock",
+          "usagetype": "SAE1-xai.grok-4.6-mantle-cache-read-tokens-global-priority",
+          "unit": "1K tokens",
+          "product_sku": "XP3H4KBNU3DB7JSU",
+          "region": "sa-east-1",
+          "tier": "cache_global"
+        },
+        "eu-north-1.cache_global.read_input_per_1m": {
+          "offer": "AmazonBedrock",
+          "usagetype": "EUN1-xai.grok-4.6-mantle-cache-read-tokens-global-flex",
+          "unit": "1K tokens",
+          "product_sku": "QJ6VZEPS2YQZGFS9",
+          "region": "eu-north-1",
+          "tier": "cache_global"
+        },
+        "eu-south-2.cache_global.read_input_per_1m": {
+          "offer": "AmazonBedrock",
+          "usagetype": "EUS2-xai.grok-4.6-mantle-cache-read-tokens-global-flex",
+          "unit": "1K tokens",
+          "product_sku": "AHW95PWX8QPP6GNW",
+          "region": "eu-south-2",
+          "tier": "cache_global"
+        },
+        "me-central-1.cache_global.read_input_per_1m": {
+          "offer": "AmazonBedrock",
+          "usagetype": "MEC1-xai.grok-4.6-mantle-cache-read-tokens-global-flex",
+          "unit": "1K tokens",
+          "product_sku": "NEQNDYA9N2HKK5Y7",
+          "region": "me-central-1",
+          "tier": "cache_global"
+        },
+        "ap-south-1.cache_global.read_input_per_1m": {
+          "offer": "AmazonBedrock",
+          "usagetype": "APS3-xai.grok-4.6-mantle-cache-read-tokens-global-flex",
+          "unit": "1K tokens",
+          "product_sku": "CBV8NDE475K36H98",
+          "region": "ap-south-1",
+          "tier": "cache_global"
+        },
+        "eu-west-1.cache_global.read_input_per_1m": {
+          "offer": "AmazonBedrock",
+          "usagetype": "EU-xai.grok-4.6-mantle-cache-read-tokens-global-priority",
+          "unit": "1K tokens",
+          "product_sku": "2BREZQ6BAHH4PZD5",
+          "region": "eu-west-1",
+          "tier": "cache_global"
+        },
+        "ap-southeast-7.cache_global.read_input_per_1m": {
+          "offer": "AmazonBedrock",
+          "usagetype": "APS9-xai.grok-4.6-mantle-cache-read-tokens-global-priority",
+          "unit": "1K tokens",
+          "product_sku": "KNJAXGVGKKFBHQQ2",
+          "region": "ap-southeast-7",
+          "tier": "cache_global"
+        },
+        "me-south-1.cache_global.read_input_per_1m": {
+          "offer": "AmazonBedrock",
+          "usagetype": "MES1-xai.grok-4.6-mantle-cache-read-tokens-global-flex",
+          "unit": "1K tokens",
+          "product_sku": "5URKN8C3DNSQXSRX",
+          "region": "me-south-1",
+          "tier": "cache_global"
+        },
+        "ap-east-1.cache_global.read_input_per_1m": {
+          "offer": "AmazonBedrock",
+          "usagetype": "APE1-xai.grok-4.6-mantle-cache-read-tokens-global-flex",
+          "unit": "1K tokens",
+          "product_sku": "638R3N4GSGS6CTYU",
+          "region": "ap-east-1",
+          "tier": "cache_global"
+        },
+        "ap-northeast-3.cache_global.read_input_per_1m": {
+          "offer": "AmazonBedrock",
+          "usagetype": "APN3-xai.grok-4.6-mantle-cache-read-tokens-global-flex",
+          "unit": "1K tokens",
+          "product_sku": "8WNPNYVPWFZ4CV6N",
+          "region": "ap-northeast-3",
+          "tier": "cache_global"
+        },
+        "us-gov-east-1.cache_global.read_input_per_1m": {
+          "offer": "AmazonBedrock",
+          "usagetype": "UGE1-xai.grok-4.6-mantle-cache-read-tokens-global-flex",
+          "unit": "1K tokens",
+          "product_sku": "F4YD46XY7B8YCTUA",
+          "region": "us-gov-east-1",
+          "tier": "cache_global"
+        },
+        "il-central-1.cache_global.read_input_per_1m": {
+          "offer": "AmazonBedrock",
+          "usagetype": "ILC1-xai.grok-4.6-mantle-cache-read-tokens-global-flex",
+          "unit": "1K tokens",
+          "product_sku": "VC4DRDZA658A82XN",
+          "region": "il-central-1",
+          "tier": "cache_global"
+        },
+        "ap-southeast-6.cache_global.read_input_per_1m": {
+          "offer": "AmazonBedrock",
+          "usagetype": "APS8-xai.grok-4.6-mantle-cache-read-tokens-global-priority",
+          "unit": "1K tokens",
+          "product_sku": "MDJZPPQ99SER952U",
+          "region": "ap-southeast-6",
+          "tier": "cache_global"
+        }
+      }
+    },
+    {
       "model_id": "zai.glm-4.7",
       "display_name": "GLM 4.7",
       "provider": "Z.AI",
@@ -70444,12 +73484,12 @@
     }
   ],
   "scrape": {
-    "models_matched": 214,
-    "models_in_catalog": 219,
-    "models_with_prices": 204,
+    "models_matched": 217,
+    "models_in_catalog": 222,
+    "models_with_prices": 205,
     "models_known_to_aws": 143,
     "coverage_pct": 98,
-    "price_coverage_pct": 93,
+    "price_coverage_pct": 92,
     "inventory_coverage_pct": 100,
     "warnings": [
       "Low automated coverage: most AWS prices use JS placeholders; curate data/pricing.json manually or add a Price List API source.",
@@ -70934,7 +73974,82 @@
       "Price conflict for openai.gpt-5.6-terra-mantle-cache-read-tokens-long-ctx.us-gov-west-1.cache.read_input_per_1m: 0.264 vs 1.056 (AmazonBedrock)",
       "Price conflict for openai.gpt-5.6-terra-mantle.us-gov-west-1.cache.read_input_per_1m: 0.264 vs 0.528 (AmazonBedrock)",
       "Price conflict for openai.gpt-5.6-terra-mantle-cache-write-tokens-30m.us-gov-west-1.cache.write_input_per_1m: 1.65 vs 6.6 (AmazonBedrock)",
-      "Price conflict for openai.gpt-5.6-luna-mantle-cache-write-tokens-30m-long-ctx.us-gov-west-1.cache.write_input_per_1m: 1.32 vs 0.33 (AmazonBedrock)"
+      "Price conflict for openai.gpt-5.6-luna-mantle-cache-write-tokens-30m-long-ctx.us-gov-west-1.cache.write_input_per_1m: 1.32 vs 0.33 (AmazonBedrock)",
+      "Price conflict for xai.grok-4.6-mantle-cache-read-tokens-global.us-gov-west-1.cache_global.read_input_per_1m: 1.05 vs 0.3 (AmazonBedrock)",
+      "Price conflict for xai.grok-4.6-mantle-cache-read-tokens-global.eu-west-3.cache_global.read_input_per_1m: 0.875 vs 0.25 (AmazonBedrock)",
+      "Price conflict for xai.grok-4.6-mantle-cache-read-tokens-global.us-west-1.cache_global.read_input_per_1m: 0.25 vs 0.875 (AmazonBedrock)",
+      "Price conflict for xai.grok-4.6-mantle-cache-read-tokens.eu-west-1.cache.read_input_per_1m: 0.275 vs 0.9625 (AmazonBedrock)",
+      "Price conflict for xai.grok-4.6-mantle-cache-read-tokens.ap-southeast-2.cache.read_input_per_1m: 0.9625 vs 0.275 (AmazonBedrock)",
+      "Price conflict for xai.grok-4.6-mantle-cache-read-tokens.ap-southeast-4.cache.read_input_per_1m: 0.275 vs 0.9625 (AmazonBedrock)",
+      "Price conflict for xai.grok-4.6-mantle-cache-read-tokens.ap-southeast-6.cache.read_input_per_1m: 0.9625 vs 0.275 (AmazonBedrock)",
+      "Price conflict for xai.grok-4.6-mantle-cache-read-tokens.ap-southeast-3.cache.read_input_per_1m: 0.275 vs 0.9625 (AmazonBedrock)",
+      "Price conflict for xai.grok-4.6-mantle-cache-read-tokens.eu-west-3.cache.read_input_per_1m: 0.275 vs 0.9625 (AmazonBedrock)",
+      "Price conflict for xai.grok-4.6-mantle-cache-read-tokens-global.ap-south-2.cache_global.read_input_per_1m: 0.875 vs 0.25 (AmazonBedrock)",
+      "Price conflict for xai.grok-4.6-mantle-cache-read-tokens.me-central-1.cache.read_input_per_1m: 0.275 vs 0.9625 (AmazonBedrock)",
+      "Price conflict for xai.grok-4.6-mantle-cache-read-tokens-global.us-east-2.cache_global.read_input_per_1m: 0.875 vs 0.25 (AmazonBedrock)",
+      "Price conflict for xai.grok-4.6-mantle-cache-read-tokens-global.ap-east-2.cache_global.read_input_per_1m: 0.875 vs 0.25 (AmazonBedrock)",
+      "Price conflict for xai.grok-4.6-mantle-cache-read-tokens-global.eu-west-1.cache_global.read_input_per_1m: 0.875 vs 0.25 (AmazonBedrock)",
+      "Price conflict for xai.grok-4.6-mantle-cache-read-tokens-global.me-central-1.cache_global.read_input_per_1m: 0.25 vs 0.875 (AmazonBedrock)",
+      "Price conflict for xai.grok-4.6-mantle-cache-read-tokens.ca-central-1.cache.read_input_per_1m: 0.9625 vs 0.275 (AmazonBedrock)",
+      "Price conflict for xai.grok-4.6-mantle-cache-read-tokens.us-west-1.cache.read_input_per_1m: 0.9625 vs 0.275 (AmazonBedrock)",
+      "Price conflict for xai.grok-4.6-mantle-cache-read-tokens.ap-east-2.cache.read_input_per_1m: 0.275 vs 0.9625 (AmazonBedrock)",
+      "Price conflict for xai.grok-4.6-mantle-cache-read-tokens-global.ap-southeast-7.cache_global.read_input_per_1m: 0.875 vs 0.25 (AmazonBedrock)",
+      "Price conflict for xai.grok-4.6-mantle-cache-read-tokens.af-south-1.cache.read_input_per_1m: 0.275 vs 0.9625 (AmazonBedrock)",
+      "Price conflict for xai.grok-4.6-mantle-cache-read-tokens-global.ap-south-1.cache_global.read_input_per_1m: 0.25 vs 0.875 (AmazonBedrock)",
+      "Price conflict for xai.grok-4.6-mantle-cache-read-tokens-global.eu-south-2.cache_global.read_input_per_1m: 0.25 vs 0.875 (AmazonBedrock)",
+      "Price conflict for xai.grok-4.6-mantle-cache-read-tokens.ap-northeast-2.cache.read_input_per_1m: 0.9625 vs 0.275 (AmazonBedrock)",
+      "Price conflict for xai.grok-4.6-mantle-cache-read-tokens.mx-central-1.cache.read_input_per_1m: 0.9625 vs 0.275 (AmazonBedrock)",
+      "Price conflict for xai.grok-4.6-mantle-cache-read-tokens-global.ap-northeast-2.cache_global.read_input_per_1m: 0.875 vs 0.25 (AmazonBedrock)",
+      "Price conflict for xai.grok-4.6-mantle-cache-read-tokens-global.ap-east-1.cache_global.read_input_per_1m: 0.25 vs 0.875 (AmazonBedrock)",
+      "Price conflict for xai.grok-4.6-mantle-cache-read-tokens.eu-south-1.cache.read_input_per_1m: 0.275 vs 0.9625 (AmazonBedrock)",
+      "Price conflict for xai.grok-4.6-mantle-cache-read-tokens.ap-northeast-1.cache.read_input_per_1m: 0.275 vs 0.9625 (AmazonBedrock)",
+      "Price conflict for xai.grok-4.6-mantle-cache-read-tokens.us-east-1.cache.read_input_per_1m: 0.275 vs 0.9625 (AmazonBedrock)",
+      "Price conflict for xai.grok-4.6-mantle-cache-read-tokens-global.us-west-2.cache_global.read_input_per_1m: 0.875 vs 0.25 (AmazonBedrock)",
+      "Price conflict for xai.grok-4.6-mantle-cache-read-tokens-global.mx-central-1.cache_global.read_input_per_1m: 0.25 vs 0.875 (AmazonBedrock)",
+      "Price conflict for xai.grok-4.6-mantle-cache-read-tokens.ap-northeast-3.cache.read_input_per_1m: 0.275 vs 0.9625 (AmazonBedrock)",
+      "Price conflict for xai.grok-4.6-mantle-cache-read-tokens.ap-southeast-1.cache.read_input_per_1m: 0.9625 vs 0.275 (AmazonBedrock)",
+      "Price conflict for xai.grok-4.6-mantle-cache-read-tokens.eu-south-2.cache.read_input_per_1m: 0.275 vs 0.9625 (AmazonBedrock)",
+      "Price conflict for xai.grok-4.6-mantle-cache-read-tokens-global.ap-northeast-1.cache_global.read_input_per_1m: 0.875 vs 0.25 (AmazonBedrock)",
+      "Price conflict for xai.grok-4.6-mantle-cache-read-tokens.ap-south-2.cache.read_input_per_1m: 0.9625 vs 0.275 (AmazonBedrock)",
+      "Price conflict for xai.grok-4.6-mantle-cache-read-tokens-global.ca-central-1.cache_global.read_input_per_1m: 0.25 vs 0.875 (AmazonBedrock)",
+      "Price conflict for xai.grok-4.6-mantle-cache-read-tokens.eu-north-1.cache.read_input_per_1m: 0.275 vs 0.9625 (AmazonBedrock)",
+      "Price conflict for xai.grok-4.6-mantle-cache-read-tokens-global.af-south-1.cache_global.read_input_per_1m: 0.875 vs 0.25 (AmazonBedrock)",
+      "Price conflict for xai.grok-4.6-mantle-cache-read-tokens.ap-southeast-7.cache.read_input_per_1m: 0.9625 vs 0.275 (AmazonBedrock)",
+      "Price conflict for xai.grok-4.6-mantle-cache-read-tokens-global.ap-southeast-5.cache_global.read_input_per_1m: 0.875 vs 0.25 (AmazonBedrock)",
+      "Price conflict for xai.grok-4.6-mantle-cache-read-tokens-global.ap-northeast-3.cache_global.read_input_per_1m: 0.25 vs 0.875 (AmazonBedrock)",
+      "Price conflict for xai.grok-4.6-mantle-cache-read-tokens.us-east-2.cache.read_input_per_1m: 0.9625 vs 0.275 (AmazonBedrock)",
+      "Price conflict for xai.grok-4.6-mantle-cache-read-tokens-global.ap-southeast-3.cache_global.read_input_per_1m: 0.25 vs 0.875 (AmazonBedrock)",
+      "Price conflict for xai.grok-4.6-mantle-cache-read-tokens-global.ca-west-1.cache_global.read_input_per_1m: 0.875 vs 0.25 (AmazonBedrock)",
+      "Price conflict for xai.grok-4.6-mantle-cache-read-tokens.ap-southeast-5.cache.read_input_per_1m: 0.9625 vs 0.275 (AmazonBedrock)",
+      "Price conflict for xai.grok-4.6-mantle-cache-read-tokens-global.ap-southeast-4.cache_global.read_input_per_1m: 0.25 vs 0.875 (AmazonBedrock)",
+      "Price conflict for xai.grok-4.6-mantle-cache-read-tokens-global.eu-central-2.cache_global.read_input_per_1m: 0.25 vs 0.875 (AmazonBedrock)",
+      "Price conflict for xai.grok-4.6-mantle-cache-read-tokens.us-gov-west-1.cache.read_input_per_1m: 0.33 vs 1.155 (AmazonBedrock)",
+      "Price conflict for xai.grok-4.6-mantle-cache-read-tokens.eu-central-2.cache.read_input_per_1m: 0.9625 vs 0.275 (AmazonBedrock)",
+      "Price conflict for xai.grok-4.6-mantle-cache-read-tokens.me-south-1.cache.read_input_per_1m: 0.275 vs 0.9625 (AmazonBedrock)",
+      "Price conflict for xai.grok-4.6-mantle-cache-read-tokens-global.ap-southeast-2.cache_global.read_input_per_1m: 0.25 vs 0.875 (AmazonBedrock)",
+      "Price conflict for xai.grok-4.6-mantle-cache-read-tokens-global.eu-north-1.cache_global.read_input_per_1m: 0.25 vs 0.875 (AmazonBedrock)",
+      "Price conflict for xai.grok-4.6-mantle-cache-read-tokens-global.ap-southeast-1.cache_global.read_input_per_1m: 0.875 vs 0.25 (AmazonBedrock)",
+      "Price conflict for xai.grok-4.6-mantle-cache-read-tokens-global.eu-south-1.cache_global.read_input_per_1m: 0.25 vs 0.875 (AmazonBedrock)",
+      "Price conflict for xai.grok-4.6-mantle-cache-read-tokens-global.us-gov-east-1.cache_global.read_input_per_1m: 0.3 vs 1.05 (AmazonBedrock)",
+      "Price conflict for xai.grok-4.6-mantle-cache-read-tokens.ap-east-1.cache.read_input_per_1m: 0.9625 vs 0.275 (AmazonBedrock)",
+      "Price conflict for xai.grok-4.6-mantle-cache-read-tokens.il-central-1.cache.read_input_per_1m: 0.9625 vs 0.275 (AmazonBedrock)",
+      "Price conflict for xai.grok-4.6-mantle-cache-read-tokens.us-gov-east-1.cache.read_input_per_1m: 0.33 vs 1.155 (AmazonBedrock)",
+      "Price conflict for xai.grok-4.6-mantle-cache-read-tokens.eu-central-1.cache.read_input_per_1m: 0.275 vs 0.9625 (AmazonBedrock)",
+      "Price conflict for xai.grok-4.6-mantle-cache-read-tokens-global.me-south-1.cache_global.read_input_per_1m: 0.25 vs 0.875 (AmazonBedrock)",
+      "Price conflict for xai.grok-4.6-mantle-cache-read-tokens-global.il-central-1.cache_global.read_input_per_1m: 0.25 vs 0.875 (AmazonBedrock)",
+      "Price conflict for xai.grok-4.6-mantle-cache-read-tokens-global.eu-west-2.cache_global.read_input_per_1m: 0.25 vs 0.875 (AmazonBedrock)",
+      "Price conflict for xai.grok-4.6-mantle-cache-read-tokens.ap-south-1.cache.read_input_per_1m: 0.9625 vs 0.275 (AmazonBedrock)",
+      "Price conflict for xai.grok-4.6-mantle-cache-read-tokens.ca-west-1.cache.read_input_per_1m: 0.9625 vs 0.275 (AmazonBedrock)",
+      "Price conflict for xai.grok-4.6-mantle-cache-read-tokens.eu-west-2.cache.read_input_per_1m: 0.275 vs 0.9625 (AmazonBedrock)",
+      "Price conflict for xai.grok-4.6-mantle-cache-read-tokens-global.eu-central-1.cache_global.read_input_per_1m: 0.875 vs 0.25 (AmazonBedrock)",
+      "Price conflict for xai.grok-4.6-mantle-cache-read-tokens.us-west-2.cache.read_input_per_1m: 0.275 vs 0.9625 (AmazonBedrock)",
+      "Price conflict for xai.grok-4.6-mantle-cache-read-tokens-global.us-east-1.cache_global.read_input_per_1m: 0.875 vs 0.25 (AmazonBedrock)",
+      "Price conflict for xai.grok-4.6-mantle-cache-read-tokens-global.sa-east-1.cache_global.read_input_per_1m: 0.875 vs 0.25 (AmazonBedrock)",
+      "Price conflict for xai.grok-4.6-mantle-cache-read-tokens.sa-east-1.cache.read_input_per_1m: 0.9625 vs 0.275 (AmazonBedrock)",
+      "Price conflict for xai.grok-4.6-mantle-cache-read-tokens-global.ap-southeast-6.cache_global.read_input_per_1m: 0.875 vs 0.25 (AmazonBedrock)",
+      "Auto-provisioned catalog entry from Price List: xai.grok-4.6-mantle-cache-read-tokens",
+      "Auto-provisioned catalog entry from Price List: xai.grok-4.6-mantle-cache-read-tokens-global",
+      "Auto-provisioned catalog entry from Price List: xai.grok-4.6-mantle"
     ]
   }
 }
