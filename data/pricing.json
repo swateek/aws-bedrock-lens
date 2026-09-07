@@ -2,12 +2,12 @@
   "meta": {
     "schema_version": "3.0",
     "source": "https://aws.amazon.com/bedrock/pricing/",
-    "last_scraped_at": "2026-08-31",
+    "last_scraped_at": "2026-09-07",
     "pricing_updated_at": "2026-08-31",
     "parser_version": "4",
-    "last_inventory_sync_at": "2026-08-31",
+    "last_inventory_sync_at": "2026-09-07",
     "models_known_to_aws": 143,
-    "last_price_list_at": "2026-08-31",
+    "last_price_list_at": "2026-09-07",
     "price_list_region": "us-east-1",
     "products": [
       {
@@ -19,7 +19,7 @@
       }
     ],
     "bedrock_offer_region": "us-east-1",
-    "last_bedrock_offer_at": "2026-08-31",
+    "last_bedrock_offer_at": "2026-09-07",
     "default_price_region": "us-east-1",
     "price_list_regions": [
       "af-south-1",
@@ -74049,7 +74049,9 @@
       "Price conflict for xai.grok-4.6-mantle-cache-read-tokens-global.ap-southeast-6.cache_global.read_input_per_1m: 0.875 vs 0.25 (AmazonBedrock)",
       "Auto-provisioned catalog entry from Price List: xai.grok-4.6-mantle-cache-read-tokens",
       "Auto-provisioned catalog entry from Price List: xai.grok-4.6-mantle-cache-read-tokens-global",
-      "Auto-provisioned catalog entry from Price List: xai.grok-4.6-mantle"
+      "Auto-provisioned catalog entry from Price List: xai.grok-4.6-mantle",
+      "Unmapped Price List service (add override): Claude Fable 5.1",
+      "Unmapped Price List service (add override): Claude Mythos 5.1"
     ]
   }
 }
