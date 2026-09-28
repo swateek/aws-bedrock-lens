@@ -2,12 +2,12 @@
   "meta": {
     "schema_version": "3.0",
     "source": "https://aws.amazon.com/bedrock/pricing/",
-    "last_scraped_at": "2026-09-21",
-    "pricing_updated_at": "2026-09-21",
+    "last_scraped_at": "2026-09-28",
+    "pricing_updated_at": "2026-09-28",
     "parser_version": "4",
-    "last_inventory_sync_at": "2026-09-21",
-    "models_known_to_aws": 143,
-    "last_price_list_at": "2026-09-21",
+    "last_inventory_sync_at": "2026-09-28",
+    "models_known_to_aws": 144,
+    "last_price_list_at": "2026-09-28",
     "price_list_region": "us-east-1",
     "products": [
       {
@@ -19,7 +19,7 @@
       }
     ],
     "bedrock_offer_region": "us-east-1",
-    "last_bedrock_offer_at": "2026-09-21",
+    "last_bedrock_offer_at": "2026-09-28",
     "default_price_region": "us-east-1",
     "price_list_regions": [
       "af-south-1",
@@ -26615,6 +26615,2914 @@
             "per_second": null,
             "per_search_unit": null
           }
+        }
+      }
+    },
+    {
+      "model_id": "anthropic.claude-opus-5-5",
+      "display_name": "Claude Opus 5.5",
+      "provider": "Anthropic",
+      "pricing_type": "token",
+      "pricing_source": "price_list",
+      "regions": [
+        "us-east-1"
+      ],
+      "on_demand": {
+        "input_per_1m": 4.4,
+        "output_per_1m": 22.0,
+        "standard_per_image": null,
+        "premium_per_image": null,
+        "per_second": null,
+        "per_search_unit": null
+      },
+      "context_window": null,
+      "modalities": [
+        "text"
+      ],
+      "notes": null,
+      "availability": "ga",
+      "alternate_ids": [],
+      "list_prices": {
+        "ca-west-1": {
+          "cache_global": {
+            "read_input_per_1m": 0.2,
+            "write_input_per_1m": 5.0,
+            "write_1h_input_per_1m": 8.0
+          },
+          "cache": {
+            "read_input_per_1m": 0.22,
+            "write_input_per_1m": 5.5,
+            "write_1h_input_per_1m": 8.8
+          },
+          "on_demand_global": {
+            "input_per_1m": 4.0,
+            "output_per_1m": 20.0,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          },
+          "on_demand": {
+            "input_per_1m": 4.4,
+            "output_per_1m": 22.0,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
+        },
+        "ap-southeast-1": {
+          "on_demand_global": {
+            "input_per_1m": 4.0,
+            "output_per_1m": 20.0,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          },
+          "cache_global": {
+            "read_input_per_1m": 0.2,
+            "write_input_per_1m": 5.0,
+            "write_1h_input_per_1m": 8.0
+          }
+        },
+        "us-gov-west-1": {
+          "on_demand": {
+            "input_per_1m": 4.8,
+            "output_per_1m": 24.0,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          },
+          "cache": {
+            "read_input_per_1m": 0.24,
+            "write_input_per_1m": 6.0,
+            "write_1h_input_per_1m": 9.6
+          }
+        },
+        "eu-central-2": {
+          "cache": {
+            "read_input_per_1m": 0.22,
+            "write_input_per_1m": 5.5,
+            "write_1h_input_per_1m": 8.8
+          },
+          "cache_global": {
+            "read_input_per_1m": 0.2,
+            "write_input_per_1m": 5.0,
+            "write_1h_input_per_1m": 8.0
+          },
+          "on_demand_global": {
+            "input_per_1m": 4.0,
+            "output_per_1m": 20.0,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          },
+          "on_demand": {
+            "input_per_1m": 4.4,
+            "output_per_1m": 22.0,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
+        },
+        "eu-west-1": {
+          "on_demand": {
+            "input_per_1m": 4.4,
+            "output_per_1m": 22.0,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          },
+          "cache_global": {
+            "read_input_per_1m": 0.2,
+            "write_input_per_1m": 5.0,
+            "write_1h_input_per_1m": 8.0
+          },
+          "on_demand_global": {
+            "input_per_1m": 4.0,
+            "output_per_1m": 20.0,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          },
+          "cache": {
+            "read_input_per_1m": 0.22,
+            "write_input_per_1m": 5.5,
+            "write_1h_input_per_1m": 8.8
+          }
+        },
+        "ca-central-1": {
+          "cache": {
+            "read_input_per_1m": 0.22,
+            "write_input_per_1m": 5.5,
+            "write_1h_input_per_1m": 8.8
+          },
+          "on_demand": {
+            "input_per_1m": 4.4,
+            "output_per_1m": 22.0,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          },
+          "cache_global": {
+            "read_input_per_1m": 0.2,
+            "write_input_per_1m": 5.0,
+            "write_1h_input_per_1m": 8.0
+          },
+          "on_demand_global": {
+            "input_per_1m": 4.0,
+            "output_per_1m": 20.0,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
+        },
+        "eu-central-1": {
+          "cache": {
+            "read_input_per_1m": 0.22,
+            "write_input_per_1m": 5.5,
+            "write_1h_input_per_1m": 8.8
+          },
+          "on_demand_global": {
+            "input_per_1m": 4.0,
+            "output_per_1m": 20.0,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          },
+          "on_demand": {
+            "input_per_1m": 4.4,
+            "output_per_1m": 22.0,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          },
+          "cache_global": {
+            "read_input_per_1m": 0.2,
+            "write_input_per_1m": 5.0,
+            "write_1h_input_per_1m": 8.0
+          }
+        },
+        "ap-northeast-3": {
+          "on_demand_global": {
+            "input_per_1m": 4.0,
+            "output_per_1m": 20.0,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          },
+          "cache_global": {
+            "read_input_per_1m": 0.2,
+            "write_input_per_1m": 5.0,
+            "write_1h_input_per_1m": 8.0
+          },
+          "cache": {
+            "read_input_per_1m": 0.22,
+            "write_input_per_1m": 5.5,
+            "write_1h_input_per_1m": 8.8
+          },
+          "on_demand": {
+            "input_per_1m": 4.4,
+            "output_per_1m": 22.0,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
+        },
+        "eu-west-2": {
+          "on_demand_global": {
+            "input_per_1m": 4.0,
+            "output_per_1m": 20.0,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          },
+          "cache_global": {
+            "read_input_per_1m": 0.2,
+            "write_input_per_1m": 5.0,
+            "write_1h_input_per_1m": 8.0
+          },
+          "on_demand": {
+            "input_per_1m": 4.4,
+            "output_per_1m": 22.0,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          },
+          "cache": {
+            "read_input_per_1m": 0.22,
+            "write_input_per_1m": 5.5,
+            "write_1h_input_per_1m": 8.8
+          }
+        },
+        "af-south-1": {
+          "cache_global": {
+            "read_input_per_1m": 0.2,
+            "write_input_per_1m": 5.0,
+            "write_1h_input_per_1m": 8.0
+          },
+          "on_demand_global": {
+            "input_per_1m": 4.0,
+            "output_per_1m": 20.0,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
+        },
+        "ap-northeast-1": {
+          "cache_global": {
+            "read_input_per_1m": 0.2,
+            "write_input_per_1m": 5.0,
+            "write_1h_input_per_1m": 8.0
+          },
+          "cache": {
+            "read_input_per_1m": 0.22,
+            "write_input_per_1m": 5.5,
+            "write_1h_input_per_1m": 8.8
+          },
+          "on_demand": {
+            "input_per_1m": 4.4,
+            "output_per_1m": 22.0,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          },
+          "on_demand_global": {
+            "input_per_1m": 4.0,
+            "output_per_1m": 20.0,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
+        },
+        "us-east-1": {
+          "on_demand_global": {
+            "input_per_1m": 4.0,
+            "output_per_1m": 20.0,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          },
+          "cache": {
+            "read_input_per_1m": 0.22,
+            "write_input_per_1m": 5.5,
+            "write_1h_input_per_1m": 8.8
+          },
+          "on_demand": {
+            "input_per_1m": 4.4,
+            "output_per_1m": 22.0,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          },
+          "cache_global": {
+            "read_input_per_1m": 0.2,
+            "write_input_per_1m": 5.0,
+            "write_1h_input_per_1m": 8.0
+          }
+        },
+        "ap-south-2": {
+          "cache_global": {
+            "read_input_per_1m": 0.2,
+            "write_input_per_1m": 5.0,
+            "write_1h_input_per_1m": 8.0
+          },
+          "on_demand_global": {
+            "input_per_1m": 4.0,
+            "output_per_1m": 20.0,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
+        },
+        "eu-south-1": {
+          "on_demand_global": {
+            "input_per_1m": 4.0,
+            "output_per_1m": 20.0,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          },
+          "cache_global": {
+            "read_input_per_1m": 0.2,
+            "write_input_per_1m": 5.0,
+            "write_1h_input_per_1m": 8.0
+          },
+          "cache": {
+            "read_input_per_1m": 0.22,
+            "write_input_per_1m": 5.5,
+            "write_1h_input_per_1m": 8.8
+          },
+          "on_demand": {
+            "input_per_1m": 4.4,
+            "output_per_1m": 22.0,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
+        },
+        "eu-west-3": {
+          "cache_global": {
+            "read_input_per_1m": 0.2,
+            "write_input_per_1m": 5.0,
+            "write_1h_input_per_1m": 8.0
+          },
+          "cache": {
+            "read_input_per_1m": 0.22,
+            "write_input_per_1m": 5.5,
+            "write_1h_input_per_1m": 8.8
+          },
+          "on_demand": {
+            "input_per_1m": 4.4,
+            "output_per_1m": 22.0,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          },
+          "on_demand_global": {
+            "input_per_1m": 4.0,
+            "output_per_1m": 20.0,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
+        },
+        "sa-east-1": {
+          "cache_global": {
+            "read_input_per_1m": 0.2,
+            "write_input_per_1m": 5.0,
+            "write_1h_input_per_1m": 8.0
+          },
+          "on_demand_global": {
+            "input_per_1m": 4.0,
+            "output_per_1m": 20.0,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
+        },
+        "eu-south-2": {
+          "cache": {
+            "read_input_per_1m": 0.22,
+            "write_input_per_1m": 5.5,
+            "write_1h_input_per_1m": 8.8
+          },
+          "on_demand": {
+            "input_per_1m": 4.4,
+            "output_per_1m": 22.0,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          },
+          "on_demand_global": {
+            "input_per_1m": 4.0,
+            "output_per_1m": 20.0,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          },
+          "cache_global": {
+            "read_input_per_1m": 0.2,
+            "write_input_per_1m": 5.0,
+            "write_1h_input_per_1m": 8.0
+          }
+        },
+        "mx-central-1": {
+          "cache_global": {
+            "read_input_per_1m": 0.2,
+            "write_input_per_1m": 5.0,
+            "write_1h_input_per_1m": 8.0
+          },
+          "on_demand_global": {
+            "input_per_1m": 4.0,
+            "output_per_1m": 20.0,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
+        },
+        "us-west-1": {
+          "cache": {
+            "read_input_per_1m": 0.22,
+            "write_input_per_1m": 5.5,
+            "write_1h_input_per_1m": 8.8
+          },
+          "on_demand": {
+            "input_per_1m": 4.4,
+            "output_per_1m": 22.0,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          },
+          "cache_global": {
+            "read_input_per_1m": 0.2,
+            "write_input_per_1m": 5.0,
+            "write_1h_input_per_1m": 8.0
+          },
+          "on_demand_global": {
+            "input_per_1m": 4.0,
+            "output_per_1m": 20.0,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
+        },
+        "us-east-2": {
+          "cache_global": {
+            "read_input_per_1m": 0.2,
+            "write_input_per_1m": 5.0,
+            "write_1h_input_per_1m": 8.0
+          },
+          "on_demand": {
+            "input_per_1m": 4.4,
+            "output_per_1m": 22.0,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          },
+          "cache": {
+            "read_input_per_1m": 0.22,
+            "write_input_per_1m": 5.5,
+            "write_1h_input_per_1m": 8.8
+          },
+          "on_demand_global": {
+            "input_per_1m": 4.0,
+            "output_per_1m": 20.0,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
+        },
+        "me-central-1": {
+          "on_demand_global": {
+            "input_per_1m": 4.0,
+            "output_per_1m": 20.0,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          },
+          "cache_global": {
+            "read_input_per_1m": 0.2,
+            "write_input_per_1m": 5.0,
+            "write_1h_input_per_1m": 8.0
+          }
+        },
+        "ap-southeast-6": {
+          "on_demand_global": {
+            "input_per_1m": 4.0,
+            "output_per_1m": 20.0,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          },
+          "cache_global": {
+            "read_input_per_1m": 0.2,
+            "write_input_per_1m": 5.0,
+            "write_1h_input_per_1m": 8.0
+          }
+        },
+        "ap-southeast-2": {
+          "cache": {
+            "read_input_per_1m": 0.22,
+            "write_input_per_1m": 5.5,
+            "write_1h_input_per_1m": 8.8
+          },
+          "on_demand": {
+            "input_per_1m": 4.4,
+            "output_per_1m": 22.0,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          },
+          "cache_global": {
+            "read_input_per_1m": 0.2,
+            "write_input_per_1m": 5.0,
+            "write_1h_input_per_1m": 8.0
+          },
+          "on_demand_global": {
+            "input_per_1m": 4.0,
+            "output_per_1m": 20.0,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
+        },
+        "ap-east-2": {
+          "on_demand_global": {
+            "input_per_1m": 4.0,
+            "output_per_1m": 20.0,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          },
+          "cache_global": {
+            "read_input_per_1m": 0.2,
+            "write_input_per_1m": 5.0,
+            "write_1h_input_per_1m": 8.0
+          }
+        },
+        "us-gov-east-1": {
+          "cache": {
+            "read_input_per_1m": 0.24,
+            "write_input_per_1m": 6.0,
+            "write_1h_input_per_1m": 9.6
+          },
+          "on_demand": {
+            "input_per_1m": 4.8,
+            "output_per_1m": 24.0,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
+        },
+        "ap-southeast-3": {
+          "cache_global": {
+            "read_input_per_1m": 0.2,
+            "write_input_per_1m": 5.0,
+            "write_1h_input_per_1m": 8.0
+          },
+          "on_demand_global": {
+            "input_per_1m": 4.0,
+            "output_per_1m": 20.0,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
+        },
+        "ap-southeast-5": {
+          "on_demand_global": {
+            "input_per_1m": 4.0,
+            "output_per_1m": 20.0,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          },
+          "cache_global": {
+            "read_input_per_1m": 0.2,
+            "write_input_per_1m": 5.0,
+            "write_1h_input_per_1m": 8.0
+          }
+        },
+        "il-central-1": {
+          "on_demand_global": {
+            "input_per_1m": 4.0,
+            "output_per_1m": 20.0,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          },
+          "cache_global": {
+            "read_input_per_1m": 0.2,
+            "write_input_per_1m": 5.0,
+            "write_1h_input_per_1m": 8.0
+          }
+        },
+        "us-west-2": {
+          "cache": {
+            "read_input_per_1m": 0.22,
+            "write_input_per_1m": 5.5,
+            "write_1h_input_per_1m": 8.8
+          },
+          "on_demand_global": {
+            "input_per_1m": 4.0,
+            "output_per_1m": 20.0,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          },
+          "on_demand": {
+            "input_per_1m": 4.4,
+            "output_per_1m": 22.0,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          },
+          "cache_global": {
+            "read_input_per_1m": 0.2,
+            "write_input_per_1m": 5.0,
+            "write_1h_input_per_1m": 8.0
+          }
+        },
+        "ap-southeast-4": {
+          "cache": {
+            "read_input_per_1m": 0.22,
+            "write_input_per_1m": 5.5,
+            "write_1h_input_per_1m": 8.8
+          },
+          "cache_global": {
+            "read_input_per_1m": 0.2,
+            "write_input_per_1m": 5.0,
+            "write_1h_input_per_1m": 8.0
+          },
+          "on_demand": {
+            "input_per_1m": 4.4,
+            "output_per_1m": 22.0,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          },
+          "on_demand_global": {
+            "input_per_1m": 4.0,
+            "output_per_1m": 20.0,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
+        },
+        "ap-northeast-2": {
+          "cache_global": {
+            "read_input_per_1m": 0.2,
+            "write_input_per_1m": 5.0,
+            "write_1h_input_per_1m": 8.0
+          },
+          "on_demand_global": {
+            "input_per_1m": 4.0,
+            "output_per_1m": 20.0,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
+        },
+        "eu-north-1": {
+          "on_demand": {
+            "input_per_1m": 4.4,
+            "output_per_1m": 22.0,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          },
+          "cache": {
+            "read_input_per_1m": 0.22,
+            "write_input_per_1m": 5.5,
+            "write_1h_input_per_1m": 8.8
+          },
+          "cache_global": {
+            "read_input_per_1m": 0.2,
+            "write_input_per_1m": 5.0,
+            "write_1h_input_per_1m": 8.0
+          },
+          "on_demand_global": {
+            "input_per_1m": 4.0,
+            "output_per_1m": 20.0,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
+        },
+        "ap-southeast-7": {
+          "cache_global": {
+            "read_input_per_1m": 0.2,
+            "write_input_per_1m": 5.0,
+            "write_1h_input_per_1m": 8.0
+          },
+          "on_demand_global": {
+            "input_per_1m": 4.0,
+            "output_per_1m": 20.0,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
+        },
+        "ap-south-1": {
+          "cache_global": {
+            "read_input_per_1m": 0.2,
+            "write_input_per_1m": 5.0,
+            "write_1h_input_per_1m": 8.0
+          },
+          "on_demand_global": {
+            "input_per_1m": 4.0,
+            "output_per_1m": 20.0,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          }
+        },
+        "me-south-1": {
+          "on_demand_global": {
+            "input_per_1m": 4.0,
+            "output_per_1m": 20.0,
+            "standard_per_image": null,
+            "premium_per_image": null,
+            "per_second": null,
+            "per_search_unit": null
+          },
+          "cache_global": {
+            "read_input_per_1m": 0.2,
+            "write_input_per_1m": 5.0,
+            "write_1h_input_per_1m": 8.0
+          }
+        }
+      },
+      "price_provenance": {
+        "ca-west-1.cache_global.write_1h_input_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "CAN2-MP:CAN2_cache_write_tokens_1h_global_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "MN32V2Y3KP2CC7HE",
+          "region": "ca-west-1",
+          "tier": "cache_global"
+        },
+        "ca-west-1.cache_global.write_input_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "CAN2-MP:CAN2_cache_write_tokens_global_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "HZ6A56YU6C9ZQW7W",
+          "region": "ca-west-1",
+          "tier": "cache_global"
+        },
+        "ca-west-1.cache_global.read_input_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "CAN2-MP:CAN2_cache_read_tokens_global_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "GD6A5Z8HK6BPJTQV",
+          "region": "ca-west-1",
+          "tier": "cache_global"
+        },
+        "ca-west-1.cache.write_1h_input_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "CAN2-MP:CAN2_cache_write_tokens_1h_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "TMPDK2HQ44XHK2VQ",
+          "region": "ca-west-1",
+          "tier": "cache"
+        },
+        "ca-west-1.cache.read_input_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "CAN2-MP:CAN2_cache_read_tokens_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "FAXP7X29U93QYSS7",
+          "region": "ca-west-1",
+          "tier": "cache"
+        },
+        "ca-west-1.cache.write_input_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "CAN2-MP:CAN2_cache_write_tokens_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "PZ6WWYEHPQCGVHJB",
+          "region": "ca-west-1",
+          "tier": "cache"
+        },
+        "ca-west-1.on_demand_global.input_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "CAN2-MP:CAN2_input_tokens_global_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "YJAP66Y3MXZFHNEK",
+          "region": "ca-west-1",
+          "tier": "on_demand_global"
+        },
+        "ca-west-1.on_demand_global.output_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "CAN2-MP:CAN2_output_tokens_global_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "TPJWHEA2AKHJPA5J",
+          "region": "ca-west-1",
+          "tier": "on_demand_global"
+        },
+        "ca-west-1.on_demand.input_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "CAN2-MP:CAN2_input_tokens_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "CGWX534J3ZYUGPFG",
+          "region": "ca-west-1",
+          "tier": "on_demand"
+        },
+        "ca-west-1.on_demand.output_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "CAN2-MP:CAN2_output_tokens_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "GZ3ZUR7EX5W7NBBY",
+          "region": "ca-west-1",
+          "tier": "on_demand"
+        },
+        "ap-southeast-1.on_demand_global.output_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "APS1-MP:APS1_output_tokens_global_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "BCMSU5Y582CHQ6WE",
+          "region": "ap-southeast-1",
+          "tier": "on_demand_global"
+        },
+        "ap-southeast-1.on_demand_global.input_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "APS1-MP:APS1_input_tokens_global_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "95GYPRMPAHQNQXQX",
+          "region": "ap-southeast-1",
+          "tier": "on_demand_global"
+        },
+        "ap-southeast-1.cache_global.write_input_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "APS1-MP:APS1_cache_write_tokens_global_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "XC8KTAFGR68UF4RM",
+          "region": "ap-southeast-1",
+          "tier": "cache_global"
+        },
+        "ap-southeast-1.cache_global.read_input_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "APS1-MP:APS1_cache_read_tokens_global_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "Q2EZTVAAH4EEYKSZ",
+          "region": "ap-southeast-1",
+          "tier": "cache_global"
+        },
+        "ap-southeast-1.cache_global.write_1h_input_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "APS1-MP:APS1_cache_write_tokens_1h_global_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "SQYDJSQK8WNRJEZM",
+          "region": "ap-southeast-1",
+          "tier": "cache_global"
+        },
+        "us-gov-west-1.on_demand.input_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "UGW1-MP:UGW1_input_tokens_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "BJMG6E2FHSVZTKPN",
+          "region": "us-gov-west-1",
+          "tier": "on_demand"
+        },
+        "us-gov-west-1.on_demand.output_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "UGW1-MP:UGW1_output_tokens_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "4N9U8NPMQVEVJ5GB",
+          "region": "us-gov-west-1",
+          "tier": "on_demand"
+        },
+        "us-gov-west-1.cache.write_input_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "UGW1-MP:UGW1_cache_write_tokens_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "463RKNFFS9KHQMJR",
+          "region": "us-gov-west-1",
+          "tier": "cache"
+        },
+        "us-gov-west-1.cache.write_1h_input_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "UGW1-MP:UGW1_cache_write_tokens_1h_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "3FZFSMNJPYU6SYFX",
+          "region": "us-gov-west-1",
+          "tier": "cache"
+        },
+        "us-gov-west-1.cache.read_input_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "UGW1-MP:UGW1_cache_read_tokens_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "V329C92UXKQSSS6G",
+          "region": "us-gov-west-1",
+          "tier": "cache"
+        },
+        "eu-central-2.cache.read_input_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "EUC2-MP:EUC2_cache_read_tokens_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "RT9Q8Y2QPF4DDVYW",
+          "region": "eu-central-2",
+          "tier": "cache"
+        },
+        "eu-central-2.cache.write_1h_input_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "EUC2-MP:EUC2_cache_write_tokens_1h_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "NBRC8N2RAY3RE44W",
+          "region": "eu-central-2",
+          "tier": "cache"
+        },
+        "eu-central-2.cache.write_input_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "EUC2-MP:EUC2_cache_write_tokens_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "TBM66YS7VFC8KWZZ",
+          "region": "eu-central-2",
+          "tier": "cache"
+        },
+        "eu-central-2.cache_global.read_input_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "EUC2-MP:EUC2_cache_read_tokens_global_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "3XK36M8ST2T7TGYP",
+          "region": "eu-central-2",
+          "tier": "cache_global"
+        },
+        "eu-central-2.cache_global.write_input_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "EUC2-MP:EUC2_cache_write_tokens_global_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "FF94BXAEA2P8NW37",
+          "region": "eu-central-2",
+          "tier": "cache_global"
+        },
+        "eu-central-2.cache_global.write_1h_input_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "EUC2-MP:EUC2_cache_write_tokens_1h_global_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "X65PWCFDMZFZ7X8J",
+          "region": "eu-central-2",
+          "tier": "cache_global"
+        },
+        "eu-central-2.on_demand_global.output_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "EUC2-MP:EUC2_output_tokens_global_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "FB8G27EBFZVMYZV5",
+          "region": "eu-central-2",
+          "tier": "on_demand_global"
+        },
+        "eu-central-2.on_demand_global.input_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "EUC2-MP:EUC2_input_tokens_global_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "5798Q8VX9RZGBJNR",
+          "region": "eu-central-2",
+          "tier": "on_demand_global"
+        },
+        "eu-central-2.on_demand.output_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "EUC2-MP:EUC2_output_tokens_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "RKR8UNQMBV3J87SB",
+          "region": "eu-central-2",
+          "tier": "on_demand"
+        },
+        "eu-central-2.on_demand.input_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "EUC2-MP:EUC2_input_tokens_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "BT49FGVA4GF6M7Z6",
+          "region": "eu-central-2",
+          "tier": "on_demand"
+        },
+        "eu-west-1.on_demand.input_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "EU-MP:EU_input_tokens_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "HR22RZ26N32K4VEP",
+          "region": "eu-west-1",
+          "tier": "on_demand"
+        },
+        "eu-west-1.on_demand.output_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "EU-MP:EU_output_tokens_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "J9H9YYHFRTMQZHGW",
+          "region": "eu-west-1",
+          "tier": "on_demand"
+        },
+        "eu-west-1.cache_global.write_input_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "EU-MP:EU_cache_write_tokens_global_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "QCCJBEF9WWEHPD5X",
+          "region": "eu-west-1",
+          "tier": "cache_global"
+        },
+        "eu-west-1.cache_global.write_1h_input_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "EU-MP:EU_cache_write_tokens_1h_global_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "ZU99N4NRRUCMQHRU",
+          "region": "eu-west-1",
+          "tier": "cache_global"
+        },
+        "eu-west-1.cache_global.read_input_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "EU-MP:EU_cache_read_tokens_global_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "AESCYPGQMNVJPUBW",
+          "region": "eu-west-1",
+          "tier": "cache_global"
+        },
+        "eu-west-1.on_demand_global.output_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "EU-MP:EU_output_tokens_global_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "DRDVWUQ3VA6R3R92",
+          "region": "eu-west-1",
+          "tier": "on_demand_global"
+        },
+        "eu-west-1.on_demand_global.input_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "EU-MP:EU_input_tokens_global_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "XQGQ2RXTKAAN4NJT",
+          "region": "eu-west-1",
+          "tier": "on_demand_global"
+        },
+        "eu-west-1.cache.read_input_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "EU-MP:EU_cache_read_tokens_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "GBM5TB27PQJCGW8T",
+          "region": "eu-west-1",
+          "tier": "cache"
+        },
+        "eu-west-1.cache.write_input_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "EU-MP:EU_cache_write_tokens_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "REG3HXZZDSK9UVZ6",
+          "region": "eu-west-1",
+          "tier": "cache"
+        },
+        "eu-west-1.cache.write_1h_input_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "EU-MP:EU_cache_write_tokens_1h_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "NXAZZFBS4PZ7CBK7",
+          "region": "eu-west-1",
+          "tier": "cache"
+        },
+        "ca-central-1.cache.read_input_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "CAN1-MP:CAN1_cache_read_tokens_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "NU2A54WKXR42YV9H",
+          "region": "ca-central-1",
+          "tier": "cache"
+        },
+        "ca-central-1.cache.write_input_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "CAN1-MP:CAN1_cache_write_tokens_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "7YNWUQCYF7HW2N67",
+          "region": "ca-central-1",
+          "tier": "cache"
+        },
+        "ca-central-1.cache.write_1h_input_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "CAN1-MP:CAN1_cache_write_tokens_1h_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "VKVYWSKWTAH3KP9N",
+          "region": "ca-central-1",
+          "tier": "cache"
+        },
+        "ca-central-1.on_demand.input_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "CAN1-MP:CAN1_input_tokens_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "UVACKMJR7UDPHWN6",
+          "region": "ca-central-1",
+          "tier": "on_demand"
+        },
+        "ca-central-1.on_demand.output_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "CAN1-MP:CAN1_output_tokens_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "MXMKPYVSQBNYCGAF",
+          "region": "ca-central-1",
+          "tier": "on_demand"
+        },
+        "ca-central-1.cache_global.write_input_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "CAN1-MP:CAN1_cache_write_tokens_global_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "5HY39D3YETS6QWYY",
+          "region": "ca-central-1",
+          "tier": "cache_global"
+        },
+        "ca-central-1.cache_global.write_1h_input_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "CAN1-MP:CAN1_cache_write_tokens_1h_global_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "G7BNJSFDVVCWDMV9",
+          "region": "ca-central-1",
+          "tier": "cache_global"
+        },
+        "ca-central-1.cache_global.read_input_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "CAN1-MP:CAN1_cache_read_tokens_global_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "5GVBNQ2X8CJ4Y5RV",
+          "region": "ca-central-1",
+          "tier": "cache_global"
+        },
+        "ca-central-1.on_demand_global.output_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "CAN1-MP:CAN1_output_tokens_global_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "KHSERCGXFTTZPGA3",
+          "region": "ca-central-1",
+          "tier": "on_demand_global"
+        },
+        "ca-central-1.on_demand_global.input_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "CAN1-MP:CAN1_input_tokens_global_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "9BNARWRGJ9EBJMK4",
+          "region": "ca-central-1",
+          "tier": "on_demand_global"
+        },
+        "eu-central-1.cache.read_input_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "EUC1-MP:EUC1_cache_read_tokens_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "YJG4Z345HY4X3AFG",
+          "region": "eu-central-1",
+          "tier": "cache"
+        },
+        "eu-central-1.cache.write_1h_input_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "EUC1-MP:EUC1_cache_write_tokens_1h_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "SC725Z3XXYWXGFH6",
+          "region": "eu-central-1",
+          "tier": "cache"
+        },
+        "eu-central-1.cache.write_input_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "EUC1-MP:EUC1_cache_write_tokens_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "62GAQWHUB8J6PSVS",
+          "region": "eu-central-1",
+          "tier": "cache"
+        },
+        "eu-central-1.on_demand_global.output_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "EUC1-MP:EUC1_output_tokens_global_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "VM9W5SBWVTH6SYTS",
+          "region": "eu-central-1",
+          "tier": "on_demand_global"
+        },
+        "eu-central-1.on_demand_global.input_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "EUC1-MP:EUC1_input_tokens_global_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "3RRD6FCG8GWPXXE3",
+          "region": "eu-central-1",
+          "tier": "on_demand_global"
+        },
+        "eu-central-1.on_demand.output_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "EUC1-MP:EUC1_output_tokens_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "A9X6P82C8KXSENV4",
+          "region": "eu-central-1",
+          "tier": "on_demand"
+        },
+        "eu-central-1.on_demand.input_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "EUC1-MP:EUC1_input_tokens_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "VJ9Q7TZV6TYAHYR3",
+          "region": "eu-central-1",
+          "tier": "on_demand"
+        },
+        "eu-central-1.cache_global.write_1h_input_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "EUC1-MP:EUC1_cache_write_tokens_1h_global_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "FY24HC6NGZJVYMYY",
+          "region": "eu-central-1",
+          "tier": "cache_global"
+        },
+        "eu-central-1.cache_global.write_input_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "EUC1-MP:EUC1_cache_write_tokens_global_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "E5GCV2BGQCAH72FQ",
+          "region": "eu-central-1",
+          "tier": "cache_global"
+        },
+        "eu-central-1.cache_global.read_input_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "EUC1-MP:EUC1_cache_read_tokens_global_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "7HP9RCBHNNHSQTUV",
+          "region": "eu-central-1",
+          "tier": "cache_global"
+        },
+        "ap-northeast-3.on_demand_global.input_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "APN3-MP:APN3_input_tokens_global_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "U4M3SGQJ9NSFKN5T",
+          "region": "ap-northeast-3",
+          "tier": "on_demand_global"
+        },
+        "ap-northeast-3.on_demand_global.output_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "APN3-MP:APN3_output_tokens_global_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "DNNH6WYEAK8JFA95",
+          "region": "ap-northeast-3",
+          "tier": "on_demand_global"
+        },
+        "ap-northeast-3.cache_global.write_input_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "APN3-MP:APN3_cache_write_tokens_global_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "8H6TE6G6QD7U4U8T",
+          "region": "ap-northeast-3",
+          "tier": "cache_global"
+        },
+        "ap-northeast-3.cache_global.write_1h_input_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "APN3-MP:APN3_cache_write_tokens_1h_global_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "B3GG684EZPNCZDK7",
+          "region": "ap-northeast-3",
+          "tier": "cache_global"
+        },
+        "ap-northeast-3.cache_global.read_input_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "APN3-MP:APN3_cache_read_tokens_global_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "2WA7J8W7GNWP9A3R",
+          "region": "ap-northeast-3",
+          "tier": "cache_global"
+        },
+        "ap-northeast-3.cache.write_input_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "APN3-MP:APN3_cache_write_tokens_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "6NPKJ932TUPHB98E",
+          "region": "ap-northeast-3",
+          "tier": "cache"
+        },
+        "ap-northeast-3.cache.write_1h_input_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "APN3-MP:APN3_cache_write_tokens_1h_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "BAYMFUS6CZ6WKDQY",
+          "region": "ap-northeast-3",
+          "tier": "cache"
+        },
+        "ap-northeast-3.cache.read_input_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "APN3-MP:APN3_cache_read_tokens_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "9XVRN6Y66QUS38QS",
+          "region": "ap-northeast-3",
+          "tier": "cache"
+        },
+        "ap-northeast-3.on_demand.input_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "APN3-MP:APN3_input_tokens_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "W35SZYD393HM5ASS",
+          "region": "ap-northeast-3",
+          "tier": "on_demand"
+        },
+        "ap-northeast-3.on_demand.output_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "APN3-MP:APN3_output_tokens_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "R9R7PRN8DK659H4K",
+          "region": "ap-northeast-3",
+          "tier": "on_demand"
+        },
+        "eu-west-2.on_demand_global.input_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "EUW2-MP:EUW2_input_tokens_global_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "U4URRU43GVTYNT9W",
+          "region": "eu-west-2",
+          "tier": "on_demand_global"
+        },
+        "eu-west-2.on_demand_global.output_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "EUW2-MP:EUW2_output_tokens_global_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "98JQS5XJA7JVMW6E",
+          "region": "eu-west-2",
+          "tier": "on_demand_global"
+        },
+        "eu-west-2.cache_global.write_1h_input_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "EUW2-MP:EUW2_cache_write_tokens_1h_global_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "6WMMMRXAQK4VDGCJ",
+          "region": "eu-west-2",
+          "tier": "cache_global"
+        },
+        "eu-west-2.cache_global.write_input_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "EUW2-MP:EUW2_cache_write_tokens_global_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "VTX2UY64GYZ2JTZU",
+          "region": "eu-west-2",
+          "tier": "cache_global"
+        },
+        "eu-west-2.cache_global.read_input_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "EUW2-MP:EUW2_cache_read_tokens_global_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "EPE766WXH3F2YT44",
+          "region": "eu-west-2",
+          "tier": "cache_global"
+        },
+        "eu-west-2.on_demand.input_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "EUW2-MP:EUW2_input_tokens_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "8FEFMW4C3G5P7UDM",
+          "region": "eu-west-2",
+          "tier": "on_demand"
+        },
+        "eu-west-2.on_demand.output_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "EUW2-MP:EUW2_output_tokens_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "FYD5W252WGJQJTYF",
+          "region": "eu-west-2",
+          "tier": "on_demand"
+        },
+        "eu-west-2.cache.write_1h_input_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "EUW2-MP:EUW2_cache_write_tokens_1h_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "M99CDANBFCNRDPPJ",
+          "region": "eu-west-2",
+          "tier": "cache"
+        },
+        "eu-west-2.cache.read_input_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "EUW2-MP:EUW2_cache_read_tokens_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "QHT4G9JSJBKFKZTH",
+          "region": "eu-west-2",
+          "tier": "cache"
+        },
+        "eu-west-2.cache.write_input_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "EUW2-MP:EUW2_cache_write_tokens_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "4HW2CZ8RHMA9UQEK",
+          "region": "eu-west-2",
+          "tier": "cache"
+        },
+        "af-south-1.cache_global.read_input_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "AFS1-MP:AFS1_cache_read_tokens_global_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "B5DQU2GCH495EY4A",
+          "region": "af-south-1",
+          "tier": "cache_global"
+        },
+        "af-south-1.cache_global.write_input_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "AFS1-MP:AFS1_cache_write_tokens_global_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "VFSJSQJN3S5MZF39",
+          "region": "af-south-1",
+          "tier": "cache_global"
+        },
+        "af-south-1.cache_global.write_1h_input_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "AFS1-MP:AFS1_cache_write_tokens_1h_global_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "YTS5ZVY65R3KW45P",
+          "region": "af-south-1",
+          "tier": "cache_global"
+        },
+        "af-south-1.on_demand_global.input_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "AFS1-MP:AFS1_input_tokens_global_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "FNXGYQNTTE6Q2PGK",
+          "region": "af-south-1",
+          "tier": "on_demand_global"
+        },
+        "af-south-1.on_demand_global.output_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "AFS1-MP:AFS1_output_tokens_global_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "F7AGKV757HCVUX6Z",
+          "region": "af-south-1",
+          "tier": "on_demand_global"
+        },
+        "ap-northeast-1.cache_global.write_input_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "APN1-MP:APN1_cache_write_tokens_global_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "9JTRXM8ZW7VJ3AJD",
+          "region": "ap-northeast-1",
+          "tier": "cache_global"
+        },
+        "ap-northeast-1.cache_global.read_input_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "APN1-MP:APN1_cache_read_tokens_global_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "9SYGMZ8X3VV7FGMR",
+          "region": "ap-northeast-1",
+          "tier": "cache_global"
+        },
+        "ap-northeast-1.cache_global.write_1h_input_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "APN1-MP:APN1_cache_write_tokens_1h_global_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "YPTS5XMKYJ54P4RY",
+          "region": "ap-northeast-1",
+          "tier": "cache_global"
+        },
+        "ap-northeast-1.cache.write_1h_input_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "APN1-MP:APN1_cache_write_tokens_1h_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "GQ57BDHZG6FXPQA9",
+          "region": "ap-northeast-1",
+          "tier": "cache"
+        },
+        "ap-northeast-1.cache.read_input_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "APN1-MP:APN1_cache_read_tokens_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "SCUDMKP3UJ7MRZXU",
+          "region": "ap-northeast-1",
+          "tier": "cache"
+        },
+        "ap-northeast-1.cache.write_input_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "APN1-MP:APN1_cache_write_tokens_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "PZ6MBFKJYTYBERY8",
+          "region": "ap-northeast-1",
+          "tier": "cache"
+        },
+        "ap-northeast-1.on_demand.input_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "APN1-MP:APN1_input_tokens_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "4UM7VQEX96S43UHB",
+          "region": "ap-northeast-1",
+          "tier": "on_demand"
+        },
+        "ap-northeast-1.on_demand.output_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "APN1-MP:APN1_output_tokens_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "ZC2N8WCN3YQ986H6",
+          "region": "ap-northeast-1",
+          "tier": "on_demand"
+        },
+        "ap-northeast-1.on_demand_global.input_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "APN1-MP:APN1_input_tokens_global_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "FDBTJ5U53MRGXPJB",
+          "region": "ap-northeast-1",
+          "tier": "on_demand_global"
+        },
+        "ap-northeast-1.on_demand_global.output_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "APN1-MP:APN1_output_tokens_global_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "8J4V4TEURQQTVD9M",
+          "region": "ap-northeast-1",
+          "tier": "on_demand_global"
+        },
+        "us-east-1.on_demand_global.input_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "USE1-MP:USE1_input_tokens_global_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "KVG5FBPDJPKF5TJY",
+          "region": "us-east-1",
+          "tier": "on_demand_global"
+        },
+        "us-east-1.on_demand_global.output_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "USE1-MP:USE1_output_tokens_global_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "MWH4TD2A4D5CEBAP",
+          "region": "us-east-1",
+          "tier": "on_demand_global"
+        },
+        "us-east-1.cache.read_input_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "USE1-MP:USE1_cache_read_tokens_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "E5RCDXA3KP96TBAZ",
+          "region": "us-east-1",
+          "tier": "cache"
+        },
+        "us-east-1.cache.write_1h_input_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "USE1-MP:USE1_cache_write_tokens_1h_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "U7B243ZXRE6BPZGB",
+          "region": "us-east-1",
+          "tier": "cache"
+        },
+        "us-east-1.cache.write_input_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "USE1-MP:USE1_cache_write_tokens_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "WXH7FJ56PSA2AT5S",
+          "region": "us-east-1",
+          "tier": "cache"
+        },
+        "us-east-1.on_demand.output_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "USE1-MP:USE1_output_tokens_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "FCRGDQ596BG7EQKH",
+          "region": "us-east-1",
+          "tier": "on_demand"
+        },
+        "us-east-1.on_demand.input_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "USE1-MP:USE1_input_tokens_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "J9QFZT8WAQABG9ZX",
+          "region": "us-east-1",
+          "tier": "on_demand"
+        },
+        "us-east-1.cache_global.write_1h_input_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "USE1-MP:USE1_cache_write_tokens_1h_global_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "FBQZ4TZTVHHQMRTD",
+          "region": "us-east-1",
+          "tier": "cache_global"
+        },
+        "us-east-1.cache_global.read_input_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "USE1-MP:USE1_cache_read_tokens_global_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "QT3QZUNUXV325ZDF",
+          "region": "us-east-1",
+          "tier": "cache_global"
+        },
+        "us-east-1.cache_global.write_input_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "USE1-MP:USE1_cache_write_tokens_global_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "RVG5HJ3PZEQYVC74",
+          "region": "us-east-1",
+          "tier": "cache_global"
+        },
+        "ap-south-2.cache_global.write_1h_input_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "APS5-MP:APS5_cache_write_tokens_1h_global_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "6VYX4W7D5W4MQ2EF",
+          "region": "ap-south-2",
+          "tier": "cache_global"
+        },
+        "ap-south-2.cache_global.read_input_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "APS5-MP:APS5_cache_read_tokens_global_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "29ZGHQKBTQ79MTYQ",
+          "region": "ap-south-2",
+          "tier": "cache_global"
+        },
+        "ap-south-2.cache_global.write_input_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "APS5-MP:APS5_cache_write_tokens_global_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "2GEP72ESRDYH837G",
+          "region": "ap-south-2",
+          "tier": "cache_global"
+        },
+        "ap-south-2.on_demand_global.output_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "APS5-MP:APS5_output_tokens_global_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "6CDHQU5EUP5MXD65",
+          "region": "ap-south-2",
+          "tier": "on_demand_global"
+        },
+        "ap-south-2.on_demand_global.input_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "APS5-MP:APS5_input_tokens_global_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "J4D5DB77ZN2NHG2T",
+          "region": "ap-south-2",
+          "tier": "on_demand_global"
+        },
+        "eu-south-1.on_demand_global.input_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "EUS1-MP:EUS1_input_tokens_global_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "CNJQSBXBCND9SRPK",
+          "region": "eu-south-1",
+          "tier": "on_demand_global"
+        },
+        "eu-south-1.on_demand_global.output_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "EUS1-MP:EUS1_output_tokens_global_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "ER89RFGWK7Z226H9",
+          "region": "eu-south-1",
+          "tier": "on_demand_global"
+        },
+        "eu-south-1.cache_global.write_input_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "EUS1-MP:EUS1_cache_write_tokens_global_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "VMK4YCR2CEYD8TRH",
+          "region": "eu-south-1",
+          "tier": "cache_global"
+        },
+        "eu-south-1.cache_global.read_input_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "EUS1-MP:EUS1_cache_read_tokens_global_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "P64RFPSZUGCDGUX9",
+          "region": "eu-south-1",
+          "tier": "cache_global"
+        },
+        "eu-south-1.cache_global.write_1h_input_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "EUS1-MP:EUS1_cache_write_tokens_1h_global_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "DPF54HR7AJ88RPBK",
+          "region": "eu-south-1",
+          "tier": "cache_global"
+        },
+        "eu-south-1.cache.read_input_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "EUS1-MP:EUS1_cache_read_tokens_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "ZDS9YSA2RH5NGSWR",
+          "region": "eu-south-1",
+          "tier": "cache"
+        },
+        "eu-south-1.cache.write_input_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "EUS1-MP:EUS1_cache_write_tokens_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "VHGXESVFPFPJ7SP2",
+          "region": "eu-south-1",
+          "tier": "cache"
+        },
+        "eu-south-1.cache.write_1h_input_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "EUS1-MP:EUS1_cache_write_tokens_1h_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "FQYNS2UVZYM6VJ3A",
+          "region": "eu-south-1",
+          "tier": "cache"
+        },
+        "eu-south-1.on_demand.output_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "EUS1-MP:EUS1_output_tokens_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "T6WXDTJMVVJPAFV5",
+          "region": "eu-south-1",
+          "tier": "on_demand"
+        },
+        "eu-south-1.on_demand.input_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "EUS1-MP:EUS1_input_tokens_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "3UV6VCC59VRQVX57",
+          "region": "eu-south-1",
+          "tier": "on_demand"
+        },
+        "eu-west-3.cache_global.read_input_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "EUW3-MP:EUW3_cache_read_tokens_global_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "EZ9JNB54E4NH5S4X",
+          "region": "eu-west-3",
+          "tier": "cache_global"
+        },
+        "eu-west-3.cache_global.write_input_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "EUW3-MP:EUW3_cache_write_tokens_global_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "7JVF67RTXE5K7VPT",
+          "region": "eu-west-3",
+          "tier": "cache_global"
+        },
+        "eu-west-3.cache_global.write_1h_input_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "EUW3-MP:EUW3_cache_write_tokens_1h_global_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "MNXDDVPKPZAD6HV8",
+          "region": "eu-west-3",
+          "tier": "cache_global"
+        },
+        "eu-west-3.cache.write_input_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "EUW3-MP:EUW3_cache_write_tokens_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "6TDCVKBAMEWJY9YU",
+          "region": "eu-west-3",
+          "tier": "cache"
+        },
+        "eu-west-3.cache.read_input_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "EUW3-MP:EUW3_cache_read_tokens_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "G9H66755PJD6GEB7",
+          "region": "eu-west-3",
+          "tier": "cache"
+        },
+        "eu-west-3.cache.write_1h_input_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "EUW3-MP:EUW3_cache_write_tokens_1h_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "WNE2FG3CPYEZ5F2D",
+          "region": "eu-west-3",
+          "tier": "cache"
+        },
+        "eu-west-3.on_demand.input_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "EUW3-MP:EUW3_input_tokens_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "8AQ362NUFADSXHVY",
+          "region": "eu-west-3",
+          "tier": "on_demand"
+        },
+        "eu-west-3.on_demand.output_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "EUW3-MP:EUW3_output_tokens_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "7SCX5PFPE9XRGXZX",
+          "region": "eu-west-3",
+          "tier": "on_demand"
+        },
+        "eu-west-3.on_demand_global.input_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "EUW3-MP:EUW3_input_tokens_global_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "GEH6JWQUQYQMD3HC",
+          "region": "eu-west-3",
+          "tier": "on_demand_global"
+        },
+        "eu-west-3.on_demand_global.output_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "EUW3-MP:EUW3_output_tokens_global_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "928E77WA4R4JM4JD",
+          "region": "eu-west-3",
+          "tier": "on_demand_global"
+        },
+        "sa-east-1.cache_global.write_input_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "SAE1-MP:SAE1_cache_write_tokens_global_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "C449GS6GRBYUGDZH",
+          "region": "sa-east-1",
+          "tier": "cache_global"
+        },
+        "sa-east-1.cache_global.read_input_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "SAE1-MP:SAE1_cache_read_tokens_global_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "FN33BY2WAFQYHQKU",
+          "region": "sa-east-1",
+          "tier": "cache_global"
+        },
+        "sa-east-1.cache_global.write_1h_input_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "SAE1-MP:SAE1_cache_write_tokens_1h_global_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "CVMV2PGEKP3JRGYM",
+          "region": "sa-east-1",
+          "tier": "cache_global"
+        },
+        "sa-east-1.on_demand_global.output_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "SAE1-MP:SAE1_output_tokens_global_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "FTQKH7VKRU2KD8CD",
+          "region": "sa-east-1",
+          "tier": "on_demand_global"
+        },
+        "sa-east-1.on_demand_global.input_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "SAE1-MP:SAE1_input_tokens_global_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "8CTVHR8T577GCWJK",
+          "region": "sa-east-1",
+          "tier": "on_demand_global"
+        },
+        "eu-south-2.cache.write_input_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "EUS2-MP:EUS2_cache_write_tokens_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "E5G27H9V224X9T59",
+          "region": "eu-south-2",
+          "tier": "cache"
+        },
+        "eu-south-2.cache.write_1h_input_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "EUS2-MP:EUS2_cache_write_tokens_1h_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "APRK9YA4DJAPSSJB",
+          "region": "eu-south-2",
+          "tier": "cache"
+        },
+        "eu-south-2.cache.read_input_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "EUS2-MP:EUS2_cache_read_tokens_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "GCYT2ZXKAPVMF296",
+          "region": "eu-south-2",
+          "tier": "cache"
+        },
+        "eu-south-2.on_demand.input_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "EUS2-MP:EUS2_input_tokens_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "TF4T3N669K4PG6UC",
+          "region": "eu-south-2",
+          "tier": "on_demand"
+        },
+        "eu-south-2.on_demand.output_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "EUS2-MP:EUS2_output_tokens_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "XRYVY3RBHCUXPT2P",
+          "region": "eu-south-2",
+          "tier": "on_demand"
+        },
+        "eu-south-2.on_demand_global.output_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "EUS2-MP:EUS2_output_tokens_global_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "BP5SRT3MYT6SECU8",
+          "region": "eu-south-2",
+          "tier": "on_demand_global"
+        },
+        "eu-south-2.on_demand_global.input_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "EUS2-MP:EUS2_input_tokens_global_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "JWTS4R8DG8TJY5NU",
+          "region": "eu-south-2",
+          "tier": "on_demand_global"
+        },
+        "eu-south-2.cache_global.write_input_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "EUS2-MP:EUS2_cache_write_tokens_global_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "N5NET49UBF5A3Y54",
+          "region": "eu-south-2",
+          "tier": "cache_global"
+        },
+        "eu-south-2.cache_global.write_1h_input_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "EUS2-MP:EUS2_cache_write_tokens_1h_global_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "FEJEU378XNXHERGB",
+          "region": "eu-south-2",
+          "tier": "cache_global"
+        },
+        "eu-south-2.cache_global.read_input_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "EUS2-MP:EUS2_cache_read_tokens_global_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "DTE7V9XCVT2XYSAE",
+          "region": "eu-south-2",
+          "tier": "cache_global"
+        },
+        "mx-central-1.cache_global.write_input_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "MXC1-MP:MXC1_cache_write_tokens_global_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "86UVAU9J8XH2N9E6",
+          "region": "mx-central-1",
+          "tier": "cache_global"
+        },
+        "mx-central-1.cache_global.read_input_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "MXC1-MP:MXC1_cache_read_tokens_global_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "9YGEW2EQKEJNJK7G",
+          "region": "mx-central-1",
+          "tier": "cache_global"
+        },
+        "mx-central-1.cache_global.write_1h_input_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "MXC1-MP:MXC1_cache_write_tokens_1h_global_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "KD96S38AXV56NWR3",
+          "region": "mx-central-1",
+          "tier": "cache_global"
+        },
+        "mx-central-1.on_demand_global.input_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "MXC1-MP:MXC1_input_tokens_global_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "47CWH2RJHNWR48TH",
+          "region": "mx-central-1",
+          "tier": "on_demand_global"
+        },
+        "mx-central-1.on_demand_global.output_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "MXC1-MP:MXC1_output_tokens_global_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "V7HH4NNKTW78F4WZ",
+          "region": "mx-central-1",
+          "tier": "on_demand_global"
+        },
+        "us-west-1.cache.write_1h_input_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "USW1-MP:USW1_cache_write_tokens_1h_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "CEGFAUJBJXXRWQS7",
+          "region": "us-west-1",
+          "tier": "cache"
+        },
+        "us-west-1.cache.write_input_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "USW1-MP:USW1_cache_write_tokens_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "KFE9C457ZHRNVHGW",
+          "region": "us-west-1",
+          "tier": "cache"
+        },
+        "us-west-1.cache.read_input_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "USW1-MP:USW1_cache_read_tokens_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "JG9XHDKASCPP5HHF",
+          "region": "us-west-1",
+          "tier": "cache"
+        },
+        "us-west-1.on_demand.output_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "USW1-MP:USW1_output_tokens_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "2RD7Q4YKNXAVQJD5",
+          "region": "us-west-1",
+          "tier": "on_demand"
+        },
+        "us-west-1.on_demand.input_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "USW1-MP:USW1_input_tokens_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "2ADKF5A9ZC5TCDHD",
+          "region": "us-west-1",
+          "tier": "on_demand"
+        },
+        "us-west-1.cache_global.write_1h_input_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "USW1-MP:USW1_cache_write_tokens_1h_global_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "E6EHKA8N26N57TGF",
+          "region": "us-west-1",
+          "tier": "cache_global"
+        },
+        "us-west-1.cache_global.write_input_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "USW1-MP:USW1_cache_write_tokens_global_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "9DSQ5FMM5UCADEM6",
+          "region": "us-west-1",
+          "tier": "cache_global"
+        },
+        "us-west-1.cache_global.read_input_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "USW1-MP:USW1_cache_read_tokens_global_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "292GHJJAC6BYHEEB",
+          "region": "us-west-1",
+          "tier": "cache_global"
+        },
+        "us-west-1.on_demand_global.input_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "USW1-MP:USW1_input_tokens_global_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "VQ6RU3D4ARF5YUBQ",
+          "region": "us-west-1",
+          "tier": "on_demand_global"
+        },
+        "us-west-1.on_demand_global.output_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "USW1-MP:USW1_output_tokens_global_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "XXJEPYNBJZZ2TGVG",
+          "region": "us-west-1",
+          "tier": "on_demand_global"
+        },
+        "us-east-2.cache_global.write_input_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "USE2-MP:USE2_cache_write_tokens_global_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "JP6Q25DANYWR6Z2D",
+          "region": "us-east-2",
+          "tier": "cache_global"
+        },
+        "us-east-2.cache_global.read_input_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "USE2-MP:USE2_cache_read_tokens_global_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "3PYEAEHNKPDNS46V",
+          "region": "us-east-2",
+          "tier": "cache_global"
+        },
+        "us-east-2.cache_global.write_1h_input_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "USE2-MP:USE2_cache_write_tokens_1h_global_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "S767VEHPZ75J3S3T",
+          "region": "us-east-2",
+          "tier": "cache_global"
+        },
+        "us-east-2.on_demand.input_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "USE2-MP:USE2_input_tokens_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "PNMKFBSJXXN6FUD8",
+          "region": "us-east-2",
+          "tier": "on_demand"
+        },
+        "us-east-2.on_demand.output_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "USE2-MP:USE2_output_tokens_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "BABQZCQ4R8N27W5M",
+          "region": "us-east-2",
+          "tier": "on_demand"
+        },
+        "us-east-2.cache.read_input_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "USE2-MP:USE2_cache_read_tokens_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "4USCWJCK5Y3PVMRS",
+          "region": "us-east-2",
+          "tier": "cache"
+        },
+        "us-east-2.cache.write_input_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "USE2-MP:USE2_cache_write_tokens_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "P5ACNTHNTM9GBX45",
+          "region": "us-east-2",
+          "tier": "cache"
+        },
+        "us-east-2.cache.write_1h_input_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "USE2-MP:USE2_cache_write_tokens_1h_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "HHMNXDMQQU6CQAWP",
+          "region": "us-east-2",
+          "tier": "cache"
+        },
+        "us-east-2.on_demand_global.input_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "USE2-MP:USE2_input_tokens_global_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "WUVTKYBC3GK72SKU",
+          "region": "us-east-2",
+          "tier": "on_demand_global"
+        },
+        "us-east-2.on_demand_global.output_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "USE2-MP:USE2_output_tokens_global_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "495VXYN26WXNR2TM",
+          "region": "us-east-2",
+          "tier": "on_demand_global"
+        },
+        "me-central-1.on_demand_global.input_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "MEC1-MP:MEC1_input_tokens_global_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "N92TCWWZUMRMRJ6Z",
+          "region": "me-central-1",
+          "tier": "on_demand_global"
+        },
+        "me-central-1.on_demand_global.output_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "MEC1-MP:MEC1_output_tokens_global_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "6RWQAJBXZJCCB2F5",
+          "region": "me-central-1",
+          "tier": "on_demand_global"
+        },
+        "me-central-1.cache_global.read_input_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "MEC1-MP:MEC1_cache_read_tokens_global_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "DWUUMHQ3APBX2BEM",
+          "region": "me-central-1",
+          "tier": "cache_global"
+        },
+        "me-central-1.cache_global.write_1h_input_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "MEC1-MP:MEC1_cache_write_tokens_1h_global_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "E2Z625TXKSB2NJQJ",
+          "region": "me-central-1",
+          "tier": "cache_global"
+        },
+        "me-central-1.cache_global.write_input_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "MEC1-MP:MEC1_cache_write_tokens_global_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "KJBYAYJKU6D5M7KN",
+          "region": "me-central-1",
+          "tier": "cache_global"
+        },
+        "ap-southeast-6.on_demand_global.input_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "APS8-MP:APS8_input_tokens_global_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "U49B36NBRG9478AQ",
+          "region": "ap-southeast-6",
+          "tier": "on_demand_global"
+        },
+        "ap-southeast-6.on_demand_global.output_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "APS8-MP:APS8_output_tokens_global_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "CMA4VMMBM6MFANAT",
+          "region": "ap-southeast-6",
+          "tier": "on_demand_global"
+        },
+        "ap-southeast-6.cache_global.write_input_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "APS8-MP:APS8_cache_write_tokens_global_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "7PCMUCXWE42DEV2Z",
+          "region": "ap-southeast-6",
+          "tier": "cache_global"
+        },
+        "ap-southeast-6.cache_global.read_input_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "APS8-MP:APS8_cache_read_tokens_global_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "NCPZ5GP5MAQ3J8GM",
+          "region": "ap-southeast-6",
+          "tier": "cache_global"
+        },
+        "ap-southeast-6.cache_global.write_1h_input_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "APS8-MP:APS8_cache_write_tokens_1h_global_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "QTAT3VW5GNT48NNX",
+          "region": "ap-southeast-6",
+          "tier": "cache_global"
+        },
+        "ap-southeast-2.cache.write_1h_input_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "APS2-MP:APS2_cache_write_tokens_1h_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "9973E5GD7QAUKNQ5",
+          "region": "ap-southeast-2",
+          "tier": "cache"
+        },
+        "ap-southeast-2.cache.write_input_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "APS2-MP:APS2_cache_write_tokens_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "6P3QU52K94WVS2FE",
+          "region": "ap-southeast-2",
+          "tier": "cache"
+        },
+        "ap-southeast-2.cache.read_input_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "APS2-MP:APS2_cache_read_tokens_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "HJ2ZJW6J4ECGHDDN",
+          "region": "ap-southeast-2",
+          "tier": "cache"
+        },
+        "ap-southeast-2.on_demand.output_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "APS2-MP:APS2_output_tokens_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "CS47ZX3T5HBDG9ZU",
+          "region": "ap-southeast-2",
+          "tier": "on_demand"
+        },
+        "ap-southeast-2.on_demand.input_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "APS2-MP:APS2_input_tokens_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "JKVZ5HX5FUKT62VK",
+          "region": "ap-southeast-2",
+          "tier": "on_demand"
+        },
+        "ap-southeast-2.cache_global.read_input_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "APS2-MP:APS2_cache_read_tokens_global_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "D24J6FBQ383QHS3M",
+          "region": "ap-southeast-2",
+          "tier": "cache_global"
+        },
+        "ap-southeast-2.cache_global.write_1h_input_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "APS2-MP:APS2_cache_write_tokens_1h_global_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "5DCED37HEDTFZTPT",
+          "region": "ap-southeast-2",
+          "tier": "cache_global"
+        },
+        "ap-southeast-2.cache_global.write_input_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "APS2-MP:APS2_cache_write_tokens_global_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "6YRGRKMMHVAFMBKX",
+          "region": "ap-southeast-2",
+          "tier": "cache_global"
+        },
+        "ap-southeast-2.on_demand_global.input_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "APS2-MP:APS2_input_tokens_global_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "NK9V2JY7ZTVG7J9Y",
+          "region": "ap-southeast-2",
+          "tier": "on_demand_global"
+        },
+        "ap-southeast-2.on_demand_global.output_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "APS2-MP:APS2_output_tokens_global_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "28JZF6SHXX2V8VS3",
+          "region": "ap-southeast-2",
+          "tier": "on_demand_global"
+        },
+        "ap-east-2.on_demand_global.input_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "APE2-MP:APE2_input_tokens_global_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "Z9S6BWXYUHM4UHV6",
+          "region": "ap-east-2",
+          "tier": "on_demand_global"
+        },
+        "ap-east-2.on_demand_global.output_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "APE2-MP:APE2_output_tokens_global_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "7WKHQB4VAS3VVST3",
+          "region": "ap-east-2",
+          "tier": "on_demand_global"
+        },
+        "ap-east-2.cache_global.read_input_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "APE2-MP:APE2_cache_read_tokens_global_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "RYX4Z38XDZ3EFUW4",
+          "region": "ap-east-2",
+          "tier": "cache_global"
+        },
+        "ap-east-2.cache_global.write_input_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "APE2-MP:APE2_cache_write_tokens_global_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "KFYV2TJNEBBP9HTX",
+          "region": "ap-east-2",
+          "tier": "cache_global"
+        },
+        "ap-east-2.cache_global.write_1h_input_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "APE2-MP:APE2_cache_write_tokens_1h_global_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "ZJEGZCRJ6MAMBPVF",
+          "region": "ap-east-2",
+          "tier": "cache_global"
+        },
+        "us-gov-east-1.cache.read_input_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "UGE1-MP:UGE1_cache_read_tokens_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "7USQMFU7N3QFCGCM",
+          "region": "us-gov-east-1",
+          "tier": "cache"
+        },
+        "us-gov-east-1.cache.write_input_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "UGE1-MP:UGE1_cache_write_tokens_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "3YPGN2GJCCUMBXYQ",
+          "region": "us-gov-east-1",
+          "tier": "cache"
+        },
+        "us-gov-east-1.cache.write_1h_input_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "UGE1-MP:UGE1_cache_write_tokens_1h_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "GP5JUAZMWXESBDFT",
+          "region": "us-gov-east-1",
+          "tier": "cache"
+        },
+        "us-gov-east-1.on_demand.output_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "UGE1-MP:UGE1_output_tokens_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "UGYECVB87X69YK53",
+          "region": "us-gov-east-1",
+          "tier": "on_demand"
+        },
+        "us-gov-east-1.on_demand.input_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "UGE1-MP:UGE1_input_tokens_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "6NVJNA7G2Y3Y32VV",
+          "region": "us-gov-east-1",
+          "tier": "on_demand"
+        },
+        "ap-southeast-3.cache_global.write_1h_input_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "APS4-MP:APS4_cache_write_tokens_1h_global_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "6YATNYBCZ7F6KQTJ",
+          "region": "ap-southeast-3",
+          "tier": "cache_global"
+        },
+        "ap-southeast-3.cache_global.read_input_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "APS4-MP:APS4_cache_read_tokens_global_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "P64TXK9UAZ7A5QJ6",
+          "region": "ap-southeast-3",
+          "tier": "cache_global"
+        },
+        "ap-southeast-3.cache_global.write_input_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "APS4-MP:APS4_cache_write_tokens_global_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "F85U6H7D8FDGHRP6",
+          "region": "ap-southeast-3",
+          "tier": "cache_global"
+        },
+        "ap-southeast-3.on_demand_global.input_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "APS4-MP:APS4_input_tokens_global_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "MEXVHRVKEEY5UST7",
+          "region": "ap-southeast-3",
+          "tier": "on_demand_global"
+        },
+        "ap-southeast-3.on_demand_global.output_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "APS4-MP:APS4_output_tokens_global_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "EC7USBPWDAZX6J9J",
+          "region": "ap-southeast-3",
+          "tier": "on_demand_global"
+        },
+        "ap-southeast-5.on_demand_global.output_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "APS7-MP:APS7_output_tokens_global_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "PEXVV2RV59F99SUS",
+          "region": "ap-southeast-5",
+          "tier": "on_demand_global"
+        },
+        "ap-southeast-5.on_demand_global.input_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "APS7-MP:APS7_input_tokens_global_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "J6HY6JK4NHND5FQK",
+          "region": "ap-southeast-5",
+          "tier": "on_demand_global"
+        },
+        "ap-southeast-5.cache_global.write_input_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "APS7-MP:APS7_cache_write_tokens_global_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "TD6FGRPHETBT6ZVY",
+          "region": "ap-southeast-5",
+          "tier": "cache_global"
+        },
+        "ap-southeast-5.cache_global.read_input_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "APS7-MP:APS7_cache_read_tokens_global_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "RZZS9YG2T55DEYFX",
+          "region": "ap-southeast-5",
+          "tier": "cache_global"
+        },
+        "ap-southeast-5.cache_global.write_1h_input_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "APS7-MP:APS7_cache_write_tokens_1h_global_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "VEVGWUC965VQMZPR",
+          "region": "ap-southeast-5",
+          "tier": "cache_global"
+        },
+        "il-central-1.on_demand_global.output_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "ILC1-MP:ILC1_output_tokens_global_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "F74R3UTWUHRVSXMK",
+          "region": "il-central-1",
+          "tier": "on_demand_global"
+        },
+        "il-central-1.on_demand_global.input_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "ILC1-MP:ILC1_input_tokens_global_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "QREN3B9RQ6BE43JF",
+          "region": "il-central-1",
+          "tier": "on_demand_global"
+        },
+        "il-central-1.cache_global.write_1h_input_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "ILC1-MP:ILC1_cache_write_tokens_1h_global_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "98NHCWGHK9VCCZ64",
+          "region": "il-central-1",
+          "tier": "cache_global"
+        },
+        "il-central-1.cache_global.read_input_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "ILC1-MP:ILC1_cache_read_tokens_global_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "48T572ZAA6AJB9DA",
+          "region": "il-central-1",
+          "tier": "cache_global"
+        },
+        "il-central-1.cache_global.write_input_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "ILC1-MP:ILC1_cache_write_tokens_global_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "GFGB3X2P3G6E5Z6V",
+          "region": "il-central-1",
+          "tier": "cache_global"
+        },
+        "us-west-2.cache.write_input_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "USW2-MP:USW2_cache_write_tokens_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "KMJDB469FP9UHNPE",
+          "region": "us-west-2",
+          "tier": "cache"
+        },
+        "us-west-2.cache.read_input_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "USW2-MP:USW2_cache_read_tokens_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "SFAHG8HKPFTSMET5",
+          "region": "us-west-2",
+          "tier": "cache"
+        },
+        "us-west-2.cache.write_1h_input_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "USW2-MP:USW2_cache_write_tokens_1h_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "PFF4YDJXCJPUDFNT",
+          "region": "us-west-2",
+          "tier": "cache"
+        },
+        "us-west-2.on_demand_global.output_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "USW2-MP:USW2_output_tokens_global_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "76CJBZJK2FY5BAV3",
+          "region": "us-west-2",
+          "tier": "on_demand_global"
+        },
+        "us-west-2.on_demand_global.input_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "USW2-MP:USW2_input_tokens_global_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "3G69TAGKSKSP2NET",
+          "region": "us-west-2",
+          "tier": "on_demand_global"
+        },
+        "us-west-2.on_demand.input_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "USW2-MP:USW2_input_tokens_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "23TWXMPQHCH4RC55",
+          "region": "us-west-2",
+          "tier": "on_demand"
+        },
+        "us-west-2.on_demand.output_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "USW2-MP:USW2_output_tokens_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "7AHYGQHA98PABGYW",
+          "region": "us-west-2",
+          "tier": "on_demand"
+        },
+        "us-west-2.cache_global.read_input_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "USW2-MP:USW2_cache_read_tokens_global_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "5SNNT44E2MVZMAVF",
+          "region": "us-west-2",
+          "tier": "cache_global"
+        },
+        "us-west-2.cache_global.write_1h_input_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "USW2-MP:USW2_cache_write_tokens_1h_global_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "RBPCAPPAU6D5X8YG",
+          "region": "us-west-2",
+          "tier": "cache_global"
+        },
+        "us-west-2.cache_global.write_input_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "USW2-MP:USW2_cache_write_tokens_global_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "MEC6N9RGJEG44Q79",
+          "region": "us-west-2",
+          "tier": "cache_global"
+        },
+        "ap-southeast-4.cache.write_input_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "APS6-MP:APS6_cache_write_tokens_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "K54XZ5J6BWW6F3QY",
+          "region": "ap-southeast-4",
+          "tier": "cache"
+        },
+        "ap-southeast-4.cache.write_1h_input_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "APS6-MP:APS6_cache_write_tokens_1h_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "C72B2EYW6YF8JQC5",
+          "region": "ap-southeast-4",
+          "tier": "cache"
+        },
+        "ap-southeast-4.cache.read_input_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "APS6-MP:APS6_cache_read_tokens_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "RYF9AMRVBNNCVDQ7",
+          "region": "ap-southeast-4",
+          "tier": "cache"
+        },
+        "ap-southeast-4.cache_global.read_input_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "APS6-MP:APS6_cache_read_tokens_global_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "YWKUYWSSGEZ9F2SF",
+          "region": "ap-southeast-4",
+          "tier": "cache_global"
+        },
+        "ap-southeast-4.cache_global.write_input_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "APS6-MP:APS6_cache_write_tokens_global_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "54FJQGAFUYQZQDUM",
+          "region": "ap-southeast-4",
+          "tier": "cache_global"
+        },
+        "ap-southeast-4.cache_global.write_1h_input_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "APS6-MP:APS6_cache_write_tokens_1h_global_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "P7E6P3QZNMT8UWWU",
+          "region": "ap-southeast-4",
+          "tier": "cache_global"
+        },
+        "ap-southeast-4.on_demand.input_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "APS6-MP:APS6_input_tokens_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "Q35F2DYFFCVCQG7R",
+          "region": "ap-southeast-4",
+          "tier": "on_demand"
+        },
+        "ap-southeast-4.on_demand.output_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "APS6-MP:APS6_output_tokens_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "KDW7SES9GCPZGEAA",
+          "region": "ap-southeast-4",
+          "tier": "on_demand"
+        },
+        "ap-southeast-4.on_demand_global.output_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "APS6-MP:APS6_output_tokens_global_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "3KZHRSHU38WMZ7V4",
+          "region": "ap-southeast-4",
+          "tier": "on_demand_global"
+        },
+        "ap-southeast-4.on_demand_global.input_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "APS6-MP:APS6_input_tokens_global_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "7GKJWHJHUM84Y8J3",
+          "region": "ap-southeast-4",
+          "tier": "on_demand_global"
+        },
+        "ap-northeast-2.cache_global.write_input_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "APN2-MP:APN2_cache_write_tokens_global_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "4U7RAN94RKU3K368",
+          "region": "ap-northeast-2",
+          "tier": "cache_global"
+        },
+        "ap-northeast-2.cache_global.write_1h_input_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "APN2-MP:APN2_cache_write_tokens_1h_global_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "GERVBMNECMJY2R35",
+          "region": "ap-northeast-2",
+          "tier": "cache_global"
+        },
+        "ap-northeast-2.cache_global.read_input_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "APN2-MP:APN2_cache_read_tokens_global_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "3YPUDT2PJQ68JC8Z",
+          "region": "ap-northeast-2",
+          "tier": "cache_global"
+        },
+        "ap-northeast-2.on_demand_global.input_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "APN2-MP:APN2_input_tokens_global_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "CBFKBYEFMPG236F4",
+          "region": "ap-northeast-2",
+          "tier": "on_demand_global"
+        },
+        "ap-northeast-2.on_demand_global.output_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "APN2-MP:APN2_output_tokens_global_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "Z3MDYMEE2BJBHTVG",
+          "region": "ap-northeast-2",
+          "tier": "on_demand_global"
+        },
+        "eu-north-1.on_demand.output_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "EUN1-MP:EUN1_output_tokens_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "8GT3UZ5XYXXWD9DS",
+          "region": "eu-north-1",
+          "tier": "on_demand"
+        },
+        "eu-north-1.on_demand.input_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "EUN1-MP:EUN1_input_tokens_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "JFSBVDEFS2QHZ8QE",
+          "region": "eu-north-1",
+          "tier": "on_demand"
+        },
+        "eu-north-1.cache.write_1h_input_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "EUN1-MP:EUN1_cache_write_tokens_1h_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "XS2Y9SC87KMJ46F6",
+          "region": "eu-north-1",
+          "tier": "cache"
+        },
+        "eu-north-1.cache.write_input_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "EUN1-MP:EUN1_cache_write_tokens_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "KNT4DXEXYX7BNDGC",
+          "region": "eu-north-1",
+          "tier": "cache"
+        },
+        "eu-north-1.cache.read_input_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "EUN1-MP:EUN1_cache_read_tokens_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "URN9WS6CABN5B5ER",
+          "region": "eu-north-1",
+          "tier": "cache"
+        },
+        "eu-north-1.cache_global.read_input_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "EUN1-MP:EUN1_cache_read_tokens_global_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "WU5WRA8GARRXRUTF",
+          "region": "eu-north-1",
+          "tier": "cache_global"
+        },
+        "eu-north-1.cache_global.write_input_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "EUN1-MP:EUN1_cache_write_tokens_global_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "J4VK2BQV8JUPQDEV",
+          "region": "eu-north-1",
+          "tier": "cache_global"
+        },
+        "eu-north-1.cache_global.write_1h_input_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "EUN1-MP:EUN1_cache_write_tokens_1h_global_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "47MUX3WEDAQY555E",
+          "region": "eu-north-1",
+          "tier": "cache_global"
+        },
+        "eu-north-1.on_demand_global.output_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "EUN1-MP:EUN1_output_tokens_global_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "VFPDQ6MMFQ4PJ9RK",
+          "region": "eu-north-1",
+          "tier": "on_demand_global"
+        },
+        "eu-north-1.on_demand_global.input_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "EUN1-MP:EUN1_input_tokens_global_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "UYJT99A8RZQB9BH6",
+          "region": "eu-north-1",
+          "tier": "on_demand_global"
+        },
+        "ap-southeast-7.cache_global.write_input_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "APS9-MP:APS9_cache_write_tokens_global_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "HJHNAS3W8K22GKFR",
+          "region": "ap-southeast-7",
+          "tier": "cache_global"
+        },
+        "ap-southeast-7.cache_global.read_input_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "APS9-MP:APS9_cache_read_tokens_global_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "C42RS7HC7FUA3CPM",
+          "region": "ap-southeast-7",
+          "tier": "cache_global"
+        },
+        "ap-southeast-7.cache_global.write_1h_input_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "APS9-MP:APS9_cache_write_tokens_1h_global_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "DHKJZ7DZ374ZRPYG",
+          "region": "ap-southeast-7",
+          "tier": "cache_global"
+        },
+        "ap-southeast-7.on_demand_global.output_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "APS9-MP:APS9_output_tokens_global_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "EYEVJ7TCHNFJFR4D",
+          "region": "ap-southeast-7",
+          "tier": "on_demand_global"
+        },
+        "ap-southeast-7.on_demand_global.input_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "APS9-MP:APS9_input_tokens_global_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "S5Y5XEQN47W77UM4",
+          "region": "ap-southeast-7",
+          "tier": "on_demand_global"
+        },
+        "ap-south-1.cache_global.write_input_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "APS3-MP:APS3_cache_write_tokens_global_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "4GXECTUF427WVEAH",
+          "region": "ap-south-1",
+          "tier": "cache_global"
+        },
+        "ap-south-1.cache_global.write_1h_input_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "APS3-MP:APS3_cache_write_tokens_1h_global_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "4TY5C5YW3Q8Q3GRR",
+          "region": "ap-south-1",
+          "tier": "cache_global"
+        },
+        "ap-south-1.cache_global.read_input_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "APS3-MP:APS3_cache_read_tokens_global_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "2S9FJWN9263762F7",
+          "region": "ap-south-1",
+          "tier": "cache_global"
+        },
+        "ap-south-1.on_demand_global.input_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "APS3-MP:APS3_input_tokens_global_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "6XAC4FT2C2J2Z8T5",
+          "region": "ap-south-1",
+          "tier": "on_demand_global"
+        },
+        "ap-south-1.on_demand_global.output_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "APS3-MP:APS3_output_tokens_global_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "VMMBUWYXEQBXEVCN",
+          "region": "ap-south-1",
+          "tier": "on_demand_global"
+        },
+        "me-south-1.on_demand_global.input_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "MES1-MP:MES1_input_tokens_global_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "A9KSDYMEB2Z9AUWT",
+          "region": "me-south-1",
+          "tier": "on_demand_global"
+        },
+        "me-south-1.on_demand_global.output_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "MES1-MP:MES1_output_tokens_global_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "WV4F9RCR2Q3DAXNH",
+          "region": "me-south-1",
+          "tier": "on_demand_global"
+        },
+        "me-south-1.cache_global.write_1h_input_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "MES1-MP:MES1_cache_write_tokens_1h_global_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "825CQW7A8WJ3KZ99",
+          "region": "me-south-1",
+          "tier": "cache_global"
+        },
+        "me-south-1.cache_global.read_input_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "MES1-MP:MES1_cache_read_tokens_global_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "C4JTJPSNQ9CU9AX6",
+          "region": "me-south-1",
+          "tier": "cache_global"
+        },
+        "me-south-1.cache_global.write_input_per_1m": {
+          "offer": "AmazonBedrockFoundationModels",
+          "usagetype": "MES1-MP:MES1_cache_write_tokens_global_standard-Units",
+          "unit": "1M tokens",
+          "product_sku": "CX7U6R8YZ9Z5R884",
+          "region": "me-south-1",
+          "tier": "cache_global"
         }
       }
     },
@@ -78191,10 +81099,10 @@
     }
   ],
   "scrape": {
-    "models_matched": 222,
-    "models_in_catalog": 227,
-    "models_with_prices": 206,
-    "models_known_to_aws": 143,
+    "models_matched": 223,
+    "models_in_catalog": 228,
+    "models_with_prices": 207,
+    "models_known_to_aws": 144,
     "coverage_pct": 98,
     "price_coverage_pct": 91,
     "inventory_coverage_pct": 100,
@@ -78946,7 +81854,14 @@
       "Auto-provisioned catalog entry from Price List: moonshotai.kimi-k3-mantle-cache-write-tokens-30m-global",
       "Auto-provisioned catalog entry from Price List: moonshotai.kimi-k3-mantle-cache-read-tokens",
       "Unmapped pricing page row: Global CRIS",
-      "Unmapped pricing page row: US CRIS"
+      "Unmapped pricing page row: US CRIS",
+      "Auto-provisioned catalog entry from Price List: anthropic.claude-opus-5-5",
+      "Unmapped Price List service (add override): OpenAI GPT-6 Astra",
+      "Unknown unit for FM SKU MZ2BXUDBPJ8RWDK2: unit='Search Units'",
+      "Unknown unit for FM SKU UV2WV44H28YBJR3V: unit='Search Units'",
+      "Unknown unit for FM SKU VAEU8TWRG2CS3J6Q: unit='Search Units'",
+      "Unknown unit for FM SKU D29B6SD66CXGVU4C: unit='Search Units'",
+      "Unknown unit for FM SKU 87P7ER2MKWFZVDVR: unit='Search Units'"
     ]
   }
 }

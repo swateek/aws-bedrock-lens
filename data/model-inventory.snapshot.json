@@ -1,5 +1,5 @@
 {
-  "synced_at": "2026-05-29",
+  "synced_at": "2026-09-28",
   "regions_scanned": [
     "us-east-1",
     "us-west-2",
@@ -1214,6 +1214,28 @@
     {
       "modelId": "anthropic.claude-opus-4-8",
       "modelName": "Claude Opus 4.8",
+      "providerName": "Anthropic",
+      "inputModalities": [
+        "TEXT"
+      ],
+      "outputModalities": [
+        "TEXT"
+      ],
+      "responseStreamingSupported": true,
+      "customizationsSupported": [],
+      "inferenceTypesSupported": [
+        "ON_DEMAND"
+      ],
+      "modelLifecycle": {
+        "status": "ACTIVE"
+      },
+      "regions": [
+        "us-east-1"
+      ]
+    },
+    {
+      "modelId": "anthropic.claude-opus-5-5",
+      "modelName": "Claude Opus 5.5",
       "providerName": "Anthropic",
       "inputModalities": [
         "TEXT"
