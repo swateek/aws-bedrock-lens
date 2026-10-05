@@ -1,5 +1,5 @@
 {
-  "synced_at": "2026-09-28",
+  "synced_at": "2026-10-05",
   "regions_scanned": [
     "us-east-1",
     "us-west-2",
@@ -1334,6 +1334,28 @@
         "us-east-1",
         "us-west-2",
         "eu-west-1"
+      ]
+    },
+    {
+      "modelId": "anthropic.claude-sonnet-5-5",
+      "modelName": "Claude Sonnet 5.5",
+      "providerName": "Anthropic",
+      "inputModalities": [
+        "TEXT"
+      ],
+      "outputModalities": [
+        "TEXT"
+      ],
+      "responseStreamingSupported": true,
+      "customizationsSupported": [],
+      "inferenceTypesSupported": [
+        "ON_DEMAND"
+      ],
+      "modelLifecycle": {
+        "status": "ACTIVE"
+      },
+      "regions": [
+        "us-east-1"
       ]
     },
     {
