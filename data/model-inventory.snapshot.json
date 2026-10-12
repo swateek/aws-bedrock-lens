@@ -1,5 +1,5 @@
 {
-  "synced_at": "2026-10-05",
+  "synced_at": "2026-10-12",
   "regions_scanned": [
     "us-east-1",
     "us-west-2",
@@ -1078,6 +1078,28 @@
         "us-east-1",
         "us-west-2",
         "eu-west-1"
+      ]
+    },
+    {
+      "modelId": "anthropic.claude-haiku-5-5",
+      "modelName": "Claude Haiku 5.5",
+      "providerName": "Anthropic",
+      "inputModalities": [
+        "TEXT"
+      ],
+      "outputModalities": [
+        "TEXT"
+      ],
+      "responseStreamingSupported": true,
+      "customizationsSupported": [],
+      "inferenceTypesSupported": [
+        "ON_DEMAND"
+      ],
+      "modelLifecycle": {
+        "status": "ACTIVE"
+      },
+      "regions": [
+        "us-east-1"
       ]
     },
     {
@@ -3553,6 +3575,28 @@
         "us-east-1",
         "us-west-2",
         "eu-west-1"
+      ]
+    },
+    {
+      "modelId": "twelvelabs.pegasus-1-5-v1:0",
+      "modelName": "TwelveLabs Pegasus 1.5",
+      "providerName": "TwelveLabs",
+      "inputModalities": [
+        "TEXT"
+      ],
+      "outputModalities": [
+        "TEXT"
+      ],
+      "responseStreamingSupported": true,
+      "customizationsSupported": [],
+      "inferenceTypesSupported": [
+        "ON_DEMAND"
+      ],
+      "modelLifecycle": {
+        "status": "ACTIVE"
+      },
+      "regions": [
+        "us-east-1"
       ]
     },
     {
