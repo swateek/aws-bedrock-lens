@@ -2,12 +2,12 @@
   "meta": {
     "schema_version": "3.0",
     "source": "https://aws.amazon.com/bedrock/pricing/",
-    "last_scraped_at": "2026-10-12",
+    "last_scraped_at": "2026-11-02",
     "pricing_updated_at": "2026-10-12",
     "parser_version": "4",
-    "last_inventory_sync_at": "2026-10-12",
+    "last_inventory_sync_at": "2026-11-02",
     "models_known_to_aws": 147,
-    "last_price_list_at": "2026-10-12",
+    "last_price_list_at": "2026-11-02",
     "price_list_region": "us-east-1",
     "products": [
       {
@@ -19,7 +19,7 @@
       }
     ],
     "bedrock_offer_region": "us-east-1",
-    "last_bedrock_offer_at": "2026-10-12",
+    "last_bedrock_offer_at": "2026-11-02",
     "default_price_region": "us-east-1",
     "price_list_regions": [
       "af-south-1",
@@ -91854,7 +91854,8 @@
       "Price conflict for anthropic.claude-haiku-5-5.af-south-1.cache_global.write_input_per_1m: 0.125 vs 0.625 (AmazonBedrockFoundationModels)",
       "Price conflict for anthropic.claude-haiku-5-5.ap-southeast-1.on_demand_global.input_per_1m: 0.1 vs 0.5 (AmazonBedrockFoundationModels)",
       "Auto-provisioned catalog entry from Price List: novasonic2.5-speech",
-      "Auto-provisioned catalog entry from Price List: novasonic2.5-text"
+      "Auto-provisioned catalog entry from Price List: novasonic2.5-text",
+      "Unmapped pricing page row: Contextual grounding checks for both standard tier and classic tier**"
     ]
   }
 }
